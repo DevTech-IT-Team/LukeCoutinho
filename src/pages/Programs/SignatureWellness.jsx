@@ -73,18 +73,18 @@ const SignatureWellness = () => {
     const steps = [
         { 
             step: "STEP 1", 
-            title: "Expert Companionship", 
-            desc: "Throughout your journey, you’ll have a dedicated wellness coach by your side, offering expert guidance, motivation, and unwavering support." 
+            title: "Expert Coaching", 
+            desc: "A dedicated wellness coach by your side, providing motivation, expertise, and daily accountability." 
         },
         { 
             step: "STEP 2", 
             title: "Holistic Assessment", 
-            desc: "We assess your current lifestyle — your physical limitations, emotional well-being, and spiritual needs." 
+            desc: "A deep dive into your physical, emotional, and spiritual landscape to identify the root cause." 
         },
         { 
             step: "STEP 3", 
-            title: "Personalized Mapping", 
-            desc: "Based on this, we map out a personalized path, filled with tools and strategies specifically chosen to enhance your quality of life." 
+            title: "Path Mapping", 
+            desc: "A personalized roadmap with targeted strategies designed specifically for your bio-individuality." 
         }
     ];
 
@@ -110,15 +110,15 @@ const SignatureWellness = () => {
                             <Sparkles size={12} className="animate-pulse" />
                             Premium Care
                         </div>
-                        <h1 className="text-6xl md:text-8xl font-black text-slate-950 tracking-tighter leading-[0.9] lg:max-w-4xl">
+                        <h1 className="text-5xl md:text-7xl font-bold text-slate-950 tracking-tighter leading-[1.1] lg:max-w-4xl uppercase">
                             Our Signature <br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 drop-shadow-sm">
+                            <span className="text-orange-500 font-light italic lowercase font-serif">
                                 Wellness Programs
                             </span>
                         </h1>
-                        <p className="text-xl md:text-2xl text-slate-500 leading-snug font-medium max-w-2xl tracking-tight italic">
-                            Ever Wondered How Holistic Health Could Change Your Life? <br />
-                            <span className="text-slate-900 font-black tracking-tighter">Check out our Signature Wellness Programs designed for sustainable healing.</span>
+                        <p className="text-xl md:text-2xl text-slate-500 leading-snug font-medium max-w-2xl tracking-tight">
+                            Personalized root-cause healing designed to <br />
+                            <span className="text-slate-950 font-bold tracking-tighter">transform your lifestyle and rebuild your health from the inside out.</span>
                         </p>
                         <div className="flex flex-wrap gap-6 pt-4">
                             <button className="px-10 py-5 bg-orange-500 text-white font-black rounded-2xl shadow-xl shadow-orange-500/20 hover:bg-slate-950 transition-all uppercase tracking-widest text-xs">
@@ -133,21 +133,18 @@ const SignatureWellness = () => {
             <section className="py-24 bg-white border-b border-slate-50">
                 <div className="max-w-7xl mx-auto px-6 lg:px-16 grid lg:grid-cols-2 gap-20 items-center">
                     <div className="space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter leading-none">
-                            Feeling Stuck in a <br /><span className="text-orange-500">Medical Cycle?</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-950 tracking-tighter leading-none uppercase">
+                            Redefining <br /><span className="text-orange-500 font-light italic">Your Healthcare.</span>
                         </h2>
-                        <div className="space-y-6 text-xl text-slate-600 leading-relaxed font-medium">
+                        <div className="space-y-6 text-xl text-gray-500 leading-relaxed font-medium">
                             <p>
-                                Many people crave a more comprehensive approach to health. That’s where foundational medicine and lifestyle with Team Luke comes in.
-                            </p>
-                            <p>
-                                We take a <span className="text-slate-950 font-bold">360-degree approach</span> to your health – mind, body, and spirit, acting as your personalized health navigators.
+                                We redouble the "Care" in healthcare by addressing the root cause, not just the symptom. Through our foundational medicine approach, we act as your dedicated health navigators.
                             </p>
                             <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 relative overflow-hidden group">
-                                <span className="absolute -top-10 -right-10 text-9xl font-black text-slate-200/20 transition-transform group-hover:scale-110 italic">?</span>
+                                <span className="absolute -top-10 -right-10 text-6xl font-bold text-slate-200/20 transition-transform group-hover:scale-110 italic">!</span>
                                 <h4 className="text-slate-950 font-black text-xs uppercase tracking-widest mb-4">Our Commitment</h4>
-                                <p className="text-lg leading-relaxed">
-                                    Our commitment to putting <span className="text-orange-600 font-bold">care back into healthcare</span> has enabled us to build a team of experts who go beyond research to guide you back to sustainable healing.
+                                <p className="text-lg leading-relaxed text-slate-900 font-bold">
+                                    We bring authorities from every clinical field to guide you back to sustainable healing and long-term vitality.
                                 </p>
                             </div>
                         </div>

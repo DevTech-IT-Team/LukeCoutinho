@@ -8,42 +8,42 @@ const PillarsSection = () => {
     {
       id: "01",
       title: "Deep Cellular Nutrition",
-      content: "Embark on a journey of wellness with Cellular Nutrition, tailoring nourishment to your unique body, metabolism, and health objectives. It emphasizes holistic practices for optimal cellular nourishment and vitality.",
+      content: "Nutrient-dense, personalized eating plans designed to optimize cellular metabolism and fuel natural healing.",
       icon: <Leaf />,
       delay: 0.1
     },
     {
       id: "02",
-      title: "Holistic Adequate Exercise",
-      content: "Embrace movement that prioritizes your well-being, incorporating cardio, strength, flexibility, mobility, and balance. It's about respecting your limits and feeling happy, robust, and alive.",
+      title: "Adequate Exercise",
+      content: "Intentional movement focusing on strength, flexibility, and cardiovascular health to energize the body and mind.",
       icon: <Dumbbell />,
       delay: 0.2
     },
     {
       id: "03",
-      title: "Quality Sleep Strategies",
-      content: "Discover the transformative power of quality sleep. Beyond duration, it's about creating a rhythm balance—key components in unlocking the body's natural healing potential and restful sleep.",
+      title: "Quality Sleep",
+      content: "Restorative sleep strategies to balance circadian rhythms and activate the innate recovery mechanisms.",
       icon: <Moon />,
       delay: 0.3
     },
     {
       id: "04",
       title: "Emotional Wellness",
-      content: "Elevate your well-being by embracing acceptance, gratitude, and meditation to foster inner harmony, a prerequisite for healing and recovery. Enhance your overall mental health and resilience.",
+      content: "Mindfulness and stress-management tools to foster inner resilience, gratitude, and mental clarity.",
       icon: <Heart />,
       delay: 0.4
     },
     {
       id: "05",
       title: "Reconnecting Spirit",
-      content: "Reconnect with your inner self through simplicity in kindness, meaningful relationships, and spiritual practices for a profound sense of well-being and a harmonious life balance.",
+      content: "Spiritual and social connections that provide purpose, harmony, and a profound sense of well-being.",
       icon: <Sparkles />,
       delay: 0.5
     },
     {
       id: "06",
       title: "The Power of Breath",
-      content: "Understand the power of breath to calm the mind, restore balance, and fuel every cell. Shift effortlessly from stress to harmony, activating your body's natural healing and power.",
+      content: "Conscious breathing techniques to oxygenate cells, calm the nervous system, and restore balance.",
       icon: <Wind />,
       delay: 0.6
     }
@@ -93,10 +93,10 @@ const PillarsSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-[1.1] tracking-tight"
+            className="text-5xl md:text-6xl font-bold text-slate-900 mb-8 leading-[1.1] tracking-tight"
           >
             Foundations of a <br />
-            <span className="text-orange-500">Holistic Life.</span>
+            <span className="text-orange-500 font-light italic">Holistic Life.</span>
           </motion.h2>
           
           <motion.p 
@@ -122,37 +122,38 @@ const PillarsSection = () => {
             <motion.div
               key={pillar.id}
               variants={cardVariants}
-              className="group cursor-default"
+              className="group cursor-default relative"
             >
-              <div className="relative pt-12">
-                {/* Large Background Number */}
-                <span className="absolute top-0 left-0 text-8xl font-black text-slate-50 group-hover:text-orange-50 transition-colors duration-500">
+              <div className="relative pt-12 px-8 pb-10 rounded-[3rem] transition-all duration-500 hover:bg-slate-50/50 hover:shadow-2xl hover:shadow-orange-500/5 group">
+                {/* Large Background Number (Moderated) */}
+                <span className="absolute top-4 left-6 text-6xl font-bold text-slate-100 group-hover:text-orange-100/50 transition-colors duration-500 select-none">
                   {pillar.id}
                 </span>
 
                 <div className="relative z-10 flex flex-col h-full">
-                  {/* Icon with persistent floating */}
+                  {/* Icon with persistent floating (Lightened) */}
                   <div className="mb-8">
                     <motion.div 
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: pillar.delay }}
-                      className="w-20 h-20 rounded-[2rem] bg-slate-900 flex items-center justify-center text-white shadow-xl shadow-slate-900/10 group-hover:bg-orange-500 group-hover:shadow-orange-500/20 transition-all duration-500"
+                      className="w-16 h-16 rounded-[1.5rem] bg-orange-50 text-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/5 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 group-hover:rotate-6 border border-orange-100"
                     >
-                      {React.cloneElement(pillar.icon, { size: 36 })}
+                      {React.cloneElement(pillar.icon, { size: 28 })}
                     </motion.div>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-slate-900 mb-6 group-hover:text-orange-500 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-950 mb-4 flex items-center gap-2 group-hover:text-orange-600 transition-colors uppercase tracking-tight">
                     {pillar.title}
+                    <Sparkles size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-orange-400" />
                   </h3>
 
-                  <p className="text-slate-500 font-medium leading-relaxed mb-4 pr-4">
+                  <p className="text-slate-500 font-medium leading-relaxed pr-2">
                     {pillar.content}
                   </p>
                 </div>
 
-                {/* Decorative Underline Accent */}
-                <div className="absolute -bottom-8 left-0 w-0 h-1 bg-orange-500 group-hover:w-full transition-all duration-700 delay-100"></div>
+                {/* Corner Decorative Element */}
+                <div className="absolute top-10 right-10 w-2 h-2 bg-orange-200 rounded-full opacity-0 group-hover:opacity-100 transition-all group-hover:scale-[3] blur-[1px]"></div>
               </div>
             </motion.div>
           ))}

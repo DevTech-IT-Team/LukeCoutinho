@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Users, BookOpen, ChevronRight, ChevronLeft } from "lucide-react";
 
@@ -72,6 +73,7 @@ const FeaturedCourses = () => {
       price: "₹699.00",
       image:
         "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800",
+      demoLink: "/learn/scorm-player",
     },
     {
       id: 6,
@@ -119,15 +121,18 @@ const FeaturedCourses = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [direction, setDirection] = useState(0);
 
+  const spotlightCourse = allCourses.find(c => c.id === 5);
+  const remainingCourses = allCourses.filter(c => c.id !== 5);
+
   const itemsPerPage = 4;
-  const totalPages = Math.ceil(allCourses.length / itemsPerPage);
+  const totalPages = Math.ceil(remainingCourses.length / itemsPerPage);
 
   const paginate = (newPage) => {
     setDirection(newPage > currentPage ? 1 : -1);
     setCurrentPage(newPage);
   };
 
-  const currentCourses = allCourses.slice(
+  const currentCourses = remainingCourses.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
@@ -151,7 +156,89 @@ const FeaturedCourses = () => {
 
   return (
     <section id="courses" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-360 mx-auto px-6 sm:px-12 lg:px-16">
+      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
+        
+        {/* MASTERCLASS SPOTLIGHT - NEW HIGHLIGHTED SECTION */}
+        {spotlightCourse && (
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24 relative group"
+          >
+            <div className="absolute inset-0 bg-orange-600/5 rounded-[4rem] blur-3xl transform group-hover:scale-105 transition-transform duration-700" />
+            <div className="relative bg-white border border-slate-100 rounded-[4rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row items-stretch">
+              {/* Left visual */}
+              <div className="lg:w-1/2 relative min-h-[400px]">
+                <img 
+                  src={spotlightCourse.image} 
+                  alt={spotlightCourse.title}
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-transparent to-transparent hidden lg:block" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent lg:hidden" />
+                <div className="absolute top-10 left-10 flex items-center gap-3">
+                  <div className="px-5 py-2 bg-orange-600 text-white rounded-full text-[10px] font-black uppercase tracking-widest shadow-xl">
+                    Masterclass Spotlight
+                  </div>
+                </div>
+              </div>
+
+              {/* Right content */}
+              <div className="flex-1 p-8 lg:p-14 flex flex-col justify-center bg-white z-10">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-px bg-orange-500" />
+                  <span className="text-orange-600 font-black uppercase tracking-[0.3em] text-[10px]">Featured Interactive Lesson</span>
+                </div>
+                
+                <h3 className="text-3xl md:text-5xl font-black text-slate-950 tracking-tighter leading-none mb-6 uppercase">
+                  {spotlightCourse.title}
+                </h3>
+                
+                <p className="text-xl text-slate-500 font-medium leading-relaxed mb-8 max-w-xl">
+                  {spotlightCourse.description.substring(0, 160)}...
+                </p>
+
+                <div className="flex flex-wrap items-center gap-6 md:gap-10 mb-10 border-y border-slate-50 py-8">
+                  <div className="flex items-center gap-3">
+                    <Users size={20} className="text-orange-500" />
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Enrolled</p>
+                      <p className="text-lg font-black text-slate-900 leading-none">{spotlightCourse.students}+ People</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <BookOpen size={20} className="text-orange-500" />
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Lessons</p>
+                      <p className="text-lg font-black text-slate-900 leading-none">{spotlightCourse.lessons} Modules</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 font-bold">₹</div>
+                    <div>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">Price</p>
+                      <p className="text-lg font-black text-slate-900 leading-none underline decoration-orange-200">{spotlightCourse.price}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-4 lg:gap-6">
+                  <Link 
+                    to={spotlightCourse.demoLink}
+                    className="flex-1 sm:flex-none px-8 py-5 bg-slate-950 text-white rounded-3xl font-black uppercase tracking-widest text-xs flex items-center justify-center gap-4 hover:bg-orange-600 hover:scale-[1.02] transition-all duration-500 shadow-2xl shadow-slate-200 active:scale-95 whitespace-nowrap"
+                  >
+                    Start Interactive Demo
+                    <ChevronRight size={18} />
+                  </Link>
+                  <button className="flex-1 sm:flex-none px-8 py-5 bg-white border border-slate-200 text-slate-900 rounded-3xl font-black uppercase tracking-widest text-xs hover:bg-slate-50 transition-all whitespace-nowrap">
+                    Enroll Full Course
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
         <div className="flex justify-between items-center mb-16">
           <h2 className="text-4xl font-black text-slate-900">
             Featured <span className="text-orange-600">Courses</span>
@@ -246,6 +333,16 @@ const FeaturedCourses = () => {
                     <p className="text-slate-500 text-[13px] leading-relaxed mb-6 line-clamp-3 font-medium">
                       {course.description}
                     </p>
+
+                    {course.demoLink && (
+                      <Link 
+                        to={course.demoLink}
+                        className="mb-6 w-full py-3 bg-slate-900 text-white rounded-xl text-[10px] font-black uppercase tracking-[0.2em] flex items-center justify-center gap-2 hover:bg-orange-600 transition-all shadow-lg shadow-slate-100 hover:shadow-orange-100"
+                      >
+                        Watch Interactive Demo
+                        <ChevronRight size={14} />
+                      </Link>
+                    )}
 
                     <div className="mt-auto pt-4 border-t border-slate-50 flex items-center justify-between">
                       <div className="flex items-center gap-3 text-slate-400">

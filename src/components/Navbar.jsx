@@ -68,20 +68,16 @@ const Navbar = () => {
       ],
     },
     {
-      title: 'Knowledge',
+      title: 'Resources',
       links: [
-        { label: 'Health Blogs', href: '/learn/Blogs/Home', desc: 'Daily Insights' },
-        { label: 'Downloads', href: '/learn/Downloads/Home', desc: 'Wellness Resources' },
-        { label: "Recipe Corner", href: '/learn/RecipeCorner/Home', desc: 'Nutritional Art' },
+        { label: 'Knowledge Hub', href: '/resources', desc: 'Blogs & Downloads' },
+        { label: 'Recipe Corner', href: '/learn/RecipeCorner/Home', desc: 'Nutritional Art' },
         { label: 'Learning Hub', href: '/learn/Learninghub/Home', desc: 'Expert Courses' },
       ],
     },
     {
       title: 'Bharat',
-      links: [
-        { label: 'Our Initiatives', href: '/bharat/initiatives', desc: 'National Health' },
-        { label: 'Partner With Us', href: '/bharat/partner', desc: 'Collaborate' },
-      ],
+      href: '/bharat/dish',
     },
   ];
 
@@ -107,64 +103,75 @@ const Navbar = () => {
           <div className="hidden xl:flex items-center space-x-1">
             {navConfig.map((item) => (
               <div key={item.title} className="relative group">
-                <button className="flex items-center px-4 py-2 text-[15px] font-bold text-slate-800 group-hover:text-orange-600 transition-all rounded-full hover:bg-slate-50 outline-none uppercase tracking-tighter">
-                  {item.title}
-                  <ChevronDown size={14} className="ml-1 opacity-20 transition-transform duration-300 group-hover:rotate-180 group-hover:opacity-100" />
-                </button>
-
-                {item.isMega ? (
-                  /* MEGA MENU - 2 COLUMNS */
-                  <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 z-[110] p-8 overflow-hidden">
-                    <div className="grid grid-cols-2 gap-10">
-                      {item.links.map((col) => (
-                        <div key={col.category} className="space-y-6">
-                           <div className="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em] pb-2 border-b border-orange-100">{col.category}</div>
-                           <div className="space-y-1">
-                              {col.items.map((link) => (
-                                <Link
-                                  key={link.label}
-                                  to={link.href}
-                                  className="group/item flex items-start gap-4 p-3 rounded-2xl hover:bg-orange-50 transition-all duration-300"
-                                >
-                                  <div className="mt-1 w-1.5 h-1.5 rounded-full bg-orange-200 group-hover/item:bg-orange-500 transition-colors shrink-0" />
-                                  <div>
-                                    <div className="text-[14px] font-bold text-slate-900 group-hover/item:text-orange-600 transition-colors uppercase tracking-tight leading-tight">
-                                      {link.label}
-                                    </div>
-                                    <div className="text-[11px] font-bold text-slate-400 group-hover/item:text-slate-600 transition-colors mt-0.5">
-                                      {link.desc}
-                                    </div>
-                                  </div>
-                                </Link>
-                              ))}
-                           </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                {item.href ? (
+                  <Link
+                    to={item.href}
+                    className="flex items-center px-4 py-2 text-[15px] font-bold text-slate-800 hover:text-orange-600 transition-all rounded-full hover:bg-slate-50 outline-none uppercase tracking-tighter"
+                  >
+                    {item.title}
+                  </Link>
                 ) : (
-                  /* STANDARD DROPDOWN */
-                  <div className="absolute left-0 mt-2 w-[300px] bg-white border border-slate-100 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 z-[110] p-4 overflow-hidden">
-                    <div className="space-y-1">
-                      {item.links.map((link) => (
-                        <Link
-                          key={link.label}
-                          to={link.href}
-                          className="group/item flex items-start gap-4 p-4 rounded-2xl hover:bg-orange-50 transition-all duration-300"
-                        >
-                          <div className="mt-1 w-1.5 h-1.5 rounded-full bg-orange-200 group-hover/item:bg-orange-500 transition-colors shrink-0" />
-                          <div>
-                            <div className="text-[14px] font-bold text-slate-900 group-hover/item:text-orange-600 transition-colors uppercase tracking-tight leading-tight">
-                              {link.label}
+                  <>
+                    <button className="flex items-center px-4 py-2 text-[15px] font-bold text-slate-800 group-hover:text-orange-600 transition-all rounded-full hover:bg-slate-50 outline-none uppercase tracking-tighter">
+                      {item.title}
+                      <ChevronDown size={14} className="ml-1 opacity-20 transition-transform duration-300 group-hover:rotate-180 group-hover:opacity-100" />
+                    </button>
+
+                    {item.isMega ? (
+                      /* MEGA MENU - 2 COLUMNS */
+                      <div className="absolute left-1/2 -translate-x-1/2 mt-2 w-[700px] bg-white border border-slate-100 rounded-[2.5rem] shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 z-[110] p-8 overflow-hidden">
+                        <div className="grid grid-cols-2 gap-10">
+                          {item.links.map((col) => (
+                            <div key={col.category} className="space-y-6">
+                              <div className="text-[10px] font-black text-orange-500 uppercase tracking-[0.2em] pb-2 border-b border-orange-100">{col.category}</div>
+                              <div className="space-y-1">
+                                {col.items.map((link) => (
+                                  <Link
+                                    key={link.label}
+                                    to={link.href}
+                                    className="group/item flex items-start gap-4 p-3 rounded-2xl hover:bg-orange-50 transition-all duration-300"
+                                  >
+                                    <div className="mt-1 w-1.5 h-1.5 rounded-full bg-orange-200 group-hover/item:bg-orange-500 transition-colors shrink-0" />
+                                    <div>
+                                      <div className="text-[14px] font-bold text-slate-900 group-hover/item:text-orange-600 transition-colors uppercase tracking-tight leading-tight">
+                                        {link.label}
+                                      </div>
+                                      <div className="text-[11px] font-bold text-slate-400 group-hover/item:text-slate-600 transition-colors mt-0.5">
+                                        {link.desc}
+                                      </div>
+                                    </div>
+                                  </Link>
+                                ))}
+                              </div>
                             </div>
-                            <div className="text-[11px] font-bold text-slate-400 group-hover/item:text-slate-600 transition-colors mt-0.5">
-                              {link.desc}
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
+                          ))}
+                        </div>
+                      </div>
+                    ) : (
+                      /* STANDARD DROPDOWN */
+                      <div className="absolute left-0 mt-2 w-[300px] bg-white border border-slate-100 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.15)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 z-[110] p-4 overflow-hidden">
+                        <div className="space-y-1">
+                          {item.links.map((link) => (
+                            <Link
+                              key={link.label}
+                              to={link.href}
+                              className="group/item flex items-start gap-4 p-4 rounded-2xl hover:bg-orange-50 transition-all duration-300"
+                            >
+                              <div className="mt-1 w-1.5 h-1.5 rounded-full bg-orange-200 group-hover/item:bg-orange-500 transition-colors shrink-0" />
+                              <div>
+                                <div className="text-[14px] font-bold text-slate-900 group-hover/item:text-orange-600 transition-colors uppercase tracking-tight leading-tight">
+                                  {link.label}
+                                </div>
+                                <div className="text-[11px] font-bold text-slate-400 group-hover/item:text-slate-600 transition-colors mt-0.5">
+                                  {link.desc}
+                                </div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             ))}
@@ -242,53 +249,66 @@ const Navbar = () => {
 
               {navConfig.map((item, idx) => (
                 <div key={item.title} className="mb-1">
-                  <button
-                    onClick={() => setMobileMenuOpen(mobileMenuOpen === idx ? null : idx)}
-                    className={`flex justify-between items-center w-full px-4 py-3.5 text-base font-bold transition-all rounded-2xl ${mobileMenuOpen === idx ? 'bg-orange-50 text-orange-600' : 'text-slate-900 hover:bg-slate-50'
-                      }`}
-                  >
-                    {item.title}
-                    <ChevronDown size={18} className={`transition-transform duration-300 ${mobileMenuOpen === idx ? 'rotate-180' : 'text-slate-400'}`} />
-                  </button>
+                  {item.href ? (
+                    <Link
+                      to={item.href}
+                      onClick={() => setIsOpen(false)}
+                      className="flex justify-between items-center w-full px-4 py-3.5 text-base font-bold text-slate-900 hover:bg-slate-50 transition-all rounded-2xl"
+                    >
+                      {item.title}
+                      <ArrowRight size={18} className="text-slate-400" />
+                    </Link>
+                  ) : (
+                    <>
+                      <button
+                        onClick={() => setMobileMenuOpen(mobileMenuOpen === idx ? null : idx)}
+                        className={`flex justify-between items-center w-full px-4 py-3.5 text-base font-bold transition-all rounded-2xl ${mobileMenuOpen === idx ? 'bg-orange-50 text-orange-600' : 'text-slate-900 hover:bg-slate-50'
+                          }`}
+                      >
+                        {item.title}
+                        <ChevronDown size={18} className={`transition-transform duration-300 ${mobileMenuOpen === idx ? 'rotate-180' : 'text-slate-400'}`} />
+                      </button>
 
-                  <div className={`transition-all duration-300 overflow-hidden ${mobileMenuOpen === idx ? 'max-h-[800px] opacity-100 mt-1' : 'max-h-0 opacity-0'
-                    }`}>
-                    <div className="bg-slate-50/50 rounded-2xl py-1 mx-2">
-                      {item.isMega ? (
-                        /* MOBILE MEGA MENU */
-                        <div className="space-y-4 p-4">
-                           {item.links.map(col => (
-                             <div key={col.category} className="space-y-2">
-                                <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest pl-2">{col.category}</div>
-                                {col.items.map(link => (
-                                  <Link
-                                    key={link.label}
-                                    to={link.href}
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex items-center px-4 py-3 text-[14px] text-slate-600 font-semibold hover:text-orange-600 transition-colors"
-                                  >
-                                    <ArrowRight size={14} className="mr-3 text-orange-400 opacity-50" />
-                                    {link.label}
-                                  </Link>
-                                ))}
-                             </div>
-                           ))}
+                      <div className={`transition-all duration-300 overflow-hidden ${mobileMenuOpen === idx ? 'max-h-[800px] opacity-100 mt-1' : 'max-h-0 opacity-0'
+                        }`}>
+                        <div className="bg-slate-50/50 rounded-2xl py-1 mx-2">
+                          {item.isMega ? (
+                            /* MOBILE MEGA MENU */
+                            <div className="space-y-4 p-4">
+                              {item.links.map(col => (
+                                <div key={col.category} className="space-y-2">
+                                  <div className="text-[10px] font-black text-orange-500 uppercase tracking-widest pl-2">{col.category}</div>
+                                  {col.items.map(link => (
+                                    <Link
+                                      key={link.label}
+                                      to={link.href}
+                                      onClick={() => setIsOpen(false)}
+                                      className="flex items-center px-4 py-3 text-[14px] text-slate-600 font-semibold hover:text-orange-600 transition-colors"
+                                    >
+                                      <ArrowRight size={14} className="mr-3 text-orange-400 opacity-50" />
+                                      {link.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
+                          ) : (
+                            item.links.map(link => (
+                              <Link
+                                key={link.label}
+                                to={link.href}
+                                onClick={() => setIsOpen(false)}
+                                className="flex items-center px-5 py-3 text-[14px] text-slate-600 font-semibold hover:text-orange-600 transition-colors"
+                              >
+                                <ArrowRight size={14} className="mr-3 text-orange-400 opacity-50" />
+                                {link.label}
+                              </Link>
+                            ))
+                          )}
                         </div>
-                      ) : (
-                        item.links.map(link => (
-                          <Link
-                            key={link.label}
-                            to={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className="flex items-center px-5 py-3 text-[14px] text-slate-600 font-semibold hover:text-orange-600 transition-colors"
-                          >
-                            <ArrowRight size={14} className="mr-3 text-orange-400 opacity-50" />
-                            {link.label}
-                          </Link>
-                        ))
-                      )}
-                    </div>
-                  </div>
+                      </div>
+                    </>
+                  )}
                 </div>
               ))}
 

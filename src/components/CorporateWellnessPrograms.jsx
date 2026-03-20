@@ -51,8 +51,8 @@ const CorporateWellness = () => {
             </h2>
             
             <p className="text-slate-500 text-xl font-medium leading-relaxed mb-10 max-w-xl">
-              Designed for leaders committed to building a workplace where health isn't a cost, 
-              but a foundation that drives creativity, productivity, and satisfaction.
+              Empowering organizations to build a culture of health. We transform workplaces into thriving 
+              environments where employee well-being drives performance and satisfaction.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">

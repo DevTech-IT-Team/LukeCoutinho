@@ -40,7 +40,7 @@ const TeamSection = () => {
   };
 
   return (
-    <section className="py-18 px-6 bg-white overflow-hidden">
+    <section className="py-24 px-6 bg-slate-50 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Block */}

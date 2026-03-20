@@ -6,13 +6,9 @@ const LukeHealthPlatform = () => {
 
   // --- DATA SECTIONS ---
   const verticalBooks = [
-    { id: 1, title: "Insights, and Inspiration", para: "Dive into a wellness journey on our blog, where insights meet inspiration, guiding you to a healthier you.", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400" },
+    { id: 1, title: "Wellness Insights", para: "Dive into a wellness journey on our blog, where clinical insights meet lifestyle inspiration.", img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=400" },
 
-    { id: 2, title: "Recipe of the Season", para: "Discover culinary delights in our recipe section, harmonizing flavors, nutrition, and simplicity for a healthier you.", img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=400" },
-
-    { id: 3, title: "Luke's Learning Hub", para: "Step into a world of education and self-discovery with our short courses in Lifestyle Medicine and Holistic Nutrition.", img: "https://images.unsplash.com/photo-1512820790803-83ca734da794?q=80&w=400" },
-
-    { id: 4, title: "Masterclasses for You", para: "Get access to 13+ years of top learnings in bite-sized actionable steps with these power-packed online masterclasses by Luke.", img: "https://images.unsplash.com/photo-1532012197367-6309011b7d4d?q=80&w=400" },
+    { id: 2, title: "Healthy Recipes", para: "Discover culinary delights harmonizing flavors, nutrition, and simplicity for a healthier you.", img: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=400" },
   ];
 
   const squareHighlights = [
@@ -73,35 +69,36 @@ const LukeHealthPlatform = () => {
   ];
 
   return (
-    <div className="bg-slate-50 font-sans antialiased text-slate-900">
+    <div className="font-sans antialiased text-slate-900">
       
       {/* --- SECTION 1: BOOKS & HIGHLIGHTS --- */}
-      <section className="py-20 px-6 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-12 mb-20 items-end">
-          <div className="lg:col-span-7">
-            <div className="flex items-center gap-3 text-orange-500 mb-6">
-              <BookOpen size={20} />
-              <span className="text-sm font-black uppercase tracking-widest text-orange-600">The Library</span>
+      <section className="py-20 px-6 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-12 gap-12 mb-20 items-end">
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-3 text-orange-500 mb-6">
+                <BookOpen size={20} />
+                <span className="text-sm font-black uppercase tracking-widest text-orange-600">The Library</span>
+              </div>
+              <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-tight">
+                Wellness Resources for <span className="text-orange-500  font-light">Your Journey</span>
+              </h2>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-slate-900 leading-tight">
-              Wellness Resources for <span className="text-orange-500  font-light">Your Journey</span>
-            </h2>
+            <div className="lg:col-span-5 grid grid-cols-2 gap-8 border-l-2 border-slate-200 pl-8 h-fit">
+              <div>
+                <div className="text-4xl font-black text-orange-500 mb-2">16+</div>
+                <p className="text-slate-900 font-bold text-xs uppercase tracking-widest mb-2">Categories</p>
+                <p className="text-slate-500 text-xs leading-relaxed">Explore endless possibilities with 16+ categories at your fingertips.</p>
+              </div>
+              <div>
+                <div className="text-4xl font-black text-orange-500 mb-2">8k+</div>
+                <p className="text-slate-900 font-bold text-xs uppercase tracking-widest mb-2">Resources</p>
+                <p className="text-slate-500 text-xs leading-relaxed">Discover a rich spectrum of resources curated just for you.</p>
+              </div>
+            </div>
           </div>
-          <div className="lg:col-span-5 grid grid-cols-2 gap-8 border-l-2 border-slate-200 pl-8 h-fit">
-            <div>
-              <div className="text-4xl font-black text-orange-500 mb-2">16+</div>
-              <p className="text-slate-900 font-bold text-xs uppercase tracking-widest mb-2">Categories</p>
-              <p className="text-slate-500 text-xs leading-relaxed">Explore endless possibilities with 16+ categories at your fingertips.</p>
-            </div>
-            <div>
-              <div className="text-4xl font-black text-orange-500 mb-2">8k+</div>
-              <p className="text-slate-900 font-bold text-xs uppercase tracking-widest mb-2">Resources</p>
-              <p className="text-slate-500 text-xs leading-relaxed">Discover a rich spectrum of resources curated just for you.</p>
-            </div>
-          </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           {verticalBooks.map((book) => (
             <div key={book.id} className="group bg-white rounded-[2.5rem] p-4 border border-slate-100 hover:shadow-2xl transition-all duration-500 flex flex-col mb-9">
               <div className="relative aspect-[2/3] overflow-hidden rounded-[2rem] mb-6">
@@ -126,10 +123,11 @@ const LukeHealthPlatform = () => {
             </div>
           ))}
         </div>
-      </section>
+      </div>
+    </section>
 
-      {/* --- SECTION 2: REDESIGNED BOTTOM CARDS (TOP READS) --- */}
-      <section className="py-10 bg-white">
+      {/* --- SECTION 2: TOP READS --- */}
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
                 <h3 className="text-4xl font-black text-slate-800 tracking-tight">Don't Miss Out: Our Top Reads</h3>

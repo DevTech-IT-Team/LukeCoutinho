@@ -22,14 +22,13 @@ const PodcastIntro = () => {
             </div>
             <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter uppercase leading-[0.85]">
               Beyond Wellness: <br/>
-              <span className="text-orange-200 italic  font-light">Conversations that inspire change</span>
+              <span className="text-orange-300 italic font-light">Conscious Healing Stories</span>
             </h2>
           </motion.div>
 
           <p className="max-w-3xl mx-auto text-xl text-gray-500 font-medium leading-relaxed">
-            Join Luke Coutinho as he explores what truly transforms lives—from food and movement to breath and belief. 
-            Alongside industry experts and real stories, each episode offers tools for conscious, root-cause healing. 
-            <span className="block mt-4 text-slate-900 font-bold uppercase tracking-widest text-xs">Science-backed. Soul-led.</span>
+            Join Luke Coutinho as he uncovers the intersection of food, movement, breath, and belief. 
+            Real stories, expert insights, and actionable tools for root-cause transformation.
           </p>
 
           <motion.button 
@@ -76,11 +75,10 @@ const PodcastIntro = () => {
 
             <div className="space-y-6 text-gray-500 font-medium leading-relaxed">
               <p>
-                Luke Coutinho is a global voice in integrative and lifestyle medicine, and the Founder of You Care—India’s pioneering holistic wellness program. 
-                Backed by over 14 years of transformative work, his approach has empowered thousands across the world.
+                Luke Coutinho is a global leader in integrative lifestyle medicine. Through You Care, he has empowered thousands worldwide to reclaim their health through a holistic, root-cause lens.
               </p>
               <p className="border-l-4 border-orange-500 pl-6 italic bg-white py-4 rounded-r-2xl shadow-sm">
-                As the Wellness Champion appointed under the Hon’ble Prime Minister Narendra Modi’s Fit India Movement, Luke brings credibility, compassion, and clarity to every conversation.
+                As the Wellness Champion for the Fit India Movement, Luke brings authority and compassion to the global healthcare dialogue.
               </p>
             </div>
 

@@ -9,11 +9,11 @@ const LandingPage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-white font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-600">
+        <div className="bg-slate-50 font-sans text-slate-900 selection:bg-orange-100 selection:text-orange-600">
 
             {/* 2. REDESIGNED MODERN SEARCH SECTION */}
-            <section className="pt-24 pb-12 px-6">
-                <div className="max-w-6xl mx-auto bg-slate-200 rounded-[3rem] p-10 md:p-16 border border-slate-100 shadow-sm">
+            <section className="py-24 px-6 relative">
+                <div className="max-w-6xl mx-auto bg-white rounded-[3rem] p-10 md:p-16 border border-slate-100 shadow-sm">
                     <div className="text-center max-w-3xl mx-auto mb-12">
 
                         <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">

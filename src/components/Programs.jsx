@@ -10,13 +10,13 @@ import specialcancerp from '../assets/specialcancerp.jpg';
 
 const Programs = () => {
     const programs = [
-        { id: 1, title: "Wellness Program", desc: "All your health goals. One solution. Guided by 150+ years of collective expertise across life stages. This adaptable master program is built around you—crafted to guide you through every stage with clarity and care.", img: wellnessImg, link: "/programs/wellness" },
-        { id: 2, title: "Exclusive Wellness with Luke", desc: "Looking for an opportunity to work with Luke on your health goals? Experience a truly exclusive healthcare plan designed by Luke himself alongside our team of experts. Meticulously tailored to your needs.", img: ExclusiveWellness, link: "/programs/exclusive" },
-        { id: 3, title: "Gut Care Program", desc: "Looking at rebuilding your gut? Our Gut Care Program is designed to work on creating harmony and balance in your gut microbiome through targeted nutrition and lifestyle modifications.", img: Guthealth, link: "/programs/gut" },
-        { id: 4, title: "Cancer Care Program", desc: "Our Cancer Care Program is designed to offer personalized support for all types and stages of cancer. It taps into your body’s intelligent systems through deep cellular nutrition.", img: CancerCare, link: "/programs/cancer-care" },
-        { id: 5, title: "Pregnancy Care Program", desc: "While you nurture a new life, we nurture you. You can join our program in any trimester and the plan will be modified as per the progress and body’s needs.", img: PregnancyCare, link: "/programs/pregnancy" },
-        { id: 6, title: "Nutrition for Children", desc: "Discover sustainable ways for your child to eat healthy by understanding the right food choices and building an integrative lifestyle from an early age.", img: balancediet, link: "/programs/children" },
-        { id: 7, title: "Special Cancer Care", desc: "From diagnosis to post-cancer rehabilitation, our personalized, holistic Cancer Care programs blend expert clinical nutrition with lifestyle coaching.", img: specialcancerp, link: "/programs/special-cancer" },
+        { id: 1, title: "Wellness Program", desc: "A comprehensive solution for all life stages, guided by 150+ years of collective expertise to rebuild your health with clarity.", img: wellnessImg, link: "/programs/wellness" },
+        { id: 2, title: "Exclusive Wellness", desc: "Direct partnership with Luke and our senior medical team for a meticulously tailored, high-touch healthcare experience.", img: ExclusiveWellness, link: "/programs/exclusive" },
+        { id: 3, title: "Gut Care Program", desc: "Restore balance to your microbiome through targeted nutrition and lifestyle shifts to improve immunity and overall vitality.", img: Guthealth, link: "/programs/gut" },
+        { id: 4, title: "Cancer Care Program", desc: "Integrative support for all cancer stages, focusing on deep cellular nutrition and professional clinical guidance.", img: CancerCare, link: "/programs/cancer-care" },
+        { id: 5, title: "Pregnancy Care Program", desc: "Nurturing you through every trimester and postnatal stage with personalized nutritional and lifestyle support.", img: PregnancyCare, link: "/programs/pregnancy" },
+        { id: 6, title: "Nutrition for Children", desc: "Building sustainable healthy habits from an early age through integrative lifestyle coaching for your child's growth.", img: balancediet, link: "/programs/children" },
+        { id: 7, title: "Special Cancer Care", desc: "Comprehensive support from diagnosis to rehabilitation, blending expert clinical nutrition with holistic coaching.", img: specialcancerp, link: "/programs/special-cancer" },
     ];
 
     const infinitePrograms = [...programs, ...programs, ...programs];
@@ -66,9 +66,9 @@ const Programs = () => {
                             <div className="w-12 h-[2px] bg-orange-500"></div>
                             <span className="text-orange-500 font-bold tracking-widest text-sm uppercase">Our Expertise</span>
                         </div>
-                        <h2 className="text-5xl md:text-6xl font-black text-slate-900 mb-6 leading-tight">
+                        <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
                             Clinical Programs & <br />
-                            <span className="text-orange-500">Holistic Journeys</span>
+                            <span className="text-orange-500 font-light italic">Holistic Journeys</span>
                         </h2>
                         <p className="text-xl text-slate-500 leading-relaxed font-medium">
                             Premium, results-driven wellness programs designed to help you rebuild your lifestyle with 360° clinical guidance.
@@ -105,7 +105,7 @@ const Programs = () => {
                                             className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                                         />
                                         <div className="absolute top-8 left-8 transition-transform group-hover:-translate-y-1">
-                                            <span className="bg-white/90 backdrop-blur-md px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest text-slate-900 shadow-xl shadow-slate-200/20">
+                                            <span className="bg-white/90 backdrop-blur-md px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-xl shadow-slate-200/20">
                                                 0{(idx % programs.length) + 1} / Program
                                             </span>
                                         </div>
@@ -117,7 +117,7 @@ const Programs = () => {
                                             <div className="flex items-center gap-3 mb-4">
                                               <span className="text-[10px] font-black text-orange-500 uppercase tracking-widest px-3 py-1 bg-orange-50 rounded-lg">Clinical Spotlight</span>
                                             </div>
-                                            <h3 className="text-3xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
+                                            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight uppercase tracking-tight">
                                                 {prog.title}
                                             </h3>
                                             <p className="text-lg text-slate-500 leading-relaxed mb-8 font-medium">

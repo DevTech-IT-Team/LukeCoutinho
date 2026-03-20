@@ -43,7 +43,7 @@ const Testimonials = () => {
   }, [testimonials.length]);
 
   return (
-    <section className="py-24 px-6 bg-slate-200 overflow-hidden">
+    <section className="py-24 px-6 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           

@@ -11,12 +11,14 @@ import TeamsWorkplaces from "./TeamsWorkplaces";
 import CorporateCourses from "./CorporateCourses";
 import { AboutLukeSection } from "./AboutLukeSection";
 import { SignatureWellnessPortal } from "./SignatureWellnessPortal";
+import AssetsShowcase from "./AssetsShowcase";
 
 function Home() {
   return (
     <>
       <Hero />
       <LearningIntro />
+      <AssetsShowcase />
       <FeaturedCourses />
       <LearningExperience />
       <FAQ />

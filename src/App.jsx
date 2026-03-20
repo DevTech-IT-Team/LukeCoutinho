@@ -38,6 +38,9 @@ import Podcast from './pages/Podcast/Podcast'
 import PodcastVideos from './pages/Podcast/PodcastVideos'
 import Careers from './pages/Careers/Careers'
 import ContactUs from './pages/ContactUs/ContactUs'
+import Resources from './pages/Resources'
+import BharatDish from './pages/BharatDish'
+import ScormPlayer from './pages/Learn/Learninghub/ScormPlayer'
 
 function App() {
   return (
@@ -55,6 +58,7 @@ function App() {
             <Route path="/about/story" element={<OurStory />} />
             <Route path="/about/vision" element={<Vision />} />
             <Route path="/about/approach" element={<OurApproach />} />
+            <Route path="/learn/scorm-player" element={<ScormPlayer />} />
             <Route path="/Workshop/IndividualFamilyMasterclass/Home" element={<IndividualFamilyMasterclass />} />
             <Route path="/Workshop/IndividualFamilyMasterclass/PastMasterclass" element={<PastMasterclass />} />
             <Route path="/Workshop/IndividualFamilyMasterclass/Course1" element={<Course1 />} />
@@ -82,6 +86,8 @@ function App() {
             <Route path="/Podcast/Podcast/PodcastVideos" element={<PodcastVideos />} />
             <Route path="/Careers/Careers" element={<Careers />} />
             <Route path="/ContactUs/ContactUs" element={<ContactUs />} />
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/bharat/dish" element={<BharatDish />} />
           </Routes>
         </main>
         <ChatBot />

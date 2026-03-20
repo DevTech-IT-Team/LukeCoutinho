@@ -196,7 +196,7 @@ const ChatBot = () => {
         whileHover={{ scale: 1.05, y: -2 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-[0_15px_40px_-10px_rgba(249,115,22,0.4)] transition-all relative group ${
+        className={`w-[72px] h-[72px] rounded-[1.8rem] flex items-center justify-center shadow-[0_20px_50px_-10px_rgba(249,115,22,0.4)] transition-all relative group ${
           isOpen 
             ? 'bg-slate-950 text-white rotate-90' 
             : 'bg-orange-500 text-white'
@@ -205,13 +205,13 @@ const ChatBot = () => {
         <AnimatePresence mode="wait">
           {isOpen ? (
             <motion.div key="close" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-              <X size={24} />
+              <X size={28} />
             </motion.div>
           ) : (
             <motion.div key="chat" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="flex flex-col items-center">
               <div className="relative">
-                <MessageCircle size={24} className="group-hover:scale-110 transition-transform" fill="white" />
-                <Sparkles size={10} className="absolute -top-1 -right-3 text-white animate-pulse" />
+                <MessageCircle size={28} className="group-hover:scale-110 transition-transform" fill="white" />
+                <Sparkles size={12} className="absolute -top-1 -right-4 text-white animate-pulse" />
               </div>
             </motion.div>
           )}
@@ -219,7 +219,7 @@ const ChatBot = () => {
         
         {/* Activity Indicator (Ping) */}
         {!isOpen && (
-          <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-white border-2 border-orange-500 animate-ping"></div>
+          <div className="absolute top-3 right-3 w-4 h-4 rounded-full bg-white border-2 border-orange-500 animate-ping"></div>
         )}
       </motion.button>
     </div>

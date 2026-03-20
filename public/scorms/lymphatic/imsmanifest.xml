@@ -1,0 +1,297 @@
+<?xml version="1.0" ?>
+<manifest identifier="pYhTFzneDxHyUPu0AWDMy-0HzTqjJVOTApJ0bHn4" version="1"
+  xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+  xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                      http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <adlcp:location>metadata.xml</adlcp:location> 
+  </metadata>
+  <organizations default="articulate_rise">
+      <organization identifier="articulate_rise">
+      <title>The Lymphatic Reset: A Holistic Approach to Immunity, Skin Health, and Cancer Prevention</title>
+      <item identifier="i1" identifierref="r1" isvisible="true">
+        <title>The Lymphatic Reset: A Holistic Approach to Immunity, Skin Health, and Cancer Prevention</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="r1" type="webcontent" adlcp:scormtype="sco" href="scormdriver/indexAPI.html">
+      <!-- SCORMDRIVER STUFF -->
+      <file href="scormdriver/indexAPI.html" />
+      <file href="scormdriver/preloadIntegrity.js" />
+      <file href="scormdriver/driverOptions.js" />
+      <file href="scormdriver/AICCComm.html" />
+      <file href="scormdriver/auto-scripts/AutoBookmark.js" />
+      <file href="scormdriver/auto-scripts/AutoCompleteSCO.js" />
+      <file href="scormdriver/auto-scripts/CourseExit.js" />
+      <file href="scormdriver/blank.html" />
+      <file href="scormdriver/goodbye.html" />
+      <file href="scormdriver/scormdriver.js" />
+      <file href="scormdriver/browsersniff.js" />
+
+      <!-- RUNTIME COMMON STUFF -->
+      <file href="scormcontent/index.html" />
+
+      
+        <file href="scormcontent/lib/lzwcompress.js"/>
+      
+
+      <!-- FRONTEND BUNDLE ASSETS -->
+      <file href="scormcontent/lib/rise/b2e5a34a.js" />
+<file href="scormcontent/lib/rise/bc217a8a.css" />
+<file href="scormcontent/lib/rise/6c595582.js" />
+<file href="scormcontent/lib/rise/87ffa250.css" />
+<file href="scormcontent/lib/rise/cbaf97fd.js" />
+<file href="scormcontent/lib/rise/9aede266.ttf" />
+<file href="scormcontent/lib/rise/bff47411.woff" />
+<file href="scormcontent/lib/rise/b0d25a9b.js" />
+<file href="scormcontent/lib/rise/80d8837b.js" />
+<file href="scormcontent/lib/rise/34907330.js" />
+<file href="scormcontent/lib/rise/08bd032c.js" />
+<file href="scormcontent/lib/rise/3125981b.js" />
+<file href="scormcontent/lib/rise/a7d75c07.js" />
+<file href="scormcontent/lib/rise/4d371095.js" />
+<file href="scormcontent/lib/rise/16703914.js" />
+<file href="scormcontent/lib/rise/c5a3b79f.js" />
+<file href="scormcontent/lib/rise/842471d5.js" />
+<file href="scormcontent/lib/rise/e956a459.js" />
+<file href="scormcontent/lib/rise/c5a745bf.js" />
+<file href="scormcontent/lib/rise/da8cd26b.js" />
+<file href="scormcontent/lib/rise/4bd0b270.js" />
+<file href="scormcontent/lib/rise/8716f7be.js" />
+<file href="scormcontent/lib/rise/3aa4dca2.js" />
+<file href="scormcontent/lib/rise/46adaa14.js" />
+<file href="scormcontent/lib/rise/b34c96fb.js" />
+<file href="scormcontent/lib/learn_dist/entry.js" />
+<file href="scormcontent/lib/learn_dist/5515a099.js" />
+<file href="scormcontent/lib/learn_dist/e06aa5e6.css" />
+<file href="scormcontent/lib/learn_dist/7acdcaff.js" />
+<file href="scormcontent/lib/mondrian/entry.js" />
+<file href="scormcontent/lib/mondrian/cf0a2771.js" />
+<file href="scormcontent/lib/mondrian/9efea61d.js" />
+<file href="scormcontent/lib/mondrian/8229269b.js" />
+<file href="scormcontent/lib/mondrian/09e37aee.js" />
+<file href="scormcontent/lib/mondrian/196251cf.js" />
+<file href="scormcontent/lib/sandbox/sandbox.html" />
+<file href="scormcontent/lib/sandbox/c77685df.js" />
+<file href="scormcontent/lib/sandbox/4adfab46.css" />
+
+
+      <!-- RUNTIME CONTENT STUFF -->
+      <file href="scormcontent/lib/fonts/Poppins-BoldItalic.woff" />
+<file href="scormcontent/lib/fonts/Poppins-Bold.woff" />
+<file href="scormcontent/lib/fonts/Poppins-SemiBoldItalic.woff" />
+<file href="scormcontent/lib/fonts/Poppins-SemiBold.woff" />
+<file href="scormcontent/lib/fonts/Poppins-Italic.woff" />
+<file href="scormcontent/lib/fonts/Poppins-Regular.woff" />
+<file href="scormcontent/lib/fonts/Lato2-Regular.woff" />
+<file href="scormcontent/lib/fonts/Lato2-Light.woff" />
+<file href="scormcontent/lib/fonts/Lato2-Italic.woff" />
+<file href="scormcontent/lib/fonts/Lato2-Bold.woff" />
+<file href="scormcontent/lib/fonts/Lato2-Black.woff" />
+<file href="scormcontent/assets/hOfnCU9gx3_pGkyf.jpg" />
+<file href="scormcontent/assets/147f4129e9cb86780496ed5ebd.jpg" />
+<file href="scormcontent/assets/EowLmb/quote_background.jpg" />
+<file href="scormcontent/assets/c0d91db2-b5c2-47c1-979e-40.mp3" />
+<file href="scormcontent/assets/702b07b9-0e96-4618-ae55-99.mp3" />
+<file href="scormcontent/assets/medium-shot-man-living-hea.jpg" />
+<file href="scormcontent/assets/b75c60be-1b1e-4a74-9993-b5.mp3" />
+<file href="scormcontent/assets/depressed-person-looking-t.jpg" />
+<file href="scormcontent/assets/67d7219b-414f-4145-8af6-ab.mp3" />
+<file href="scormcontent/assets/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/89772092-843e-4c95-87fe-5f.mp3" />
+<file href="scormcontent/assets/OV1Xlp/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/d3216caa-af0f-48c2-9d8e-cf.mp3" />
+<file href="scormcontent/assets/Untitled.mp4" />
+<file href="scormcontent/assets/Untitled.jpg" />
+<file href="scormcontent/assets/ai-captions-1771086363960.vtt" />
+<file href="scormcontent/assets/ed439eb1-4ae5-4574-8e7f-58.mp3" />
+<file href="scormcontent/assets/Screenshot%202026-02-25%20.jpg" />
+<file href="scormcontent/assets/c3c8add5-f901-4d66-8a63-a4.mp3" />
+<file href="scormcontent/assets/a-NgOP/Screenshot%202026-02-25%20.jpg" />
+<file href="scormcontent/assets/medical-professional-exami.jpg" />
+<file href="scormcontent/assets/19bfaed2-6105-4bbb-9201-7e.mp3" />
+<file href="scormcontent/assets/1316d8c4-5ef7-42dd-bd4e-2e.mp3" />
+<file href="scormcontent/assets/3d-medical-illustration-wi.jpg" />
+<file href="scormcontent/assets/27a778d4-1347-4a48-8f95-f8.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_6jk.jpg" />
+<file href="scormcontent/assets/97a19fbc-1564-4164-bcb7-aa.mp3" />
+<file href="scormcontent/assets/6y5r_a5p6_121114.jpg" />
+<file href="scormcontent/assets/731ec131-6398-46d8-b8f4-03.mp3" />
+<file href="scormcontent/assets/HTavCX/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/3b42a0fb-87c7-47b2-9a43-84.mp3" />
+<file href="scormcontent/assets/Eky05_/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/436e389f-c2ed-49a2-8b6f-23.mp3" />
+<file href="scormcontent/assets/e47987a0-20da-4ef5-b624-77.mp3" />
+<file href="scormcontent/assets/fit-man-practicing-yoga.jpg" />
+<file href="scormcontent/assets/5f6d2e3a-6fd4-4bc2-838c-cb.mp3" />
+<file href="scormcontent/assets/e2b6b4f1-0ced-4181-88cd-9b.mp3" />
+<file href="scormcontent/assets/3d-render-medical-backgrou.jpg" />
+<file href="scormcontent/assets/e3a21872-7a33-41a9-9ef5-c4.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_dta.jpg" />
+<file href="scormcontent/assets/Untitled%20design.mp4" />
+<file href="scormcontent/assets/Untitled%20design.jpg" />
+<file href="scormcontent/assets/ai-captions-1771086614039.vtt" />
+<file href="scormcontent/assets/3c4e8abd-292d-4920-bbaf-b9.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_ir1.jpg" />
+<file href="scormcontent/assets/c5c151ed-b2b9-4ec1-a3c2-97.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_hiv.jpg" />
+<file href="scormcontent/assets/af39ce0e-aa7c-409e-800e-52.mp3" />
+<file href="scormcontent/assets/girl-wearing-face-mask-ext.jpg" />
+<file href="scormcontent/assets/89d05fea-1806-44fb-b4c8-66.mp3" />
+<file href="scormcontent/assets/infection-human-body.jpg" />
+<file href="scormcontent/assets/52921ec2-c27b-4121-be8a-58.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_sf6.jpg" />
+<file href="scormcontent/assets/50cbb5ed-e5b6-4fd3-818b-b0.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_3rg.jpg" />
+<file href="scormcontent/assets/fc2b02f5-f58d-4fbf-bd50-87.mp3" />
+<file href="scormcontent/assets/abstract-motion-design-bac.jpg" />
+<file href="scormcontent/assets/4bfa93dd-21c3-48c6-9d05-d1.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_1rs.jpg" />
+<file href="scormcontent/assets/b40911bb-a146-4d1b-9de0-9a.mp3" />
+<file href="scormcontent/assets/expressive-young-girl-posi.jpg" />
+<file href="scormcontent/assets/transcoded-1vIt9EICDPDbnMj.mp3" />
+<file href="scormcontent/assets/plus-sized-person-enjoying.jpg" />
+<file href="scormcontent/assets/53e619a6-0221-4b1a-b220-99.mp3" />
+<file href="scormcontent/assets/26d1b938-ebc1-4a91-8915-07.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_poo.jpg" />
+<file href="scormcontent/assets/828c0dec-72fc-423d-a33e-42.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_4tx.jpg" />
+<file href="scormcontent/assets/e4ab8554-89d2-4e35-97a4-a5.mp3" />
+<file href="scormcontent/assets/expressive-young-woman-pos.jpg" />
+<file href="scormcontent/assets/91906ce7-a685-4589-9f39-25.mp3" />
+<file href="scormcontent/assets/young-woman-drinking-water.jpg" />
+<file href="scormcontent/assets/side-view-woman-with-medic.jpg" />
+<file href="scormcontent/assets/Gemini_Generated_Image_1bb.jpg" />
+<file href="scormcontent/assets/Gemini_Generated_Image_txm.jpg" />
+<file href="scormcontent/assets/b7a3d277-5713-4442-b6e4-aa.mp3" />
+<file href="scormcontent/assets/image%20%285%29.jpg" />
+<file href="scormcontent/assets/72637439-7853-4d4b-b817-6c.mp3" />
+<file href="scormcontent/assets/XlNgn.jpg" />
+<file href="scormcontent/assets/bc9c1ac4-6382-4dc5-8b78-ad.mp3" />
+<file href="scormcontent/assets/ce2cecf4-22e6-4bf0-9f28-64.mp3" />
+<file href="scormcontent/assets/teenager-complaining-docto.jpg" />
+<file href="scormcontent/assets/58fa025a-7970-4117-b73c-3a.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_oob.jpg" />
+<file href="scormcontent/assets/18cebf69-c640-4cf0-a805-69.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_8w0.jpg" />
+<file href="scormcontent/assets/7c90bfcb-e1e6-4a1b-90e8-14.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_wou.jpg" />
+<file href="scormcontent/assets/9fe76783-c38f-43ce-ada2-74.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_g10.jpg" />
+<file href="scormcontent/assets/9ea2681e-b64a-43a1-9173-5d.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_j60.jpg" />
+<file href="scormcontent/assets/347121e8-f005-46ce-9c35-05.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_s85.jpg" />
+<file href="scormcontent/assets/3f3c45c1-1ebd-4fd1-b36b-5b.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_vcu.jpg" />
+<file href="scormcontent/assets/70b3ffc0-5bf8-4b6a-bd46-49.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_lkl.jpg" />
+<file href="scormcontent/assets/ef309f0d-fd11-4a88-a209-81.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_wzx.jpg" />
+<file href="scormcontent/assets/73024821-2a41-4a3d-a835-7d.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_ilw.jpg" />
+<file href="scormcontent/assets/c616477e-3ac3-4022-92e5-5e.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_a0z.jpg" />
+<file href="scormcontent/assets/ce716dcc-d557-454e-a9c9-99.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_ejv.jpg" />
+<file href="scormcontent/assets/0894f078-803d-45cf-85b1-1e.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_oak.jpg" />
+<file href="scormcontent/assets/b958fc64-5f47-4c56-a387-cc.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_2na.jpg" />
+<file href="scormcontent/assets/a5633a6f-f1c4-4c4b-ad9f-54.mp3" />
+<file href="scormcontent/assets/physiotherapist-helping-fe.jpg" />
+<file href="scormcontent/assets/251dae39-d47c-4f92-a5cb-83.mp3" />
+<file href="scormcontent/assets/9dc64f23-c649-41c1-9d12-df.jpg" />
+<file href="scormcontent/assets/e889b560-6f4b-46f9-bbb8-ec.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_oba.jpg" />
+<file href="scormcontent/assets/c7d136c1-c0d5-4a30-8479-32.mp3" />
+<file href="scormcontent/assets/55c436e0-cf5f-4eef-8bbc-24.jpg" />
+<file href="scormcontent/assets/dca06c4d-6266-4197-92ae-97.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_ovg.jpg" />
+<file href="scormcontent/assets/02374aa9-2907-4c6c-ba6f-ea.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_avc.jpg" />
+<file href="scormcontent/assets/0043f492-82ce-4377-a857-4f.mp3" />
+<file href="scormcontent/assets/aching-young-pretty-caucas.jpg" />
+<file href="scormcontent/assets/595b66cc-ece5-48a6-8555-0c.mp3" />
+<file href="scormcontent/assets/mGxs6J/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/60aa6b9d-93a9-4cc0-96c2-4e.mp3" />
+<file href="scormcontent/assets/b6a68e37-5446-4225-90b6-5f.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_wzg.png" />
+<file href="scormcontent/assets/e2b3534f-be9d-4b2f-8e4e-99.mp3" />
+<file href="scormcontent/assets/d3f15d04-189e-4390-aa01-ed.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_ssy.jpg" />
+<file href="scormcontent/assets/64ae6cb9-7c37-4f97-89b5-19.mp3" />
+<file href="scormcontent/assets/6d3bcf0d-cfab-4511-8039-84.mp3" />
+<file href="scormcontent/assets/ES0CCI/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/486ecacb-cf78-461f-b1e5-a8.mp3" />
+<file href="scormcontent/assets/d24763c9-fd8d-4e99-a5dc-1d.mp3" />
+<file href="scormcontent/assets/b1a83fdb-b93b-4a14-9b0e-ba.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_owv.jpg" />
+<file href="scormcontent/assets/bdc9dd38-1eb7-4d9a-907c-eb.mp3" />
+<file href="scormcontent/assets/5f3de1f6-7320-4344-9442-db.mp3" />
+<file href="scormcontent/assets/906084f9-dd50-4d71-a0b6-d0.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_sp9.jpg" />
+<file href="scormcontent/assets/14eb5e11-955b-4685-a863-c3.mp3" />
+<file href="scormcontent/assets/5cd3dbca-3192-427d-bfe3-2e.mp3" />
+<file href="scormcontent/assets/27230829-9a37-4505-9b19-34.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_l0m.jpg" />
+<file href="scormcontent/assets/482c8fc9-355a-47a7-b104-5c.mp3" />
+<file href="scormcontent/assets/5616b64e-9f93-43aa-bc02-4f.mp3" />
+<file href="scormcontent/assets/e519aa88-f676-4dab-9e6a-50.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_zdn.jpg" />
+<file href="scormcontent/assets/eb6f1cc0-92f1-42a2-92ce-58.mp3" />
+<file href="scormcontent/assets/1ff9f8ab-e926-4b84-9be5-33.mp3" />
+<file href="scormcontent/assets/aecf2545-c139-4523-8553-45.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_3u0.jpg" />
+<file href="scormcontent/assets/4259d4c3-aeb6-4b34-9161-3e.mp3" />
+<file href="scormcontent/assets/c112d783-df04-40a4-9a12-d7.mp3" />
+<file href="scormcontent/assets/41dc1ec6-4e6f-438d-991c-66.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_ck3.jpg" />
+<file href="scormcontent/assets/e34f617e-d15c-4b91-b98a-cd.mp3" />
+<file href="scormcontent/assets/6dd17397-199e-4621-a8d1-15.mp3" />
+<file href="scormcontent/assets/cc2090c1-59e4-4a44-bffa-65.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_lao.jpg" />
+<file href="scormcontent/assets/ce45f631-2d38-43d4-83e1-8d.mp3" />
+<file href="scormcontent/assets/52f104e9-32c3-457a-9322-19.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_oy1.jpg" />
+<file href="scormcontent/assets/e6da0752-49f4-40e0-867e-ee.mp3" />
+<file href="scormcontent/assets/8041e4d7-1edb-4268-a781-68.mp3" />
+<file href="scormcontent/assets/9a924ce0-47c4-4a63-9073-15.mp3" />
+<file href="scormcontent/assets/GettyImages-1498826563-db5.jpg" />
+<file href="scormcontent/assets/a0492105-5c5c-4cb7-a1d3-77.mp3" />
+<file href="scormcontent/assets/4a4334a6-dc98-48e4-a717-f9.mp3" />
+<file href="scormcontent/assets/pleased-young-girl-wearing.jpg" />
+<file href="scormcontent/assets/210af2b8-e8ba-4d76-ae1c-14.mp3" />
+<file href="scormcontent/assets/c51fc23e-78c9-4a6d-aef6-20.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_v9m.jpg" />
+<file href="scormcontent/assets/45dfaac4-98a8-4010-825c-12.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_c3k.jpg" />
+<file href="scormcontent/assets/d60bb978-7a38-40b9-ac0f-19.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_rpe.jpg" />
+<file href="scormcontent/assets/8f683e67-c361-41be-bcba-d4.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_rmz.jpg" />
+<file href="scormcontent/assets/067f44c8-4de0-4277-994f-13.mp3" />
+<file href="scormcontent/assets/897d07e9-14f7-442f-9be0-be.mp3" />
+<file href="scormcontent/assets/piCGZb/Screenshot%202026-02-26%20.jpg" />
+<file href="scormcontent/assets/b85c47bc-0288-4bb8-a7a5-91.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_u0q.jpg" />
+<file href="scormcontent/assets/735d7412-d30a-4b5c-b6b2-8d.mp3" />
+<file href="scormcontent/assets/Gemini_Generated_Image_6va.jpg" />
+<file href="scormcontent/assets/c6c66598-6b26-412f-beb3-bd.mp3" />
+<file href="scormcontent/assets/6f2e9578-4e0b-444c-9627-a5.mp3" />
+<file href="scormcontent/assets/comic.pdf" />
+<file href="scormcontent/assets/Gemini_Generated_Image_hv5.jpg" />
+<file href="scormcontent/assets/1a39ce0d-e326-46fd-83d0-c6.mp3" />
+<file href="scormcontent/assets/1365a899-1416-4d9c-9bd0-d8.mp3" />
+<file href="scormcontent/assets/Luke-quote-new-300x300.jpg" />
+<file href="scormcontent/assets/757cdbc8-caa1-4176-b1d0-82.mp3" />
+<file href="scormcontent/assets/v1bUXLI4oAQkY3Yp.png" />
+
+    </resource>
+  </resources>
+</manifest>
