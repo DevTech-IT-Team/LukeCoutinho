@@ -1,12 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Calendar, CheckCircle2, Search, ArrowRight, ShieldCheck, Star } from 'lucide-react';
+import { Play, CalendarDays, CheckCircle2, ArrowRight, ShieldCheck, Star } from 'lucide-react';
 import heroimg from '../assets/neimg.jpg';
 import bgimg from '../assets/wellness.jpg';
+import bgimg2 from '../assets/balancediet.jpg';
+import bgimg3 from '../assets/nutrition.jpg';
+import bgimg4 from '../assets/fitforever.jpg';
 
 const Hero = () => {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const words = ["Grow", "Heal", "Thrive"];
+  const [coverImageIndex, setCoverImageIndex] = useState(0);
+  const words = ['Recover', 'Balance', 'Thrive'];
+  const coverImages = [bgimg, bgimg2, bgimg3, bgimg4];
+
+  const highlights = [
+    'Science-backed protocols',
+    'Personalized care approach',
+    'Root-cause healing plans',
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -15,188 +26,206 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCoverImageIndex((prev) => (prev + 1) % coverImages.length);
+    }, 3400);
+
+    return () => clearInterval(interval);
+  }, [coverImages.length]);
+
   return (
-    <div className="relative min-h-screen flex items-center overflow-hidden bg-white">
-      
-      {/* Background Layer: Subtle Parallax Image */}
-      <motion.div 
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.08 }}
-        transition={{ duration: 2, ease: "easeOut" }}
-        className="absolute inset-0 z-0"
-      >
-        <img
-          src={bgimg}
-          alt=""
-          className="w-full h-full object-cover grayscale"
-        />
-      </motion.div>
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-[#061a3a] text-white">
+      <div className="absolute inset-0 overflow-hidden">
+        <AnimatePresence mode="sync" initial={false}>
+          <motion.img
+            key={coverImageIndex}
+            src={coverImages[coverImageIndex]}
+            alt="Wellness backdrop"
+            initial={{ x: '101%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '-101%' }}
+            transition={{ duration: 1.15, ease: 'linear' }}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </AnimatePresence>
+      </div>
 
-      {/* Decorative Gradient Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-white via-white/80 to-transparent z-[1]" />
-      <div className="absolute -top-[20%] -right-[10%] w-[600px] h-[600px] bg-orange-100/30 rounded-full blur-[120px] animate-pulse z-0" />
-      <div className="absolute -bottom-[10%] -left-[5%] w-[400px] h-[400px] bg-blue-50/40 rounded-full blur-[100px] z-0" />
+      {/* Deep blue overlay ensures text readability while preserving image depth. */}
+      <div className="absolute inset-0 bg-[#04112a]/70" />
+      <div className="absolute inset-0 bg-linear-to-br from-[#05204a]/72 via-[#051737]/58 to-[#06101f]/76" />
+      <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+      <div className="absolute -bottom-24 left-0 h-80 w-80 rounded-full bg-orange-400/10 blur-3xl" />
 
-      <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 w-full pt-32 pb-20 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          
-          {/* Left Content Column */}
-          <div className="lg:col-span-7 space-y-10">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-100"
-            >
-              <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              <span className="text-[10px] font-black uppercase tracking-[0.2em] text-orange-600">Global Wellness Leader</span>
-            </motion.div>
+      <div className="relative z-10 mx-auto grid w-full max-w-360 items-center gap-12 px-6 pb-16 pt-28 md:px-10 lg:grid-cols-12 lg:gap-16 lg:px-16 lg:pt-36">
+        <div className="space-y-8 lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            className="inline-flex items-center gap-2 rounded-full border border-cyan-300/35 bg-cyan-200/10 px-4 py-2"
+          >
+            <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-300" />
+            <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-cyan-100">
+              Integrative Wellness Excellence
+            </span>
+          </motion.div>
 
-            <motion.h1 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-7xl md:text-8xl xl:text-9xl font-black text-slate-950 leading-[0.9] tracking-tighter"
-            >
-              We help <br />
-              you <span className="relative inline-block min-w-[280px] lg:min-w-[400px]">
-                <AnimatePresence mode="wait">
-                  <motion.span 
-                    key={currentWordIndex}
-                    initial={{ y: 40, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    exit={{ y: -40, opacity: 0 }}
-                    transition={{ duration: 0.6, ease: "circOut" }}
-                    className="block text-orange-500 italic font-light drop-shadow-sm"
-                  >
-                    {words[currentWordIndex]}
-                  </motion.span>
-                </AnimatePresence>
-                <motion.div 
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 1, delay: 0.5 }}
-                  className="absolute -bottom-2 left-0 h-2 bg-orange-200/40 rounded-full blur-[2px]" 
-                />
-              </span>
-            </motion.h1>
-
-            <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
-              className="text-xl md:text-2xl text-slate-500 leading-relaxed max-w-2xl font-medium"
-            >
-              Experience a world-class holistic transformation. We blend ancient wisdom with <span className="text-slate-900 border-b-2 border-orange-300">clinical precision</span> to reshape your health and lineage.
-            </motion.p>
-
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-wrap gap-6"
-            >
-              <button className="px-10 py-6 bg-slate-950 text-white font-black rounded-2xl shadow-2xl hover:bg-orange-500 hover:scale-[1.02] transition-all duration-500 group relative overflow-hidden">
-                <span className="relative z-10 flex items-center gap-3 uppercase tracking-widest text-sm">
-                  Start Your Journey <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform" />
-                </span>
-                <div className="absolute inset-0 bg-white/20 -translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-              </button>
-
-              <button className="flex items-center gap-4 px-8 py-6 rounded-2xl border-2 border-slate-100 hover:bg-slate-50 transition-all font-bold group">
-                <div className="w-12 h-12 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-all">
-                  <Play size={20} fill="currentColor" className="ml-1" />
-                </div>
-                <span className="uppercase tracking-widest text-xs">Watch the Approach</span>
-              </button>
-            </motion.div>
-
-            {/* Trust Marks */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              transition={{ duration: 1, delay: 1 }}
-              className="pt-12 flex flex-wrap items-center gap-10 md:gap-16 grayscale opacity-30"
-            >
-              <div className="text-xl font-black">FORBES</div>
-              <div className="text-xl font-serif italic">VOGUE</div>
-              <div className="text-xl font-bold">TED<span className="text-orange-600">x</span></div>
-              <div className="text-xl font-black tracking-widest uppercase">GQ</div>
-            </motion.div>
-          </div>
-
-          {/* Right Visual Column */}
-          <div className="lg:col-span-5 relative order-first lg:order-last">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotateY: 20 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
-              className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] group"
-            >
-              <img
-                src={heroimg}
-                alt="Luke Coutinho"
-                className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="text-5xl font-black leading-[0.95] tracking-tight text-white sm:text-6xl md:text-7xl xl:text-8xl"
+          >
+            Your health can
+            <br />
+            <span className="relative inline-block min-w-55 sm:min-w-75 md:min-w-90">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentWordIndex}
+                  initial={{ y: 26, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -26, opacity: 0 }}
+                  transition={{ duration: 0.45, ease: 'easeOut' }}
+                  className="block bg-linear-to-r from-cyan-200 via-sky-100 to-orange-200 bg-clip-text text-transparent"
+                >
+                  {words[currentWordIndex]}
+                </motion.span>
+              </AnimatePresence>
+              <motion.span
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                transition={{ duration: 0.9, delay: 0.4 }}
+                className="absolute -bottom-2 left-0 h-1 rounded-full bg-linear-to-r from-cyan-300/60 to-orange-300/60"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+            </span>
+          </motion.h1>
 
-              {/* Floating Interactive Elements */}
-              <motion.div 
-                animate={{ y: [0, -15, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 left-10 p-5 glass rounded-3xl shadow-xl flex items-center gap-4"
-              >
-                <div className="w-12 h-12 rounded-2xl bg-orange-500 flex items-center justify-center text-white">
-                  <ShieldCheck size={24} />
-                </div>
-                <div>
-                  <div className="text-[10px] font-black uppercase tracking-widest text-slate-400">Status</div>
-                  <div className="text-sm font-bold text-slate-900">Verified Professional</div>
-                </div>
-              </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="max-w-2xl text-base leading-relaxed text-slate-200 md:text-xl"
+          >
+            Personalized programs that combine medical insight, ancient wisdom, and sustainable habits.
+            Build long-term vitality with clear guidance from a trusted wellness ecosystem.
+          </motion.p>
 
-              <motion.div 
-                animate={{ y: [0, 15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute bottom-10 right-10 p-6 glass rounded-[2.5rem] shadow-2xl border border-white/50"
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35 }}
+            className="flex flex-wrap items-center gap-4"
+          >
+            <button className="group inline-flex items-center gap-3 rounded-2xl bg-orange-400 px-7 py-4 text-sm font-bold uppercase tracking-[0.16em] text-[#1f1f1f] transition-all duration-300 hover:-translate-y-0.5 hover:bg-orange-300">
+              Start Your Program
+              <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
+            </button>
+
+            <button className="group inline-flex items-center gap-3 rounded-2xl border border-white/30 bg-white/10 px-6 py-4 text-xs font-bold uppercase tracking-[0.18em] text-white backdrop-blur-md transition-all duration-300 hover:border-cyan-200/80 hover:bg-cyan-200/15">
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/20 text-cyan-100">
+                <Play size={15} fill="currentColor" className="ml-0.5" />
+              </span>
+              Watch How It Works
+            </button>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.45 }}
+            className="grid gap-3 pt-2 sm:grid-cols-3"
+          >
+            {highlights.map((item) => (
+              <div
+                key={item}
+                className="flex items-center gap-2 rounded-xl border border-white/15 bg-white/10 px-3 py-3 text-sm text-slate-100 backdrop-blur-sm"
               >
-                <div className="flex items-center gap-2 mb-3">
-                  {[1, 2, 3].map(i => (
-                    <div key={i} className="w-8 h-8 rounded-full border-2 border-white overflow-hidden bg-slate-200">
-                      <img src={`https://i.pravatar.cc/100?img=${i + 15}`} alt="user" />
-                    </div>
-                  ))}
-                  <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-[8px] text-white font-bold border-2 border-white">
-                    +10k
-                  </div>
-                </div>
-                <div className="flex items-center gap-1 text-orange-500">
-                  <Star size={12} fill="currentColor" />
-                  <Star size={12} fill="currentColor" />
-                  <Star size={12} fill="currentColor" />
-                  <Star size={12} fill="currentColor" />
-                  <Star size={12} fill="currentColor" />
-                </div>
-                <div className="mt-1 text-xs font-black uppercase tracking-widest">Global Trust</div>
-              </motion.div>
+                <CheckCircle2 size={16} className="text-cyan-200" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55 }}
+            className="flex flex-wrap items-center gap-8 pt-4 text-xs font-semibold uppercase tracking-[0.25em] text-slate-300"
+          >
+            <span>As Featured In</span>
+            <div className="text-sm tracking-[0.22em] text-white/75">FORBES</div>
+            <div className="text-sm tracking-[0.22em] text-white/75">VOGUE</div>
+            <div className="text-sm tracking-[0.22em] text-white/75">TEDx</div>
+            <div className="text-sm tracking-[0.22em] text-white/75">GQ</div>
+          </motion.div>
+        </div>
+
+        <div className="relative order-first lg:order-last lg:col-span-5">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 1, ease: 'easeOut' }}
+            className="relative mx-auto aspect-4/5 w-full max-w-125 overflow-hidden rounded-[2.5rem] border border-white/20 shadow-[0_30px_90px_rgba(0,0,0,0.45)]"
+          >
+            <img src={heroimg} alt="Luke Coutinho" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-linear-to-t from-[#020b19]/85 via-[#020b19]/20 to-transparent" />
+
+            <motion.div
+              animate={{ y: [0, -10, 0] }}
+              transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
+              className="absolute left-5 top-5 rounded-2xl border border-white/30 bg-white/15 p-4 backdrop-blur-md"
+            >
+              <div className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-cyan-100">
+                <ShieldCheck size={14} />
+                Trusted Mentor
+              </div>
+              <div className="mt-2 text-xl font-black text-white">12+ years</div>
+              <div className="text-xs text-slate-200">Global wellness coaching</div>
             </motion.div>
 
-            {/* Decorative Background Element */}
-            <div className="absolute -z-10 -bottom-10 -right-10 w-full h-full bg-orange-100 rounded-[5rem] rotate-3 blur-sm" />
-          </div>
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+              className="absolute bottom-5 right-5 rounded-3xl border border-white/30 bg-white/15 p-4 backdrop-blur-md"
+            >
+              <div className="mb-2 flex items-center gap-1 text-orange-300">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <Star key={star} size={12} fill="currentColor" />
+                ))}
+              </div>
+              <div className="text-sm font-bold text-white">4.9 Average Experience</div>
+              <div className="text-xs text-slate-200">From 10,000+ wellness journeys</div>
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mx-auto mt-5 flex w-full max-w-125 items-center justify-between rounded-2xl border border-cyan-300/20 bg-[#031127]/70 px-5 py-4 backdrop-blur-md"
+          >
+            <div>
+              <div className="text-[10px] uppercase tracking-[0.2em] text-slate-300">Next Live Session</div>
+              <div className="text-sm font-bold text-white">Metabolic Reset Masterclass</div>
+            </div>
+            <div className="flex items-center gap-2 rounded-xl bg-cyan-200/15 px-3 py-2 text-xs font-semibold text-cyan-100">
+              <CalendarDays size={14} />
+              26 April
+            </div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Scroll Down Indicator */}
-      <motion.div 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 uppercase tracking-[0.3em] text-[10px] font-bold text-slate-400"
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2.2, repeat: Infinity }}
+        className="absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-slate-300 sm:flex"
       >
-        <span>Discover</span>
-        <div className="w-0.5 h-12 bg-gradient-to-b from-orange-500 to-transparent" />
+        <span>Scroll</span>
+        <span className="h-10 w-px bg-linear-to-b from-cyan-200 to-transparent" />
       </motion.div>
-    </div>
+    </section>
   );
 };
 

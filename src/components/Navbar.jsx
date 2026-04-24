@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ChevronDown, Menu, X, ArrowRight, Search, Globe, User, ShieldCheck } from 'lucide-react';
+import { ChevronDown, Menu, X, ShieldCheck } from 'lucide-react';
 import logo from "../assets/LClogoo.png";
 
 const Navbar = () => {
@@ -27,16 +27,6 @@ const Navbar = () => {
   }, [isOpen]);
 
   const navConfig = [
-    {
-      title: 'Our World',
-      links: [
-        { label: 'Our Story', href: '/about/story', desc: 'Journey of Wellness' },
-        { label: 'Vision & Mission', href: '/about/vision', desc: 'Our North Star' },
-        { label: 'Our Approach', href: '/about/approach', desc: 'Backed by Science' },
-        { label: 'CSR Initiatives', href: '/about/team', desc: 'Giving Back' },
-        { label: 'Media & Awards', href: '/about/team', desc: 'Global Recognition' },
-      ],
-    },
     {
       title: 'Programs',
       isMega: true,
@@ -86,16 +76,16 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${
+    <nav className={`fixed top-0 left-0 right-0 z-100 transition-all duration-700 ${
       scrolled 
       ? 'bg-white/80 backdrop-blur-3xl shadow-2xl shadow-slate-900/5 h-20 border-b border-slate-100' 
       : 'bg-white h-24 border-b border-slate-100/60'
     }`}>
-      <div className="max-w-[1500px] mx-auto px-8 h-full">
+      <div className="max-w-375 mx-auto px-8 h-full">
         <div className="flex justify-between items-center h-full">
 
           {/* Logo Identity */}
-          <div className="flex-shrink-0">
+          <div className="shrink-0">
             <Link to="/" className="flex items-center gap-4 group">
               <img 
                 src={logo} 
@@ -123,9 +113,9 @@ const Navbar = () => {
                       <ChevronDown size={14} className="ml-1 opacity-30 group-hover/nav:opacity-100 transition-all duration-500 group-hover/nav:rotate-180" />
                     </button>
 
-                    <div className="absolute left-1/2 -translate-x-1/2 mt-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-500 transform group-hover/nav:translate-y-0 translate-y-4 z-[110]">
+                    <div className="absolute left-1/2 -translate-x-1/2 mt-2 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-500 transform group-hover/nav:translate-y-0 translate-y-4 z-110">
                       {item.isMega ? (
-                        <div className="w-[640px] bg-white rounded-[3.5rem] border border-slate-100 p-12 shadow-[0_50px_100px_-20px_rgba(15,23,42,0.15)] overflow-hidden">
+                        <div className="w-160 bg-white rounded-[3.5rem] border border-slate-100 p-12 shadow-[0_50px_100px_-20px_rgba(15,23,42,0.15)] overflow-hidden">
                           <div className="grid grid-cols-2 gap-12 relative z-10">
                             {item.links.map((col) => (
                               <div key={col.category} className="space-y-8">
@@ -188,22 +178,13 @@ const Navbar = () => {
 
           {/* Action Ecosystem */}
           <div className="flex items-center space-x-4">
-            <div className="hidden sm:flex items-center gap-3">
-              <button className="w-11 h-11 flex items-center justify-center text-slate-950 hover:bg-slate-50 rounded-2xl transition-all hover:scale-110" aria-label="Search">
-                <Search size={22} />
-              </button>
-              <button className="w-11 h-11 flex items-center justify-center text-slate-950 hover:bg-slate-50 rounded-2xl transition-all hover:scale-110" aria-label="Profile">
-                <User size={22} />
-              </button>
-            </div>
-
             <a
-              href="https://lmsathena.com/login"
+              href="https://www.lmsathena.com/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:flex px-10 py-4 bg-slate-950 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-orange-500 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-500"
+              className="hidden lg:flex px-10 py-4 bg-orange-500 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-orange-600 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-500"
             >
-              Access Portal
+              Login
             </a>
 
             {/* Mobile Interface Toggle */}
@@ -225,7 +206,7 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] xl:hidden"
+            className="fixed inset-0 z-200 xl:hidden"
           >
             {/* Backdrop */}
             <div
@@ -239,7 +220,7 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 h-full w-[85%] sm:w-[450px] bg-white flex flex-col shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+              className="absolute right-0 top-0 h-full w-[85%] sm:w-112.5 bg-white flex flex-col shadow-[0_0_100px_rgba(0,0,0,0.5)]"
             >
               <div className="p-8 flex justify-between items-center border-b border-slate-50">
                 <Link to="/" onClick={() => setIsOpen(false)} className="flex items-center gap-4 group">
@@ -282,7 +263,7 @@ const Navbar = () => {
                           <ChevronDown size={32} className={`transition-transform duration-500 ${mobileMenuOpen === idx ? 'rotate-180 text-orange-500' : 'text-slate-300'}`} />
                         </button>
 
-                        <div className={`transition-all duration-700 overflow-hidden ${mobileMenuOpen === idx ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                        <div className={`transition-all duration-700 overflow-hidden ${mobileMenuOpen === idx ? 'max-h-250 opacity-100' : 'max-h-0 opacity-0'}`}>
                           <div className="space-y-6 pl-6 py-6 border-l-4 border-orange-500/20">
                             {item.isMega ? (
                               item.links.map(col => (
@@ -322,12 +303,12 @@ const Navbar = () => {
 
               <div className="p-8 space-y-4 bg-slate-50">
                 <a
-                  href="https://lmsathena.com/login"
+                  href="https://www.lmsathena.com/login"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center w-full py-6 bg-slate-950 text-white rounded-[2rem] font-black uppercase tracking-[0.3em] hover:bg-orange-500 transition-all shadow-2xl"
+                  className="flex items-center justify-center w-full py-6 bg-orange-500 text-white rounded-4xl font-black uppercase tracking-[0.3em] hover:bg-orange-600 transition-all shadow-2xl"
                 >
-                  Access Portal
+                  Login
                 </a>
               </div>
             </motion.div>
