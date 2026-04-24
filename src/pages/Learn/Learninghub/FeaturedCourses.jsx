@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, BookOpen, ChevronRight, ChevronLeft, Star, Play, Clock, ShieldCheck, ArrowRight } from "lucide-react";
+import { Users, BookOpen, ChevronRight, ChevronLeft, Star, PlayCircle, Clock, ShieldCheck, ArrowRight, Sparkles } from "lucide-react";
 
 const FeaturedCourses = () => {
   const allCourses = [
@@ -86,6 +86,13 @@ const FeaturedCourses = () => {
     },
   ];
 
+  const bentoStats = [
+    { title: "40+ Courses", desc: "Expert content", icon: <BookOpen size={24} />, theme: "orange" },
+    { title: "Self-Paced", desc: "Learn your way", icon: <PlayCircle size={24} />, theme: "light" },
+    { title: "100k+ Seekers", desc: "Global reach", icon: <Users size={24} />, theme: "dark" },
+    { title: "Exclusive", desc: "Pro protocols", icon: <Sparkles size={24} />, theme: "cream" },
+  ];
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
   const totalPages = Math.ceil(allCourses.length / itemsPerPage);
@@ -96,49 +103,99 @@ const FeaturedCourses = () => {
   );
 
   return (
-    <section id="featured-courses" className="py-40 bg-[#FDFBF7] overflow-hidden text-slate-950 relative">
+    <section id="featured-courses" className="py-40 bg-[#FCF9F5] overflow-hidden text-slate-950 relative">
       
-      {/* Decorative Accents */}
-      <div className="absolute top-0 left-0 w-full h-px bg-slate-200" />
-      <div className="absolute top-1/4 right-0 w-[600px] h-[600px] bg-orange-500/[0.03] rounded-full blur-[120px]" />
+      {/* Editorial Decorative Background */}
+      <div className="absolute top-0 right-0 w-[45%] h-full bg-[#FFF7ED] -skew-x-6 translate-x-[15%] pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-20 relative z-10">
         
-        <div className="flex flex-col lg:flex-row justify-between items-end gap-12 mb-24">
-          <div className="space-y-8">
+        {/* Bento Inspiration Header */}
+        <div className="grid lg:grid-cols-2 gap-24 items-center mb-40">
+          <div className="space-y-12">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
-              className="inline-flex items-center gap-3 px-5 py-2 bg-orange-500/10 rounded-full text-orange-500"
+              viewport={{ once: true }}
+              className="flex items-center gap-6"
             >
-              <Star size={16} fill="currentColor" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Signature Curriculums</span>
+              <div className="h-[2px] w-12 bg-[#F97316]" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#F97316]">Curated Masterclasses</span>
             </motion.div>
 
-            <h2 className="text-7xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase text-slate-900">
-              Curated <br />
-              <span className="text-orange-500 italic font-light not-uppercase">Knowledge.</span>
-            </h2>
+            <div className="space-y-8">
+              <motion.h2 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase"
+              >
+                Master Your <br />
+                <span className="text-[#F97316] italic font-light lowercase serif">Courses.</span>
+              </motion.h2>
+
+              <p className="text-2xl text-slate-500 font-medium leading-relaxed max-w-xl">
+                 Bite-sized, expert-led clinical wisdom from Luke Coutinho. Select a clinical vertical to begin your journey.
+              </p>
+            </div>
           </div>
 
-          <div className="flex items-center gap-6 pb-4">
-            <div className="text-right hidden md:block">
-              <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest leading-none mb-2">Navigation</p>
-              <p className="text-sm font-black text-white uppercase tracking-tighter">Page {currentPage} of {totalPages}</p>
-            </div>
-            <div className="flex items-center gap-4 p-2 bg-white rounded-full shadow-sm border border-slate-100">
+          {/* Right Bento Grid Stats */}
+          <div className="grid grid-cols-2 gap-6 relative">
+            {bentoStats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className={`p-8 rounded-[2.5rem] shadow-[0_20px_50px_-15px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center text-center space-y-4 border transition-all duration-500 ${
+                  stat.theme === 'orange' ? 'bg-[#F97316] text-white border-transparent' : 
+                  stat.theme === 'dark' ? 'bg-slate-950 text-white border-transparent' :
+                  stat.theme === 'cream' ? 'bg-[#FFF7ED] text-orange-900 border-orange-100' :
+                  'bg-white text-slate-950 border-slate-50'
+                } ${idx % 2 === 0 ? 'translate-y-6' : '-translate-y-6'}`}
+              >
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${
+                  stat.theme === 'orange' || stat.theme === 'dark' ? 'bg-white/20 text-white' : 'bg-orange-50 text-[#F97316]'
+                }`}>
+                   {stat.icon}
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-lg font-bold tracking-tight uppercase leading-tight">{stat.title}</h3>
+                  <p className={`text-[10px] font-black uppercase tracking-widest ${
+                    stat.theme === 'orange' || stat.theme === 'dark' ? 'text-white/60' : 'text-slate-400'
+                  }`}>
+                    {stat.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Courses Grid */}
+        <div className="flex justify-between items-end gap-12 mb-16 px-4">
+          <div className="space-y-4">
+             <h3 className="text-3xl font-black text-slate-950 tracking-tighter uppercase underline decoration-orange-500 decoration-4 underline-offset-8">Signature Curriculums</h3>
+             <p className="text-slate-400 font-medium">Equip yourself with the right clinical knowledge.</p>
+          </div>
+
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 p-2 bg-white rounded-full shadow-sm border border-slate-100">
               <button 
                 onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                className="w-12 h-12 rounded-full flex items-center justify-center border border-slate-100 hover:bg-blue-600 hover:text-white transition-all bg-slate-50 text-slate-400"
+                className="w-12 h-12 rounded-full flex items-center justify-center border border-slate-100 hover:bg-orange-500 hover:text-white transition-all bg-slate-50 text-slate-400"
               >
                 <ChevronLeft size={20} />
               </button>
-              <div className="px-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
+              <div className="px-4 text-[10px] font-bold uppercase tracking-widest text-slate-400">
                 {currentPage} / {totalPages}
               </div>
               <button 
                 onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                className="w-12 h-12 rounded-full flex items-center justify-center border border-slate-100 hover:bg-blue-600 hover:text-white transition-all bg-slate-50 text-slate-400"
+                className="w-12 h-12 rounded-full flex items-center justify-center border border-slate-100 hover:bg-orange-500 hover:text-white transition-all bg-slate-50 text-slate-400"
               >
                 <ChevronRight size={20} />
               </button>
@@ -155,81 +212,68 @@ const FeaturedCourses = () => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.05 }}
                 transition={{ delay: idx * 0.1 }}
-                className="group relative bg-white rounded-[2rem] border border-slate-100 shadow-sm overflow-hidden"
+                className="group relative bg-white rounded-[2.5rem] border border-slate-100 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.05)] overflow-hidden"
               >
-                <div className="relative h-[280px] overflow-hidden">
+                <div className="relative h-[250px] overflow-hidden">
                   <img 
                     src={course.image} 
                     alt={course.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent" />
-                  <span className="absolute top-6 left-6 bg-white/90 backdrop-blur-md text-slate-950 text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 to-transparent" />
+                  <span className="absolute top-6 left-6 bg-[#F97316] text-white text-[10px] font-black px-5 py-2 rounded-full uppercase tracking-widest shadow-xl">
                     {course.level}
                   </span>
                 </div>
                   
-                  {/* Content Container */}
-                  <div className="p-10 flex flex-col gap-6">
-                    
-                    <div>
-                      <h3 className="text-2xl font-black text-slate-900 leading-tight tracking-tighter mb-2 group-hover:text-orange-500 transition-colors uppercase">
-                        {course.title}
-                      </h3>
-                      <p className="text-lg font-medium text-slate-400 group-hover:text-white transition-colors">
-                        {course.subtitle}
-                      </p>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-4 border-y border-white/10 py-6">
-                      <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-orange-500"><BookOpen size={18} /></div>
-                         <div>
-                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Lessons</p>
-                            <p className="text-xs font-bold text-white">{course.lessons} Modules</p>
-                         </div>
-                      </div>
-                      <div className="flex items-center gap-3">
-                         <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-orange-500"><Clock size={18} /></div>
-                         <div>
-                            <p className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Duration</p>
-                            <p className="text-xs font-bold text-white">{course.duration}</p>
-                         </div>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-col gap-4">
-                      <Link 
-                        to={`/course/${course.id}`}
-                        className="w-full py-4 bg-blue-600 text-white rounded-full font-bold text-[11px] flex items-center justify-center gap-3 hover:bg-blue-700 transition-all shadow-lg active:scale-95"
-                      >
-                        Enroll Now <ArrowRight size={16} />
-                      </Link>
-                      
-                      {course.demoLink && (
-                        <button className="w-full py-3 bg-white border border-slate-200 rounded-full text-[10px] font-bold flex items-center justify-center gap-3 hover:bg-slate-50 transition-all text-slate-600">
-                          Preview Curriculum
-                        </button>
-                      )}
-                    </div>
-
+                <div className="p-8 flex flex-col gap-6">
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-bold text-slate-950 leading-tight tracking-tight uppercase group-hover:text-orange-500 transition-colors">
+                      {course.title}
+                    </h3>
+                    <p className="text-sm font-medium text-slate-400 line-clamp-1 italic">
+                      &mdash; {course.subtitle}
+                    </p>
                   </div>
 
-                  {/* Price Tag */}
-                  <div className="absolute top-10 left-10 w-20 h-20 bg-white rounded-full flex flex-col items-center justify-center text-slate-950 shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-700">
-                     <span className="text-[8px] font-black uppercase tracking-widest opacity-40">Only</span>
-                     <span className="text-xs font-black">{course.price.split('.')[0]}</span>
+                  <div className="grid grid-cols-2 gap-4 border-y border-slate-50 py-6">
+                    <div className="flex items-center gap-3">
+                       <div className="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500"><BookOpen size={16} /></div>
+                       <div className="space-y-0.5">
+                          <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Lessons</p>
+                          <p className="text-[10px] font-bold text-slate-950">{course.lessons} Modules</p>
+                       </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                       <div className="w-9 h-9 rounded-xl bg-orange-50 flex items-center justify-center text-orange-500"><Clock size={16} /></div>
+                       <div className="space-y-0.5">
+                          <p className="text-[8px] font-black text-slate-400 uppercase tracking-widest">Duration</p>
+                          <p className="text-[10px] font-bold text-slate-950">{course.duration}</p>
+                       </div>
+                    </div>
                   </div>
 
-                </motion.div>
-              ))}
+                  <div className="flex flex-col gap-4">
+                    <Link 
+                      to={`/course/${course.id}`}
+                      className="w-full py-5 bg-slate-950 text-white rounded-[1.5rem] font-bold text-[10px] uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#F97316] transition-all shadow-xl"
+                    >
+                      Enroll in Course <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
+
+                <div className="absolute top-6 right-6 w-16 h-16 bg-white rounded-full flex flex-col items-center justify-center text-slate-950 shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
+                   <span className="text-[7px] font-black uppercase tracking-widest opacity-40 leading-none">Price</span>
+                   <span className="text-xs font-black">{course.price.split('.')[0]}</span>
+                </div>
+              </motion.div>
+            ))}
           </AnimatePresence>
         </div>
-
       </div>
     </section>
   );
 };
 
 export default FeaturedCourses;
-

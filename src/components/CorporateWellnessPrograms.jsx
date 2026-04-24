@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, ShieldCheck, UserCheck, Activity, ArrowRight, Check, Target, Users, Zap } from 'lucide-react';
+import { ArrowRight, ShieldCheck, Target, Activity, Users, Zap } from 'lucide-react';
 
 const CorporateWellness = () => {
   const programs = [
@@ -35,10 +35,11 @@ const CorporateWellness = () => {
   ];
 
   return (
-    <section className="py-40 bg-slate-50 relative overflow-hidden">
+    <section className="py-40 bg-white relative overflow-hidden">
       
-      {/* Decorative Layer */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-900 skew-x-[12deg] translate-x-32 hidden lg:block pointer-events-none" />
+      {/* Soft Peach Editorial Background */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-[#FFF7ED] skew-x-[12deg] translate-x-32 hidden lg:block pointer-events-none" />
+      <div className="absolute top-1/4 right-0 w-80 h-80 bg-orange-200/20 rounded-full blur-[120px]" />
 
       <div className="max-w-[1440px] mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
@@ -59,10 +60,10 @@ const CorporateWellness = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-6xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter"
+              className="text-6xl md:text-[5.5rem] font-bold text-slate-950 leading-[1] tracking-tighter"
             >
               The Next Era of <br />
-              <span className="text-orange-500 italic font-light font-sans">Corporate Vitality.</span>
+              <span className="text-orange-500 italic font-light">Corporate Vitality.</span>
             </motion.h2>
             
             <motion.p 
@@ -96,26 +97,27 @@ const CorporateWellness = () => {
             {programs.map((item, index) => (
               <motion.div 
                 key={index} 
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group relative p-8 glass rounded-[2.5rem] border border-white/10 hover:border-orange-500/50 transition-all duration-500 bg-white/5 backdrop-blur-3xl"
+                whileHover={{ y: -8 }}
+                className="group relative p-6 bg-white border border-orange-100 rounded-[2.5rem] shadow-[0_15px_40px_-15px_rgba(249,115,22,0.05)] hover:shadow-[0_30px_60px_-20px_rgba(249,115,22,0.12)] transition-all duration-700"
               >
-                <div className="flex items-center gap-8">
-                  <div className={`w-16 h-16 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 shadow-lg`}>
-                    {item.icon}
+                <div className="flex items-center gap-6">
+                  <div className={`w-12 h-12 rounded-[1.2rem] bg-orange-50 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 shadow-sm`}>
+                    {React.cloneElement(item.icon, { size: 20 })}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-orange-400 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-950 mb-1 tracking-tight">
                       {item.title}
                     </h3>
-                    <p className="text-slate-400 font-medium leading-snug">
+                    <p className="text-sm text-slate-500 font-medium leading-snug">
                       {item.desc}
                     </p>
                   </div>
-                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:border-orange-500 group-hover:text-orange-500 transition-all">
-                    <Check size={20} />
+                  <div className="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-orange-100 group-hover:text-orange-600 transition-all">
+                     <ArrowRight size={16} />
                   </div>
                 </div>
               </motion.div>
