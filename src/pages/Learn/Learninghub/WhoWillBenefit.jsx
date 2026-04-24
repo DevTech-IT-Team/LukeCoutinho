@@ -1,57 +1,72 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Users, ShieldCheck, Target, Lightbulb, Activity } from "lucide-react";
+import { Users, ShieldCheck, Target, Lightbulb, Activity, UserCheck } from "lucide-react";
 
 const WhoWillBenefit = () => {
   const benefits = [
     {
-      title: "All ages",
-      desc: "All ages interested in lifelong health insights.",
-      icon: <Users className="w-6 h-6 text-orange-500" />,
+      title: "All Generations",
+      desc: "Individuals of all ages seeking science-backed insights for lifelong vitality.",
+      icon: <Users className="w-8 h-8" />,
     },
     {
-      title: "Self-care advocates",
-      desc: "Self-care advocates focus on balanced, preventive health.",
-      icon: <ShieldCheck className="w-6 h-6 text-orange-500" />,
+      title: "Self-Care Advocates",
+      desc: "Those focused on preventive health and building sustainable daily rituals.",
+      icon: <ShieldCheck className="w-8 h-8" />,
     },
     {
-      title: "Anyone aiming for better health",
-      desc: "Anyone aiming for better health through practical lifestyle changes.",
-      icon: <Target className="w-6 h-6 text-orange-500" />,
+      title: "Clinical Seekers",
+      desc: "Anyone aiming to manage conditions through powerful lifestyle transformations.",
+      icon: <Target className="w-8 h-8" />,
     },
     {
-      title: "Beginner",
-      desc: "Beginners wanting simple, actionable wellness steps.",
-      icon: <Lightbulb className="w-6 h-6 text-orange-500" />,
+      title: "Wellness Beginners",
+      desc: "Individuals wanting clarity and actionable steps to start their health journey.",
+      icon: <Lightbulb className="w-8 h-8" />,
     },
     {
-      title: "Wellness Enthusiast",
-      desc: "Wellness enthusiasts looking to expand holistic knowledge.",
-      icon: <Activity className="w-6 h-6 text-orange-500" />,
+      title: "Enthusiasts",
+      desc: "Lifelong learners looking to decode the latest in holistic and integrative medicine.",
+      icon: <Activity className="w-8 h-8" />,
     },
   ];
 
   return (
-    <section className="py-24 bg-slate-50/50">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-3xl md:text-4xl font-black text-center text-slate-900 mb-16">
-          Who Will <span className="text-orange-500">Benefit</span> from These Courses?
-        </h2>
+    <section className="py-40 bg-[#FFFEFC] overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-8">
+        
+        <div className="flex flex-col items-center text-center space-y-8 mb-24">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="px-6 py-2 bg-orange-100 rounded-full text-orange-600 flex items-center gap-3"
+            >
+              <UserCheck size={16} />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Target Audience</span>
+            </motion.div>
+            <h2 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase">
+              Who is this <br />
+              <span className="text-orange-500 italic font-light not-uppercase">Designed For?</span>
+            </h2>
+        </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
           {benefits.map((item, index) => (
             <motion.div
               key={index}
-              whileHover={{ y: -8 }}
-              className="bg-white p-8 rounded-[2rem] shadow-sm border border-slate-100 flex flex-col items-center text-center group transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="bg-white p-12 rounded-[3rem] shadow-2xl shadow-slate-200/50 border border-slate-50 flex flex-col items-center text-center group transition-all duration-500"
             >
-              <div className="mb-6 p-4 rounded-2xl bg-orange-100 group-hover:bg-orange-300 group-hover:text-white transition-colors duration-300">
+              <div className="w-20 h-20 rounded-[2rem] bg-slate-50 flex items-center justify-center text-slate-300 group-hover:bg-slate-950 group-hover:text-orange-500 transition-all duration-500 shadow-sm mb-10">
                 {item.icon}
               </div>
-              <h3 className="text-[1.2rem] font-black text-slate-800 mb-3 leading-tight">
+              <h3 className="text-2xl font-black text-slate-950 mb-4 tracking-tighter uppercase leading-none">
                 {item.title}
               </h3>
-              <p className="text-slate-500 text-[0.9rem] font-medium leading-relaxed">
+              <p className="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-slate-600 transition-colors">
                 {item.desc}
               </p>
             </motion.div>
@@ -62,4 +77,4 @@ const WhoWillBenefit = () => {
   );
 };
 
-export default WhoWillBenefit;
+export default WhoWillBenefit;

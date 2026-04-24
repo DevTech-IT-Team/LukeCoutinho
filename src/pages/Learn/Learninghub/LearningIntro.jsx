@@ -14,161 +14,134 @@ import {
   Leaf,
   Info,
   CheckCircle2,
+  Sparkles,
+  Zap,
+  Microscope,
+  Stethoscope
 } from "lucide-react";
 
 const LearningIntro = () => {
   const categories = [
-    { name: "Mental Wellness", icon: <Brain size={18} /> },
-    { name: "Women's Health", icon: <Heart size={18} /> },
-    { name: "Men's Health", icon: <Activity size={18} /> },
-    { name: "Digestion", icon: <Utensils size={18} /> },
-    { name: "Immunity", icon: <ShieldCheck size={18} /> },
-    { name: "Diabetes", icon: <Droplet size={18} /> },
-    { name: "Cancer Care", icon: <Leaf size={18} /> },
-    { name: "Sleep", icon: <Moon size={18} /> },
-    { name: "Nutrition", icon: <Utensils size={18} /> },
-    { name: "Gut Health", icon: <Activity size={18} /> },
-    { name: "Family Health", icon: <Users size={18} /> },
-    { name: "Hindi Courses", icon: <Languages size={18} /> },
+    { name: "Mental Wellness", icon: <Brain size={18} />, color: "bg-blue-50 text-blue-600" },
+    { name: "Women's Health", icon: <Heart size={18} />, color: "bg-rose-50 text-rose-600" },
+    { name: "Immunity", icon: <ShieldCheck size={18} />, color: "bg-teal-50 text-teal-600" },
+    { name: "Digestion", icon: <Utensils size={18} />, color: "bg-orange-50 text-orange-600" },
+    { name: "Cancer Care", icon: <Leaf size={18} />, color: "bg-emerald-50 text-emerald-600" },
+    { name: "Sleep Rituals", icon: <Moon size={18} />, color: "bg-indigo-50 text-indigo-600" },
+    { name: "Gut Microbiome", icon: <Zap size={18} />, color: "bg-amber-50 text-amber-600" },
+    { name: "Hindi Courses", icon: <Languages size={18} />, color: "bg-slate-50 text-slate-600" },
   ];
 
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
   return (
-    <section className="py-20 bg-white relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 translate-x-20 z-0"></div>
+    <section className="py-40 bg-[#F97316] relative overflow-hidden text-white">
+      
+      {/* Dynamic Background Textures */}
+      <div className="absolute top-1/2 left-0 w-1/4 h-full bg-white/10 -skew-x-12 translate-x-[-20%] translate-y-[-50%] pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-black/5 rounded-full blur-[100px]" />
 
-      <motion.div
-        className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16 relative z-10"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={staggerContainer}
-      >
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-          <motion.div
-            variants={fadeInUp}
-            className="lg:col-span-5 flex flex-col justify-center"
-          >
-            <div className="inline-flex items-center gap-2 mb-6">
-              <span className="w-8 h-1 bg-orange-500 rounded-full"></span>
-              <span className="text-orange-600 font-bold uppercase tracking-widest text-2xl">
-                Our Philosophy
-              </span>
-            </div>
+      <div className="max-w-[1440px] mx-auto px-8 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-24 items-center">
+          
+          {/* Narrative Content */}
+          <div className="lg:col-span-5 space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 px-5 py-2 bg-white/20 rounded-full text-white backdrop-blur-md"
+            >
+              <Sparkles size={18} />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Our Philosophy</span>
+            </motion.div>
 
-            <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-6 leading-tight">
-              Knowledge is the <br />
-              <span className="text-orange-600">First Step to Healing.</span>
-            </h2>
+            <motion.h2 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter"
+            >
+              Mastery over <br />
+              <span className="text-black italic font-light">Confusion.</span>
+            </motion.h2>
 
-            <div className="space-y-6 text-slate-600 text-lg leading-relaxed mb-8">
+            <div className="space-y-8 text-2xl text-white/80 font-medium leading-relaxed max-w-xl">
               <p>
-                Confusion is the enemy of recovery. We bridge the gap between
-                complex medical jargon and actionable lifestyle changes.
-              </p>
-              <p>
-                Our bite-sized modules are designed to empower you with the
-                right questions for your doctor and simple, science-backed steps
-                for your daily routine.
+                We bridge the gap between complex clinical data and actionable lifestyle protocols. Bite-sized modules designed for the modern seeker.
               </p>
             </div>
 
-            <ul className="space-y-3 mb-10">
-              <li className="flex items-start gap-3 text-slate-700 font-medium">
-                <CheckCircle2
-                  className="text-teal-500 shrink-0 mt-1"
-                  size={20}
-                />
-                <span>Self-paced learning structure</span>
-              </li>
-              <li className="flex items-start gap-3 text-slate-700 font-medium">
-                <CheckCircle2
-                  className="text-teal-500 shrink-0 mt-1"
-                  size={20}
-                />
-                <span>Holistic & Integrative approach</span>
-              </li>
-            </ul>
-
-            <div className="p-5 bg-orange-50 border-l-4 border-orange-500 rounded-r-xl">
-              <p className="text-[1rem] text-slate-700 font-medium mb-2">
-                Need personalized guidance?
-              </p>
-              <a
-                href="/programs"
-                className="group inline-flex items-center gap-2 text-orange-600 font-bold uppercase text-[1.5rem] tracking-wider hover:text-orange-800 transition-colors"
-              >
-                Explore 1-on-1 Coaching{" "}
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </a>
+            <div className="grid grid-cols-2 gap-8 pt-8">
+               <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-orange-500 shadow-xl">
+                     <Microscope size={24} />
+                  </div>
+                  <h4 className="text-lg font-black text-white uppercase tracking-tighter">Science-Backed</h4>
+                  <p className="text-sm text-white/60 font-medium">Every module is validated by our clinical leadership.</p>
+               </div>
+               <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-2xl bg-orange-500 flex items-center justify-center text-white shadow-xl">
+                     <Stethoscope size={24} />
+                  </div>
+                  <h4 className="text-lg font-black text-slate-950 uppercase tracking-tighter">Clinical Edge</h4>
+                  <p className="text-sm text-slate-400 font-medium">Equip yourself with the right questions for your doctors.</p>
+               </div>
             </div>
 
-            <p className="mt-6 text-xs text-slate-400 flex gap-2 items-start">
-              <Info size={14} className="shrink-0 mt-0.5" />
-              These courses are educational and support—not replace—your medical
-              treatment.
-            </p>
-          </motion.div>
+            <motion.div 
+              whileHover={{ x: 10 }}
+              className="p-10 glass rounded-[2.5rem] border border-orange-100 bg-gradient-to-br from-white to-orange-50/20 group cursor-pointer"
+            >
+               <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Next Step</p>
+               <h4 className="text-2xl font-black text-slate-950 mb-6 tracking-tight">Need Targeted Guidance?</h4>
+               <a href="/programs" className="inline-flex items-center gap-4 text-orange-600 font-black uppercase text-xs tracking-widest group-hover:gap-6 transition-all">
+                  Explore 1-on-1 Pathways <ArrowRight size={18} />
+               </a>
+            </motion.div>
+          </div>
 
-          <motion.div variants={fadeInUp} className="lg:col-span-7">
-            <div className="bg-slate-100 rounded-[2.5rem] p-8 md:p-12 relative">
-              <div className="mb-8 flex items-end justify-between">
-                <div>
-                  <h3 className="text-4xl font-black text-slate-900">
-                    Explore Our Courses
-                  </h3>
-                  <p className="text-slate-500 mt-2 text-[1.2rem]">
-                    Select a category to begin learning
-                  </p>
+          {/* Discovery Grid */}
+          <div className="lg:col-span-7">
+            <div className="bg-white rounded-[4rem] p-12 md:p-20 shadow-2xl shadow-slate-200/50 border border-slate-50 relative overflow-hidden group">
+              
+              {/* Background Glow */}
+              <div className="absolute top-0 right-0 w-80 h-80 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+              <div className="relative z-10 space-y-12">
+                <div className="space-y-4">
+                  <h3 className="text-5xl font-black text-slate-950 tracking-tighter uppercase">Curated Discovery</h3>
+                  <p className="text-xl text-slate-400 font-medium max-w-sm">Select a clinical vertical to begin your journey.</p>
                 </div>
 
-                <div className="hidden sm:block text-slate-200">
-                  <Brain size={48} strokeWidth={1.5} />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {categories.map((cat, index) => (
+                    <motion.button
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ y: -5, scale: 1.02 }}
+                      className="group flex items-center gap-6 p-6 bg-slate-50/50 rounded-3xl border border-transparent hover:border-orange-500 hover:bg-white hover:shadow-2xl transition-all duration-500 text-left"
+                    >
+                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-sm ${cat.color} group-hover:bg-slate-950 group-hover:text-white`}>
+                        {cat.icon}
+                      </div>
+                      <span className="text-xl font-black text-slate-900 tracking-tight">
+                        {cat.name}
+                      </span>
+                    </motion.button>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-4 pt-8 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+                   <Info size={16} />
+                   <span>Clinical Support Content &mdash; Not a Treatment Replacement</span>
                 </div>
               </div>
-
-              <motion.div
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4"
-                variants={staggerContainer}
-              >
-                {categories.map((cat, index) => (
-                  <motion.button
-                    key={index}
-                    variants={fadeInUp}
-                    whileHover={{ scale: 1.03, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="group flex items-center gap-4 px-5 py-4 bg-white rounded-2xl shadow-sm border border-transparent hover:border-orange-500 hover:shadow-md transition-all duration-300 text-left"
-                  >
-                    <div className="w-10 h-10 rounded-full bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-orange-50 group-hover:text-orange-600 transition-colors">
-                      {cat.icon}
-                    </div>
-                    <span className="font-bold text-slate-700 group-hover:text-slate-900">
-                      {cat.name}
-                    </span>
-                  </motion.button>
-                ))}
-              </motion.div>
             </div>
-          </motion.div>
+          </div>
+
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

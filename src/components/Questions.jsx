@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, Minus, HelpCircle, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Plus, Minus, HelpCircle, ArrowRight, CheckCircle2, MessageCircleQuestion } from 'lucide-react';
 
 const FAQSection = () => {
   const [openIndex, setOpenIndex] = useState(0);
@@ -53,29 +53,35 @@ const FAQSection = () => {
   ];
 
   return (
-    <section className="py-24 px-6 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-16">
+    <section className="py-40 px-6 bg-white overflow-hidden relative">
+      
+      {/* Subtle Background Elements */}
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-orange-100/20 rounded-full blur-[100px] -z-0" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-blue-100/20 rounded-full blur-[100px] -z-0" />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid lg:grid-cols-12 gap-20">
           
-          {/* Left Side: Header & Context */}
-          <div className="lg:col-span-5">
+          {/* Left Side: Strategic Insight */}
+          <div className="lg:col-span-5 space-y-10">
             <motion.div 
-               initial={{ opacity: 0, x: -30 }}
+               initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
-               className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 text-orange-600 rounded-full text-[10px] font-bold uppercase tracking-widest mb-8 border border-orange-100"
+               className="inline-flex items-center gap-3 px-5 py-2 bg-white rounded-full shadow-sm border border-slate-100"
             >
-              <HelpCircle size={14} className="text-orange-500" /> FAQ Support
+              <MessageCircleQuestion size={18} className="text-orange-500" />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900">Knowledge Base</span>
             </motion.div>
             
             <motion.h2 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-5xl md:text-6xl font-bold text-slate-950 leading-[1.1] tracking-tighter mb-8"
+              className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter"
             >
-              Common <br />
-              <span className="text-orange-500 font-light ">Questions</span>
+              Clarity is the <br />
+              <span className="text-orange-500 italic font-light">First Step.</span>
             </motion.h2>
             
             <motion.p 
@@ -83,25 +89,29 @@ const FAQSection = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="text-slate-500 text-xl font-medium leading-relaxed mb-12 max-w-sm"
+              className="text-2xl text-slate-500 font-medium leading-relaxed max-w-sm"
             >
-              Honest answers to help you navigate your journey with clarity and confidence.
+              Building trust through transparency. Find answers to the most common inquiries about our methodology.
             </motion.p>
             
-            <div className="p-10 bg-slate-50 rounded-[3rem] border border-slate-100 relative group overflow-hidden hidden lg:block">
-              <div className="relative z-10">
-                <h4 className="text-2xl font-black text-slate-950 mb-4 tracking-tight">Need more clarity?</h4>
-                <p className="text-slate-500 font-medium mb-8 leading-relaxed">Our dedicated team of advisors is here to guide you to the right program.</p>
-                <button className="flex items-center gap-3 px-8 py-4 bg-orange-500 text-white font-black rounded-2xl hover:bg-slate-950 transition-all shadow-xl shadow-orange-500/10 uppercase tracking-widest text-xs">
-                  Speak to an expert <ArrowRight size={16} />
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="p-12 glass rounded-[3rem] border border-orange-100/50 bg-gradient-to-br from-white to-orange-50/30 relative group overflow-hidden hidden lg:block"
+            >
+              <div className="relative z-10 space-y-6">
+                <h4 className="text-3xl font-black text-slate-950 tracking-tight leading-none uppercase">Need Program Guidance?</h4>
+                <p className="text-slate-500 font-medium text-lg leading-relaxed">Our advisors are standing by to help you choose the perfect fit for your evolution.</p>
+                <button className="flex items-center gap-4 px-10 py-5 bg-slate-950 text-white font-black rounded-2xl hover:bg-orange-500 transition-all shadow-2xl uppercase tracking-widest text-xs group/btn">
+                  Consult an Expert <ArrowRight size={18} className="group-hover/btn:translate-x-2 transition-transform" />
                 </button>
               </div>
-              <HelpCircle size={150} className="absolute -bottom-10 -right-10 text-slate-200/50 -rotate-12 group-hover:rotate-0 transition-transform duration-700" />
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right Side: Interactive Accordion */}
-          <div className="lg:col-span-7 space-y-4">
+          {/* Right Side: Immersive Accordion */}
+          <div className="lg:col-span-7 space-y-6">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -109,24 +119,24 @@ const FAQSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className={`group border rounded-[2.5rem] transition-all duration-500 overflow-hidden ${
+                className={`group border-2 rounded-[3rem] transition-all duration-700 ${
                   openIndex === index 
-                  ? "bg-slate-50 border-orange-500 shadow-2xl shadow-orange-500/5" 
-                  : "bg-white border-slate-100 hover:border-slate-300"
+                  ? "bg-white border-orange-500 shadow-[0_40px_80px_-30px_rgba(249,115,22,0.15)]" 
+                  : "bg-slate-50/50 border-transparent hover:border-slate-200"
                 }`}
               >
                 <button
                   onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                  className="w-full text-left px-8 py-10 flex items-center justify-between gap-6 outline-none"
+                  className="w-full text-left px-10 py-12 flex items-center justify-between gap-8 outline-none"
                 >
-                  <div className="space-y-2">
-                    <span className="text-[10px] font-black text-orange-500 uppercase tracking-widest block">{faq.heading}</span>
-                    <span className="text-xl md:text-2xl font-black text-slate-950 tracking-tight leading-tight group-hover:text-orange-600 transition-colors uppercase">{faq.question}</span>
+                  <div className="space-y-3">
+                    <span className="text-[10px] font-black text-orange-400 uppercase tracking-[0.3em] block">{faq.heading}</span>
+                    <span className="text-2xl md:text-3xl font-black text-slate-950 tracking-tighter leading-none group-hover:text-orange-500 transition-colors uppercase">{faq.question}</span>
                   </div>
-                  <div className={`shrink-0 w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-500 ${
-                    openIndex === index ? "bg-orange-500 border-orange-500 text-white rotate-180" : "bg-white border-slate-200 text-slate-400 group-hover:border-slate-900 group-hover:text-slate-900"
+                  <div className={`shrink-0 w-14 h-14 rounded-full border-2 flex items-center justify-center transition-all duration-700 ${
+                    openIndex === index ? "bg-orange-500 border-orange-500 text-white rotate-180 shadow-lg shadow-orange-500/30" : "bg-white border-slate-100 text-slate-400 group-hover:border-slate-950 group-hover:text-slate-950"
                   }`}>
-                    {openIndex === index ? <Minus size={20} /> : <Plus size={20} />}
+                    {openIndex === index ? <Minus size={24} /> : <Plus size={24} />}
                   </div>
                 </button>
 
@@ -136,20 +146,29 @@ const FAQSection = () => {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                      className="overflow-hidden bg-white"
+                      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
                     >
-                      <div className="px-10 py-10 space-y-8">
-                        <p className="text-slate-950 font-black text-lg uppercase tracking-tight leading-tight">{faq.intro}</p>
-                        <div className="grid gap-6">
-                          {faq.points.map((point, pIdx) => (
-                            <div key={pIdx} className="flex gap-5 group/item">
-                              <div className="mt-1 shrink-0 w-6 h-6 rounded-full bg-orange-50 text-orange-500 flex items-center justify-center group-hover/item:bg-orange-500 group-hover/item:text-white transition-all duration-300">
-                                 <CheckCircle2 size={12} />
-                              </div>
-                              <span className="text-slate-600 text-lg font-medium leading-relaxed">{point}</span>
-                            </div>
-                          ))}
+                      <div className="px-12 pb-12 pt-0 space-y-10">
+                        <div className="h-px bg-slate-100 w-full" />
+                        <div className="space-y-8">
+                          <p className="text-slate-900 font-black text-xl uppercase tracking-tighter leading-tight">{faq.intro}</p>
+                          <div className="grid gap-6">
+                            {faq.points.map((point, pIdx) => (
+                              <motion.div 
+                                key={pIdx} 
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: pIdx * 0.1 }}
+                                className="flex gap-6 group/item"
+                              >
+                                <div className="mt-1.5 shrink-0 w-6 h-6 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center group-hover/item:bg-orange-500 group-hover/item:text-white transition-all duration-500">
+                                   <CheckCircle2 size={12} />
+                                </div>
+                                <span className="text-slate-500 text-lg font-medium leading-relaxed group-hover/item:text-slate-900 transition-colors">{point}</span>
+                              </motion.div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </motion.div>
@@ -157,14 +176,6 @@ const FAQSection = () => {
                 </AnimatePresence>
               </motion.div>
             ))}
-            
-            {/* Mobile CTA (Lightened) */}
-            <div className="lg:hidden p-10 bg-slate-50 border border-slate-100 rounded-[2.5rem] mt-12 text-center">
-               <h4 className="text-2xl font-bold text-slate-950 mb-4 uppercase tracking-tighter">Still have questions?</h4>
-               <button className="w-full flex items-center justify-center gap-3 px-8 py-5 bg-orange-500 text-white font-bold rounded-2xl hover:bg-slate-950 transition-all shadow-xl uppercase tracking-widest text-xs">
-                  Speak to an expert <ArrowRight size={16} />
-                </button>
-            </div>
           </div>
 
         </div>

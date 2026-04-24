@@ -79,7 +79,7 @@ function App() {
             <Route path="/Workshop/IndividualFamilyMasterclass/Course16" element={<Course16 />} />
             <Route path="/Workshop/CorporateTalks/Home" element={<CorporateTalks />} />
             <Route path="/Learn/Blogs/Home" element={<Blogs />} />
-            <Route path="/Learn/Learninghub/Home" element={<Learninghub />} />
+            <Route path="/learn/learninghub/home" element={<Learninghub />} />
 
             
             <Route path="/Podcast/Podcast" element={<Podcast />} />

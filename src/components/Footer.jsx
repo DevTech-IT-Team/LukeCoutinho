@@ -1,111 +1,162 @@
 import React from 'react';
-import { Facebook, Twitter, Youtube, Linkedin, Instagram } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Facebook, Twitter, Youtube, Linkedin, Instagram, ArrowUpRight, Mail, Phone, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    { icon: <Facebook size={20} />, href: "#" },
+    { icon: <Twitter size={20} />, href: "#" },
+    { icon: <Youtube size={20} />, href: "#" },
+    { icon: <Linkedin size={20} />, href: "#" },
+    { icon: <Instagram size={20} />, href: "#" },
+  ];
+
   return (
-    <footer className="bg-slate-100 text-slate-900 pt-12 md:pt-16 pb-8 font-sans border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
+    <footer className="bg-white text-slate-950 pt-32 pb-12 overflow-hidden relative">
+      
+      {/* Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-slate-200 to-transparent" />
+      <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-orange-500/5 rounded-full blur-[100px]" />
+
+      <div className="max-w-[1440px] mx-auto px-8 relative z-10">
         
-        {/* Newsletter Section */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-12">
-          <h2 className="text-xl md:text-2xl font-extrabold max-w-md leading-tight text-slate-900">
-            Sign up for our newsletter and move from <span className="text-orange-500">struggle to strength.</span>
-          </h2>
-          
-          {/* Responsive Input Container */}
-          <div className="flex w-full lg:w-auto gap-2 items-center border-b-2 border-slate-200 focus-within:border-orange-500 transition-colors pb-1">
-            <input 
-              type="email" 
-              placeholder="Your Email" 
-              className="bg-transparent border-none outline-none py-2 w-full lg:w-64 placeholder:text-slate-400 text-slate-900 text-sm md:text-base"
-            />
-            <button className="text-orange-500 hover:text-orange-700 font-bold text-xs md:text-sm uppercase tracking-widest px-2 whitespace-nowrap">
-              Subscribe
-            </button>
-          </div>
-        </div>
-
-        <hr className="border-slate-200 mb-12" />
-
-        {/* Links Grid - Optimized for Mobile (1 column), Tablet (2), and Desktop (4) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-8 gap-y-10 mb-12">
-          
-          {/* Column 1 */}
-          <div>
-            <h4 className="font-bold text-slate-900 mb-5 text-sm uppercase tracking-tighter border-l-2 border-orange-500 pl-3">About</h4>
-            <ul className="space-y-3 text-slate-500 text-sm">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">About Luke</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Luke’s Wellness Programs</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Corporate Wellness Programs</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Book a Consult</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Talks and Webinars by Luke</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Testimonials</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Shop</a></li>
-            </ul>
-          </div>
-
-          {/* Column 2 */}
-          <div>
-            <h4 className="font-bold text-slate-900 mb-5 text-sm uppercase tracking-tighter border-l-2 border-orange-500 pl-3">Resources</h4>
-            <ul className="space-y-3 text-slate-500 text-sm">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Blogs</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Recipe Corner</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Books by Luke</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Awards & Media</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Contact Us</a></li>
-            </ul>
-          </div>
-
-          {/* Column 3 */}
-          <div>
-            <h4 className="font-bold text-slate-900 mb-5 text-sm uppercase tracking-tighter border-l-2 border-orange-500 pl-3">Legal</h4>
-            <ul className="space-y-3 text-slate-500 text-sm">
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Public Disclosure</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Terms & Conditions</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">Programs Terms</a></li>
-              <li><a href="#" className="hover:text-orange-500 transition-colors">FAQs</a></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact */}
-          <div className="space-y-8 lg:space-y-6">
-            <div>
-              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-2">Email Us</p>
-              <a href="mailto:info@lukecoutinho.com" className="text-slate-900 font-semibold hover:text-orange-500 transition-colors text-sm break-all">
-                info@lukecoutinho.com
-              </a>
-            </div>
-            <div>
-              <p className="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-2">Toll Free</p>
-              <p className="text-slate-900 font-semibold text-sm">1800 102 0253</p>
-            </div>
+        {/* Upper Footer: Newsletter & Brand */}
+        <div className="grid lg:grid-cols-2 gap-20 items-end mb-24 pb-24 border-b border-slate-50">
+          <div className="space-y-10">
+            <Link to="/" className="flex items-center gap-4 group w-fit">
+              <div className="w-12 h-12 bg-slate-950 rounded-2xl flex items-center justify-center transition-all group-hover:bg-orange-500">
+                <span className="text-white font-black text-2xl italic">L</span>
+              </div>
+              <div className="flex flex-col leading-none">
+                <span className="text-3xl font-black tracking-tighter text-slate-950 group-hover:text-orange-500 transition-colors">
+                  Luke<span className="text-orange-500 group-hover:text-slate-950">coutinho</span>
+                </span>
+                <span className="text-[10px] font-black text-slate-400 uppercase tracking-[0.4em] mt-1 pr-1 border-r-2 border-slate-100 inline-block">Integrative Lifestyle</span>
+              </div>
+            </Link>
             
-            {/* Social Icons */}
-            <div className="flex flex-wrap gap-3 pt-2">
-              {[Facebook, Twitter, Youtube, Linkedin, Instagram].map((Icon, idx) => (
-                <a key={idx} href="#" className="p-2.5 border border-slate-200 rounded-full text-slate-400 hover:border-orange-500 hover:text-orange-500 transition-all bg-white shadow-sm">
-                  <Icon size={16} />
-                </a>
-              ))}
+            <h2 className="text-4xl md:text-5xl font-black text-slate-950 leading-[0.9] tracking-tighter">
+              From struggle to <span className="text-orange-500 italic">Evolution.</span>
+            </h2>
+          </div>
+
+          <div className="space-y-8">
+            <p className="text-xl text-slate-500 font-medium max-w-md">Subscribe to our clinical insights and wellness protocols.</p>
+            <div className="flex items-center gap-4 p-2 bg-slate-50 rounded-3xl border border-slate-100 focus-within:border-orange-500 transition-all group">
+              <input 
+                type="email" 
+                placeholder="email@protocol.com" 
+                className="bg-transparent border-none outline-none px-6 py-4 flex-1 text-slate-950 font-bold placeholder:text-slate-300"
+              />
+              <button className="bg-slate-950 text-white px-10 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] hover:bg-orange-500 transition-all whitespace-nowrap shadow-xl">
+                Join Now
+              </button>
             </div>
           </div>
         </div>
 
-        {/* Copyright Section */}
-        <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400 text-center md:text-left">
-            © 2026 Luke Coutinho. All Rights Reserved.
-          </p>
-          {/* <div className="flex gap-6 text-[10px] font-bold uppercase tracking-widest text-slate-400">
-             <a href="#" className="hover:text-orange-500">Sitemap</a>
-             <a href="#" className="hover:text-orange-500">Privacy</a>
-          </div> */}
+        {/* Middle Footer: Links */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 mb-24">
+          
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black text-orange-500 uppercase tracking-[0.4em]">Practices</h4>
+            <ul className="space-y-4">
+              {['Signature Wellness', 'Cancer Care', 'Gut Health', 'Hormonal Care', 'Children Growth'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-slate-500 font-bold hover:text-slate-950 transition-colors flex items-center gap-2 group">
+                    {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black text-orange-500 uppercase tracking-[0.4em]">Learning</h4>
+            <ul className="space-y-4">
+              {['Masterclasses', 'Expert Courses', 'Recipe Corner', 'Resource Hub', 'Wisdom Blogs'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-slate-500 font-bold hover:text-slate-950 transition-colors flex items-center gap-2 group">
+                    {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black text-orange-500 uppercase tracking-[0.4em]">Corporate</h4>
+            <ul className="space-y-4">
+              {['Wellness Programs', 'Team Seminars', 'Global Keynotes', 'CSR Initiatives', 'Executive Coaching'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-slate-500 font-bold hover:text-slate-950 transition-colors flex items-center gap-2 group">
+                    {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black text-orange-500 uppercase tracking-[0.4em]">Legal</h4>
+            <ul className="space-y-4">
+              {['Privacy Protocol', 'Terms of Care', 'Public Disclosure', 'Program Ethics', 'Cookie Policy'].map((item) => (
+                <li key={item}>
+                  <a href="#" className="text-slate-500 font-bold hover:text-slate-950 transition-colors flex items-center gap-2 group">
+                    {item} <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-all group-hover:translate-x-1" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="space-y-8">
+            <h4 className="text-[10px] font-black text-orange-500 uppercase tracking-[0.4em]">Connect</h4>
+            <div className="space-y-6">
+              <div className="flex items-center gap-4 p-4 rounded-3xl bg-slate-50 border border-slate-100 group hover:border-orange-500 transition-all cursor-pointer">
+                 <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:text-orange-500 shadow-sm transition-all"><Mail size={18} /></div>
+                 <div>
+                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Global Support</p>
+                   <p className="text-sm font-black text-slate-950">info@lukecoutinho.com</p>
+                 </div>
+              </div>
+              <div className="flex items-center gap-4 p-4 rounded-3xl bg-slate-50 border border-slate-100 group hover:border-orange-500 transition-all cursor-pointer">
+                 <div className="w-10 h-10 rounded-2xl bg-white flex items-center justify-center text-slate-400 group-hover:text-orange-500 shadow-sm transition-all"><Phone size={18} /></div>
+                 <div>
+                   <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Toll Free</p>
+                   <p className="text-sm font-black text-slate-950">1800 102 0253</p>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Lower Footer: Copyright & Social */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-10 pt-12 border-t border-slate-100">
+          <div className="flex items-center gap-8">
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">&copy; {currentYear} Luke Coutinho Wellness</p>
+            <div className="h-4 w-[1px] bg-slate-200 hidden md:block" />
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Integrative Healthcare Ecosystem</p>
+          </div>
+          
+          <div className="flex items-center gap-4">
+            {socialLinks.map((social, idx) => (
+              <a 
+                key={idx} 
+                href={social.href} 
+                className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-400 flex items-center justify-center hover:bg-slate-950 hover:text-white transition-all shadow-sm hover:scale-110"
+              >
+                {social.icon}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
   );
 };
 
-export default Footer;
+export default Footer;

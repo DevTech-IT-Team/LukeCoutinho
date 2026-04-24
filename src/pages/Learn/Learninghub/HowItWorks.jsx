@@ -1,85 +1,115 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Search, BookOpen, Star, Heart } from "lucide-react";
+import { Search, BookOpen, Star, Heart, ArrowRight } from "lucide-react";
 
 const HowItWorks = () => {
   const steps = [
     {
       id: "01",
-      title: "Browse & Enroll",
-      desc: "Anyone aiming for better health through practical lifestyle changes.",
-      icon: <Search className="w-8 h-8 text-orange-600" />,
-      color: "border-orange-600",
-      bg: "bg-orange-500",
+      title: "Select Curriculum",
+      desc: "Identify the clinical vertical or lifestyle goal that aligns with your current needs.",
+      icon: <Search className="w-8 h-8" />,
     },
     {
       id: "02",
-      title: "Start Learning",
-      desc: "Follow bite-sized lessons, watch videos, engage with branching scenarios, and apply the tools.",
-      icon: <BookOpen className="w-8 h-8 text-orange-600" />,
-      color: "border-orange-600",
-      bg: "bg-orange-500",
+      title: "Interactive Mastery",
+      desc: "Engage with science-backed modules, branching scenarios, and clinical protocols.",
+      icon: <BookOpen className="w-8 h-8" />,
     },
     {
       id: "03",
-      title: "Earn & Celebrate",
-      desc: "Complete quizzes, track your progress, and unlock achievements. Share your learning journey with others.",
-      icon: <Star className="w-8 h-8 text-orange-500" />,
-      color: "border-orange-500",
-      bg: "bg-orange-500",
+      title: "Validate Learning",
+      desc: "Complete comprehensive assessments and unlock your digital empowerment certificate.",
+      icon: <Star className="w-8 h-8" />,
     },
     {
       id: "04",
-      title: "Live Better",
-      desc: "Use actionable insights to make choices that support your health, energy, and purpose — every single day.",
-      icon: <Heart className="w-8 h-8 text-orange-600" />,
-      color: "border-orange-600",
-      bg: "bg-orange-600",
+      title: "Realize Potential",
+      desc: "Apply actionable insights to transform your energy, longevity, and clinical outcomes.",
+      icon: <Heart className="w-8 h-8" />,
     },
   ];
 
   return (
-    <section className="py-14 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-black text-center text-slate-900 mb-16">
-          How It <span className="text-orange-600">Works</span>
-        </h2>
+    <section className="py-40 bg-[#0A0A0A] overflow-hidden text-white relative">
+      
+      {/* Background Decor */}
+      <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-l from-transparent via-white/10 to-transparent" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="max-w-[1440px] mx-auto px-8 relative z-10">
+        
+        <div className="flex flex-col items-center text-center space-y-8 mb-32">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.4em]"
+            >
+              The Learning Protocol
+            </motion.div>
+            <h2 className="text-6xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase italic">
+              Simple. <br />
+              <span className="text-orange-500 font-light not-italic">Powerful.</span>
+            </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {steps.map((step, index) => (
             <motion.div
               key={step.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.15 }}
               viewport={{ once: true }}
-              className={`relative p-8 pt-12 border-2 ${step.color} rounded-4xl text-center flex flex-col items-center h-full hover:shadow-xl transition-all duration-300`}
+              className="group relative"
             >
+               {/* Progress Line */}
+               {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute top-12 left-full w-full h-[1px] bg-white/10 z-0">
+                     <motion.div 
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
+                        className="h-full bg-orange-500" 
+                     />
+                  </div>
+               )}
 
-              <div
-                className={`absolute -top-5 left-1/2 -translate-x-1/2 ${step.bg} text-white px-4 py-1 rounded-lg flex flex-col items-center shadow-lg`}
-              >
-                <span className="text-[10px] uppercase font-bold tracking-tighter leading-none">
-                  Step
-                </span>
-                <span className="text-xl font-black leading-none">
-                  {step.id}
-                </span>
-              </div>
+               <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+                  <div className="relative">
+                     <div className="w-24 h-24 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 transform group-hover:rotate-12 group-hover:scale-110">
+                        {step.icon}
+                     </div>
+                     <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-slate-900 border border-white/20 flex items-center justify-center text-[10px] font-black text-orange-500">
+                        {step.id}
+                     </div>
+                  </div>
 
-              <div className="mb-6 opacity-80">{step.icon}</div>
-              <h3 className="text-[1.5rem] font-black text-slate-800 mb-4">
-                {step.title}
-              </h3>
-              <p className="text-slate-500 text-sm  font-bold leading-relaxed">
-                {step.desc}
-              </p>
+                  <div className="space-y-4">
+                     <h3 className="text-2xl font-black tracking-tight group-hover:text-orange-500 transition-all uppercase">
+                        {step.title}
+                     </h3>
+                     <p className="text-slate-400 font-medium leading-relaxed max-w-xs group-hover:text-slate-300 transition-colors">
+                        {step.desc}
+                     </p>
+                  </div>
+               </div>
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="flex justify-center mt-32"
+        >
+            <button className="px-16 py-6 glass-dark rounded-2xl text-white font-black uppercase tracking-widest text-xs flex items-center gap-6 hover:bg-white/10 transition-all group">
+                Begin Transformation <ArrowRight className="group-hover:translate-x-3 transition-transform" />
+            </button>
+        </motion.div>
       </div>
     </section>
   );
 };
 
 export default HowItWorks;
+

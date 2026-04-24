@@ -10,102 +10,94 @@ import {
   FileText,
   Target,
   Users,
+  ShieldCheck,
+  Zap,
+  Sparkles
 } from "lucide-react";
 import experienceImg from "../../../assets/learning-hub/learning-experience.jpg";
 
 const LearningExperience = () => {
   const features = [
-    { icon: <Layers size={22} />, text: "Expert-Guided Learning" },
-    { icon: <Lightbulb size={22} />, text: "Self-Paced Courses" },
-    { icon: <CheckCircle2 size={22} />, text: "Lifetime Access" },
-    { icon: <BookOpen size={22} />, text: "Structured Learning Levels" },
-    { icon: <HandHeart size={22} />, text: "Real-Life Tools" },
-    { icon: <Atom size={22} />, text: "Wellness Mastery, Simplified" },
-    { icon: <FileText size={22} />, text: "Bite-sized Lessons" },
-    { icon: <Target size={22} />, text: "Expert-Led Content" },
-    { icon: <Users size={22} />, text: "Inclusive Learning" },
+    { icon: <Layers size={22} />, text: "Expert-Guided Learning", desc: "Curated paths by clinical specialists." },
+    { icon: <Lightbulb size={22} />, text: "Self-Paced Courses", desc: "Learn on your own timeline, anywhere." },
+    { icon: <ShieldCheck size={22} />, text: "Lifetime Access", desc: "Your knowledge vault, available forever." },
+    { icon: <BookOpen size={22} />, text: "Structured Levels", desc: "From foundational to advanced protocols." },
+    { icon: <HandHeart size={22} />, text: "Real-Life Tools", desc: "Actionable frameworks for daily living." },
+    { icon: <Zap size={22} />, text: "Simplified Mastery", desc: "Complex science made incredibly simple." },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" },
-    },
-  };
-
   return (
-    <section className="py-10 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 lg:px-16">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900">
-            Inside Your{" "}
-            <span className="text-orange-600">Learning Experience</span>
-          </h2>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section className="py-40 bg-white overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-8">
+        
+        <div className="grid lg:grid-cols-2 gap-24 items-center">
+          
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            variants={imageVariants}
-            className="rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-200/50 relative"
+            transition={{ duration: 1 }}
+            className="relative"
           >
-            <img
-              src={experienceImg}
-              alt="Man learning on laptop with headphones"
-              className="w-full h-full object-cover"
-            />
-
-            <div className="absolute inset-0 bg-linear-to-t from-slate-900/10 to-transparent"></div>
+            <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl shadow-slate-200 relative group">
+              <img
+                src={experienceImg}
+                alt="Immersive Learning"
+                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent" />
+              
+              {/* Floating Badge */}
+              <div className="absolute bottom-12 left-12 p-8 glass rounded-[2.5rem] border border-white/20 shadow-2xl space-y-2 max-w-xs transition-all group-hover:translate-y-[-10px]">
+                 <Sparkles className="text-orange-500 mb-4" size={24} />
+                 <p className="text-xl font-black text-slate-950 leading-tight">Interactive Platform Experience</p>
+                 <p className="text-xs text-slate-500 font-medium tracking-tight leading-relaxed">Built for distraction-free deep learning and knowledge retention.</p>
+              </div>
+            </div>
           </motion.div>
 
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={containerVariants}
-            className="space-y-6 pl-4 lg:pl-0"
-          >
-            {features.map((item, index) => (
+          <div className="space-y-16">
+            <div className="space-y-8">
               <motion.div
-                key={index}
-                variants={itemVariants}
-                className="flex items-center gap-5 group"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                className="inline-flex items-center gap-3 px-5 py-2 bg-slate-950 rounded-full text-white"
               >
-                <div className="text-slate-400 group-hover:text-teal-500 transition-colors duration-300">
-                  {item.icon}
-                </div>
-                <p className="text-xl font-bold text-slate-700 group-hover:text-slate-900 transition-colors duration-300">
-                  {item.text}
-                </p>
+                <Target size={16} />
+                <span className="text-[10px] font-black uppercase tracking-[0.3em]">Platform Architecture</span>
               </motion.div>
-            ))}
-          </motion.div>
+
+              <h2 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter">
+                Inside Your <br />
+                <span className="text-orange-500 italic font-light text-7xl md:text-9xl">Evolution.</span>
+              </h2>
+              
+              <p className="text-2xl text-slate-400 font-medium leading-relaxed max-w-xl">
+                We designed an ecosystem that prioritizes clinical accuracy and human experience.
+              </p>
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-10">
+              {features.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="space-y-4 group cursor-pointer"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:bg-slate-950 group-hover:text-white transition-all duration-500 shadow-sm">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-slate-950 uppercase tracking-tighter mb-2 group-hover:text-orange-500 transition-colors">{item.text}</h4>
+                    <p className="text-sm text-slate-400 font-medium group-hover:text-slate-600 transition-colors leading-relaxed">{item.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -113,3 +105,4 @@ const LearningExperience = () => {
 };
 
 export default LearningExperience;
+

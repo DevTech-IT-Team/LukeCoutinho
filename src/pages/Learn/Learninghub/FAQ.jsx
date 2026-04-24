@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, ChevronRight } from "lucide-react";
+import { Plus, Minus, HelpCircle, MessageCircle } from "lucide-react";
 
 const FAQ = () => {
   const [activeId, setActiveId] = useState(null);
@@ -31,110 +31,106 @@ const FAQ = () => {
         "The duration varies by course, but since they are self-paced, you can complete them according to your own schedule.",
     },
     {
-      id: 5,
-      question: "What extra resources are provided?",
-      answer:
-        "You’ll get access to additional blogs and videos from Luke Coutinho related to the course topic for further learning.",
-    },
-    {
-      id: 6,
-      question: "What is the structure of the courses?",
-      answer:
-        "The courses are organized into modules, each containing topic-specific video content and a questionnaire to assess your understanding.",
-    },
-    {
-      id: 7,
-      question: "How do I log on to the course after purchase?",
-      answer: `To access your course, follow these simple steps:
-
-1. Click on the Login icon in the website header.
-2. Enter your credentials on the Login Page and sign in.
-3. Once logged in, click on the user icon in the header again—this will take you to your My Account Dashboard.
-4. Scroll down and find the Education Corner button. Click on it.
-5. You will be redirected to your Courses Dashboard, where you can explore all your enrolled courses, access certificates, and review quiz attempts.
-
-If you have trouble logging in, try resetting your password or contact our support team for assistance at support@staging.lukecoutinho.com.`,
-    },
-    {
-      id: 8,
-      question: "Are these courses available to download?",
-      answer:
-        "The courses are not available to be downloaded. However, you can access your course on the portal anytime.",
-    },
-    {
       id: 9,
-      question:
-        "Can these courses help me treat or manage a medical condition?",
+      question: "Can these courses help me treat a medical condition?",
       answer:
-        "There are several courses on health conditions that can help you learn to manage them better. However, they don’t replace medical guidance or personalized coaching. They’re meant to support your knowledge and understanding and are not intended to diagnose, treat, or cure medical conditions. For personalized guidance around your medical condition, we recommend joining our comprehensive programs or booking a consultation with our Integrative Experts.",
-    },
-    {
-      id: 10,
-      question:
-        "Are these courses a replacement for one of Team Luke's programs or consultations?",
-      answer:
-        "No, these courses are not a substitute for Luke’s tailored programs. While the courses provide valuable general wellness education, Luke’s programs are personalized to each client’s unique health needs and offer in-depth, hands-on support. Through one-on-one guidance, these programs focus on a holistic and highly individualized approach.",
+        "There are several courses on health conditions that can help you learn to manage them better. However, they don’t replace medical guidance or personalized coaching. They’re meant to support your knowledge and understanding and are not intended to diagnose, treat, or cure medical conditions.",
     },
   ];
 
-  const toggleAccordion = (id) => {
-    setActiveId(activeId === id ? null : id);
-  };
-
   return (
-    <section className="py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-16">
-        <div className="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm p-8 md:p-16 flex flex-col lg:flex-row gap-12 lg:gap-24">
-          <div className="lg:w-1/3">
-            <h2 className="text-4xl font-black text-slate-800 leading-tight">
-              Frequently Asked <br />
-              <span className="text-orange-600">Questions</span>
+    <section className="py-40 bg-[#FFFEFC] overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-8">
+        
+        <div className="grid lg:grid-cols-12 gap-24">
+          
+          {/* Header Content */}
+          <div className="lg:col-span-5 space-y-12">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="inline-flex items-center gap-3 px-5 py-2 bg-orange-100 rounded-full text-orange-600"
+            >
+              <HelpCircle size={18} />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Knowledge Base</span>
+            </motion.div>
+
+            <h2 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter">
+              Common <br />
+              <span className="text-orange-500 italic font-light">Questions.</span>
             </h2>
+
+            <p className="text-2xl text-slate-400 font-medium leading-relaxed max-w-sm">
+              Clarity is essential for transformation. We've compiled the most frequent inquiries for you.
+            </p>
+
+            <div className="p-10 bg-slate-950 rounded-[3rem] text-white space-y-8 relative overflow-hidden group">
+               <div className="absolute top-0 right-0 w-32 h-32 bg-orange-500/20 rounded-full blur-3xl" />
+               <MessageCircle className="text-orange-500" size={32} />
+               <div>
+                  <h4 className="text-xl font-black tracking-tight mb-2">Still Have Queries?</h4>
+                  <p className="text-sm text-slate-400 font-medium">Our clinical support team is ready to guide you.</p>
+               </div>
+               <button className="w-full py-5 bg-orange-500 rounded-2xl font-black uppercase tracking-widest text-[10px] hover:bg-white hover:text-slate-950 transition-all shadow-xl">
+                  Message Support
+               </button>
+            </div>
           </div>
 
-          <div className="lg:w-2/3 border-t lg:border-t-0 border-slate-100 pt-8 lg:pt-0">
-            <div className="divide-y divide-slate-100">
-              {faqs.map((faq) => (
-                <div key={faq.id} className="py-4">
+          {/* Accordion Sidebar */}
+          <div className="lg:col-span-7">
+            <div className="space-y-6">
+              {faqs.map((faq, index) => (
+                <motion.div
+                  key={faq.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`group rounded-[2.5rem] border transition-all duration-500 overflow-hidden ${
+                    activeId === faq.id 
+                    ? 'bg-white border-orange-500 shadow-2xl shadow-slate-200' 
+                    : 'bg-slate-50/50 border-slate-100 hover:border-slate-200'
+                  }`}
+                >
                   <button
-                    onClick={() => toggleAccordion(faq.id)}
-                    className="w-full flex items-center justify-between text-left group"
+                    onClick={() => setActiveId(activeId === faq.id ? null : faq.id)}
+                    className="w-full px-10 py-10 flex items-center justify-between text-left"
                   >
-                    <span
-                      className={`text-[16px] font-bold transition-colors ${
-                        activeId === faq.id
-                          ? "text-orange-600"
-                          : "text-slate-600 group-hover:text-slate-900"
-                      }`}
-                    >
-                      {faq.id}. {faq.question}
+                    <span className={`text-[22px] font-black tracking-tight transition-colors duration-500 ${
+                      activeId === faq.id ? 'text-orange-500' : 'text-slate-900 group-hover:text-orange-500'
+                    }`}>
+                      {faq.question}
                     </span>
-                    {activeId === faq.id ? (
-                      <ChevronDown size={18} className="text-orange-600" />
-                    ) : (
-                      <ChevronRight size={18} className="text-slate-400" />
-                    )}
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-500 ${
+                      activeId === faq.id ? 'bg-orange-500 text-white rotate-180' : 'bg-white text-slate-400 group-hover:bg-slate-950 group-hover:text-white'
+                    }`}>
+                      <Plus size={20} className={activeId === faq.id ? 'hidden' : 'block'} />
+                      <Minus size={20} className={activeId === faq.id ? 'block' : 'hidden'} />
+                    </div>
                   </button>
 
                   <AnimatePresence>
-                    {activeId === faq.id && faq.answer && (
+                    {activeId === faq.id && (
                       <motion.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="mt-4 text-slate-500 text-[1rem] leading-relaxed pr-8 whitespace-pre-line">
-                          {faq.answer}
-                        </p>
+                        <div className="px-10 pb-10">
+                           <div className="h-px w-full bg-slate-100 mb-8" />
+                           <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-2xl">
+                             {faq.answer}
+                           </p>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
+
         </div>
       </div>
     </section>

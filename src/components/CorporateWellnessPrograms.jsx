@@ -1,121 +1,134 @@
 import React from 'react';
-import { Heart, ShieldCheck, UserCheck, Activity, ArrowRight, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Heart, ShieldCheck, UserCheck, Activity, ArrowRight, Check, Target, Users, Zap } from 'lucide-react';
 
 const CorporateWellness = () => {
   const programs = [
     {
-      title: "Preventive Care",
-      desc: "Prioritizing health before issues arise",
-      icon: <Heart size={24} />,
-      accent: "border-orange-500",
+      title: "Preventive Leadership",
+      desc: "Cultivate a high-performance culture through proactive health strategies.",
+      icon: <Target size={24} />,
+      color: "text-blue-500",
+      bg: "bg-blue-50"
+    },
+    {
+      title: "Integrative Diagnostics",
+      desc: "Data-driven wellness insights tailored for the executive lifestyle.",
+      icon: <Activity size={24} />,
+      color: "text-orange-500",
       bg: "bg-orange-50"
     },
     {
-      title: "Personalized Solutions",
-      desc: "Tailored plans for individual needs",
-      icon: <UserCheck size={24} />,
-      accent: "border-slate-300",
-      bg: "bg-slate-50"
+      title: "Scalable Solutions",
+      desc: "From startups to conglomerates, we customize wellness at scale.",
+      icon: <Users size={24} />,
+      color: "text-teal-500",
+      bg: "bg-teal-50"
     },
     {
-      title: "Expert Guidance",
-      desc: "Trusted insights for professionals",
-      icon: <ShieldCheck size={24} />,
-      accent: "border-slate-300",
-      bg: "bg-slate-50"
-    },
-    {
-      title: "Condition Management",
-      desc: "Effective tools for chronic conditions",
-      icon: <Activity size={24} />,
-      accent: "border-slate-300",
-      bg: "bg-slate-50"
+      title: "Mental Fitness",
+      desc: "Stress resilience and mindfulness training for modern teams.",
+      icon: <Zap size={24} />,
+      color: "text-indigo-500",
+      bg: "bg-indigo-50"
     }
   ];
 
   return (
-    <section className="py-24 px-6 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          
-          {/* Left Side: Content & Action */}
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full text-orange-600 text-xs font-black uppercase tracking-widest mb-8">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              Corporate Partnership
-            </div>
-            
-            <h2 className="text-6xl md:text-7xl font-black text-slate-900 leading-[0.9] mb-8">
-              Corporate Wellness <br />
-              <span className="text-orange-500  font-light">Programs</span>
-            </h2>
-            
-            <p className="text-slate-500 text-xl font-medium leading-relaxed mb-10 max-w-xl">
-              Empowering organizations to build a culture of health. We transform workplaces into thriving 
-              environments where employee well-being drives performance and satisfaction.
-            </p>
+    <section className="py-40 bg-slate-50 relative overflow-hidden">
+      
+      {/* Decorative Layer */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-slate-900 skew-x-[12deg] translate-x-32 hidden lg:block pointer-events-none" />
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <button className="flex items-center justify-center gap-3 px-10 py-5 bg-slate-900 text-white font-black rounded-2xl hover:bg-orange-500 transition-all shadow-xl group">
-                LEARN MORE
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+      <div className="max-w-[1440px] mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-24 items-center">
+          
+          {/* Left Side: Strategic Narrative */}
+          <div className="space-y-10">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="inline-flex items-center gap-3 px-5 py-2 bg-white rounded-full shadow-sm border border-slate-100"
+            >
+              <ShieldCheck className="text-orange-500" size={18} />
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-900">Enterprise Solutions</span>
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-6xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter"
+            >
+              The Next Era of <br />
+              <span className="text-orange-500 italic font-light font-sans">Corporate Vitality.</span>
+            </motion.h2>
+            
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-2xl text-slate-500 font-medium leading-relaxed max-w-xl"
+            >
+              We partner with visionary organizations to build ecosystems of health, where every team member is empowered to thrive.
+            </motion.p>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="flex flex-col sm:flex-row gap-6"
+            >
+              <button className="px-10 py-6 bg-slate-950 text-white font-black rounded-2xl shadow-2xl hover:bg-orange-500 transition-all uppercase tracking-widest text-xs flex items-center gap-3">
+                Partner with us <ArrowRight size={20} />
               </button>
-              <button className="flex items-center justify-center gap-3 px-10 py-5 border-2 border-slate-200 text-slate-900 font-black rounded-2xl hover:bg-slate-50 transition-all">
-                BOOK A CALL
+              <button className="px-10 py-6 border-2 border-slate-200 text-slate-900 font-black rounded-2xl hover:bg-slate-100 transition-all uppercase tracking-widest text-xs">
+                View Offerings
               </button>
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right Side: Interactive Program Stack */}
-          <div className="relative">
-            {/* Background Decoration */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-slate-50 rounded-full blur-3xl -z-10" />
-            
-            <div className="grid gap-4">
-              {programs.map((item, index) => (
-                <div 
-                  key={index} 
-                  className={`group relative p-8 rounded-[2rem] border-2 transition-all duration-500 hover:scale-[1.02] ${
-                    index === 0 
-                      ? "bg-white border-orange-500 shadow-2xl shadow-orange-500/10" 
-                      : "bg-white border-slate-100 hover:border-orange-200 shadow-sm"
-                  }`}
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-6">
-                      <div className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-500 ${
-                        index === 0 ? "bg-orange-500 text-white" : "bg-slate-100 text-slate-400 group-hover:bg-orange-100 group-hover:text-orange-500"
-                      }`}>
-                        {item.icon}
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-black text-slate-900 mb-1">
-                          {item.title}
-                        </h3>
-                        <p className="text-slate-500 font-medium text-sm">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    {/* Checkmark indicator */}
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                      index === 0 ? "bg-orange-500 text-white" : "bg-slate-100 text-transparent group-hover:text-slate-300"
-                    }`}>
-                      <Check size={14} strokeWidth={4} />
-                    </div>
+          {/* Right Side: Interactive Program Showcase (Dark Theme Side) */}
+          <div className="grid gap-6">
+            {programs.map((item, index) => (
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0, x: 50 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group relative p-8 glass rounded-[2.5rem] border border-white/10 hover:border-orange-500/50 transition-all duration-500 bg-white/5 backdrop-blur-3xl"
+              >
+                <div className="flex items-center gap-8">
+                  <div className={`w-16 h-16 rounded-2xl ${item.bg} flex items-center justify-center ${item.color} group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 shadow-lg`}>
+                    {item.icon}
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-orange-400 transition-colors">
+                      {item.title}
+                    </h3>
+                    <p className="text-slate-400 font-medium leading-snug">
+                      {item.desc}
+                    </p>
+                  </div>
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:border-orange-500 group-hover:text-orange-500 transition-all">
+                    <Check size={20} />
                   </div>
                 </div>
-              ))}
-            </div>
-
-           
+              </motion.div>
+            ))}
           </div>
 
         </div>
       </div>
+
+      {/* Background Ambience */}
+      <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[150px] -z-10" />
     </section>
   );
 };
 
-export default CorporateWellness;
+export default CorporateWellness;
