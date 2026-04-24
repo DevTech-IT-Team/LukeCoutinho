@@ -1,137 +1,126 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Quote, Star, ArrowRight, ArrowLeft } from 'lucide-react';
+import React from "react";
+import { motion } from "framer-motion";
+import { Quote, Star, ArrowRight } from "lucide-react";
 
 const Testimonials = () => {
-  const [current, setCurrent] = useState(0);
-
   const testimonials = [
     {
       id: 1,
-      name: "Shashi Singh (USA)",
-      role: "Signature Wellness",
-      initials: "SS",
-      content: "Diagnosed with Ulcerative Colitis, I joined the Gut Health Program. My recent colonoscopy revealed my colon fully healed, with no inflammation.",
+      name: "Shashi Singh",
+      meta: "USA | Signature Wellness",
+      content: "Diagnosed with Ulcerative Colitis, I joined the Gut Health Program. My recent colonoscopy revealed my colon fully healed.",
+      pos: "top-0 right-[15%]",
+      delay: 0.1
     },
     {
       id: 2,
       name: "Satish",
-      role: "Corporate Executive",
-      initials: "S",
+      meta: "Corporate Executive",
       content: "At 29, half my life was marked by Psoriasis. The program worked wonders, and within 3 months, I was 95% patch-free.",
+      pos: "top-[25%] right-[40%]",
+      delay: 0.3
     },
     {
       id: 3,
       name: "Viral Patel",
-      role: "Hormonal Balance",
-      initials: "VP",
+      meta: "Hormonal Balance",
       content: "I lost 25+ lbs and gained a profound understanding of my overall health. Stubborn fat is finally disappearing.",
+      pos: "bottom-[5%] right-[25%]",
+      delay: 0.5
     },
     {
       id: 4,
       name: "Divakar Shetty",
-      role: "Cancer Support",
-      initials: "DS",
+      meta: "Cancer Support",
       content: "My 76-year-old dad battled Stage 3 Lymphoma. Today, he is in remission, skipping his final chemo cycle.",
+      pos: "bottom-[20%] right-0",
+      delay: 0.7
     }
   ];
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [testimonials.length]);
-
   return (
-    <section className="py-40 px-6 bg-[#FFFEFC] overflow-hidden relative">
+    <section className="py-40 bg-white overflow-hidden relative min-h-[900px]">
       
-      {/* Artistic Overlay */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 translate-x-20 pointer-events-none" />
+      {/* Background Graphic */}
+      <div className="absolute inset-0 z-0 opacity-10 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_#F97316_0%,_transparent_70%)] blur-[120px]" />
+      </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-12 gap-24 items-center">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-20 relative z-10 h-full">
+        <div className="grid lg:grid-cols-12 gap-24 h-full items-center">
           
-          {/* Header & Nav */}
-          <div className="lg:col-span-5 space-y-10">
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-3 px-5 py-2 bg-orange-100/50 rounded-full text-orange-600"
-            >
-              <Quote size={18} fill="currentColor" />
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Community Impact</span>
-            </motion.div>
-
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-7xl md:text-8xl font-black text-slate-900 leading-[0.9] tracking-tighter"
-            >
-              Voices of <br />
-              <span className="text-orange-500 italic font-light">Transformation.</span>
-            </motion.h2>
-
-            <p className="text-2xl text-slate-500 font-medium leading-relaxed max-w-sm">
-              Real stories from our global family, showcasing the power of integrative healing.
-            </p>
-
-            <div className="flex items-center gap-10">
-              <div className="flex gap-2">
-                {testimonials.map((_, i) => (
-                  <button 
-                    key={i} 
-                    onClick={() => setCurrent(i)}
-                    className={`h-1 transition-all duration-500 rounded-full ${
-                      current === i ? "w-12 bg-orange-500" : "w-4 bg-slate-200"
-                    }`}
-                  />
-                ))}
+          {/* Left Panel: Narrative */}
+          <div className="lg:col-span-5 space-y-12">
+            <div className="space-y-8">
+              <div className="flex items-center gap-6">
+                 <div className="h-[2px] w-12 bg-orange-500" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500">Universal Success</span>
               </div>
-              <span className="text-slate-300 font-black text-sm tracking-widest">
-                0{current + 1} / 0{testimonials.length}
-              </span>
+              
+              <h2 className="text-6xl md:text-8xl font-black text-slate-950 leading-[1] tracking-tighter">
+                 Hundreds of <br />
+                 <span className="text-orange-500 font-light italic lowercase serif">Happy Seekers.</span>
+              </h2>
+
+              <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-sm">
+                Several of them we asked how satisfied they are with our clinical modules. Here are their statement of transformation...
+              </p>
             </div>
+
+            <button className="px-12 py-5 border-2 border-orange-500 text-orange-600 font-black rounded-full hover:bg-orange-500 hover:text-white transition-all uppercase tracking-widest text-[10px] flex items-center gap-4 group">
+               Want to become our next success story? <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+            </button>
           </div>
 
-          {/* Cards Showcase */}
-          <div className="lg:col-span-7 relative min-h-[500px]">
-            <AnimatePresence mode="wait">
+          {/* Right Panel: Scattered Floating Cards */}
+          <div className="lg:col-span-7 relative h-[700px] hidden lg:block">
+            {testimonials.map((item) => (
               <motion.div
-                key={current}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="absolute inset-0"
+                key={item.id}
+                initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: item.delay, duration: 1 }}
+                whileHover={{ y: -5, zIndex: 50, scale: 1.05 }}
+                className={`absolute ${item.pos} w-[340px] bg-white p-8 rounded-[2rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] border border-slate-50 transition-all cursor-pointer`}
               >
-                <div className="bg-white h-full p-12 md:p-20 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-50 flex flex-col justify-between group">
-                  
-                  <div className="space-y-8">
-                    <div className="flex gap-1.5 text-orange-500">
-                      {[1, 2, 3, 4, 5].map(i => <Star key={i} size={18} fill="currentColor" />)}
-                    </div>
-                    
-                    <p className="text-3xl md:text-4xl font-black text-slate-900 leading-tight tracking-tight italic">
-                      “{testimonials[current].content}”
-                    </p>
-                  </div>
+                {/* Quote Badge */}
+                <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center text-white shadow-lg">
+                   <Quote size={20} fill="currentColor" />
+                </div>
 
-                  <div className="flex items-center gap-6 pt-12 border-t border-slate-50">
-                    <div className="w-20 h-20 rounded-3xl bg-slate-950 flex items-center justify-center text-white font-black text-2xl shadow-2xl group-hover:bg-orange-500 transition-colors">
-                      {testimonials[current].initials}
-                    </div>
-                    <div>
-                      <h4 className="text-2xl font-black text-slate-900">{testimonials[current].name}</h4>
-                      <p className="text-orange-500 text-[10px] font-black uppercase tracking-[0.2em]">{testimonials[current].role}</p>
-                    </div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center text-white font-black text-sm">
+                    {item.name.charAt(0)}
                   </div>
+                  <div>
+                    <h4 className="text-sm font-bold text-slate-950 leading-none">{item.name}</h4>
+                    <p className="text-[10px] text-slate-400 font-medium tracking-tight mt-1">{item.meta}</p>
+                  </div>
+                </div>
 
+                <p className="text-sm text-slate-600 font-medium leading-relaxed">
+                  {item.content}
+                </p>
+
+                <div className="flex gap-1 text-orange-400 mt-6">
+                   {[1,2,3,4,5].map(i => <Star key={i} size={10} fill="currentColor" />)}
                 </div>
               </motion.div>
-            </AnimatePresence>
+            ))}
+          </div>
+
+          {/* Mobile Carousel fallback would go here or just stack them */}
+          <div className="lg:hidden grid grid-cols-1 gap-8">
+             {testimonials.map((item) => (
+               <div key={item.id} className="p-8 bg-white rounded-3xl border border-slate-100 shadow-xl">
+                  <p className="text-lg text-slate-600 font-medium italic">"{item.content}"</p>
+                  <div className="mt-6 flex items-center gap-4">
+                     <div className="w-10 h-10 rounded-full bg-slate-950 flex items-center justify-center text-white font-black">{item.name.charAt(0)}</div>
+                     <span className="text-sm font-bold">{item.name}</span>
+                  </div>
+               </div>
+             ))}
           </div>
 
         </div>
@@ -140,4 +129,4 @@ const Testimonials = () => {
   );
 };
 
-export default Testimonials;
+export default Testimonials;

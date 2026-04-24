@@ -31,25 +31,32 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-40 bg-[#0A0A0A] overflow-hidden text-white relative">
+    <section className="py-40 bg-white overflow-hidden text-slate-950 relative">
       
-      {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-full h-[1px] bg-gradient-to-l from-transparent via-white/10 to-transparent" />
+      {/* Editorial Grid Design */}
+      <div className="absolute top-0 right-0 w-[45%] h-full bg-[#FCF9F5] -skew-x-6 translate-x-[15%] pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-8 relative z-10">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-20 relative z-10">
         
-        <div className="flex flex-col items-center text-center space-y-8 mb-32">
+        <div className="grid lg:grid-cols-2 gap-24 items-center mb-32">
+          <div className="space-y-10">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              className="px-6 py-2 bg-white/5 border border-white/10 rounded-full text-[10px] font-black uppercase tracking-[0.4em]"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-6"
             >
-              The Learning Protocol
+              <div className="h-[2px] w-12 bg-orange-500" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500">The Path to Mastery</span>
             </motion.div>
-            <h2 className="text-6xl md:text-9xl font-black leading-[0.85] tracking-tighter uppercase italic">
-              Simple. <br />
-              <span className="text-orange-500 font-light not-italic">Powerful.</span>
+            
+            <h2 className="text-6xl md:text-[6.5rem] font-bold text-slate-950 leading-[0.9] tracking-tighter uppercase whitespace-pre-line">
+              Your <br />
+              <span className="text-orange-500 italic font-light lowercase serif">Process.</span>
             </h2>
+          </div>
+          <p className="text-2xl text-slate-400 font-medium leading-relaxed max-w-sm">
+             A four-step clinical protocol designed to ensure knowledge retention and lifestyle transformation.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
@@ -60,35 +67,23 @@ const HowItWorks = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.15 }}
               viewport={{ once: true }}
-              className="group relative"
+              className="group relative h-full flex flex-col"
             >
-               {/* Progress Line */}
-               {index < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-12 left-full w-full h-[1px] bg-white/10 z-0">
-                     <motion.div 
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
-                        transition={{ duration: 1, delay: 0.5 + index * 0.2 }}
-                        className="h-full bg-orange-500" 
-                     />
-                  </div>
-               )}
-
-               <div className="relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8">
+               <div className="bg-[#FCF9F5] p-10 rounded-[3rem] border border-orange-50 flex-1 flex flex-col items-center lg:items-start text-center lg:text-left space-y-8 transition-all hover:bg-white hover:shadow-2xl hover:shadow-orange-500/5 group-hover:-translate-y-4 duration-500">
                   <div className="relative">
-                     <div className="w-24 h-24 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-orange-500 group-hover:bg-orange-500 group-hover:text-white transition-all duration-500 transform group-hover:rotate-12 group-hover:scale-110">
+                     <div className="w-20 h-20 rounded-2xl bg-white flex items-center justify-center text-orange-500 group-hover:bg-slate-950 group-hover:text-white transition-all duration-500 shadow-sm border border-orange-50">
                         {step.icon}
                      </div>
-                     <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-slate-900 border border-white/20 flex items-center justify-center text-[10px] font-black text-orange-500">
+                     <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-slate-950 flex items-center justify-center text-[8px] font-black text-white">
                         {step.id}
                      </div>
                   </div>
 
                   <div className="space-y-4">
-                     <h3 className="text-2xl font-black tracking-tight group-hover:text-orange-500 transition-all uppercase">
+                     <h3 className="text-2xl font-bold tracking-tight text-slate-950 uppercase">
                         {step.title}
                      </h3>
-                     <p className="text-slate-400 font-medium leading-relaxed max-w-xs group-hover:text-slate-300 transition-colors">
+                     <p className="text-sm text-slate-400 font-medium leading-relaxed">
                         {step.desc}
                      </p>
                   </div>
@@ -102,7 +97,7 @@ const HowItWorks = () => {
             whileInView={{ opacity: 1 }}
             className="flex justify-center mt-32"
         >
-            <button className="px-16 py-6 glass-dark rounded-2xl text-white font-black uppercase tracking-widest text-xs flex items-center gap-6 hover:bg-white/10 transition-all group">
+            <button className="px-16 py-6 bg-slate-950 text-white font-bold uppercase tracking-widest text-xs flex items-center gap-6 hover:bg-orange-500 transition-all group shadow-2xl">
                 Begin Transformation <ArrowRight className="group-hover:translate-x-3 transition-transform" />
             </button>
         </motion.div>
@@ -112,4 +107,3 @@ const HowItWorks = () => {
 };
 
 export default HowItWorks;
-
