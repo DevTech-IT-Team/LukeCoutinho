@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -44,13 +44,21 @@ import ScormPlayer from './pages/Learn/Learninghub/ScormPlayer'
 import BookConsult from './pages/BookConsult'
 import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
+import Assessment from './pages/Assessment/Assessment'
+import AssessmentResults from './pages/Assessment/AssessmentResults'
 
-function App() {
+function AppShell() {
+  const location = useLocation()
+  const chromelessPaths = ['/', '/assessment', '/assessment/results']
+  const isChromeless = chromelessPaths.some((p) =>
+    p === '/' ? location.pathname === '/' : location.pathname.startsWith(p)
+  )
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
-        <Navbar />
+        {!isChromeless && <Navbar />}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -83,8 +91,6 @@ function App() {
             <Route path="/Workshop/CorporateTalks/Home" element={<CorporateTalks />} />
             <Route path="/Learn/Blogs/Home" element={<Blogs />} />
             <Route path="/learn/learninghub/home" element={<Learninghub />} />
-
-            
             <Route path="/Podcast/Podcast" element={<Podcast />} />
             <Route path="/Podcast/Podcast/PodcastVideos" element={<PodcastVideos />} />
             <Route path="/Careers/Careers" element={<Careers />} />
@@ -94,11 +100,21 @@ function App() {
             <Route path="/book-consult" element={<BookConsult />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/assessment" element={<Assessment />} />
+            <Route path="/assessment/results" element={<AssessmentResults />} />
           </Routes>
         </main>
-        <ChatBot />
+        {!isChromeless && <ChatBot />}
         <Footer />
       </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppShell />
     </Router>
   )
 }
