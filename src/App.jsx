@@ -41,6 +41,9 @@ import ContactUs from './pages/ContactUs/ContactUs'
 import Resources from './pages/Resources'
 import BharatDish from './pages/BharatDish'
 import ScormPlayer from './pages/Learn/Learninghub/ScormPlayer'
+import BookConsult from './pages/BookConsult'
+import Payment from './pages/Payment'
+import PaymentSuccess from './pages/PaymentSuccess'
 
 function App() {
   return (
@@ -88,6 +91,9 @@ function App() {
             <Route path="/ContactUs/ContactUs" element={<ContactUs />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/bharat/dish" element={<BharatDish />} />
+            <Route path="/book-consult" element={<BookConsult />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
           </Routes>
         </main>
         <ChatBot />

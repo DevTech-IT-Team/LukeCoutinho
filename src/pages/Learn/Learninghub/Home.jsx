@@ -23,8 +23,8 @@ function Home() {
       <LearningExperience />
       <FAQ />
       <HowItWorks />
-      <GiftBanner />
-      <WhoWillBenefit />
+      {/* <GiftBanner /> */}
+      {/* <WhoWillBenefit /> */}
       <TeamsWorkplaces />
       <CorporateCourses />
       <AboutLukeSection/>

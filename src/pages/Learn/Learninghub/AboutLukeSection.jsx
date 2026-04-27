@@ -5,82 +5,67 @@ import aboutLukeImage from "../../../assets/learning-hub/about-profile.png";
 
 export const AboutLukeSection = () => {
   return (
-    <section className="py-40 bg-white overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-8">
-        
-        <div className="relative grid lg:grid-cols-12 gap-12 lg:gap-0 items-center">
+    <section className="py-24 bg-[#FCF9F5] overflow-hidden">
+      <div className="max-w-[1280px] mx-auto px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
           
+          {/* Left: Image */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-6 relative z-10"
+            className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl shadow-slate-200">
+            <div className="aspect-[4/5] rounded-[3rem] overflow-hidden shadow-xl">
                <img
                  src={aboutLukeImage}
                  alt="Luke Coutinho"
-                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-105 hover:scale-100"
+                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                />
-               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 to-transparent" />
             </div>
-            
-            {/* Artistic Floating Element */}
-            <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-orange-500 rounded-[3rem] -z-10 animate-pulse" />
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-orange-500 rounded-[2.5rem] -z-10" />
           </motion.div>
 
+          {/* Right: Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-7 lg:-ml-24 relative z-20"
+            className="space-y-10"
           >
-            <div className="bg-white p-12 md:p-24 rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.1)] border border-slate-50 space-y-12">
-               
-               <div className="space-y-8">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    className="inline-flex items-center gap-3 px-5 py-2 bg-orange-100 rounded-full text-orange-600"
-                  >
-                    <User size={16} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">The Visionary</span>
-                  </motion.div>
+            <div className="space-y-6">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-100 rounded-full text-orange-600 text-[10px] font-black uppercase tracking-widest">
+                <User size={14} /> The Visionary
+              </div>
 
-                  <h2 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase whitespace-pre-line">
-                    A Different <br />
-                    Conversation.
-                  </h2>
+              <h2 className="text-5xl md:text-7xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase">
+                A Different <br /> Conversation.
+              </h2>
 
-                  <p className="text-2xl text-slate-400 font-medium leading-relaxed max-w-xl">
-                    With Luke, the focus is on <span className="text-slate-950 font-black">YOU.</span> Beyond clinical data, we explore your story and everyday reality.
-                  </p>
-               </div>
-
-               <div className="grid sm:grid-cols-2 gap-8">
-                  <div className="space-y-4">
-                     <ShieldCheck className="text-orange-500" size={24} />
-                     <h4 className="text-lg font-black text-slate-950 tracking-tight uppercase leading-none">Foundations First</h4>
-                     <p className="text-sm text-slate-400 font-medium">Evidence-based protocols that respect your medical journey.</p>
-                  </div>
-                  <div className="space-y-4">
-                     <Sparkles className="text-orange-500" size={24} />
-                     <h4 className="text-lg font-black text-slate-950 tracking-tight uppercase leading-none">Human-Centric</h4>
-                     <p className="text-sm text-slate-400 font-medium">Designed to make you feel heard and understood.</p>
-                  </div>
-               </div>
-
-               <div className="pt-8">
-                  <button className="px-12 py-6 bg-slate-950 text-white rounded-2xl font-black uppercase tracking-widest text-xs flex items-center gap-6 hover:bg-orange-500 transition-all group">
-                     The Narrative <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-                  </button>
-               </div>
+              <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-lg">
+                Focusing on <span className="text-slate-950 font-bold">YOU.</span> We move beyond clinical data to understand your story and daily reality.
+              </p>
             </div>
-          </motion.div>
 
+            <div className="grid sm:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <ShieldCheck className="text-orange-500" size={20} />
+                <h4 className="font-black text-slate-950 uppercase text-sm">Foundations First</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">Evidence-based protocols for your medical journey.</p>
+              </div>
+              <div className="space-y-2">
+                <Sparkles className="text-orange-500" size={20} />
+                <h4 className="font-black text-slate-950 uppercase text-sm">Human-Centric</h4>
+                <p className="text-xs text-slate-400 leading-relaxed">Designed to ensure you feel heard and understood.</p>
+              </div>
+            </div>
+
+            <button className="px-10 py-5 bg-slate-950 text-white rounded-xl font-bold uppercase tracking-widest text-[10px] flex items-center gap-4 hover:bg-orange-500 transition-all group">
+              Read The Narrative <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
-

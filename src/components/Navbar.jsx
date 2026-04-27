@@ -178,6 +178,12 @@ const Navbar = () => {
 
           {/* Action Ecosystem */}
           <div className="flex items-center space-x-4">
+            <Link
+              to="/book-consult"
+              className="hidden lg:flex px-10 py-4 bg-slate-950 text-white rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] hover:bg-orange-500 hover:shadow-2xl hover:shadow-orange-500/40 transition-all duration-500"
+            >
+              Book a Consult
+            </Link>
             <a
               href="https://www.lmsathena.com/login"
               target="_blank"
@@ -302,6 +308,13 @@ const Navbar = () => {
               </div>
 
               <div className="p-8 space-y-4 bg-slate-50">
+                <Link
+                  to="/book-consult"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center w-full py-6 bg-slate-950 text-white rounded-4xl font-black uppercase tracking-[0.3em] hover:bg-orange-500 transition-all shadow-2xl"
+                >
+                  Book a Consult
+                </Link>
                 <a
                   href="https://www.lmsathena.com/login"
                   target="_blank"

@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ShoppingCart, ArrowRight, Briefcase, Sparkles, Clock, BookOpen } from "lucide-react";
+import { ShoppingCart, Briefcase, Sparkles, Clock, BookOpen } from "lucide-react";
 
 const CorporateCourses = () => {
   const corpCourses = [
@@ -15,7 +15,7 @@ const CorporateCourses = () => {
     {
       title: "Sustainable Output",
       chapters: "12 Chapters",
-      duration: "45 Minutes",
+      duration: "45 Mins",
       price: "699/-",
       tag: "Performance",
       image: "https://images.unsplash.com/photo-1493612276216-ee3925520721?q=80&w=800&auto=format&fit=crop",
@@ -31,7 +31,7 @@ const CorporateCourses = () => {
     {
       title: "Biological Rituals",
       chapters: "06 Lessons",
-      duration: "55 Minutes",
+      duration: "55 Mins",
       price: "699/-",
       tag: "Foundational",
       image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=800&auto=format&fit=crop",
@@ -40,65 +40,68 @@ const CorporateCourses = () => {
 
   return (
     <div className="bg-[#FFFEFC]">
-      <section className="py-40 max-w-[1440px] mx-auto px-8">
+      <section className="py-24 max-w-[1440px] mx-auto px-6 lg:px-20">
         
-        <div className="flex flex-col items-center text-center space-y-8 mb-24">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              className="px-6 py-2 bg-slate-950 rounded-full text-white flex items-center gap-3"
-            >
-              <Briefcase size={16} />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em]">Corporate Catalogue</span>
-            </motion.div>
-            <h2 className="text-6xl md:text-8xl font-black text-slate-950 leading-[0.9] tracking-tighter uppercase">
-              Curated for <br />
-              <span className="text-orange-500 italic font-light not-uppercase">Institutions.</span>
-            </h2>
+        {/* Header */}
+        <div className="flex flex-col items-center text-center space-y-6 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="px-5 py-1.5 bg-slate-950 rounded-full text-white flex items-center gap-3"
+          >
+            <Briefcase size={14} className="text-orange-500" />
+            <span className="text-[9px] font-black uppercase tracking-[0.3em]">Catalogue 2024</span>
+          </motion.div>
+          <h2 className="text-5xl md:text-7xl font-black text-slate-950 leading-none tracking-tighter uppercase">
+            Curated for <br />
+            <span className="text-orange-500 italic font-light serif lowercase">Institutions.</span>
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        {/* Course Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {corpCourses.map((course, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -15 }}
-              className="relative group aspect-[3/4] overflow-hidden rounded-[3rem] shadow-2xl bg-slate-950"
+              className="relative group aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-slate-950 cursor-pointer"
             >
               <img
                 src={course.image}
                 alt={course.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-110 group-hover:opacity-40 transition-all duration-1000"
+                className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:scale-110 group-hover:opacity-30 transition-all duration-[1.5s]"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
 
-              <span className="absolute top-10 left-10 bg-orange-500 text-white text-[9px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest z-20">
+              <span className="absolute top-8 left-8 bg-white/10 backdrop-blur-md text-white text-[8px] font-black px-4 py-1.5 rounded-full uppercase tracking-widest border border-white/10">
                 {course.tag}
               </span>
 
-              <div className="absolute inset-0 p-10 flex flex-col justify-end gap-6 z-10 translate-y-6 group-hover:translate-y-0 transition-transform duration-700">
-                <h3 className="text-3xl font-black text-white leading-none tracking-tighter uppercase">
+              <div className="absolute inset-0 p-8 flex flex-col justify-end transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                <h3 className="text-2xl font-bold text-white leading-tight tracking-tight uppercase mb-4">
                   {course.title}
                 </h3>
 
-                <div className="grid grid-cols-2 gap-4 border-y border-white/10 py-6">
-                  <div className="flex items-center gap-2 text-slate-300">
-                    <BookOpen size={14} className="text-orange-500" />
-                    <span className="text-[10px] font-black uppercase tracking-tight">{course.chapters}</span>
+                <div className="flex items-center gap-4 mb-6 pt-4 border-t border-white/10">
+                  <div className="flex items-center gap-1.5 text-slate-400">
+                    <BookOpen size={12} className="text-orange-500" />
+                    <span className="text-[9px] font-bold uppercase tracking-tighter">{course.chapters}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-slate-300">
-                    <Clock size={14} className="text-orange-500" />
-                    <span className="text-[10px] font-black uppercase tracking-tight">{course.duration}</span>
+                  <div className="flex items-center gap-1.5 text-slate-400">
+                    <Clock size={12} className="text-orange-500" />
+                    <span className="text-[9px] font-bold uppercase tracking-tighter">{course.duration}</span>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-between">
-                   <div className="text-2xl font-black text-white tracking-tighter">₹{course.price}</div>
-                   <button className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-slate-950 hover:bg-orange-500 hover:text-white transition-all shadow-xl active:scale-90">
-                      <ShoppingCart size={20} />
+                   <div className="text-xl font-black text-white tracking-tighter">₹{course.price}</div>
+                   <button className="w-10 h-10 bg-orange-500 rounded-xl flex items-center justify-center text-white hover:bg-white hover:text-slate-950 transition-all shadow-lg active:scale-95">
+                      <ShoppingCart size={16} />
                    </button>
                 </div>
               </div>
@@ -107,59 +110,46 @@ const CorporateCourses = () => {
         </div>
       </section>
 
-      {/* Hero Visual Section - "Coming Soon" */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-fixed bg-center"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1600')`,
-          }}
-        >
-          <div className="absolute inset-0 bg-slate-950/90" />
-        </div>
+      {/* Evolution Section */}
+      {/* <section className="relative h-[70vh] flex items-center justify-center overflow-hidden bg-slate-950">
+        <div className="absolute inset-0 opacity-20 bg-[url('https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=1600')] bg-cover bg-center mix-blend-overlay" />
         
-        {/* Artistic Glow */}
-        <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-orange-500/5 rounded-full blur-[200px] -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
 
-        <div className="relative z-10 text-center px-8 w-full max-w-[1440px]">
+        <div className="relative z-10 text-center px-6 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="space-y-10"
           >
-            <div className="flex flex-col items-center space-y-12">
-               <motion.div 
-                  initial={{ rotate: 180, opacity: 0 }}
-                  whileInView={{ rotate: 0, opacity: 1 }}
-                  transition={{ duration: 1, type: "spring" }}
-                  className="w-20 h-20 rounded-3xl border border-white/10 flex items-center justify-center text-orange-500 glass-dark"
-               >
-                  <Sparkles size={32} />
-               </motion.div>
+            <div className="flex justify-center">
+              <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-orange-500 backdrop-blur-xl">
+                <Sparkles size={28} />
+              </div>
+            </div>
 
-               <h2 className="text-7xl md:text-9xl font-black text-white leading-[0.85] tracking-tighter uppercase whitespace-pre-line">
-                  The Evolution <br /> 
-                  <span className="text-orange-500 italic font-light not-uppercase">Continues.</span>
-               </h2>
+            <h2 className="text-6xl md:text-8xl font-black text-white leading-[0.85] tracking-tighter uppercase">
+              The Evolution <br /> 
+              <span className="text-orange-500 italic font-light serif lowercase">continues.</span>
+            </h2>
 
-               <p className="text-2xl text-slate-400 font-medium leading-relaxed max-w-2xl mx-auto">
-                  New masterclasses and clinical protocols added every lunar cycle. Stay ahead with curated health education.
-               </p>
+            <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-xl mx-auto">
+              New masterclasses and clinical protocols added every lunar cycle. Stay ahead with curated health education.
+            </p>
 
-               <div className="flex items-center gap-6 pt-8">
-                  <div className="h-px w-20 bg-white/10" />
-                  <span className="text-[10px] font-black uppercase tracking-[0.6em] text-orange-500">
-                    Luke Coutinho Global
-                  </span>
-                  <div className="h-px w-20 bg-white/10" />
-               </div>
+            <div className="flex items-center justify-center gap-4 pt-6">
+              <div className="h-px w-12 bg-white/20" />
+              <span className="text-[9px] font-black uppercase tracking-[0.5em] text-orange-500">
+                Luke Coutinho Global
+              </span>
+              <div className="h-px w-12 bg-white/20" />
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
 
 export default CorporateCourses;
-

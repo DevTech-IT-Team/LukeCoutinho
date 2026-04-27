@@ -51,8 +51,8 @@ const Hero = () => {
               animate={{ opacity: 1, x: 0 }}
               className="flex items-center gap-6"
             >
-              <div className="h-[2px] w-12 bg-orange-500" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500">Why Choose Our Learning Hub</span>
+              {/* <div className="h-[2px] w-12 bg-orange-500" />
+              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-orange-500">Why Choose Our Learning Hub</span> */}
             </motion.div>
 
             <motion.div
@@ -60,12 +60,12 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               className="space-y-8"
             >
-              <h1 className="text-6xl md:text-[5.5rem] font-bold text-slate-950 leading-[1.05] tracking-tight">
+              <h1 className="text-6xl md:text-[3.5rem] font-bold text-slate-950 leading-[1.05] tracking-tight">
                 Everything you need to <br /> 
                 <span className="text-orange-500">Master Your Health.</span>
               </h1>
   
-              <p className="text-xl text-slate-500 font-medium leading-relaxed max-w-xl">
+              <p className="text-md text-slate-500 font-medium leading-relaxed max-w-xl">
                 Bite-sized, expert-led clinical wisdom from Luke Coutinho. Transition from education to lasting personal transformation through our structured ecosystems.
               </p>
             </motion.div>
@@ -84,14 +84,14 @@ const Hero = () => {
           </div>
 
           {/* Right Bento Grid Stats */}
-          <div className="grid grid-cols-2 gap-8 relative">
+          <div className="grid grid-cols-2 gap-2 relative">
             {bentoStats.map((stat, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + (idx * 0.1) }}
-                whileHover={{ y: -10, scale: 1.02 }}
+                // whileHover={{ y: -10, scale: 1.02 }}
                 className={`p-10 rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center text-center space-y-6 border transition-all duration-500 ${
                   stat.theme === 'orange' ? 'bg-[#F97316] text-white border-transparent' : 
                   stat.theme === 'dark' ? 'bg-slate-950 text-white border-transparent' :
