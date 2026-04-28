@@ -24,8 +24,8 @@ const slides = [
     eyebrow: 'The Approach',
     title: 'Heal the Root Cause',
     sub: 'Foundational Medicine Approach',
-    cta: 'Explore Programs',
-    to: '/programs/signature-wellness',
+    cta: 'Become a Member',
+    to: '/masterclass',
     video: clip5,
   },
   {
