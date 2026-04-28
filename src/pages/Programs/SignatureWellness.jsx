@@ -21,6 +21,8 @@ import heroimg from '../../assets/signature.jpg';
 import teamImg from '../../assets/neimg.jpg';
 import wellnessImg from '../../assets/wellness.jpg';
 import exclusiveImg from '../../assets/ExclusiveWellness.jpg';
+// At the top with your other imports:
+import signatureVideo from '../../assets/avatar.mp4';
 
 const SignatureWellness = () => {
     const [activePillar, setActivePillar] = useState(0);
@@ -150,17 +152,17 @@ const SignatureWellness = () => {
                         </div>
                     </div>
                     <div className="relative">
-                        <div className="aspect-video rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] relative group bg-slate-50 ring-1 ring-slate-100">
-                            <iframe 
-                                className="w-full h-full transform transition-transform duration-700 group-hover:scale-[1.01]"
-                                src="https://www.youtube.com/embed/jcjvaLy4tn0" 
-                                title="Signature Wellness Program Intro" 
-                                frameBorder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowFullScreen
-                            ></iframe>
-                        </div>
-                    </div>
+  <div className="aspect-video rounded-[3rem] overflow-hidden shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)] relative group bg-slate-50 ring-1 ring-slate-100">
+    <video
+      className="w-full h-full object-cover"
+      src={signatureVideo}
+      controls
+      poster={heroimg} // Optional: shows a preview image before play
+    >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
                 </div>
             </section>
 
