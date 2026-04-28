@@ -12,6 +12,7 @@ import './Hero.css';
 const navigationLinks = [
   { label: 'Heal from Within', to: '/about/approach' },
   { label: 'Wellness Programs', to: '/programs/signature-wellness' },
+  { label: 'Masterclass', to: '/masterclass' },
   { label: 'Courses', to: '/learn/learninghub/home' },
   { label: 'Recipes', to: '/bharat/dish' },
   { label: 'eBooks', to: '/resources' },
