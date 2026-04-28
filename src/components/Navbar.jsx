@@ -51,9 +51,13 @@ const Navbar = () => {
       ],
     },
     {
+      title: 'Masterclass',
+      href: '/masterclass',
+    },
+    {
       title: 'Workshops',
       links: [
-        { label: 'Masterclasses', href: '/Workshop/IndividualFamilyMasterclass/Home', desc: 'Deep Dive Sessions' },
+        { label: 'Masterclasses', href: '/masterclass', desc: 'Deep Dive Sessions' },
         { label: 'Corporate Talks', href: '/Workshop/CorporateTalks/Home', desc: 'Team Optimization' },
       ],
     },
