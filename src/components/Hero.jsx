@@ -300,11 +300,11 @@ const Hero = () => {
                   <h1 className="hero-headline">{s.title}</h1>
                   <p className="hero-subline">{s.sub}</p>
                   <Link
-                    to={s.to}
+                    to="/masterclass"
                     tabIndex={isActive ? 0 : -1}
-                    className={`hero-cta${i >= 3 ? ' is-neutral' : ''}`}
+                    className="hero-cta"
                   >
-                    {s.cta}
+                    Become a Member
                   </Link>
                 </div>
               );
