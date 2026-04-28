@@ -2,70 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BookOpen, Clock, ArrowRight, Star } from "lucide-react";
+import allCourses from "../../../data/courses";
 
 const FeaturedCoursesOnly = () => {
-  const allCourses = [
-    {
-      id: 1,
-      title: "Parenting Begins Before Birth",
-      subtitle: "Pregnancy Foundations for a Happy Child",
-      level: "Intermediate",
-      lessons: 6,
-      duration: "4.5 Hours",
-      price: "₹699",
-      image: "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 2,
-      title: "Redefining Menopause",
-      subtitle: "Strength & Hormonal Harmony",
-      level: "Intermediate",
-      lessons: 30,
-      duration: "12 Hours",
-      price: "₹699",
-      image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 3,
-      title: "Break the Loop",
-      subtitle: "Reprogram Negative Thought Patterns",
-      level: "Intermediate",
-      lessons: 31,
-      duration: "8 Hours",
-      price: "₹699",
-      image: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 4,
-      title: "21-Day Gut Reset",
-      subtitle: "Total Microbiome Restoration",
-      level: "Advanced",
-      lessons: 25,
-      duration: "21 Days",
-      price: "₹6,999",
-      image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 5,
-      title: "The Lymphatic Reset",
-      subtitle: "A Holistic Approach to Immunity",
-      level: "Professional",
-      lessons: 20,
-      duration: "10 Hours",
-      price: "₹699",
-      image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=800",
-    },
-    {
-      id: 6,
-      title: "Metabolic Health 101",
-      subtitle: "Energy, Fat Loss, and Longevity",
-      level: "Intermediate",
-      lessons: 12,
-      duration: "6 Hours",
-      price: "₹699",
-      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=800",
-    },
-  ];
 
   return (
     <section className="mx-auto px-6 lg:px-20 py-24 bg-white">

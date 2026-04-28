@@ -1,10 +1,62 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft, CreditCard, Shield, Lock, Check, X, Calendar, User, Mail, Phone } from 'lucide-react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import {
+  ArrowLeft,
+  ArrowRight,
+  CreditCard,
+  Shield,
+  Lock,
+  Check,
+  Calendar,
+  User,
+  Mail,
+  Phone,
+} from 'lucide-react';
+
+const consultationPlans = [
+  {
+    id: 'individual',
+    name: 'Individual Consultation',
+    price: '₹4,999',
+    duration: '60 minutes',
+    features: [
+      'One-on-one session',
+      'Personalised health plan',
+      'Follow-up support',
+      'Nutrition guidance',
+    ],
+  },
+  {
+    id: 'family',
+    name: 'Family Wellness',
+    price: '₹7,999',
+    duration: '90 minutes',
+    features: [
+      'Family health assessment',
+      'Group consultation',
+      'Customised family plan',
+      'Ongoing support',
+    ],
+  },
+  {
+    id: 'corporate',
+    name: 'Corporate Program',
+    price: 'Custom Quote',
+    duration: 'Custom',
+    features: [
+      'Team assessment',
+      'Corporate wellness plan',
+      'On-site sessions',
+      'Progress tracking',
+    ],
+  },
+];
 
 const Payment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const course = location.state?.course || null;
+
   const [selectedPlan, setSelectedPlan] = useState('individual');
   const [paymentMethod, setPaymentMethod] = useState('card');
   const [formData, setFormData] = useState({
@@ -14,353 +66,406 @@ const Payment = () => {
     cardNumber: '',
     expiry: '',
     cvv: '',
-    upiId: ''
+    upiId: '',
   });
 
-  const plans = [
-    {
-      id: 'individual',
-      name: 'Individual Consultation',
-      price: '₹4,999',
-      duration: '60 minutes',
-      features: ['One-on-one session', 'Personalized health plan', 'Follow-up support', 'Nutrition guidance']
-    },
-    {
-      id: 'family',
-      name: 'Family Wellness',
-      price: '₹7,999',
-      duration: '90 minutes',
-      features: ['Family health assessment', 'Group consultation', 'Customized family plan', 'Ongoing support']
-    },
-    {
-      id: 'corporate',
-      name: 'Corporate Program',
-      price: 'Custom Quote',
-      duration: 'Custom',
-      features: ['Team assessment', 'Corporate wellness plan', 'On-site sessions', 'Progress tracking']
-    }
-  ];
+  const activePlan = consultationPlans.find((p) => p.id === selectedPlan);
+  const orderLabel = course ? course.title : activePlan?.name;
+  const orderPrice = course ? course.price : activePlan?.price;
+  const orderEyebrow = course ? `Self-Paced · ${course.level}` : 'Consultation';
+  const backHref = course ? `/course/${course.id}` : '/book-consult';
+  const backLabel = course ? 'Back to Course' : 'Back to Consultation';
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Demo payment processing
     setTimeout(() => {
-      navigate('/payment-success');
-    }, 2000);
+      navigate('/payment-success', { state: course ? { course } : undefined });
+    }, 1200);
   };
 
+  const updateField = (key) => (e) =>
+    setFormData((prev) => ({ ...prev, [key]: e.target.value }));
+
+  const labelClass =
+    'block font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.55)] mb-2';
+  const inputBase =
+    'w-full bg-transparent border-b border-[rgba(26,20,16,0.18)] focus:border-[#E8640A] focus:outline-none py-3 font-[Arial] text-[14px] text-[#1A1410] placeholder:text-[rgba(26,20,16,0.3)] transition-colors';
+  const inputWithIcon = `${inputBase} pl-7`;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
-      {/* Header */}
-      <div className="bg-white border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-8 py-6">
-          <div className="flex items-center justify-between">
-            <Link
-              to="/book-consult"
-              className="inline-flex items-center gap-2 text-slate-500 hover:text-orange-500 transition-colors"
-            >
-              <ArrowLeft size={20} />
-              Back to Consultation
-            </Link>
-            
-            <div className="flex items-center gap-2">
-              <Lock size={16} className="text-green-500" />
-              <span className="text-sm text-slate-600">Secure Payment</span>
+    <div className="bg-[#FDFAF5] text-[#1A1410]">
+      {/* ============== HERO ============== */}
+      <section className="relative bg-[#1A1410] text-[#FDFAF5] overflow-hidden">
+        <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16 pt-28 lg:pt-32 pb-14 lg:pb-16">
+          <Link
+            to={backHref}
+            className="inline-flex items-center gap-2 font-[Arial] text-[10px] uppercase tracking-[0.4em] text-white/65 hover:text-[#E8640A] transition-colors mb-10"
+          >
+            <ArrowLeft size={14} /> {backLabel}
+          </Link>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-12 items-end">
+            <div className="lg:col-span-8">
+              <div className="flex items-center gap-4 mb-5">
+                <span className="block w-8 h-px bg-[#E8640A]" />
+                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
+                  Secure Checkout
+                </p>
+              </div>
+              <h1 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,4.6vw,64px)] leading-[1.02] tracking-[0.005em]">
+                Complete your
+                <br />
+                <span className="text-white/55">enrolment.</span>
+              </h1>
+            </div>
+            <div className="lg:col-span-4 flex items-center gap-3 lg:justify-end font-[Arial] text-[10px] uppercase tracking-[0.4em] text-white/55">
+              <Lock size={14} className="text-[#E8640A]" />
+              256-bit Encrypted
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-7xl mx-auto px-8 py-12">
-        <div className="grid lg:grid-cols-3 gap-12">
-          
-          {/* Plan Selection */}
-          <div className="lg:col-span-1">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-2xl font-black text-slate-950 uppercase tracking-tight mb-6">
-                Select Plan
-              </h2>
-              
-              <div className="space-y-4">
-                {plans.map((plan) => (
-                  <div
-                    key={plan.id}
-                    onClick={() => setSelectedPlan(plan.id)}
-                    className={`p-6 rounded-3xl border-2 cursor-pointer transition-all duration-300 ${
-                      selectedPlan === plan.id
-                        ? 'border-orange-500 bg-orange-50'
-                        : 'border-slate-200 bg-white hover:border-orange-300'
-                    }`}
-                  >
-                    <div className="flex justify-between items-start mb-4">
+      {/* ============== BODY ============== */}
+      <section>
+        <div className="mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16 py-16 lg:py-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+            {/* ===== Order summary (left) ===== */}
+            <aside className="lg:col-span-5 lg:sticky lg:top-28">
+              <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-5">
+                {course ? 'Your Course' : 'Select a Plan'}
+              </p>
+
+              {course ? (
+                <div className="border border-[rgba(26,20,16,0.1)] bg-white">
+                  <div className="aspect-[4/3] overflow-hidden bg-[#1A1410]">
+                    <img
+                      src={course.image}
+                      alt={course.title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-7">
+                    <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-4">
+                      {orderEyebrow}
+                    </p>
+                    <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[26px] leading-[1.15] tracking-[0.005em] mb-1.5">
+                      {course.title}
+                    </h3>
+                    <p className="font-['EB_Garamond',Georgia,serif] italic text-[15px] leading-snug text-[rgba(26,20,16,0.55)] mb-7">
+                      {course.subtitle}
+                    </p>
+
+                    <ul className="pb-6 border-b border-[rgba(26,20,16,0.08)] font-[Arial] text-[12.5px] leading-[1.5] text-[rgba(26,20,16,0.75)] space-y-2.5">
+                      <li className="flex items-start gap-3">
+                        <Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" strokeWidth={1.75} />
+                        <span>{course.lessons} modules · {course.duration}</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" strokeWidth={1.75} />
+                        <span>Lifetime access on web & mobile</span>
+                      </li>
+                      <li className="flex items-start gap-3">
+                        <Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" strokeWidth={1.75} />
+                        <span>Certificate of completion</span>
+                      </li>
+                    </ul>
+
+                    <div className="pt-6 flex items-end justify-between">
                       <div>
-                        <h3 className="text-lg font-black text-slate-950 uppercase tracking-tight">
-                          {plan.name}
-                        </h3>
-                        <p className="text-sm text-slate-500 mt-1">{plan.duration}</p>
+                        <p className="font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.55)] mb-1">
+                          Total
+                        </p>
+                        <p className="font-['EB_Garamond',Georgia,serif] italic text-[40px] leading-none">
+                          {course.price}
+                        </p>
                       </div>
-                      <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                        selectedPlan === plan.id ? 'border-orange-500' : 'border-slate-300'
-                      }`}>
-                        {selectedPlan === plan.id && <Check size={16} className="text-orange-500" />}
-                      </div>
-                    </div>
-                    
-                    <div className="text-2xl font-black text-orange-500 mb-4">
-                      {plan.price}
-                    </div>
-                    
-                    <div className="space-y-2">
-                      {plan.features.map((feature, idx) => (
-                        <div key={idx} className="flex items-center gap-2">
-                          <Check size={14} className="text-green-500" />
-                          <span className="text-sm text-slate-600">{feature}</span>
-                        </div>
-                      ))}
+                      <p className="font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.5)] pb-1">
+                        GST included
+                      </p>
                     </div>
                   </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  {consultationPlans.map((plan) => {
+                    const isActive = selectedPlan === plan.id;
+                    return (
+                      <button
+                        type="button"
+                        key={plan.id}
+                        onClick={() => setSelectedPlan(plan.id)}
+                        className={`w-full text-left p-6 border transition-all duration-500 ${
+                          isActive
+                            ? 'bg-[#1A1410] text-white border-[#1A1410]'
+                            : 'bg-white text-[#1A1410] border-[rgba(26,20,16,0.1)] hover:border-[#1A1410]/40'
+                        }`}
+                      >
+                        <div className="flex items-start justify-between gap-4 mb-4">
+                          <div>
+                            <p
+                              className={`font-[Arial] text-[10px] uppercase tracking-[0.4em] mb-2 ${
+                                isActive ? 'text-[#E8640A]' : 'text-[rgba(26,20,16,0.5)]'
+                              }`}
+                            >
+                              {plan.duration}
+                            </p>
+                            <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[24px] leading-[1.1]">
+                              {plan.name}
+                            </h3>
+                          </div>
+                          <span
+                            className={`mt-1 w-4 h-4 rounded-full border flex items-center justify-center shrink-0 ${
+                              isActive ? 'border-[#E8640A]' : 'border-[rgba(26,20,16,0.25)]'
+                            }`}
+                          >
+                            {isActive && <span className="w-2 h-2 rounded-full bg-[#E8640A]" />}
+                          </span>
+                        </div>
 
-          {/* Payment Form */}
-          <div className="lg:col-span-2">
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-            >
-              <h2 className="text-2xl font-black text-slate-950 uppercase tracking-tight mb-6">
-                Payment Details
-              </h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Information */}
-                <div className="bg-white rounded-3xl p-8 shadow-lg">
-                  <h3 className="text-lg font-black text-slate-950 uppercase tracking-tight mb-6">
-                    Personal Information
-                  </h3>
-                  
-                  <div className="grid md:grid-cols-2 gap-6">
+                        <p className="font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none mb-5">
+                          {plan.price}
+                        </p>
+
+                        <ul
+                          className={`space-y-2 font-[Arial] text-[12px] ${
+                            isActive ? 'text-white/70' : 'text-[rgba(26,20,16,0.65)]'
+                          }`}
+                        >
+                          {plan.features.map((f) => (
+                            <li key={f} className="flex items-center gap-2">
+                              <Check size={12} className="text-[#E8640A]" strokeWidth={2} />
+                              {f}
+                            </li>
+                          ))}
+                        </ul>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </aside>
+
+            {/* ===== Form (right) ===== */}
+            <div className="lg:col-span-7">
+              <form onSubmit={handleSubmit} className="space-y-12">
+                {/* Personal */}
+                <div>
+                  <div className="flex items-center gap-4 mb-8">
+                    <span className="block w-8 h-px bg-[#E8640A]" />
+                    <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
+                      Your Details
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-x-8 gap-y-7">
                     <div>
-                      <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                        Full Name
-                      </label>
+                      <label className={labelClass}>Full Name</label>
                       <div className="relative">
-                        <User size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <User
+                          size={14}
+                          className="absolute left-0 top-1/2 -translate-y-1/2 text-[rgba(26,20,16,0.4)]"
+                        />
                         <input
                           type="text"
                           required
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
-                          className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
-                          placeholder="John Doe"
+                          onChange={updateField('name')}
+                          className={inputWithIcon}
+                          placeholder="Anaya Mehra"
                         />
                       </div>
                     </div>
-                    
+
                     <div>
-                      <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                        Email Address
-                      </label>
+                      <label className={labelClass}>Email Address</label>
                       <div className="relative">
-                        <Mail size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <Mail
+                          size={14}
+                          className="absolute left-0 top-1/2 -translate-y-1/2 text-[rgba(26,20,16,0.4)]"
+                        />
                         <input
                           type="email"
                           required
                           value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
-                          placeholder="john@example.com"
+                          onChange={updateField('email')}
+                          className={inputWithIcon}
+                          placeholder="anaya@example.com"
                         />
                       </div>
                     </div>
-                    
+
                     <div>
-                      <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                        Phone Number
-                      </label>
+                      <label className={labelClass}>Phone Number</label>
                       <div className="relative">
-                        <Phone size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+                        <Phone
+                          size={14}
+                          className="absolute left-0 top-1/2 -translate-y-1/2 text-[rgba(26,20,16,0.4)]"
+                        />
                         <input
                           type="tel"
                           required
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                          className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
+                          onChange={updateField('phone')}
+                          className={inputWithIcon}
                           placeholder="+91 98765 43210"
                         />
                       </div>
                     </div>
-                    
-                    <div>
-                      <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                        Preferred Date
-                      </label>
-                      <div className="relative">
-                        <Calendar size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-                        <input
-                          type="date"
-                          required
-                          className="w-full pl-12 pr-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
-                        />
+
+                    {!course && (
+                      <div>
+                        <label className={labelClass}>Preferred Date</label>
+                        <div className="relative">
+                          <Calendar
+                            size={14}
+                            className="absolute left-0 top-1/2 -translate-y-1/2 text-[rgba(26,20,16,0.4)]"
+                          />
+                          <input type="date" required className={inputWithIcon} />
+                        </div>
                       </div>
-                    </div>
+                    )}
                   </div>
                 </div>
 
-                {/* Payment Method */}
-                <div className="bg-white rounded-3xl p-8 shadow-lg">
-                  <h3 className="text-lg font-black text-slate-950 uppercase tracking-tight mb-6">
-                    Payment Method
-                  </h3>
-                  
-                  <div className="grid md:grid-cols-3 gap-4 mb-8">
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod('card')}
-                      className={`p-4 rounded-2xl border-2 transition-all duration-300 ${
-                        paymentMethod === 'card'
-                          ? 'border-orange-500 bg-orange-50'
-                          : 'border-slate-200 hover:border-orange-300'
-                      }`}
-                    >
-                      <CreditCard size={24} className="mx-auto mb-2" />
-                      <span className="text-sm font-black uppercase tracking-[0.1em]">Card</span>
-                    </button>
-                    
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod('upi')}
-                      className={`p-4 rounded-2xl border-2 transition-all duration-300 ${
-                        paymentMethod === 'upi'
-                          ? 'border-orange-500 bg-orange-50'
-                          : 'border-slate-200 hover:border-orange-300'
-                      }`}
-                    >
-                      <div className="w-6 h-6 bg-orange-500 rounded-full mx-auto mb-2" />
-                      <span className="text-sm font-black uppercase tracking-[0.1em]">UPI</span>
-                    </button>
-                    
-                    <button
-                      type="button"
-                      onClick={() => setPaymentMethod('netbanking')}
-                      className={`p-4 rounded-2xl border-2 transition-all duration-300 ${
-                        paymentMethod === 'netbanking'
-                          ? 'border-orange-500 bg-orange-50'
-                          : 'border-slate-200 hover:border-orange-300'
-                      }`}
-                    >
-                      <Shield size={24} className="mx-auto mb-2" />
-                      <span className="text-sm font-black uppercase tracking-[0.1em]">Net Banking</span>
-                    </button>
+                {/* Method */}
+                <div>
+                  <div className="flex items-center gap-4 mb-8">
+                    <span className="block w-8 h-px bg-[#E8640A]" />
+                    <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
+                      Payment Method
+                    </p>
                   </div>
 
-                  {/* Card Payment Form */}
+                  <div className="grid grid-cols-3 border border-[rgba(26,20,16,0.1)] mb-8">
+                    {[
+                      { id: 'card', label: 'Card', Icon: CreditCard },
+                      { id: 'upi', label: 'UPI', Icon: Shield },
+                      { id: 'netbanking', label: 'Net Banking', Icon: Lock },
+                    ].map(({ id, label, Icon }, i) => {
+                      const isActive = paymentMethod === id;
+                      return (
+                        <button
+                          key={id}
+                          type="button"
+                          onClick={() => setPaymentMethod(id)}
+                          className={`relative py-5 flex flex-col items-center gap-2 transition-all duration-500 ${
+                            i > 0 ? 'border-l border-[rgba(26,20,16,0.1)]' : ''
+                          } ${
+                            isActive
+                              ? 'bg-[#1A1410] text-white'
+                              : 'bg-white text-[#1A1410] hover:bg-[#FAF6EE]'
+                          }`}
+                        >
+                          <Icon
+                            size={18}
+                            strokeWidth={1.25}
+                            className={isActive ? 'text-[#E8640A]' : 'text-[#1A1410]/60'}
+                          />
+                          <span className="font-[Arial] text-[10px] uppercase tracking-[0.32em]">
+                            {label}
+                          </span>
+                        </button>
+                      );
+                    })}
+                  </div>
+
                   {paymentMethod === 'card' && (
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                          Card Number
-                        </label>
+                    <div className="grid md:grid-cols-2 gap-x-8 gap-y-7">
+                      <div className="md:col-span-2">
+                        <label className={labelClass}>Card Number</label>
                         <input
                           type="text"
                           required
                           value={formData.cardNumber}
-                          onChange={(e) => setFormData({...formData, cardNumber: e.target.value})}
-                          className="w-full px-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
+                          onChange={updateField('cardNumber')}
+                          className={inputBase}
                           placeholder="1234 5678 9012 3456"
                         />
                       </div>
-                      
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                            Expiry Date
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.expiry}
-                            onChange={(e) => setFormData({...formData, expiry: e.target.value})}
-                            className="w-full px-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
-                            placeholder="MM/YY"
-                          />
-                        </div>
-                        
-                        <div>
-                          <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                            CVV
-                          </label>
-                          <input
-                            type="text"
-                            required
-                            value={formData.cvv}
-                            onChange={(e) => setFormData({...formData, cvv: e.target.value})}
-                            className="w-full px-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
-                            placeholder="123"
-                          />
-                        </div>
+                      <div>
+                        <label className={labelClass}>Expiry</label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.expiry}
+                          onChange={updateField('expiry')}
+                          className={inputBase}
+                          placeholder="MM / YY"
+                        />
+                      </div>
+                      <div>
+                        <label className={labelClass}>CVV</label>
+                        <input
+                          type="text"
+                          required
+                          value={formData.cvv}
+                          onChange={updateField('cvv')}
+                          className={inputBase}
+                          placeholder="123"
+                        />
                       </div>
                     </div>
                   )}
 
-                  {/* UPI Payment Form */}
                   {paymentMethod === 'upi' && (
                     <div>
-                      <label className="block text-sm font-black text-slate-700 uppercase tracking-[0.1em] mb-2">
-                        UPI ID
-                      </label>
+                      <label className={labelClass}>UPI ID</label>
                       <input
                         type="text"
                         required
                         value={formData.upiId}
-                        onChange={(e) => setFormData({...formData, upiId: e.target.value})}
-                        className="w-full px-4 py-4 rounded-2xl border border-slate-200 focus:border-orange-500 focus:outline-none transition-colors"
+                        onChange={updateField('upiId')}
+                        className={inputBase}
                         placeholder="yourname@upi"
                       />
                     </div>
                   )}
 
-                  {/* Net Banking */}
                   {paymentMethod === 'netbanking' && (
-                    <div className="text-center py-8">
-                      <p className="text-slate-600">Select your bank from the list on the next step</p>
-                    </div>
+                    <p className="font-['EB_Garamond',Georgia,serif] italic text-[18px] text-[rgba(26,20,16,0.7)]">
+                      Continue to select your bank on the next step.
+                    </p>
                   )}
                 </div>
 
-                {/* Order Summary */}
-                <div className="bg-slate-950 text-white rounded-3xl p-8">
-                  <div className="flex justify-between items-center mb-6">
-                    <span className="text-lg font-black uppercase tracking-tight">Total Amount</span>
-                    <span className="text-3xl font-black text-orange-500">
-                      {plans.find(p => p.id === selectedPlan)?.price}
-                    </span>
+                {/* Total + submit */}
+                <div className="bg-[#1A1410] text-white p-8 lg:p-10">
+                  <div className="flex items-end justify-between mb-8 gap-6">
+                    <div>
+                      <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-2">
+                        {course ? 'Course' : 'Plan'}
+                      </p>
+                      <p className="font-['EB_Garamond',Georgia,serif] italic text-[24px] leading-[1.15]">
+                        {orderLabel}
+                      </p>
+                    </div>
+                    <p className="font-['EB_Garamond',Georgia,serif] italic text-[44px] leading-none whitespace-nowrap">
+                      {orderPrice}
+                    </p>
                   </div>
-                  
+
                   <button
                     type="submit"
-                    className="w-full py-6 bg-orange-500 text-white rounded-2xl font-black uppercase tracking-[0.2em] hover:bg-orange-600 hover:shadow-xl hover:shadow-orange-500/40 transition-all duration-500"
+                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#E8640A] hover:bg-white hover:text-[#1A1410] text-white py-5 font-[Arial] text-[10px] uppercase tracking-[0.4em] transition-all duration-500"
                   >
                     Process Payment
+                    <ArrowRight
+                      size={14}
+                      className="transition-transform duration-500 group-hover:translate-x-1"
+                    />
                   </button>
-                  
-                  <div className="flex items-center justify-center gap-2 mt-4">
-                    <Shield size={16} className="text-green-400" />
-                    <span className="text-sm text-slate-400">Your payment information is secure and encrypted</span>
+
+                  <div className="mt-5 flex items-center justify-center gap-2 font-[Arial] text-[10px] uppercase tracking-[0.32em] text-white/45">
+                    <Shield size={12} className="text-[#E8640A]" />
+                    Encrypted & secure
                   </div>
                 </div>
               </form>
-            </motion.div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Hero from './Hero';
 import {
@@ -11,12 +11,15 @@ import {
   GraduationCap,
   Compass,
   ArrowRight,
+  ArrowLeft,
   Check,
   Star,
+  Quote,
 } from 'lucide-react';
 import tileOne from '../assets/team.avif';
 import tileTwo from '../assets/neimg.jpg';
 import tileThree from '../assets/wp.avif';
+import courses from '../data/courses';
 
 /* ---------- Section 2: Trust ---------- */
 const trustStats = [
@@ -75,22 +78,45 @@ const compareRows = [
   { feature: 'Group cohort option', luke: false, team: true },
 ];
 
-/* ---------- Section 6: Courses ---------- */
-const courses = [
-  { title: 'Heal Your Gut', duration: '4 hrs', price: '₹2,499', rating: 4.9, image: tileOne },
-  { title: 'Sleep, Reset', duration: '2.5 hrs', price: '₹1,499', rating: 4.8, image: tileTwo },
-  { title: 'Emotional Detox', duration: '3 hrs', price: '₹1,999', rating: 4.9, image: tileThree },
-  { title: 'Hormonal Balance', duration: '5 hrs', price: '₹2,999', rating: 4.7, image: tileOne },
-];
-
 /* ---------- Section 7: Transformations ---------- */
 const transformations = [
-  { name: 'Priya', condition: 'Reversed PCOS in 9 months', image: tileTwo },
-  { name: 'Arjun', condition: 'Off insulin in 6 months', image: tileThree },
-  { name: 'Maya', condition: 'Migraine-free for 2 years', image: tileOne },
+  {
+    name: 'Shashi Singh',
+    location: 'USA · Signature Wellness',
+    condition: 'Reversed Ulcerative Colitis. My recent colonoscopy revealed my colon fully healed.',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    name: 'Satish',
+    location: 'Mumbai · Skin Reset',
+    condition: 'After 14 years with Psoriasis, I was 95% patch-free within three months.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800',
+  },
+  {
+    name: 'Viral Patel',
+    location: 'Bengaluru · Hormonal Balance',
+    condition: 'Lost 25+ lbs and finally understand my body. Stubborn fat is disappearing.',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=800',
+  },
 ];
 
 const Home = () => {
+  const [activeStory, setActiveStory] = useState(0);
+  const [isStoryHovered, setIsStoryHovered] = useState(false);
+  const storyTimerRef = useRef(null);
+
+  useEffect(() => {
+    if (isStoryHovered) return undefined;
+    storyTimerRef.current = setInterval(() => {
+      setActiveStory((i) => (i + 1) % transformations.length);
+    }, 5500);
+    return () => clearInterval(storyTimerRef.current);
+  }, [isStoryHovered]);
+
+  const goToStory = (i) => {
+    setActiveStory(((i % transformations.length) + transformations.length) % transformations.length);
+  };
+
   return (
     <>
       <Hero />
@@ -249,89 +275,89 @@ const Home = () => {
 
       {/* ============== SCREEN 5 — PROGRAMS (EDITORIAL TWO-WAY) ============== */}
       <section className="relative bg-[#1A1410] text-[#FDFAF5] overflow-hidden border-t border-white/[0.06]">
-        <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 pt-20 pb-24 lg:pt-24 lg:pb-32">
+        <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 pt-16 pb-20 lg:pt-20 lg:pb-24">
           {/* Masthead */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-10 mb-16 lg:mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-10 mb-12 lg:mb-16">
             <div className="lg:col-span-6">
               <div className="flex items-center gap-4">
-                <span className="block w-10 h-px bg-[#E8640A]" />
+                <span className="block w-8 h-px bg-[#E8640A]" />
                 <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
                   Wellness Programs
                 </p>
               </div>
-              <h2 className="mt-8 font-['EB_Garamond',Georgia,serif] italic text-[clamp(44px,5.5vw,84px)] leading-[0.98] tracking-[0.005em]">
+              <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(36px,4.2vw,60px)] leading-[1] tracking-[0.005em]">
                 Two ways
                 <br />
                 <span className="text-white/55">to begin.</span>
               </h2>
             </div>
-            <div className="lg:col-span-5 lg:col-start-8 lg:pt-10">
-              <p className="font-[Arial] text-[14px] md:text-[15px] leading-[1.9] text-white/65 max-w-[480px]">
+            <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">
+              <p className="font-[Arial] text-[13px] md:text-[14px] leading-[1.85] text-white/65 max-w-[440px]">
                 Two pathways. One philosophy. Choose the intimacy of working directly with Luke, or the same integrative method delivered by his senior team.
               </p>
             </div>
           </div>
 
-          {/* Program cards — editorial split */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-x-px bg-white/[0.06] mb-24">
+          {/* Program cards — refined split */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 mb-20 max-w-[980px] mx-auto">
             {programOptions.map((p, i) => (
               <Link
                 key={p.title}
                 to={p.to}
-                className="lc-program group relative block bg-[#1A1410] cursor-pointer"
+                className="lc-program group relative block cursor-pointer"
               >
                 {/* Image */}
-                <div className="relative aspect-[5/6] md:aspect-[4/5] overflow-hidden">
+                <div className="relative aspect-[3/4] overflow-hidden bg-[#0F0A06]">
                   <img
                     src={p.image}
                     alt={p.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
                   />
                   {/* Bottom gradient */}
-                  <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0F0A06] via-[#0F0A06]/30 to-transparent" />
+                  <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0F0A06] via-[#0F0A06]/40 to-transparent" />
                   {/* Hover overlay */}
                   <span aria-hidden="true" className="absolute inset-0 bg-[#0F0A06]/0 group-hover:bg-[#0F0A06]/20 transition-colors duration-[900ms]" />
 
                   {/* Index */}
-                  <div className="absolute top-8 left-8 right-8 flex items-center justify-between">
-                    <span className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-white/65">
+                  <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
+                    <span className="font-[Arial] text-[9px] uppercase tracking-[0.4em] text-white/65">
                       0{i + 1} / 02
                     </span>
-                    <span className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
+                    <span className="font-[Arial] text-[9px] uppercase tracking-[0.4em] text-[#E8640A]">
                       {p.badge}
                     </span>
                   </div>
 
-                  {/* Bottom content over image */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-12">
-                    <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,4.4vw,64px)] leading-[0.98] tracking-[0.005em] text-white transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
-                      {p.title}.
-                    </h3>
-                    <p className="mt-5 font-[Arial] text-[13px] leading-[1.85] text-white/75 max-w-[420px]">
-                      {p.copy}
-                    </p>
-
-                    <div className="mt-8 pt-6 border-t border-white/15 flex items-center justify-between">
-                      <span className="font-[Arial] text-[11px] tracking-[0.32em] uppercase text-white/85">
-                        {p.price}
-                      </span>
-                      <span className="inline-flex items-center gap-3 font-[Arial] text-[10px] uppercase tracking-[0.4em] text-white">
-                        <span className="block w-6 h-px bg-current transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-12" />
-                        Discover
-                        <ArrowRight size={14} className="transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1" />
-                      </span>
-                    </div>
-                  </div>
-
                   {/* Saffron top hairline reveal */}
                   <span aria-hidden="true" className="absolute top-0 left-0 h-px bg-[#E8640A] w-0 group-hover:w-full transition-[width] duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)]" />
+                </div>
+
+                {/* Content below image */}
+                <div className="pt-5 md:pt-6">
+                  <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[26px] md:text-[30px] leading-[1.05] tracking-[0.005em] text-white transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-0.5">
+                    {p.title}.
+                  </h3>
+                  <p className="mt-3 font-[Arial] text-[12.5px] leading-[1.75] text-white/70 max-w-[380px]">
+                    {p.copy}
+                  </p>
+
+                  <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+                    <span className="font-[Arial] text-[10px] tracking-[0.32em] uppercase text-white/80">
+                      {p.price}
+                    </span>
+                    <span className="inline-flex items-center gap-2.5 font-[Arial] text-[9px] uppercase tracking-[0.4em] text-white">
+                      <span className="block w-5 h-px bg-current transition-all duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:w-10" />
+                      Discover
+                      <ArrowRight size={12} className="transition-transform duration-[700ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1" />
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
           </div>
 
           {/* Comparison */}
-          <div className="max-w-[960px] mx-auto">
+          <div className="max-w-[860px] mx-auto">
             <div className="flex items-center justify-center gap-6 mb-10">
               <span className="block w-10 h-px bg-white/25" />
               <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-white/55">
@@ -394,11 +420,11 @@ const Home = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {courses.map((c) => (
               <Link
-                key={c.title}
-                to="/learn/learninghub/home"
+                key={c.id}
+                to={`/course/${c.id}`}
                 className="group block"
               >
                 <div className="aspect-[4/5] overflow-hidden bg-[#1A1410] relative">
@@ -420,29 +446,180 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ============== SCREEN 7 — TRANSFORMATIONS ============== */}
+      {/* ============== SCREEN 7 — TRANSFORMATIONS (interactive) ============== */}
       <section className="bg-[#FAF6EE] text-[#1A1410]">
-        <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-24 lg:py-28">
-          <div className="text-center max-w-[680px] mx-auto mb-16">
-            <p className="font-[Arial] text-[10px] uppercase tracking-[0.35em] text-[#E8640A] mb-4">
-              Transformations
-            </p>
-            <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,4.5vw,64px)] leading-[1] tracking-[0.02em]">
-              Real people. Real healing.
-            </h2>
+        <div className="mx-auto max-w-[1280px] px-6 md:px-10 lg:px-16 py-24 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-12 items-end mb-12 lg:mb-16">
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-4 mb-5">
+                <span className="block w-8 h-px bg-[#E8640A]" />
+                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
+                  Transformations
+                </p>
+              </div>
+              <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,4.5vw,64px)] leading-[1] tracking-[0.005em]">
+                Real people.
+                <br />
+                <span className="text-[#1A1410]/55">Real healing.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-5 lg:pb-3 flex items-center justify-between gap-6">
+              <p className="font-[Arial] text-[13px] leading-[1.85] text-[rgba(26,20,16,0.65)] max-w-[360px]">
+                A quiet record of bodies returning to balance. Tap a name, or let the stories breathe on their own.
+              </p>
+              <div className="hidden md:flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  aria-label="Previous story"
+                  onClick={() => goToStory(activeStory - 1)}
+                  className="w-11 h-11 rounded-full border border-[#1A1410]/15 flex items-center justify-center text-[#1A1410]/70 hover:text-white hover:bg-[#1A1410] hover:border-[#1A1410] transition-all duration-300"
+                >
+                  <ArrowLeft size={16} strokeWidth={1.5} />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next story"
+                  onClick={() => goToStory(activeStory + 1)}
+                  className="w-11 h-11 rounded-full border border-[#1A1410]/15 flex items-center justify-center text-[#1A1410]/70 hover:text-white hover:bg-[#E8640A] hover:border-[#E8640A] transition-all duration-300"
+                >
+                  <ArrowRight size={16} strokeWidth={1.5} />
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
-            {transformations.map((t) => (
-              <article key={t.name} className="group">
-                <div className="aspect-[4/5] overflow-hidden mb-5">
-                  <img src={t.image} alt={t.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div
+            className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-stretch"
+            onMouseEnter={() => setIsStoryHovered(true)}
+            onMouseLeave={() => setIsStoryHovered(false)}
+          >
+            {/* Stage — active portrait + quote */}
+            <div className="lg:col-span-8 relative">
+              <div className="relative grid grid-cols-1 md:grid-cols-5 bg-white border border-[rgba(26,20,16,0.08)] overflow-hidden min-h-[440px] lg:min-h-[520px]">
+                {/* Portrait */}
+                <div className="relative md:col-span-2 aspect-[4/5] md:aspect-auto overflow-hidden bg-[#1A1410]">
+                  {transformations.map((t, i) => (
+                    <img
+                      key={t.name}
+                      src={t.image}
+                      alt={t.name}
+                      className="absolute inset-0 w-full h-full object-cover transition-all duration-[1400ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                      style={{
+                        opacity: i === activeStory ? 1 : 0,
+                        transform: i === activeStory ? 'scale(1)' : 'scale(1.06)',
+                      }}
+                    />
+                  ))}
+                  <span aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#1A1410]/55 via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#1A1410]/15" />
+                  <span className="absolute top-5 left-5 font-[Arial] text-[9px] uppercase tracking-[0.4em] text-white/95 bg-[#1A1410]/40 backdrop-blur-sm px-3 py-1.5">
+                    Case · 0{activeStory + 1} / 0{transformations.length}
+                  </span>
                 </div>
-                <p className="font-[Arial] text-[10px] uppercase tracking-[0.3em] text-[#E8640A] mb-2">Case Study</p>
-                <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[26px] leading-[1.1] mb-2">{t.name}</h3>
-                <p className="font-[Arial] text-[14px] text-[rgba(26,20,16,0.7)]">{t.condition}</p>
-              </article>
-            ))}
+
+                {/* Quote */}
+                <div className="relative md:col-span-3 p-8 md:p-10 lg:p-12 flex flex-col">
+                  <Quote size={28} className="text-[#E8640A]/70 mb-5" strokeWidth={1.25} />
+
+                  <div className="relative flex-1">
+                    {transformations.map((t, i) => (
+                      <div
+                        key={t.name}
+                        className="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+                        style={{
+                          opacity: i === activeStory ? 1 : 0,
+                          transform: i === activeStory ? 'translateY(0)' : 'translateY(12px)',
+                          pointerEvents: i === activeStory ? 'auto' : 'none',
+                        }}
+                      >
+                        <p className="font-['EB_Garamond',Georgia,serif] italic text-[22px] md:text-[26px] leading-[1.45] text-[#1A1410]/90">
+                          {t.condition}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-[rgba(26,20,16,0.08)] flex items-center justify-between">
+                    <div>
+                      <h3 className="font-[Arial] text-[12px] uppercase tracking-[0.32em] text-[#1A1410]">
+                        {transformations[activeStory].name}
+                      </h3>
+                      <p className="mt-1.5 font-[Arial] text-[11px] tracking-[0.18em] uppercase text-[rgba(26,20,16,0.55)]">
+                        {transformations[activeStory].location}
+                      </p>
+                    </div>
+                    <div className="md:hidden flex items-center gap-2">
+                      <button
+                        type="button"
+                        aria-label="Previous story"
+                        onClick={() => goToStory(activeStory - 1)}
+                        className="w-9 h-9 rounded-full border border-[#1A1410]/15 flex items-center justify-center"
+                      >
+                        <ArrowLeft size={14} />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label="Next story"
+                        onClick={() => goToStory(activeStory + 1)}
+                        className="w-9 h-9 rounded-full border border-[#1A1410]/15 flex items-center justify-center"
+                      >
+                        <ArrowRight size={14} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Auto-advance progress hairline */}
+                <span
+                  aria-hidden="true"
+                  className="absolute bottom-0 left-0 h-px bg-[#E8640A]"
+                  style={{
+                    width: isStoryHovered ? '0%' : '100%',
+                    transition: isStoryHovered ? 'width 300ms linear' : 'width 5500ms linear',
+                  }}
+                  key={`bar-${activeStory}-${isStoryHovered}`}
+                />
+              </div>
+            </div>
+
+            {/* Selector list */}
+            <div className="lg:col-span-4 flex flex-col gap-3">
+              {transformations.map((t, i) => {
+                const isActive = i === activeStory;
+                return (
+                  <button
+                    key={t.name}
+                    type="button"
+                    onClick={() => goToStory(i)}
+                    className={`group text-left w-full p-4 md:p-5 flex items-center gap-4 border transition-all duration-500 ${
+                      isActive
+                        ? 'bg-[#1A1410] border-[#1A1410] text-white'
+                        : 'bg-white border-[rgba(26,20,16,0.1)] text-[#1A1410] hover:border-[#1A1410]/40'
+                    }`}
+                  >
+                    <div className="relative w-16 h-16 shrink-0 overflow-hidden">
+                      <img src={t.image} alt={t.name} className={`w-full h-full object-cover transition-transform duration-700 ${isActive ? 'scale-105' : 'group-hover:scale-105'}`} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className={`font-[Arial] text-[9px] uppercase tracking-[0.4em] mb-1.5 ${isActive ? 'text-[#E8640A]' : 'text-[rgba(26,20,16,0.5)]'}`}>
+                        0{i + 1}
+                      </p>
+                      <h4 className={`font-[Arial] text-[12px] uppercase tracking-[0.22em] ${isActive ? 'text-white' : 'text-[#1A1410]'}`}>
+                        {t.name}
+                      </h4>
+                      <p className={`mt-1 font-[Arial] text-[11px] truncate ${isActive ? 'text-white/60' : 'text-[rgba(26,20,16,0.55)]'}`}>
+                        {t.location}
+                      </p>
+                    </div>
+                    <ArrowRight
+                      size={14}
+                      className={`shrink-0 transition-all duration-500 ${
+                        isActive ? 'text-[#E8640A] translate-x-0' : 'text-[rgba(26,20,16,0.35)] -translate-x-1 group-hover:translate-x-0'
+                      }`}
+                    />
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
