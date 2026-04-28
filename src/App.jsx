@@ -41,6 +41,7 @@ import ContactUs from './pages/ContactUs/ContactUs'
 import Resources from './pages/Resources'
 import BharatDish from './pages/BharatDish'
 import ScormPlayer from './pages/Learn/Learninghub/ScormPlayer'
+import CourseDetail from './pages/Learn/Learninghub/CourseDetail'
 import BookConsult from './pages/BookConsult'
 import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
@@ -92,6 +93,7 @@ function AppShell() {
             <Route path="/Workshop/CorporateTalks/Home" element={<CorporateTalks />} />
             <Route path="/Learn/Blogs/Home" element={<Blogs />} />
             <Route path="/learn/learninghub/home" element={<Learninghub />} />
+            <Route path="/course/:id" element={<CourseDetail />} />
             <Route path="/Podcast/Podcast" element={<Podcast />} />
             <Route path="/Podcast/Podcast/PodcastVideos" element={<PodcastVideos />} />
             <Route path="/Careers/Careers" element={<Careers />} />

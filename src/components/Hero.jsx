@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import lcLogo from '../assets/LClogoo.png';
-import heroPoster from '../assets/wellness.jpg';
 import clip1 from '../assets/heroclips/lukehero.mp4';
 import clip2 from '../assets/heroclips/Lukehero2.mp4';
 import clip3 from '../assets/heroclips/Lukehero3.mp4';
@@ -25,8 +24,8 @@ const slides = [
     eyebrow: 'The Approach',
     title: 'Heal the Root Cause',
     sub: 'Foundational Medicine Approach',
-    cta: 'Explore Programs',
-    to: '/programs/signature-wellness',
+    cta: 'Become a Member',
+    to: '/masterclass',
     video: clip5,
   },
   {
@@ -231,7 +230,6 @@ const Hero = () => {
                 }}
                 className="hero-video"
                 src={s.video}
-                poster={heroPoster}
                 muted
                 loop
                 playsInline
@@ -338,7 +336,6 @@ const Hero = () => {
 
         <aside className="primary-menu-panel" aria-label="Site menu">
           <div className="primary-menu-backdrop" aria-hidden="true">
-            <img src={heroPoster} alt="" />
             <div className="primary-menu-tint" />
           </div>
 
