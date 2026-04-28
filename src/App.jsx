@@ -50,7 +50,7 @@ import AssessmentResults from './pages/Assessment/AssessmentResults'
 
 function AppShell() {
   const location = useLocation()
-  const chromelessPaths = ['/', '/assessment', '/assessment/results']
+  const chromelessPaths = ['/', '/masterclass', '/Workshop/IndividualFamilyMasterclass/Home', '/payment', '/assessment', '/assessment/results']
   const isChromeless = chromelessPaths.some((p) =>
     p === '/' ? location.pathname === '/' : location.pathname.startsWith(p)
   )
@@ -71,6 +71,7 @@ function AppShell() {
             <Route path="/about/vision" element={<Vision />} />
             <Route path="/about/approach" element={<OurApproach />} />
             <Route path="/learn/scorm-player" element={<ScormPlayer />} />
+            <Route path="/masterclass" element={<IndividualFamilyMasterclass />} />
             <Route path="/Workshop/IndividualFamilyMasterclass/Home" element={<IndividualFamilyMasterclass />} />
             <Route path="/Workshop/IndividualFamilyMasterclass/PastMasterclass" element={<PastMasterclass />} />
             <Route path="/Workshop/IndividualFamilyMasterclass/Course1" element={<Course1 />} />
