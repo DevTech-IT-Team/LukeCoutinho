@@ -1,15 +1,15 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import logo from '../assets/LClogoo.png';
 
 const navConfig = [
-	{ title: 'Programs', href: '/programs/signature-wellness' },
-	{ title: 'Workshops', href: '/Workshop/IndividualFamilyMasterclass/Home' },
-	{ title: 'Podcast', href: '/Podcast/Podcast' },
-	{ title: 'Resources', href: '/learn/learninghub/home' },
-	{ title: 'Bharat', href: '/bharat/dish' },
+	{ title: 'Programs', href: '#' },
+	{ title: 'Masterclass', href: '/masterclass' },
+	{ title: 'Podcast', href: '#' },
+	{ title: 'Courses', href: '/#learn-the-method' },
+	{ title: 'Bharat', href: '#' },
 ];
 
 const Navbar = () => {
@@ -67,24 +67,35 @@ const Navbar = () => {
 					       <ul className="hidden xl:flex items-center gap-1">
 						       {navConfig.map((item) => (
 							       <li key={item.title} className="relative">
-								       <Link
-									       to={item.href}
-									       className={`group relative inline-flex items-center px-4 py-7 font-[Arial] text-[10px] uppercase tracking-[0.32em] ${inkText} ${hoverInk} transition-colors duration-500`}
-								       >
-									       {item.title}
-									       <span className="pointer-events-none absolute left-4 right-4 bottom-5 h-px bg-[#E8640A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-								       </Link>
+								       {item.href.startsWith('/#') || item.href === '#' ? (
+									       <a
+										       href={item.href}
+										       onClick={(e) => { if (item.href === '#') e.preventDefault(); }}
+										       className={`group relative inline-flex items-center px-4 py-7 font-[Arial] text-[10px] uppercase tracking-[0.32em] ${inkText} ${hoverInk} transition-colors duration-500`}
+									       >
+										       {item.title}
+										       <span className="pointer-events-none absolute left-4 right-4 bottom-5 h-px bg-[#E8640A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+									       </a>
+								       ) : (
+									       <Link
+										       to={item.href}
+										       className={`group relative inline-flex items-center px-4 py-7 font-[Arial] text-[10px] uppercase tracking-[0.32em] ${inkText} ${hoverInk} transition-colors duration-500`}
+									       >
+										       {item.title}
+										       <span className="pointer-events-none absolute left-4 right-4 bottom-5 h-px bg-[#E8640A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+									       </Link>
+								       )}
 							       </li>
 						       ))}
 					       </ul>
 					       {/* ============ ACTIONS ============ */}
 					       <div className="flex items-center gap-3 shrink-0">
-						       <Link
-							       to="/book-consult"
+						       <a
+							       href="#"
 							       className={`hidden lg:inline-flex items-center font-[Arial] text-[10px] uppercase tracking-[0.32em] py-2 ${mutedText} ${hoverInk} transition-colors duration-500`}
 						       >
 							       Book a Consult
-						       </Link>
+						       </a>
 						       <a
 							       href="https://www.lmsathena.com/login"
 							       target="_blank"
@@ -167,21 +178,32 @@ const Navbar = () => {
 									       </li>
 									       {navConfig.map((item) => (
 										       <li key={item.title}>
-											       <Link
-												       to={item.href}
-												       onClick={() => setIsOpen(false)}
-												       className="flex items-center justify-between py-5 font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none text-[#1A1410] hover:text-[#E8640A] transition-colors"
-											       >
-												       {item.title}
-												       <ArrowUpRight size={16} strokeWidth={1.25} />
-											       </Link>
+											       {item.href.startsWith('/#') || item.href === '#' ? (
+												       <a
+													       href={item.href}
+													       onClick={(e) => { if (item.href === '#') e.preventDefault(); setIsOpen(false); }}
+													       className="flex items-center justify-between py-5 font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none text-[#1A1410] hover:text-[#E8640A] transition-colors"
+												       >
+													       {item.title}
+													       <ArrowUpRight size={16} strokeWidth={1.25} />
+												       </a>
+											       ) : (
+												       <Link
+													       to={item.href}
+													       onClick={() => setIsOpen(false)}
+													       className="flex items-center justify-between py-5 font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none text-[#1A1410] hover:text-[#E8640A] transition-colors"
+												       >
+													       {item.title}
+													       <ArrowUpRight size={16} strokeWidth={1.25} />
+												       </Link>
+											       )}
 										       </li>
 									       ))}
 								       </ul>
 							       </div>
 							       <div className="p-7 border-t border-[rgba(26,20,16,0.08)] bg-[#FAF6EE] space-y-3">
-								       <Link
-									       to="/book-consult"
+								       <a
+									       href="#"
 									       onClick={() => setIsOpen(false)}
 									       className="group w-full inline-flex items-center justify-between bg-[#1A1410] text-white px-6 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] hover:bg-[#E8640A] transition-colors duration-500"
 								       >
@@ -191,7 +213,7 @@ const Navbar = () => {
 										       strokeWidth={1.5}
 										       className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-500"
 									       />
-								       </Link>
+								       </a>
 								       <a
 									       href="https://www.lmsathena.com/login"
 									       target="_blank"

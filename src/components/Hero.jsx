@@ -9,14 +9,14 @@ import clip5 from '../assets/heroclips/Lukehero5.mp4';
 import './Hero.css';
 
 const navigationLinks = [
-  { label: 'Heal from Within', to: '/about/approach' },
-  { label: 'Wellness Programs', to: '/programs/signature-wellness' },
+  { label: 'Heal from Within', to: '#' },
+  { label: 'Wellness Programs', to: '#' },
   { label: 'Masterclass', to: '/masterclass' },
-  { label: 'Courses', to: '/learn/learninghub/home' },
-  { label: 'Recipes', to: '/bharat/dish' },
-  { label: 'eBooks', to: '/resources' },
-  { label: 'Podcast', to: '/Podcast/Podcast' },
-  { label: 'Consult', to: '/book-consult' },
+  { label: 'Courses', to: '/#learn-the-method' },
+  { label: 'Recipes', to: '#' },
+  { label: 'eBooks', to: '#' },
+  { label: 'Podcast', to: '#' },
+  { label: 'Consult', to: '#' },
 ];
 
 const slides = [
@@ -200,17 +200,27 @@ const Hero = () => {
           <img src={lcLogo} alt="Luke Coutinho" />
         </Link>
 
-        <button
-          type="button"
-          className="nav-utility"
-          onClick={() => setIsConsultOpen(true)}
-          aria-haspopup="dialog"
-          aria-controls="consult-drawer"
-          aria-expanded={isConsultOpen}
-        >
-          <span className="nav-utility-dot" aria-hidden="true" />
-          <span>Book Your Consultation</span>
-        </button>
+        <div className="nav-actions">
+          <a
+            href="https://lmsathena.com/login"
+            className="nav-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>Member Login</span>
+          </a>
+          <button
+            type="button"
+            className="nav-utility"
+            onClick={() => setIsConsultOpen(true)}
+            aria-haspopup="dialog"
+            aria-controls="consult-drawer"
+            aria-expanded={isConsultOpen}
+          >
+            <span className="nav-utility-dot" aria-hidden="true" />
+            <span>Book Your Consultation</span>
+          </button>
+        </div>
       </header>
 
       <section
@@ -366,9 +376,21 @@ const Hero = () => {
                   key={link.label}
                   style={{ '--menu-delay': `${120 + index * 70}ms` }}
                 >
-                  <Link to={link.to} onClick={() => setIsMenuOpen(false)}>
-                    {link.label}
-                  </Link>
+                  {link.to.startsWith('/#') || link.to === '#' ? (
+                    <a
+                      href={link.to}
+                      onClick={(e) => {
+                        if (link.to === '#') e.preventDefault();
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.to} onClick={() => setIsMenuOpen(false)}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

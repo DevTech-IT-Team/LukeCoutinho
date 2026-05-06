@@ -401,7 +401,7 @@ const Home = () => {
       </section>
 
       {/* ============== SCREEN 6 — COURSES ============== */}
-      <section className="bg-[#FDFAF5] text-[#1A1410]">
+      <section id="learn-the-method" className="bg-[#FDFAF5] text-[#1A1410]">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-24 lg:py-28">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>

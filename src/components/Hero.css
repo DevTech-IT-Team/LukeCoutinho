@@ -119,6 +119,12 @@
   filter: none;
 }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
 .nav-utility {
   position: relative;
   padding: 0 0 6px;
@@ -158,6 +164,43 @@
 .nav-utility:hover::after,
 .nav-utility:focus-visible::after {
   transform: scaleX(1);
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  background: var(--saffron);
+  border: 1px solid var(--saffron);
+  border-radius: 999px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transition: all 250ms ease;
+  text-decoration: none;
+}
+
+.nav-btn:hover,
+.nav-btn:focus-visible {
+  background: #FFFFFF;
+  color: #1A1410;
+  border-color: #FFFFFF;
+}
+
+.hero-nav.is-scrolled .nav-btn {
+  background: var(--saffron);
+  border-color: var(--saffron);
+  color: #FFFFFF;
+}
+
+.hero-nav.is-scrolled .nav-btn:hover,
+.hero-nav.is-scrolled .nav-btn:focus-visible {
+  background: #1A1410;
+  color: #FFFFFF;
+  border-color: #1A1410;
 }
 
 /* ---------- Hero (scroll-driven sticky stack) ---------- */
