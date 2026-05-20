@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import lcLogo from '../assets/LClogoo.png';
 import clip1 from '../assets/heroclips/lukehero.mp4';
 import clip2 from '../assets/heroclips/Lukehero2.mp4';
@@ -16,24 +16,24 @@ const navigationLinks = [
   { label: 'Recipes', to: '#' },
   { label: 'eBooks', to: '#' },
   { label: 'Podcast', to: '#' },
-  { label: 'Consult', to: '#' },
+  { label: 'Consult', to: '/book-consult' },
 ];
 
 const slides = [
   {
-    eyebrow: 'The Approach',
-    title: 'Heal the Root Cause',
-    sub: 'Foundational Medicine Approach',
-    cta: 'Become a Member',
-    to: '/masterclass',
+    eyebrow: 'The First Step',
+    title: 'Begin Your Journey',
+    sub: 'Foundational Medicine Consultations',
+    cta: 'Book a Consult',
+    to: '/book-consult',
     video: clip5,
   },
   {
-    eyebrow: 'Project',
-    title: 'Heal from Within',
-    sub: 'An Integrative Lifestyle Collection',
-    cta: 'Discover More',
-    to: '/programs/signature-wellness',
+    eyebrow: 'Guided Care',
+    title: 'Integrative Protocols',
+    sub: 'Expert coaching tailored to your biology',
+    cta: 'Discover Our Approach',
+    to: '/about/approach',
     video: clip1,
   },
   {
@@ -45,10 +45,10 @@ const slides = [
     video: clip2,
   },
   {
-    eyebrow: 'An Introduction to Possibility',
-    title: 'Wellness Programs',
-    sub: 'Composed Around You',
-    cta: 'Explore Programs',
+    eyebrow: 'The Destination',
+    title: 'Signature Programs',
+    sub: 'Composed Around You Post-Consult',
+    cta: 'Understand Programs',
     to: '/programs/signature-wellness',
     video: clip3,
   },
@@ -65,10 +65,9 @@ const slides = [
 const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isConsultOpen, setIsConsultOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
-  const [consultStatus, setConsultStatus] = useState('idle');
 
   const wrapperRef = useRef(null);
   const videoRefs = useRef([]);
@@ -138,18 +137,26 @@ const Hero = () => {
   // Menu open/close behaviour
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setIsMenuOpen(false);
-        setIsConsultOpen(false);
-      }
+      if (event.key === 'Escape') setIsMenuOpen(false);
     };
-    document.body.style.overflow = isMenuOpen || isConsultOpen ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isMenuOpen, isConsultOpen]);
+  }, [isMenuOpen]);
+
+  // ?book=1 on homepage → full booking flow
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('book') === '1') {
+      navigate('/book-consult');
+      params.delete('book');
+      const next = `${window.location.pathname}${params.toString() ? `?${params}` : ''}`;
+      window.history.replaceState({}, '', next);
+    }
+  }, [navigate]);
 
   const scrollToSlide = (idx) => {
     const wrapper = wrapperRef.current;
@@ -161,16 +168,6 @@ const Hero = () => {
       (total * idx) / slides.length +
       4;
     window.scrollTo({ top: target, behavior: 'smooth' });
-  };
-
-  const handleConsultSubmit = (event) => {
-    event.preventDefault();
-    setConsultStatus('sending');
-    // Simulated submit — wire up to backend / mailer when ready
-    setTimeout(() => {
-      setConsultStatus('sent');
-      event.target.reset();
-    }, 900);
   };
 
   return (
@@ -209,17 +206,10 @@ const Hero = () => {
           >
             <span>Member Login</span>
           </a>
-          <button
-            type="button"
-            className="nav-utility"
-            onClick={() => setIsConsultOpen(true)}
-            aria-haspopup="dialog"
-            aria-controls="consult-drawer"
-            aria-expanded={isConsultOpen}
-          >
+          <Link to="/book-consult" className="nav-utility">
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Book Your Consultation</span>
-          </button>
+          </Link>
         </div>
       </header>
 
@@ -399,128 +389,6 @@ const Hero = () => {
           <div className="primary-menu-foot">
             <p>Integrative Lifestyle &amp; Wellness · Mumbai · Worldwide</p>
           </div>
-        </aside>
-      </div>
-
-      {/* ----- Book a Consultation drawer (right side) ----- */}
-      <div
-        id="consult-drawer"
-        className={`consult-drawer${isConsultOpen ? ' is-open' : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-hidden={isConsultOpen ? 'false' : 'true'}
-        aria-label="Book a consultation"
-      >
-        <button
-          type="button"
-          className="consult-scrim"
-          aria-label="Close booking panel"
-          tabIndex={isConsultOpen ? 0 : -1}
-          onClick={() => setIsConsultOpen(false)}
-        />
-
-        <aside className="consult-panel">
-          <header className="consult-head">
-            <div>
-              <p className="consult-eyebrow">Begin Your Journey</p>
-              <h2 className="consult-title">Book a Consultation</h2>
-            </div>
-            <button
-              type="button"
-              className="consult-close"
-              aria-label="Close"
-              onClick={() => setIsConsultOpen(false)}
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </header>
-
-          <p className="consult-lede">
-            Share a few details and our team will reach out within 24 hours
-            to compose a wellness journey around your goals — integrative
-            lifestyle, nutrition, emotional health and movement.
-          </p>
-
-          {consultStatus === 'sent' ? (
-            <div className="consult-success" role="status">
-              <p className="consult-eyebrow">Thank you</p>
-              <h3>We have received your request.</h3>
-              <p>
-                A wellness concierge will be in touch shortly at the contact
-                details you shared.
-              </p>
-              <button
-                type="button"
-                className="consult-submit is-ghost"
-                onClick={() => {
-                  setConsultStatus('idle');
-                  setIsConsultOpen(false);
-                }}
-              >
-                Close
-              </button>
-            </div>
-          ) : (
-            <form className="consult-form" onSubmit={handleConsultSubmit}>
-              <label className="consult-field">
-                <span>Full Name</span>
-                <input type="text" name="name" required autoComplete="name" />
-              </label>
-
-              <div className="consult-row">
-                <label className="consult-field">
-                  <span>Email</span>
-                  <input type="email" name="email" required autoComplete="email" />
-                </label>
-                <label className="consult-field">
-                  <span>Phone</span>
-                  <input type="tel" name="phone" required autoComplete="tel" />
-                </label>
-              </div>
-
-              <div className="consult-row">
-                <label className="consult-field">
-                  <span>Country / Region</span>
-                  <input type="text" name="country" required autoComplete="country-name" />
-                </label>
-                <label className="consult-field">
-                  <span>Preferred Date</span>
-                  <input type="date" name="date" />
-                </label>
-              </div>
-
-              <label className="consult-field">
-                <span>Area of Interest</span>
-                <select name="program" defaultValue="">
-                  <option value="" disabled>Select a programme</option>
-                  <option value="signature">Signature Wellness</option>
-                  <option value="cancer">Special Cancer Care</option>
-                  <option value="gut">Gut Care</option>
-                  <option value="pregnancy">Pregnancy Care</option>
-                  <option value="corporate">Corporate Wellness</option>
-                  <option value="other">Something else</option>
-                </select>
-              </label>
-
-              <label className="consult-field">
-                <span>Briefly, what brings you here?</span>
-                <textarea name="message" rows="4" />
-              </label>
-
-              <button
-                type="submit"
-                className="consult-submit"
-                disabled={consultStatus === 'sending'}
-              >
-                {consultStatus === 'sending' ? 'Submitting…' : 'Request Consultation'}
-              </button>
-
-              <p className="consult-fineprint">
-                By submitting, you agree to be contacted by Luke Coutinho's
-                team regarding your enquiry.
-              </p>
-            </form>
-          )}
         </aside>
       </div>
     </>

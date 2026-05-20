@@ -132,3 +132,240 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .lc-marquee-track { animation: none; }
 }
+
+/* ---------- Architecture / journey section ---------- */
+.lc-architecture {
+  --arch-accent: #e8640a;
+  --arch-ink: #1a1410;
+  --arch-muted: rgba(26, 20, 16, 0.58);
+}
+
+.lc-architecture-glow {
+  position: absolute;
+  top: -120px;
+  right: -80px;
+  width: min(520px, 55vw);
+  height: min(520px, 55vw);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 100, 10, 0.09) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.lc-architecture-track {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .lc-architecture-track {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+}
+
+.lc-architecture-step {
+  flex: 1 1 0;
+  min-width: 0;
+  position: relative;
+}
+
+@media (max-width: 1023px) {
+  .lc-architecture-step {
+    padding-left: 28px;
+  }
+
+  .lc-architecture-step:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  .lc-architecture-step::before {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 14px;
+    bottom: -20px;
+    width: 1px;
+    background: linear-gradient(180deg, rgba(232, 100, 10, 0.45), rgba(26, 20, 16, 0.1));
+  }
+
+  .lc-architecture-step:last-child::before {
+    display: none;
+  }
+}
+
+.lc-architecture-connector {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .lc-architecture-connector {
+    display: flex;
+    align-items: center;
+    flex: 0 0 36px;
+    padding: 0 2px;
+    margin-top: 48px;
+    list-style: none;
+  }
+
+  .lc-architecture-connector-line {
+    flex: 1;
+    height: 1px;
+    min-width: 12px;
+    background: linear-gradient(90deg, rgba(26, 20, 16, 0.12), rgba(232, 100, 10, 0.4));
+  }
+
+  .lc-architecture-connector-arrow {
+    color: rgba(232, 100, 10, 0.6);
+    margin-left: 4px;
+    flex-shrink: 0;
+  }
+}
+
+.lc-architecture-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 220px;
+  padding: 24px 22px 22px;
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.4s ease,
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 1023px) {
+  .lc-architecture-card::before {
+    content: '';
+    position: absolute;
+    left: -28px;
+    top: 22px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--arch-accent);
+    box-shadow: 0 0 0 4px rgba(232, 100, 10, 0.12);
+  }
+}
+
+.lc-architecture-card:hover {
+  border-color: rgba(232, 100, 10, 0.45);
+  box-shadow: 0 20px 48px -24px rgba(26, 20, 16, 0.22);
+  transform: translateY(-4px);
+}
+
+.lc-architecture-card-num {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(3.5rem, 6vw, 4.5rem);
+  font-style: italic;
+  line-height: 1;
+  color: rgba(26, 20, 16, 0.05);
+  pointer-events: none;
+  user-select: none;
+  transition: color 0.4s ease;
+}
+
+.lc-architecture-card:hover .lc-architecture-card-num {
+  color: rgba(232, 100, 10, 0.12);
+}
+
+.lc-architecture-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.lc-architecture-badge {
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--arch-accent);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(232, 100, 10, 0.08);
+  border: 1px solid rgba(232, 100, 10, 0.2);
+}
+
+.lc-architecture-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(26, 20, 16, 0.04);
+  color: rgba(26, 20, 16, 0.35);
+  transition:
+    background 0.35s ease,
+    color 0.35s ease,
+    transform 0.35s ease;
+}
+
+.lc-architecture-card:hover .lc-architecture-icon {
+  background: var(--arch-accent);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.lc-architecture-title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
+  line-height: 1.05;
+  color: var(--arch-ink);
+}
+
+.lc-architecture-desc {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--arch-muted);
+}
+
+.lc-architecture-cta {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.4);
+  transition: color 0.3s ease, gap 0.3s ease;
+}
+
+.lc-architecture-card:hover .lc-architecture-cta {
+  color: var(--arch-accent);
+  gap: 12px;
+}

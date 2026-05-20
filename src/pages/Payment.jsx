@@ -56,6 +56,8 @@ const Payment = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const course = location.state?.course || null;
+  const consult = location.state?.consult || null;
+  const consultPathId = location.state?.pathId || null;
 
   const [selectedPlan, setSelectedPlan] = useState('individual');
   const [paymentMethod, setPaymentMethod] = useState('card');
@@ -70,16 +72,39 @@ const Payment = () => {
   });
 
   const activePlan = consultationPlans.find((p) => p.id === selectedPlan);
-  const orderLabel = course ? course.title : activePlan?.name;
-  const orderPrice = course ? course.price : activePlan?.price;
-  const orderEyebrow = course ? `Self-Paced · ${course.level}` : 'Consultation';
-  const backHref = course ? `/course/${course.id}` : '/book-consult';
-  const backLabel = course ? 'Back to Course' : 'Back to Consultation';
+  const orderLabel = course ? course.title : consult ? consult.label : activePlan?.name;
+  const orderPrice = course ? course.price : consult ? consult.price : activePlan?.price;
+  const orderEyebrow = course
+    ? `Self-Paced · ${course.level}`
+    : consult
+      ? `${consult.mode || 'Consultation'} · ${consult.duration || ''}`
+      : 'Consultation';
+  const backHref = course
+    ? `/course/${course.id}`
+    : consult?.preferredDateIso
+      ? '/book-consult/schedule'
+      : consult
+        ? '/book-consult/service'
+        : '/book-consult';
+  const backState = consult
+    ? consult.preferredDateIso
+      ? { consult, pathId: consultPathId }
+      : { pathId: consultPathId || (consult.serviceId === 'luke-waitlist' ? 'waitlist' : 'instant') }
+    : undefined;
+  const backLabel = course
+    ? 'Back to Course'
+    : consult?.preferredDateIso
+      ? 'Back to Date & Time'
+      : consult
+        ? 'Back to Service'
+        : 'Back to Consultation';
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setTimeout(() => {
-      navigate('/payment-success', { state: course ? { course } : undefined });
+      navigate('/payment-success', {
+        state: course ? { course } : consult ? { consult } : undefined,
+      });
     }, 1200);
   };
 
@@ -99,6 +124,7 @@ const Payment = () => {
         <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 lg:px-16 pt-28 lg:pt-32 pb-14 lg:pb-16">
           <Link
             to={backHref}
+            state={backState}
             className="inline-flex items-center gap-2 font-[Arial] text-[10px] uppercase tracking-[0.4em] text-white/65 hover:text-[#E8640A] transition-colors mb-10"
           >
             <ArrowLeft size={14} /> {backLabel}
@@ -133,7 +159,7 @@ const Payment = () => {
             {/* ===== Order summary (left) ===== */}
             <aside className="lg:col-span-5 lg:sticky lg:top-28">
               <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-5">
-                {course ? 'Your Course' : 'Select a Plan'}
+                {course ? 'Your Course' : consult ? 'Your Consult' : 'Select a Plan'}
               </p>
 
               {course ? (
@@ -184,6 +210,34 @@ const Payment = () => {
                         GST included
                       </p>
                     </div>
+                  </div>
+                </div>
+              ) : consult ? (
+                <div className="border border-[rgba(26,20,16,0.1)] bg-white p-7">
+                  <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-4">{orderEyebrow}</p>
+                  <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[26px] leading-[1.15] mb-1.5">{consult.serviceTitle}</h3>
+                  {consult.expertName && (
+                    <p className="font-['EB_Garamond',Georgia,serif] italic text-[15px] text-[rgba(26,20,16,0.55)] mb-4">
+                      {consult.expertName}{consult.categoryLabel ? ` · ${consult.categoryLabel}` : ''}
+                    </p>
+                  )}
+                  <ul className="pb-6 border-b border-[rgba(26,20,16,0.08)] font-[Arial] text-[12.5px] space-y-2.5 text-[rgba(26,20,16,0.75)]">
+                    <li className="flex gap-3"><Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" /><span>{consult.optionTitle}</span></li>
+                    <li className="flex gap-3"><Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" /><span>Duration: {consult.duration}</span></li>
+                    <li className="flex gap-3"><Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" /><span>Mode: {consult.mode}</span></li>
+                    {consult.preferredDateLabel && (
+                      <li className="flex gap-3"><Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" /><span>Preferred date: {consult.preferredDateLabel}</span></li>
+                    )}
+                    {consult.preferredTimeLabel && (
+                      <li className="flex gap-3"><Check size={14} className="text-[#E8640A] shrink-0 mt-[3px]" /><span>Preferred time: {consult.preferredTimeLabel}</span></li>
+                    )}
+                  </ul>
+                  <div className="pt-6 flex items-end justify-between">
+                    <div>
+                      <p className="font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.55)] mb-1">Total</p>
+                      <p className="font-['EB_Garamond',Georgia,serif] italic text-[40px] leading-none">{consult.price}</p>
+                    </div>
+                    <p className="font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.5)]">GST included</p>
                   </div>
                 </div>
               ) : (
@@ -313,7 +367,7 @@ const Payment = () => {
                       </div>
                     </div>
 
-                    {!course && (
+                    {!course && !consult && (
                       <div>
                         <label className={labelClass}>Preferred Date</label>
                         <div className="relative">
@@ -434,7 +488,7 @@ const Payment = () => {
                   <div className="flex items-end justify-between mb-8 gap-6">
                     <div>
                       <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-2">
-                        {course ? 'Course' : 'Plan'}
+                        {course ? 'Course' : consult ? 'Consult' : 'Plan'}
                       </p>
                       <p className="font-['EB_Garamond',Georgia,serif] italic text-[24px] leading-[1.15]">
                         {orderLabel}
