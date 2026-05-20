@@ -17,18 +17,19 @@ function Home() {
   return (
     <>
       <Hero />
-      <LearningIntro />
-      <AssetsShowcase />
       <FeaturedCourses />
-      <LearningExperience />
-      <FAQ />
-      <HowItWorks />
+
+      {/* <LearningIntro /> */}
+      {/* <AssetsShowcase /> */}
+      {/* <LearningExperience /> */}
+      {/* <FAQ /> */}
+      {/* <HowItWorks /> */}
       {/* <GiftBanner /> */}
       {/* <WhoWillBenefit /> */}
-      <TeamsWorkplaces />
+      {/* <TeamsWorkplaces /> */}
       <CorporateCourses />
-      <AboutLukeSection/>
-      <SignatureWellnessPortal/>
+      {/* <AboutLukeSection /> */}
+      <SignatureWellnessPortal />
     </>
   );
 }

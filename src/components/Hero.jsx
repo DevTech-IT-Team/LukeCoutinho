@@ -13,6 +13,8 @@ const navigationLinks = [
   { label: 'Wellness Programs', to: '/programs/signature-wellness' },
   { label: 'Masterclass', to: '/masterclass' },
   { label: 'Courses', to: '/learn/learninghub/home' },
+  { label: 'Blogs', to: '/Learn/Blogs/Home' },
+
   { label: 'Recipes', to: '/bharat/dish' },
   { label: 'eBooks', to: '/resources' },
   { label: 'Podcast', to: '/Podcast/Podcast' },
@@ -60,6 +62,7 @@ const slides = [
     to: '/Podcast/Podcast',
     video: clip4,
   },
+
 ];
 
 const Hero = () => {
