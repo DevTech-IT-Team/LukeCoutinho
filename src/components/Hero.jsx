@@ -130,7 +130,7 @@ const Hero = () => {
   useEffect(() => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
-      if (i === activeIndex) video.play().catch(() => {});
+      if (i === activeIndex) video.play().catch(() => { });
       else video.pause();
     });
   }, [activeIndex]);
@@ -176,9 +176,8 @@ const Hero = () => {
   return (
     <>
       <header
-        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${
-          isMenuOpen ? ' is-menu-open' : ''
-        }`}
+        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${isMenuOpen ? ' is-menu-open' : ''
+          }`}
       >
         <button
           className="menu-trigger"
@@ -200,17 +199,26 @@ const Hero = () => {
           <img src={lcLogo} alt="Luke Coutinho" />
         </Link>
 
-        <button
-          type="button"
-          className="nav-utility"
-          onClick={() => setIsConsultOpen(true)}
-          aria-haspopup="dialog"
-          aria-controls="consult-drawer"
-          aria-expanded={isConsultOpen}
-        >
-          <span className="nav-utility-dot" aria-hidden="true" />
-          <span>Book Your Consultation</span>
-        </button>
+        <div className="nav-utilities">
+          <Link
+            to="/programs/signature-wellness"
+            className="nav-utility sw"
+          >
+            <span className="nav-utility-dot" aria-hidden="true" />
+            <span>Signature Wellness Programs</span>
+          </Link>
+          <button
+            type="button"
+            className="nav-utility by"
+            onClick={() => setIsConsultOpen(true)}
+            aria-haspopup="dialog"
+            aria-controls="consult-drawer"
+            aria-expanded={isConsultOpen}
+          >
+            <span className="nav-utility-dot" aria-hidden="true" />
+            <span>Book Your Consultation</span>
+          </button>
+        </div>
       </header>
 
       <section
@@ -236,9 +244,8 @@ const Hero = () => {
                 preload={i === 0 ? 'auto' : 'metadata'}
                 style={{
                   opacity: i === activeIndex ? 1 : 0,
-                  transform: `scale(${
-                    i === activeIndex ? 1.0 + progress * 0.04 : 1.06
-                  })`,
+                  transform: `scale(${i === activeIndex ? 1.0 + progress * 0.04 : 1.06
+                    })`,
                 }}
               />
             ))}
@@ -266,9 +273,8 @@ const Hero = () => {
                       <span
                         className="hero-dot-progress"
                         style={{
-                          background: `conic-gradient(#FFFFFF ${
-                            progress * 360
-                          }deg, rgba(255,255,255,0) 0deg)`,
+                          background: `conic-gradient(#FFFFFF ${progress * 360
+                            }deg, rgba(255,255,255,0) 0deg)`,
                         }}
                       />
                     )}
@@ -506,3 +512,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
