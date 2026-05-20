@@ -42,9 +42,14 @@ const ChatBot = () => {
   };
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
+    const scrollToBottom = () => {
+      if (scrollRef.current) {
+        scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+      }
+    };
+    scrollToBottom();
+    const timer = setTimeout(scrollToBottom, 150);
+    return () => clearTimeout(timer);
   }, [messages, isTyping]);
 
   const handleOptionClick = (option) => {

@@ -11,7 +11,7 @@ import IndividualFamilyMasterclass from './pages/Workshop/IndividualFamilyMaster
 import CorporateTalks from './pages/Workshop/CorporateTalks/Home'
 import Blogs from './pages/Learn/Blogs/Home'
 import Learninghub from './pages/Learn/Learninghub/Home'
-import ChatBot from './components/ChatBot'
+import ChatbotOverlay from './components/chatbot/ChatbotOverlay'
 import SignatureWellness from './pages/Programs/SignatureWellness'
 import SpecialCancerCare from './pages/Programs/SpecialCancerCare'
 import GutCare from './pages/Programs/GutCare'
@@ -54,6 +54,7 @@ function AppShell() {
   const isChromeless = chromelessPaths.some((p) =>
     p === '/' ? location.pathname === '/' : location.pathname.startsWith(p)
   )
+  const isLandingPage = location.pathname === '/'
 
   return (
     <>
@@ -107,7 +108,7 @@ function AppShell() {
             <Route path="/assessment/results" element={<AssessmentResults />} />
           </Routes>
         </main>
-        {!isChromeless && <ChatBot />}
+        {isLandingPage && <ChatbotOverlay />}
         <Footer />
       </div>
     </>
