@@ -181,5 +181,4 @@ const courses = [
 ];
 
 export const getCourseById = (id) => courses.find((c) => c.id === id);
-
 export default courses;
