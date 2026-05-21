@@ -8,13 +8,111 @@ import clip4 from '../assets/heroclips/Lukehero4.mp4';
 import clip5 from '../assets/heroclips/Lukehero5.mp4';
 import './Hero.css';
 
+const allCourses = [
+  {
+    id: 'nutrition-mastery',
+    title: 'Nutrition Mastery',
+    subtitle: 'Cellular healing through nutrition',
+    category: 'Nutrition',
+    lessons: 12,
+    duration: '8 Weeks',
+    level: 'Beginner',
+    price: '$99',
+    rating: '4.9',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'advanced-nutrition',
+    title: 'Advanced Nutrition',
+    subtitle: 'Clinical nutrition protocols',
+    category: 'Nutrition',
+    lessons: 18,
+    duration: '12 Weeks',
+    level: 'Advanced',
+    price: '$199',
+    rating: '5.0',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'mindset-blueprint',
+    title: 'Mindset Blueprint',
+    subtitle: 'Mental resilience and emotional mastery',
+    category: 'Mindset',
+    lessons: 10,
+    duration: '6 Weeks',
+    level: 'Intermediate',
+    price: '$120',
+    rating: '4.8',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'focus-clarity',
+    title: 'Focus & Clarity',
+    subtitle: 'Peak performance and productivity',
+    category: 'Mindset',
+    lessons: 14,
+    duration: '7 Weeks',
+    level: 'Advanced',
+    price: '$149',
+    rating: '4.9',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'functional-fitness',
+    title: 'Functional Fitness',
+    subtitle: 'Movement and strength optimization',
+    category: 'Fitness',
+    lessons: 15,
+    duration: '10 Weeks',
+    level: 'Advanced',
+    price: '$149',
+    rating: '5.0',
+    image: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'body-reset',
+    title: 'Body Reset Program',
+    subtitle: 'Complete metabolic transformation',
+    category: 'Fitness',
+    lessons: 16,
+    duration: '9 Weeks',
+    level: 'Intermediate',
+    price: '$179',
+    rating: '4.8',
+    image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'deep-healing',
+    title: 'Deep Healing',
+    subtitle: 'Recovery and holistic transformation',
+    category: 'Healing',
+    lessons: 9,
+    duration: '5 Weeks',
+    level: 'Beginner',
+    price: '$89',
+    rating: '4.7',
+    image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop',
+  },
+  {
+    id: 'gut-healing',
+    title: 'Gut Healing Protocol',
+    subtitle: 'Restore digestion and immunity',
+    category: 'Healing',
+    lessons: 11,
+    duration: '6 Weeks',
+    level: 'Intermediate',
+    price: '$110',
+    rating: '4.9',
+    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop',
+  },
+];
+
 const navigationLinks = [
   { label: 'Heal from Within', to: '/about/approach' },
   { label: 'Wellness Programs', to: '/programs/signature-wellness' },
   { label: 'Masterclass', to: '/masterclass' },
   { label: 'Courses', to: '/learn/learninghub/home' },
   { label: 'Blogs', to: '/Learn/Blogs/Home' },
-
   { label: 'Recipes', to: '/bharat/dish' },
   { label: 'eBooks', to: '/resources' },
   { label: 'Podcast', to: '/Podcast/Podcast' },
@@ -62,21 +160,22 @@ const slides = [
     to: '/Podcast/Podcast',
     video: clip4,
   },
-
 ];
 
 const Hero = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isConsultOpen, setIsConsultOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [consultStatus, setConsultStatus] = useState('idle');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const wrapperRef = useRef(null);
   const videoRefs = useRef([]);
+  const searchInputRef = useRef(null);
 
-  // Nav stays transparent across all hero slides; switches to frosted only after the hero stack ends
   useEffect(() => {
     const handleScroll = () => {
       const wrapper = wrapperRef.current;
@@ -94,11 +193,9 @@ const Hero = () => {
     };
   }, []);
 
-  // Scroll-driven slide progression
   useEffect(() => {
     const wrapper = wrapperRef.current;
     if (!wrapper) return;
-
     let rafId = null;
     const compute = () => {
       rafId = null;
@@ -113,12 +210,10 @@ const Hero = () => {
       setActiveIndex((prev) => (prev === idx ? prev : idx));
       setProgress(within);
     };
-
     const onScroll = () => {
       if (rafId !== null) return;
       rafId = window.requestAnimationFrame(compute);
     };
-
     compute();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', compute);
@@ -129,7 +224,6 @@ const Hero = () => {
     };
   }, []);
 
-  // Play only the active video
   useEffect(() => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
@@ -138,21 +232,36 @@ const Hero = () => {
     });
   }, [activeIndex]);
 
-  // Menu open/close behaviour
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setIsMenuOpen(false);
         setIsConsultOpen(false);
+        setIsSearchOpen(false);
       }
     };
-    document.body.style.overflow = isMenuOpen || isConsultOpen ? 'hidden' : '';
+    document.body.style.overflow = isMenuOpen || isConsultOpen || isSearchOpen ? 'hidden' : '';
     window.addEventListener('keydown', handleKeyDown);
     return () => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isMenuOpen, isConsultOpen]);
+  }, [isMenuOpen, isConsultOpen, isSearchOpen]);
+
+  useEffect(() => {
+    if (isSearchOpen && searchInputRef.current) {
+      setTimeout(() => searchInputRef.current?.focus(), 120);
+    }
+    if (!isSearchOpen) setSearchQuery('');
+  }, [isSearchOpen]);
+
+  const searchResults = searchQuery.trim().length > 0
+    ? allCourses.filter((c) =>
+      c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      c.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
+    )
+    : [];
 
   const scrollToSlide = (idx) => {
     const wrapper = wrapperRef.current;
@@ -169,7 +278,6 @@ const Hero = () => {
   const handleConsultSubmit = (event) => {
     event.preventDefault();
     setConsultStatus('sending');
-    // Simulated submit — wire up to backend / mailer when ready
     setTimeout(() => {
       setConsultStatus('sent');
       event.target.reset();
@@ -179,8 +287,7 @@ const Hero = () => {
   return (
     <>
       <header
-        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${isMenuOpen ? ' is-menu-open' : ''
-          }`}
+        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${isMenuOpen ? ' is-menu-open' : ''}`}
       >
         <button
           className="menu-trigger"
@@ -203,10 +310,7 @@ const Hero = () => {
         </Link>
 
         <div className="nav-utilities">
-          <Link
-            to="/programs/signature-wellness"
-            className="nav-utility sw"
-          >
+          <Link to="/programs/signature-wellness" className="nav-utility sw">
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Signature Wellness Programs</span>
           </Link>
@@ -221,6 +325,25 @@ const Hero = () => {
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Book Your Consultation</span>
           </button>
+          <button
+            type="button"
+            className="nav-search"
+            aria-label="Search"
+            onClick={() => setIsSearchOpen(true)}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              width="15"
+              height="15"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.5" y1="16.5" x2="22" y2="22" />
+            </svg>
+          </button>
         </div>
       </header>
 
@@ -231,14 +354,11 @@ const Hero = () => {
         aria-label="Featured stories"
       >
         <div className="hero-stage">
-          {/* Video stack */}
           <div className="hero-media" aria-hidden="true">
             {slides.map((s, i) => (
               <video
                 key={s.title}
-                ref={(el) => {
-                  videoRefs.current[i] = el;
-                }}
+                ref={(el) => { videoRefs.current[i] = el; }}
                 className="hero-video"
                 src={s.video}
                 muted
@@ -247,8 +367,7 @@ const Hero = () => {
                 preload={i === 0 ? 'auto' : 'metadata'}
                 style={{
                   opacity: i === activeIndex ? 1 : 0,
-                  transform: `scale(${i === activeIndex ? 1.0 + progress * 0.04 : 1.06
-                    })`,
+                  transform: `scale(${i === activeIndex ? 1.0 + progress * 0.04 : 1.06})`,
                 }}
               />
             ))}
@@ -258,7 +377,6 @@ const Hero = () => {
           <div className="hero-vignette" aria-hidden="true" />
           <div className="hero-hairline" aria-hidden="true" />
 
-          {/* Dot pagination with conic progress */}
           <ul className="hero-dots" aria-label="Slide navigation">
             {slides.map((s, i) => {
               const isActive = i === activeIndex;
@@ -276,8 +394,7 @@ const Hero = () => {
                       <span
                         className="hero-dot-progress"
                         style={{
-                          background: `conic-gradient(#FFFFFF ${progress * 360
-                            }deg, rgba(255,255,255,0) 0deg)`,
+                          background: `conic-gradient(#FFFFFF ${progress * 360}deg, rgba(255,255,255,0) 0deg)`,
                         }}
                       />
                     )}
@@ -288,12 +405,10 @@ const Hero = () => {
             })}
           </ul>
 
-          {/* Stacked slide content */}
           <div className="hero-content">
             {slides.map((s, i) => {
               const isActive = i === activeIndex;
-              const offset =
-                i === activeIndex ? 0 : i < activeIndex ? -32 : 32;
+              const offset = i === activeIndex ? 0 : i < activeIndex ? -32 : 32;
               return (
                 <div
                   key={s.title}
@@ -308,11 +423,7 @@ const Hero = () => {
                   <p className="hero-eyebrow">{s.eyebrow}</p>
                   <h1 className="hero-headline">{s.title}</h1>
                   <p className="hero-subline">{s.sub}</p>
-                  <Link
-                    to="/masterclass"
-                    tabIndex={isActive ? 0 : -1}
-                    className="hero-cta"
-                  >
+                  <Link to="/masterclass" tabIndex={isActive ? 0 : -1} className="hero-cta">
                     Become a Member
                   </Link>
                 </div>
@@ -320,7 +431,6 @@ const Hero = () => {
             })}
           </div>
 
-          {/* Slide counter */}
           <div className="hero-counter" aria-hidden="true">
             {String(activeIndex + 1).padStart(2, '0')}{' '}
             <span>/ {String(slides.length).padStart(2, '0')}</span>
@@ -328,6 +438,7 @@ const Hero = () => {
         </div>
       </section>
 
+      {/* Primary menu */}
       <div
         id="primary-menu"
         className={`primary-menu${isMenuOpen ? ' is-open' : ''}`}
@@ -342,12 +453,10 @@ const Hero = () => {
           tabIndex={isMenuOpen ? 0 : -1}
           onClick={() => setIsMenuOpen(false)}
         />
-
         <aside className="primary-menu-panel" aria-label="Site menu">
           <div className="primary-menu-backdrop" aria-hidden="true">
             <div className="primary-menu-tint" />
           </div>
-
           <div className="primary-menu-head">
             <Link
               to="/"
@@ -357,7 +466,6 @@ const Hero = () => {
             >
               <img src={lcLogo} alt="Luke Coutinho" />
             </Link>
-
             <button
               className="primary-menu-close"
               type="button"
@@ -367,14 +475,10 @@ const Hero = () => {
               <span aria-hidden="true">×</span>
             </button>
           </div>
-
           <nav className="primary-menu-nav" aria-label="Primary navigation">
             <ul>
               {navigationLinks.map((link, index) => (
-                <li
-                  key={link.label}
-                  style={{ '--menu-delay': `${120 + index * 70}ms` }}
-                >
+                <li key={link.label} style={{ '--menu-delay': `${120 + index * 70}ms` }}>
                   <Link to={link.to} onClick={() => setIsMenuOpen(false)}>
                     {link.label}
                   </Link>
@@ -382,14 +486,13 @@ const Hero = () => {
               ))}
             </ul>
           </nav>
-
           <div className="primary-menu-foot">
             <p>Integrative Lifestyle &amp; Wellness · Mumbai · Worldwide</p>
           </div>
         </aside>
       </div>
 
-      {/* ----- Book a Consultation drawer (right side) ----- */}
+      {/* Consultation drawer */}
       <div
         id="consult-drawer"
         className={`consult-drawer${isConsultOpen ? ' is-open' : ''}`}
@@ -405,7 +508,6 @@ const Hero = () => {
           tabIndex={isConsultOpen ? 0 : -1}
           onClick={() => setIsConsultOpen(false)}
         />
-
         <aside className="consult-panel">
           <header className="consult-head">
             <div>
@@ -423,26 +525,19 @@ const Hero = () => {
           </header>
 
           <p className="consult-lede">
-            Share a few details and our team will reach out within 24 hours
-            to compose a wellness journey around your goals — integrative
-            lifestyle, nutrition, emotional health and movement.
+            Share a few details and our team will reach out within 24 hours to compose a wellness
+            journey around your goals — integrative lifestyle, nutrition, emotional health and movement.
           </p>
 
           {consultStatus === 'sent' ? (
             <div className="consult-success" role="status">
               <p className="consult-eyebrow">Thank you</p>
               <h3>We have received your request.</h3>
-              <p>
-                A wellness concierge will be in touch shortly at the contact
-                details you shared.
-              </p>
+              <p>A wellness concierge will be in touch shortly at the contact details you shared.</p>
               <button
                 type="button"
                 className="consult-submit is-ghost"
-                onClick={() => {
-                  setConsultStatus('idle');
-                  setIsConsultOpen(false);
-                }}
+                onClick={() => { setConsultStatus('idle'); setIsConsultOpen(false); }}
               >
                 Close
               </button>
@@ -453,7 +548,6 @@ const Hero = () => {
                 <span>Full Name</span>
                 <input type="text" name="name" required autoComplete="name" />
               </label>
-
               <div className="consult-row">
                 <label className="consult-field">
                   <span>Email</span>
@@ -464,7 +558,6 @@ const Hero = () => {
                   <input type="tel" name="phone" required autoComplete="tel" />
                 </label>
               </div>
-
               <div className="consult-row">
                 <label className="consult-field">
                   <span>Country / Region</span>
@@ -475,7 +568,6 @@ const Hero = () => {
                   <input type="date" name="date" />
                 </label>
               </div>
-
               <label className="consult-field">
                 <span>Area of Interest</span>
                 <select name="program" defaultValue="">
@@ -488,12 +580,10 @@ const Hero = () => {
                   <option value="other">Something else</option>
                 </select>
               </label>
-
               <label className="consult-field">
                 <span>Briefly, what brings you here?</span>
                 <textarea name="message" rows="4" />
               </label>
-
               <button
                 type="submit"
                 className="consult-submit"
@@ -501,18 +591,122 @@ const Hero = () => {
               >
                 {consultStatus === 'sending' ? 'Submitting…' : 'Request Consultation'}
               </button>
-
               <p className="consult-fineprint">
-                By submitting, you agree to be contacted by Luke Coutinho's
-                team regarding your enquiry.
+                By submitting, you agree to be contacted by Luke Coutinho's team regarding your enquiry.
               </p>
             </form>
           )}
         </aside>
+      </div>
+
+      {/* Search overlay */}
+      <div
+        className={`search-overlay${isSearchOpen ? ' is-open' : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={isSearchOpen ? 'false' : 'true'}
+        aria-label="Search courses"
+      >
+        <button
+          type="button"
+          className="search-overlay-scrim"
+          aria-label="Close search"
+          tabIndex={isSearchOpen ? 0 : -1}
+          onClick={() => setIsSearchOpen(false)}
+        />
+
+        <div className="search-overlay-panel">
+          <div className="search-bar-wrap">
+            <svg
+              className="search-bar-icon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              width="18"
+              height="18"
+              aria-hidden="true"
+            >
+              <circle cx="11" cy="11" r="7" />
+              <line x1="16.5" y1="16.5" x2="22" y2="22" />
+            </svg>
+            <input
+              ref={searchInputRef}
+              type="search"
+              className="search-bar-input"
+              placeholder="Search courses, topics…"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              tabIndex={isSearchOpen ? 0 : -1}
+              autoComplete="off"
+            />
+            <button
+              type="button"
+              className="search-bar-close"
+              aria-label="Close search"
+              onClick={() => setIsSearchOpen(false)}
+            >
+              ×
+            </button>
+          </div>
+
+          {searchQuery.trim().length > 0 ? (
+            <div className="search-results">
+              {searchResults.length === 0 ? (
+                <p className="search-empty">No courses found for "{searchQuery}"</p>
+              ) : (
+                <ul className="search-result-list">
+                  {searchResults.map((course) => (
+                    <li key={course.id}>
+                      <Link
+                        to={`/course/${course.id}`}
+                        className="search-result-item"
+                        onClick={() => setIsSearchOpen(false)}
+                        tabIndex={isSearchOpen ? 0 : -1}
+                      >
+                        <img
+                          src={course.image}
+                          alt={course.title}
+                          className="search-result-thumb"
+                        />
+                        <div className="search-result-info">
+                          <span className="search-result-category">{course.category}</span>
+                          <p className="search-result-title">{course.title}</p>
+                          <p className="search-result-sub">{course.subtitle}</p>
+                        </div>
+                        <div className="search-result-meta">
+                          <span className="search-result-price">{course.price}</span>
+                          <span className="search-result-dur">{course.duration}</span>
+                        </div>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ) : (
+            <div className="search-hints">
+              <p className="search-hint-label">Popular</p>
+              <div className="search-hint-tags">
+                {['Nutrition', 'Mindset', 'Gut Healing', 'Fitness', 'Healing'].map((tag) => (
+                  <button
+                    key={tag}
+                    type="button"
+                    className="search-hint-tag"
+                    onClick={() => setSearchQuery(tag)}
+                    tabIndex={isSearchOpen ? 0 : -1}
+                  >
+                    {tag}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </>
   );
 };
 
 export default Hero;
-
