@@ -13,7 +13,7 @@ const navigationLinks = [
   { label: 'Wellness Programs', to: '#' },
   { label: 'Masterclass', to: '/masterclass' },
   { label: 'Courses', to: '/learn/learninghub/home' },
-  { label: 'Blogs', to: '/Learn/Blogs/Home' },
+  { label: 'Blogs', to: '/learn/blogs' },
 
   { label: 'Recipes', to: '/bharat/dish' },
   { label: 'eBooks', to: '/resources' },
@@ -207,17 +207,10 @@ const Hero = () => {
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Signature Wellness Programs</span>
           </Link>
-          <button
-            type="button"
-            className="nav-utility by"
-            onClick={() => setIsConsultOpen(true)}
-            aria-haspopup="dialog"
-            aria-controls="consult-drawer"
-            aria-expanded={isConsultOpen}
-          >
+          <Link to="/book-consult" className="nav-utility by">
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Book Your Consultation</span>
-          </button>
+          </Link>
         </div>
       </header>
 

@@ -5,12 +5,12 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import logo from '../assets/LClogoo.png';
 
 const navConfig = [
-	{ title: 'Programs', href: '#' },
+	{ title: 'Programs', href: '/programs/signature-wellness' },
 	{ title: 'Masterclass', href: '/masterclass' },
-	{ title: 'Podcast', href: '#' },
-	{ title: 'Courses', href: '/#learn-the-method' },
-	{ title: 'Blogs', href: '/Learn/Blogs/Home' },
-	{ title: 'Bharat', href: '#' },
+	{ title: 'Podcast', href: '/Podcast/Podcast' },
+	{ title: 'Courses', href: '/learn/learninghub/home' },
+	{ title: 'Blogs', href: '/learn/blogs' },
+	{ title: 'Bharat', href: '/bharat/dish' },
 ];
 
 const Navbar = () => {
@@ -54,6 +54,9 @@ const Navbar = () => {
 		: overDark
 			? 'bg-transparent border-b border-transparent'
 			: 'bg-[#FDFAF5] border-b border-[rgba(26,20,16,0.06)]';
+
+	const inkText = overDark && !scrolled ? 'text-white/90' : 'text-[#1A1410]';
+	const hoverInk = 'hover:text-[#E8640A]';
 
 	return (
 		<nav
@@ -104,12 +107,12 @@ const Navbar = () => {
 					<div className="flex items-center gap-3 shrink-0">
 
 						{/* BOOK CONSULT */}
-						<a
-							href="#"
+						<Link
+							to="/book-consult"
 							className="hidden lg:inline-flex items-center font-[Arial] text-[10px] uppercase tracking-[0.32em] py-2 text-black hover:text-[#E8640A] transition-colors duration-500"
 						>
 							Book a Consult
-						</a>
+						</Link>
 
 						{/* MEMBER LOGIN */}
 						<a
@@ -234,10 +237,10 @@ const Navbar = () => {
 							{/* FOOTER BUTTONS */}
 							<div className="p-7 border-t border-[rgba(26,20,16,0.08)] bg-[#FAF6EE] space-y-3">
 
-								<a
-									href="#"
+								<Link
+									to="/book-consult"
 									onClick={() => setIsOpen(false)}
-									className="group w-full inline-flex items-center justify-between bg-[#1A1410] text-white px-6 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] hover:bg-[#E8640A] transition-colors duration-500"
+									className="group w-full inline-flex items-center justify-between bg-[#E8640A] text-white px-6 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] hover:bg-[#1A1410] transition-colors duration-500"
 								>
 									Book a Consult
 
@@ -246,7 +249,7 @@ const Navbar = () => {
 										strokeWidth={1.5}
 										className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform duration-500"
 									/>
-								</a>
+								</Link>
 
 								<a
 									href="https://www.lmsathena.com/login"

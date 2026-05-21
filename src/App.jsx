@@ -12,7 +12,7 @@ import CorporateTalks from './pages/Workshop/CorporateTalks/Home'
 import Blogs from './pages/Learn/Blogs/Home'
 import Learninghub from './pages/Learn/Learninghub/Home'
 import ChatbotOverlay from './components/chatbot/ChatbotOverlay'
-import SignatureWellness from './pages/Programs/SignatureWellness'
+import SignatureWellness from './pages/Programs/SignatureWellness/Home'
 import SpecialCancerCare from './pages/Programs/SpecialCancerCare'
 import StandardProgram from './pages/Programs/SignatureWellness/StandardProgram'
 import ExclusiveProgram from './pages/Programs/SignatureWellness/ExclusiveProgram'
@@ -99,6 +99,8 @@ function AppShell() {
             <Route path="/Workshop/IndividualFamilyMasterclass/Course16" element={<Course16 />} />
             <Route path="/Workshop/CorporateTalks/Home" element={<CorporateTalks />} />
             <Route path="/Learn/Blogs/Home" element={<Blogs />} />
+            <Route path="/learn/blogs" element={<Blogs />} />
+            <Route path="/learn/blogs/home" element={<Blogs />} />
             <Route path="/learn/learninghub/home" element={<Learninghub />} />
             <Route path="/course/:id" element={<CourseDetail />} />
             <Route path="/Podcast/Podcast" element={<Podcast />} />
