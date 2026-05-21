@@ -19,13 +19,15 @@ const Footer = () => {
         { label: 'Health Assessment', to: '/assessment' },
         { label: 'Book Consultation', to: '/book-consult' },
         { label: 'Programs', to: '/programs/signature-wellness' },
+        { label: 'Corporate Wellness', to: '/Workshop/CorporateTalks/Home' },
       ],
     },
     {
       title: 'Learn',
       links: [
         { label: 'Courses', to: '/learn/learninghub/home' },
-        { label: 'Podcast', to: '/Podcast/Podcast' },
+        { label: 'Blogs', to: '/learn/blogs' },
+        { label: 'Books & Resources', to: '/resources' },
         { label: 'Recipes', to: '/bharat/dish' },
       ],
     },

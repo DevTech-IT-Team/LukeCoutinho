@@ -1,12 +1,49 @@
 import React from 'react';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import DualPathCTA from '../../../components/conversion/DualPathCTA';
+import { REVENUE_STREAMS } from '../../../config/revenueStreams';
 import wellness from '../../../assets/wellness.jpg'
 import lukeImg from '../../../assets/Lukequotenew.jpg'
 import ExclusiveWellness from '../../../assets/ExclusiveWellness.jpg'
 
 
+const enrollProgram = (navigate, program) => {
+  navigate('/payment', {
+    state: {
+      consult: {
+        serviceId: program.id,
+        serviceTitle: program.title,
+        optionTitle: program.subtitle,
+        label: program.title,
+        price: program.price,
+        priceValue: program.priceValue,
+        mode: 'Program',
+        duration: 'Ongoing',
+      },
+    },
+  });
+};
+
 export default function ProgramSelector() {
+  const navigate = useNavigate();
+
+  const teamProgram = {
+    id: 'signature-team',
+    title: 'Signature Wellness — With Team',
+    subtitle: 'Guided by Luke\'s integrative team',
+    price: 'Upon consultation',
+    priceValue: null,
+  };
+
+  const lukeProgram = {
+    id: 'signature-luke',
+    title: 'Signature Wellness — With Luke',
+    subtitle: 'Exclusive program with Luke',
+    price: 'Upon consultation',
+    priceValue: null,
+  };
+
   return (
     <section className="relative bg-[#fafafa] py-24 lg:py-32 overflow-hidden antialiased text-gray-800">
 
@@ -64,13 +101,21 @@ export default function ProgramSelector() {
             </div>
 
             {/* Action Container Floor */}
-            <div className="px-8 pb-8 sm:px-10 sm:pb-10 pt-2">
+            <div className="px-8 pb-8 sm:px-10 sm:pb-10 pt-2 flex flex-col gap-3">
+              <DualPathCTA
+                stream={REVENUE_STREAMS.programs}
+                primaryLabel="Enroll now"
+                onPrimaryClick={() => enrollProgram(navigate, teamProgram)}
+                secondaryLabel="Talk to our team"
+                secondaryHref="/book-consult?path=expert"
+                secondaryHint="Human-assisted · 24–48h callback"
+              />
               <Link
                 to="/programs/signature-wellness/standard"
-                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-gray-950 hover:bg-orange-500 text-white hover:text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-gray-950/10"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-gray-200 text-gray-700 hover:border-orange-500 font-bold text-xs uppercase tracking-wider transition-all duration-300"
               >
-                <span className="text-white">Explore Program</span>
-                <ArrowUpRight size={14} className="text-white" />
+                Explore details
+                <ArrowUpRight size={14} />
               </Link>
             </div>
           </div>
@@ -103,14 +148,22 @@ export default function ProgramSelector() {
             </div>
 
             {/* Action Container Floor */}
-            <div className="px-8 pb-8 sm:px-10 sm:pb-10 pt-2">
+            <div className="px-8 pb-8 sm:px-10 sm:pb-10 pt-2 flex flex-col gap-3">
+              <DualPathCTA
+                stream={REVENUE_STREAMS.programs}
+                primaryLabel="Enroll now"
+                onPrimaryClick={() => enrollProgram(navigate, lukeProgram)}
+                secondaryLabel="Join Luke's waitlist"
+                secondaryHref="/book-consult?path=waitlist"
+                secondaryHint="Personal consultation with Luke"
+              />
               <Link
-  to="/programs/signature-wellness/exclusive"
-  className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full bg-gray-950 hover:bg-orange-500 text-white font-bold text-xs uppercase tracking-wider transition-all duration-300 shadow-md shadow-gray-950/10"
->
-  <span className="text-white">Explore Program</span>
-  <ArrowUpRight size={14} className="text-white" />
-</Link>
+                to="/programs/signature-wellness/exclusive"
+                className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full border border-gray-200 text-gray-700 hover:border-orange-500 font-bold text-xs uppercase tracking-wider transition-all duration-300"
+              >
+                Explore details
+                <ArrowUpRight size={14} />
+              </Link>
             </div>
           </div>
 

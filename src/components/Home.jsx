@@ -21,6 +21,10 @@ import tileOne from '../assets/team.avif';
 import tileTwo from '../assets/neimg.jpg';
 import tileThree from '../assets/wp.avif';
 import courses from '../data/courses';
+import { SIX_PILLARS } from '../data/brandContent';
+import EditorialMasthead from './layout/EditorialMasthead';
+import CommunityStrip from './CommunityStrip';
+import LukeTrustStrip from './brand/LukeTrustStrip';
 
 /* ---------- Section 2: Trust ---------- */
 const trustStats = [
@@ -33,15 +37,12 @@ const trustStats = [
 const mediaLogos = ['Forbes', 'Vogue', 'Times', 'CNBC', 'NDTV', 'Hindustan Times', 'Mint', 'Vogue India', 'ET Now', 'Femina', 'Harper\u2019s Bazaar', 'Conde Nast'];
 
 
-/* ---------- Section 3: Pillars ---------- */
-const pillars = [
-  { icon: Apple, title: 'Nutrition', copy: 'Food as medicine \u2014 composed for your biology, not a trend.' },
-  { icon: Activity, title: 'Movement', copy: 'Exercise prescribed for your body, not borrowed from anyone else\u2019s.' },
-  { icon: Moon, title: 'Sleep', copy: 'Restorative rhythms that repair from the inside.' },
-  { icon: HeartPulse, title: 'Emotional Health', copy: 'The unseen pillar \u2014 where most healing actually begins.' },
-  { icon: Sparkles, title: 'Spirit', copy: 'Purpose, stillness, and reconnection with your inner self.' },
-  { icon: Wind, title: 'Breath', copy: 'Prana and oxygen \u2014 the life force every cell depends on.' },
-];
+const pillarIcons = [Apple, Activity, Moon, HeartPulse, Sparkles, Wind];
+const pillars = SIX_PILLARS.map((p, i) => ({
+  icon: pillarIcons[i],
+  title: p.shortTitle,
+  copy: p.copy,
+}));
 
 /* ---------- Section 4.5: Architecture / Journey ---------- */
 const journeySteps = [
@@ -195,30 +196,18 @@ const Home = () => {
       {/* ============== SCREEN 3 — 6 PILLARS (EDITORIAL) ============== */}
       <section className="relative bg-[#FAF6EE] text-[#1A1410] overflow-hidden">
         <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-16 lg:py-20">
-          {/* Masthead */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-10 mb-10 lg:mb-14">
-            <div className="lg:col-span-5">
-              <div className="flex items-center gap-4">
-                <span className="block w-10 h-px bg-[#E8640A]" />
-                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
-                  Foundational Medicine
-                </p>
-              </div>
-              <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(44px,5.5vw,84px)] leading-[0.98] tracking-[0.005em]">
-                The Six Pillars
-                <br />
-                <span className="text-[rgba(26,20,16,0.4)]">of Healing.</span>
-              </h2>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7 lg:pt-6">
-              <p className="font-[Arial] text-[14px] md:text-[15px] leading-[1.9] text-[rgba(26,20,16,0.7)] max-w-[520px]">
-                Every protocol — from gut care to cancer recovery — is quietly composed around six enduring foundations. Not a method. A philosophy of return.
-              </p>
-              <p className="mt-4 font-['EB_Garamond',Georgia,serif] italic text-[18px] text-[rgba(26,20,16,0.55)]">
-                — Begin with what the body already knows.
-              </p>
-            </div>
-          </div>
+          <EditorialMasthead
+            className="mb-10 lg:mb-14"
+            eyebrow="Foundational Medicine"
+            title="The Six Pillars"
+            titleAccent="of Healing."
+          >
+            <p>
+              Our six foundational pillars of holistic health form the platform for healing, recovery, and
+              prevention — integrative lifestyle medicine you can move to action on.
+            </p>
+            <p className="lc-masthead-kicker">— Begin with what the body already knows.</p>
+          </EditorialMasthead>
 
           {/* Pillars row */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6">
@@ -261,16 +250,25 @@ const Home = () => {
         </div>
       </section>
 
+      <section className="bg-[#FDFAF5] border-y border-[rgba(26,20,16,0.06)]">
+        <div className="mx-auto max-w-[1280px] px-6 md:px-10 lg:px-16 py-16 lg:py-20">
+          <LukeTrustStrip />
+        </div>
+      </section>
+
       {/* ============== SCREEN 4 — PATHWAY SPLIT ============== */}
       <section className="bg-[#FDFAF5] text-[#1A1410]">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-24 lg:py-28">
-          <div className="text-center max-w-[680px] mx-auto mb-16">
-            <p className="font-[Arial] text-[10px] uppercase tracking-[0.35em] text-[#E8640A] mb-4">
-              Choose Your Path
+          <div className="lc-section-intro">
+            <div className="lc-eyebrow">
+              <span className="lc-eyebrow-line" aria-hidden="true" />
+              <p className="lc-eyebrow-text">Choose Your Path</p>
+            </div>
+            <h2 className="lc-masthead-title">What do you need today?</h2>
+            <p>
+              Whether you begin with a consult, a program, or self-paced learning — we help you bridge knowledge
+              and action with compassion and clarity.
             </p>
-            <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,4.5vw,64px)] leading-[1] tracking-[0.02em]">
-              What do you need today?
-            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -312,29 +310,18 @@ const Home = () => {
       <section className="lc-architecture relative bg-[#FAF6EE] text-[#1A1410] overflow-hidden border-t border-[rgba(26,20,16,0.06)]">
         <div className="lc-architecture-glow" aria-hidden="true" />
         <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-20 lg:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-12 mb-14 lg:mb-16">
-            <div className="lg:col-span-5">
-              <div className="flex items-center gap-4">
-                <span className="block w-10 h-px bg-[#E8640A]" />
-                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
-                  Your Evolution
-                </p>
-              </div>
-              <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(40px,5vw,76px)] leading-[0.98] tracking-[0.005em]">
-                The architecture of
-                <br />
-                <span className="text-[rgba(26,20,16,0.38)]">lasting change.</span>
-              </h2>
-            </div>
-            <div className="lg:col-span-6 lg:col-start-7 lg:pt-8 flex flex-col justify-end">
-              <p className="font-[Arial] text-[14px] md:text-[15px] leading-[1.9] text-[rgba(26,20,16,0.68)] max-w-[480px]">
-                We don&apos;t just hand you a program; we walk alongside you. A guided, phased approach where clinical insight meets deep human empathy.
-              </p>
-              <p className="mt-5 font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.42)]">
-                Four phases · One continuous pathway
-              </p>
-            </div>
-          </div>
+          <EditorialMasthead
+            className="mb-14 lg:mb-16"
+            eyebrow="Your Evolution"
+            title="The architecture of"
+            titleAccent="lasting change."
+          >
+            <p>
+              We don&apos;t just hand you a program; we walk alongside you. A guided, phased approach where
+              clinical insight meets deep human empathy.
+            </p>
+            <p className="lc-masthead-meta">Four phases · One continuous pathway</p>
+          </EditorialMasthead>
 
           <ol className="lc-architecture-track">
             {journeySteps.map((s, i) => {
@@ -389,27 +376,18 @@ const Home = () => {
       {/* ============== SCREEN 5 — PROGRAMS (EDITORIAL TWO-WAY) ============== */}
       <section className="relative bg-[#1A1410] text-[#FDFAF5] overflow-hidden border-t border-white/[0.06]">
         <div className="relative mx-auto max-w-[1200px] px-6 md:px-10 lg:px-12 pt-16 pb-20 lg:pt-20 lg:pb-24">
-          {/* Masthead */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-10 mb-12 lg:mb-16">
-            <div className="lg:col-span-6">
-              <div className="flex items-center gap-4">
-                <span className="block w-8 h-px bg-[#E8640A]" />
-                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
-                  Wellness Programs
-                </p>
-              </div>
-              <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(36px,4.2vw,60px)] leading-[1] tracking-[0.005em]">
-                The next phase of
-                <br />
-                <span className="text-white/55">your care.</span>
-              </h2>
-            </div>
-            <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">
-              <p className="font-[Arial] text-[13px] md:text-[14px] leading-[1.85] text-white/65 max-w-[440px]">
-                Following your consultation, we guide you into the right program. Choose the intimacy of working directly with Luke, or the same integrative method delivered by his senior team.
-              </p>
-            </div>
-          </div>
+          <EditorialMasthead
+            className="mb-12 lg:mb-16"
+            eyebrow="Wellness Programs"
+            title="The next phase of"
+            titleAccent="your care."
+            light
+          >
+            <p>
+              Following your consultation, we guide you into the right program. Choose the intimacy of working
+              directly with Luke, or the same integrative method delivered by his senior team.
+            </p>
+          </EditorialMasthead>
 
           {/* Program cards — refined split */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6 mb-20 max-w-[980px] mx-auto">
@@ -737,33 +715,21 @@ const Home = () => {
         </div>
       </section>
 
+      <CommunityStrip />
+
       {/* ============== SCREEN 8 — FINAL CTA ============== */}
       <section className="relative bg-[#1A1410] text-[#FDFAF5] overflow-hidden border-t border-white/10">
         <div className="relative mx-auto max-w-[1280px] px-6 md:px-10 lg:px-16 py-20 lg:py-24">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-12 items-end">
-            {/* Headline column */}
-            <div className="lg:col-span-7">
-              <div className="flex items-center gap-4 mb-6">
-                <span className="block w-10 h-px bg-[#E8640A]" />
-                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
-                  Begin Your Journey
-                </p>
-              </div>
-
-              <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(36px,4.6vw,64px)] leading-[1.05] tracking-[0.005em]">
-                Ready to begin
-                <br />
-                <span className="text-white/55">your healing journey?</span>
-              </h2>
-            </div>
-
-            {/* Lede + CTAs column */}
-            <div className="lg:col-span-5 lg:pb-2">
-              <p className="font-[Arial] text-[14px] leading-[1.85] text-white/65 max-w-[460px] mb-8">
-                Take the five-minute health assessment, or arrange a private consultation with our team.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3">
+          <EditorialMasthead
+            eyebrow="Begin Your Journey"
+            title="Ready to begin"
+            titleAccent="your healing journey?"
+            light
+          >
+            <p>
+              Take the five-minute health assessment, or arrange a private consultation with our integrative team.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Link
                   to="/book-consult"
                   className="group inline-flex items-center justify-between gap-6 bg-[#E8640A] hover:bg-[#FDFAF5] hover:text-[#1A1410] text-white px-7 py-4 font-[Arial] text-[11px] uppercase tracking-[0.32em] transition-all duration-500 flex-1"
@@ -779,8 +745,7 @@ const Home = () => {
                   <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />
                 </Link>
               </div>
-            </div>
-          </div>
+          </EditorialMasthead>
         </div>
       </section>
     </>

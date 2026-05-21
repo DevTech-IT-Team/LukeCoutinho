@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { trackCheckoutStarted } from '../lib/analytics';
+import { resolveStreamFromCheckoutState } from '../config/revenueStreams';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -98,6 +100,15 @@ const Payment = () => {
       : consult
         ? 'Back to Service'
         : 'Back to Consultation';
+
+  const checkoutStream =
+    resolveStreamFromCheckoutState(location.state) ||
+    (course ? 'lms' : 'consults');
+  const productId = course?.id || consult?.serviceId || selectedPlan;
+
+  useEffect(() => {
+    trackCheckoutStarted(checkoutStream, productId, consult?.priceValue ?? course?.priceValue ?? null);
+  }, [checkoutStream, productId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

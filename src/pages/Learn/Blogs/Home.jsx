@@ -4,6 +4,7 @@ import Popularpicks from './Popularpicks'
 import Category from './Category'
 import Justin from './Justin'
 import WholesomeRecipes from './WholesomeRecipes'
+import BlogBottomCTA from '../../../components/BlogBottomCTA'
 
 function Home() {
 
@@ -14,6 +15,7 @@ function Home() {
       <Category />
       <Justin />
       <WholesomeRecipes />
+      <BlogBottomCTA />
     </>
   )
 }

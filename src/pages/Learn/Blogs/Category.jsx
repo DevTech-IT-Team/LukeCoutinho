@@ -40,10 +40,11 @@ const DiscoverCategories = () => {
   }, []);
 
   return (
-    <section className="py-20 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 mb-16 text-center">
-        <h2 className="text-4xl md:text-5xl font-black text-gray-800 tracking-tight">
-          Discover Wellness by <span className="text-orange-500">Category</span>
+    <section id="categories" className="py-20 bg-[#FDFAF5] overflow-hidden border-b border-[rgba(26,20,16,0.06)] scroll-mt-28">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-10 lg:px-16 mb-16 text-left">
+        <p className="font-[Arial] text-[10px] uppercase tracking-[0.35em] text-[#E8640A] mb-4">Browse topics</p>
+        <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(32px,4vw,48px)] leading-[1] text-[#1A1410] m-0">
+          Discover wellness by <span className="text-[#E8640A]">category</span>
         </h2>
       </div>
 

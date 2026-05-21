@@ -2,6 +2,10 @@ import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, Clock, Star, Check, PlayCircle, ShieldCheck, Sparkles } from 'lucide-react';
 import courses, { getCourseById } from '../../../data/courses';
+import DualPathCTA from '../../../components/conversion/DualPathCTA';
+import LukeTrustStrip from '../../../components/brand/LukeTrustStrip';
+import { REVENUE_STREAMS } from '../../../config/revenueStreams';
+import '../../../components/conversion/dual-path.css';
 
 const CourseDetail = () => {
   const { id } = useParams();
@@ -228,26 +232,35 @@ const CourseDetail = () => {
         </div>
       </section>
 
-      {/* ============== ENROLL CTA ============== */}
+      <section className="bg-[#FDFAF5] border-y border-[rgba(26,20,16,0.06)]">
+        <div className="mx-auto max-w-[1100px] px-6 md:px-10 lg:px-16 py-14 lg:py-16">
+          <LukeTrustStrip compact />
+        </div>
+      </section>
+
+      {/* ============== ENROLL CTA — dual path ============== */}
       <section className="bg-[#1A1410] text-[#FDFAF5]">
-        <div className="mx-auto max-w-[1100px] px-6 md:px-10 lg:px-16 py-20 lg:py-24 text-center">
+        <div className="mx-auto max-w-[640px] px-6 md:px-10 lg:px-16 py-20 lg:py-24 text-center">
           <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A] mb-5">
             Begin
           </p>
-          <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(36px,4.2vw,60px)] leading-[1.05] max-w-[820px] mx-auto">
+          <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(36px,4.2vw,60px)] leading-[1.05]">
             Step into <span className="text-white/55">{course.title}.</span>
           </h2>
           <p className="mt-6 font-[Arial] text-[14px] leading-[1.85] text-white/65 max-w-[460px] mx-auto">
             One-time payment of <span className="text-white">{course.price}</span> · lifetime access.
           </p>
-          <button
-            type="button"
-            onClick={handleEnroll}
-            className="group mt-10 inline-flex items-center gap-4 bg-[#E8640A] hover:bg-white hover:text-[#1A1410] text-white px-10 py-4 font-[Arial] text-[10px] uppercase tracking-[0.4em] transition-all duration-500"
-          >
-            Enroll & Pay
-            <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />
-          </button>
+          <div className="mt-10 max-w-[480px] mx-auto lc-dual-path--dark">
+            <DualPathCTA
+              stream={REVENUE_STREAMS.lms}
+              className="lc-dual-path--row"
+              primaryLabel="Enroll & pay"
+              onPrimaryClick={handleEnroll}
+              secondaryLabel="Prefer guidance first?"
+              secondaryHref="/book-consult?path=instant"
+              secondaryHint="Book a consult · apply what you learn"
+            />
+          </div>
         </div>
       </section>
 

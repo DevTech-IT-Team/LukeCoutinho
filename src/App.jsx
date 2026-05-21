@@ -51,6 +51,7 @@ import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
 import Assessment from './pages/Assessment/Assessment'
 import AssessmentResults from './pages/Assessment/AssessmentResults'
+import PageAnalytics from './components/analytics/PageAnalytics'
 
 function AppShell() {
   const location = useLocation()
@@ -62,6 +63,7 @@ function AppShell() {
 
   return (
     <>
+      <PageAnalytics />
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         {!isChromeless && <Navbar />}

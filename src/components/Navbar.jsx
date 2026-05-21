@@ -11,6 +11,8 @@ const navConfig = [
 	{ title: 'Courses', href: '/learn/learninghub/home' },
 	{ title: 'Blogs', href: '/learn/blogs' },
 	{ title: 'Bharat', href: '/bharat/dish' },
+	{ title: 'Corporate', href: '/Workshop/CorporateTalks/Home' },
+	{ title: 'Books', href: '/resources' },
 ];
 
 const Navbar = () => {
