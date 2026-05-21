@@ -11,7 +11,7 @@ import IndividualFamilyMasterclass from './pages/Workshop/IndividualFamilyMaster
 import CorporateTalks from './pages/Workshop/CorporateTalks/Home'
 import Blogs from './pages/Learn/Blogs/Home'
 import Learninghub from './pages/Learn/Learninghub/Home'
-import ChatBot from './components/ChatBot'
+import ChatbotOverlay from './components/chatbot/ChatbotOverlay'
 import SignatureWellness from './pages/Programs/SignatureWellness/Home'
 import SpecialCancerCare from './pages/Programs/SpecialCancerCare'
 import StandardProgram from './pages/Programs/SignatureWellness/StandardProgram'
@@ -46,6 +46,8 @@ import ScormPlayer from './pages/Learn/Learninghub/ScormPlayer'
 import CourseDetail from './pages/Learn/Learninghub/CourseDetail';
 import Buy from './pages/Learn/Learninghub/Buy';
 import BookConsult from './pages/BookConsult'
+import BookConsultService from './pages/BookConsultService'
+import BookConsultSchedule from './pages/BookConsultSchedule'
 import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
 import Assessment from './pages/Assessment/Assessment'
@@ -53,10 +55,11 @@ import AssessmentResults from './pages/Assessment/AssessmentResults'
 
 function AppShell() {
   const location = useLocation()
-  const chromelessPaths = ['/', '/masterclass', '/Workshop/IndividualFamilyMasterclass/Home', '/payment', '/assessment', '/assessment/results']
+  const chromelessPaths = ['/', '/masterclass', '/Workshop/IndividualFamilyMasterclass/Home', '/book-consult', '/payment', '/assessment', '/assessment/results']
   const isChromeless = chromelessPaths.some((p) =>
     p === '/' ? location.pathname === '/' : location.pathname.startsWith(p)
   )
+  const isLandingPage = location.pathname === '/'
 
   return (
     <>
@@ -97,6 +100,8 @@ function AppShell() {
             <Route path="/Workshop/IndividualFamilyMasterclass/Course16" element={<Course16 />} />
             <Route path="/Workshop/CorporateTalks/Home" element={<CorporateTalks />} />
             <Route path="/Learn/Blogs/Home" element={<Blogs />} />
+            <Route path="/learn/blogs" element={<Blogs />} />
+            <Route path="/learn/blogs/home" element={<Blogs />} />
             <Route path="/learn/learninghub/home" element={<Learninghub />} />
             <Route path="/course/:id" element={<CourseDetail />} />
             <Route path="/buy/:id" element={<Buy />} />
@@ -107,13 +112,15 @@ function AppShell() {
             <Route path="/resources" element={<Resources />} />
             <Route path="/bharat/dish" element={<BharatDish />} />
             <Route path="/book-consult" element={<BookConsult />} />
+            <Route path="/book-consult/service" element={<BookConsultService />} />
+            <Route path="/book-consult/schedule" element={<BookConsultSchedule />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
             <Route path="/assessment" element={<Assessment />} />
             <Route path="/assessment/results" element={<AssessmentResults />} />
           </Routes>
         </main>
-        {!isChromeless && <ChatBot />}
+        {isLandingPage && <ChatbotOverlay />}
         <Footer />
       </div>
     </>

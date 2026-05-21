@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import lcLogo from '../assets/LClogoo.png';
 import clip1 from '../assets/heroclips/lukehero.mp4';
 import clip2 from '../assets/heroclips/Lukehero2.mp4';
@@ -108,8 +108,8 @@ const allCourses = [
 ];
 
 const navigationLinks = [
-  { label: 'Heal from Within', to: '/about/approach' },
-  { label: 'Wellness Programs', to: '/programs/signature-wellness' },
+  { label: 'Heal from Within', to: '#' },
+  { label: 'Wellness Programs', to: '#' },
   { label: 'Masterclass', to: '/masterclass' },
   { label: 'Courses', to: '/learn/learninghub/home' },
   { label: 'Blogs', to: '/Learn/Blogs/Home' },
@@ -121,19 +121,19 @@ const navigationLinks = [
 
 const slides = [
   {
-    eyebrow: 'The Approach',
-    title: 'Heal the Root Cause',
-    sub: 'Foundational Medicine Approach',
-    cta: 'Become a Member',
-    to: '/masterclass',
+    eyebrow: 'The First Step',
+    title: 'Begin Your Journey',
+    sub: 'Foundational Medicine Consultations',
+    cta: 'Book a Consult',
+    to: '/book-consult',
     video: clip5,
   },
   {
-    eyebrow: 'Project',
-    title: 'Heal from Within',
-    sub: 'An Integrative Lifestyle Collection',
-    cta: 'Discover More',
-    to: '/programs/signature-wellness',
+    eyebrow: 'Guided Care',
+    title: 'Integrative Protocols',
+    sub: 'Expert coaching tailored to your biology',
+    cta: 'Discover Our Approach',
+    to: '/about/approach',
     video: clip1,
   },
   {
@@ -145,10 +145,10 @@ const slides = [
     video: clip2,
   },
   {
-    eyebrow: 'An Introduction to Possibility',
-    title: 'Wellness Programs',
-    sub: 'Composed Around You',
-    cta: 'Explore Programs',
+    eyebrow: 'The Destination',
+    title: 'Signature Programs',
+    sub: 'Composed Around You Post-Consult',
+    cta: 'Understand Programs',
     to: '/programs/signature-wellness',
     video: clip3,
   },
@@ -168,9 +168,21 @@ const Hero = () => {
   const [isConsultOpen, setIsConsultOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [consultStatus, setConsultStatus] = useState('idle');
   const [searchQuery, setSearchQuery] = useState('');
+
+  // ── FIX: derive searchResults from allCourses + searchQuery ──
+  const searchResults = allCourses.filter((course) => {
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return false;
+    return (
+      course.title.toLowerCase().includes(q) ||
+      course.category.toLowerCase().includes(q) ||
+      course.subtitle.toLowerCase().includes(q)
+    );
+  });
 
   const wrapperRef = useRef(null);
   const videoRefs = useRef([]);
@@ -248,20 +260,26 @@ const Hero = () => {
     };
   }, [isMenuOpen, isConsultOpen, isSearchOpen]);
 
+  // ?book=1 on homepage → full booking flow
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('book') === '1') {
+      navigate('/book-consult');
+      params.delete('book');
+      const next = `${window.location.pathname}${params.toString() ? `?${params}` : ''}`;
+      window.history.replaceState({}, '', next);
+    }
+  }, [navigate]);
+
+  // Auto-focus search input when overlay opens
   useEffect(() => {
     if (isSearchOpen && searchInputRef.current) {
-      setTimeout(() => searchInputRef.current?.focus(), 120);
+      setTimeout(() => searchInputRef.current?.focus(), 100);
     }
-    if (!isSearchOpen) setSearchQuery('');
+    if (!isSearchOpen) {
+      setSearchQuery('');
+    }
   }, [isSearchOpen]);
-
-  const searchResults = searchQuery.trim().length > 0
-    ? allCourses.filter((c) =>
-      c.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.subtitle.toLowerCase().includes(searchQuery.toLowerCase())
-    )
-    : [];
 
   const scrollToSlide = (idx) => {
     const wrapper = wrapperRef.current;
@@ -275,13 +293,16 @@ const Hero = () => {
     window.scrollTo({ top: target, behavior: 'smooth' });
   };
 
-  const handleConsultSubmit = (event) => {
-    event.preventDefault();
+  const handleConsultSubmit = async (e) => {
+    e.preventDefault();
     setConsultStatus('sending');
-    setTimeout(() => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       setConsultStatus('sent');
-      event.target.reset();
-    }, 900);
+    } catch (err) {
+      console.error(err);
+      setConsultStatus('idle');
+    }
   };
 
   return (
@@ -314,17 +335,10 @@ const Hero = () => {
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Signature Wellness Programs</span>
           </Link>
-          <button
-            type="button"
-            className="nav-utility by"
-            onClick={() => setIsConsultOpen(true)}
-            aria-haspopup="dialog"
-            aria-controls="consult-drawer"
-            aria-expanded={isConsultOpen}
-          >
+          <Link to="/book-consult" className="nav-utility by">
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Book Your Consultation</span>
-          </button>
+          </Link>
           <button
             type="button"
             className="nav-search"
@@ -478,10 +492,25 @@ const Hero = () => {
           <nav className="primary-menu-nav" aria-label="Primary navigation">
             <ul>
               {navigationLinks.map((link, index) => (
-                <li key={link.label} style={{ '--menu-delay': `${120 + index * 70}ms` }}>
-                  <Link to={link.to} onClick={() => setIsMenuOpen(false)}>
-                    {link.label}
-                  </Link>
+                <li
+                  key={link.label}
+                  style={{ '--menu-delay': `${120 + index * 70}ms` }}
+                >
+                  {link.to.startsWith('/#') || link.to === '#' ? (
+                    <a
+                      href={link.to}
+                      onClick={(e) => {
+                        if (link.to === '#') e.preventDefault();
+                        setIsMenuOpen(false);
+                      }}
+                    >
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link to={link.to} onClick={() => setIsMenuOpen(false)}>
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -659,8 +688,9 @@ const Hero = () => {
                 <ul className="search-result-list">
                   {searchResults.map((course) => (
                     <li key={course.id}>
+                      {/* ── FIX: changed /course/ → /buy/ to match your route ── */}
                       <Link
-                        to={`/course/${course.id}`}
+                        to={`/buy/${course.id}`}
                         className="search-result-item"
                         onClick={() => setIsSearchOpen(false)}
                         tabIndex={isSearchOpen ? 0 : -1}

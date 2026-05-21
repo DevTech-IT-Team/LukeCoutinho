@@ -1,0 +1,382 @@
+/* Book consult — clean step flow (Luke site pattern) */
+.bcf-page {
+  min-height: 100vh;
+  background: #fdfaf5;
+  color: #1a1410;
+}
+
+.bcf-top {
+  border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+  background: #fff;
+  padding: 14px 24px;
+}
+
+.bcf-home-link {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.55);
+  transition: color 0.2s ease;
+}
+
+.bcf-home-link:hover {
+  color: #e8640a;
+}
+
+.bcf-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px 24px 100px;
+}
+
+.bcf-steps {
+  display: flex;
+  gap: 0;
+  margin-bottom: 36px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  background: #fff;
+}
+
+.bcf-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 14px 8px;
+  border-right: 1px solid rgba(26, 20, 16, 0.08);
+  transition: background 0.25s ease;
+}
+
+.bcf-step:last-child {
+  border-right: 0;
+}
+
+.bcf-step.is-active {
+  background: #1a1410;
+}
+
+.bcf-step.is-active .bcf-step-num,
+.bcf-step.is-active .bcf-step-label {
+  color: #fdfaf5;
+}
+
+.bcf-step.is-active .bcf-step-num {
+  background: #e8640a;
+  border-color: #e8640a;
+}
+
+.bcf-step.is-done {
+  background: rgba(232, 100, 10, 0.06);
+}
+
+.bcf-step-num {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid rgba(26, 20, 16, 0.15);
+  color: rgba(26, 20, 16, 0.5);
+}
+
+.bcf-step-label {
+  font-family: Arial, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(26, 20, 16, 0.45);
+}
+
+.bcf-header {
+  margin-bottom: 28px;
+}
+
+.bcf-title {
+  margin: 0 0 12px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.bcf-subtitle {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(26, 20, 16, 0.6);
+  max-width: 52ch;
+}
+
+.bcf-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Entry path cards */
+.bcf-path-card {
+  width: 100%;
+  text-align: left;
+  padding: 22px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(26, 20, 16, 0.12);
+  background: #fff;
+  cursor: pointer;
+  transition:
+    border-color 0.22s ease,
+    box-shadow 0.28s ease,
+    transform 0.22s ease;
+}
+
+.bcf-path-card:hover {
+  border-color: rgba(232, 100, 10, 0.45);
+  box-shadow: 0 12px 32px -16px rgba(26, 20, 16, 0.18);
+  transform: translateY(-2px);
+}
+
+.bcf-path-card.is-selected {
+  border-color: #e8640a;
+  box-shadow: 0 0 0 1px rgba(232, 100, 10, 0.25);
+  background: rgba(232, 100, 10, 0.04);
+}
+
+.bcf-path-card h3 {
+  margin: 0 0 8px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.35rem;
+  color: #1a1410;
+}
+
+.bcf-path-card p {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(26, 20, 16, 0.58);
+}
+
+/* Service option rows */
+.bcf-section-title {
+  margin: 20px 0 12px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e8640a;
+}
+
+.bcf-section-title:first-child {
+  margin-top: 0;
+}
+
+.bcf-service-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.bcf-service-row:hover {
+  border-color: rgba(232, 100, 10, 0.4);
+}
+
+.bcf-service-row.is-selected {
+  border-color: #e8640a;
+  background: rgba(232, 100, 10, 0.05);
+}
+
+.bcf-service-row-main h4 {
+  margin: 0 0 4px;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.bcf-service-row-main span {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.48);
+}
+
+.bcf-service-price {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  color: #e8640a;
+  white-space: nowrap;
+}
+
+/* Category tabs */
+.bcf-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.bcf-tab {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(26, 20, 16, 0.12);
+  background: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.55);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bcf-tab.is-active {
+  background: #1a1410;
+  border-color: #1a1410;
+  color: #fff;
+}
+
+/* Footer actions */
+.bcf-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(26, 20, 16, 0.1);
+}
+
+.bcf-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  border: 1px solid rgba(26, 20, 16, 0.2);
+  background: transparent;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #1a1410;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.bcf-btn-back:hover {
+  border-color: #1a1410;
+  background: rgba(26, 20, 16, 0.04);
+}
+
+.bcf-btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 0;
+  border-radius: 999px;
+  background: #e8640a;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 24px -8px rgba(232, 100, 10, 0.55);
+}
+
+.bcf-btn-next:hover:not(:disabled) {
+  background: #1a1410;
+  transform: translateY(-1px);
+}
+
+.bcf-btn-next:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.bcf-back-row {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.bcf-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.5);
+}
+
+.bcf-back-btn:hover {
+  color: #e8640a;
+}
+
+.bcf-waitlist-box {
+  padding: 24px;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+}
+
+.bcf-waitlist-box p {
+  margin: 0 0 16px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(26, 20, 16, 0.65);
+}
+
+.bcf-schedule-wrap {
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+@media (max-width: 560px) {
+  .bcf-steps {
+    flex-direction: column;
+  }
+  .bcf-step {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    border-right: 0;
+    border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+  }
+  .bcf-footer {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .bcf-btn-next,
+  .bcf-btn-back {
+    justify-content: center;
+    width: 100%;
+  }
+}

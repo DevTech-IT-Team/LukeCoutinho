@@ -7,6 +7,7 @@ import {
   Moon,
   HeartPulse,
   Sparkles,
+  Wind,
   Stethoscope,
   GraduationCap,
   Compass,
@@ -34,35 +35,68 @@ const mediaLogos = ['Forbes', 'Vogue', 'Times', 'CNBC', 'NDTV', 'Hindustan Times
 
 /* ---------- Section 3: Pillars ---------- */
 const pillars = [
-  { icon: Apple, title: 'Nutrition', copy: 'Food as medicine — composed for your biology, not a trend.' },
+  { icon: Apple, title: 'Nutrition', copy: 'Food as medicine \u2014 composed for your biology, not a trend.' },
   { icon: Activity, title: 'Movement', copy: 'Exercise prescribed for your body, not borrowed from anyone else\u2019s.' },
   { icon: Moon, title: 'Sleep', copy: 'Restorative rhythms that repair from the inside.' },
-  { icon: HeartPulse, title: 'Emotional Health', copy: 'The unseen pillar — where most healing actually begins.' },
-  { icon: Sparkles, title: 'Spirit', copy: 'Purpose, breath, stillness. The quiet architecture of wellbeing.' },
+  { icon: HeartPulse, title: 'Emotional Health', copy: 'The unseen pillar \u2014 where most healing actually begins.' },
+  { icon: Sparkles, title: 'Spirit', copy: 'Purpose, stillness, and reconnection with your inner self.' },
+  { icon: Wind, title: 'Breath', copy: 'Prana and oxygen \u2014 the life force every cell depends on.' },
+];
+
+/* ---------- Section 4.5: Architecture / Journey ---------- */
+const journeySteps = [
+  {
+    step: '01',
+    title: 'Connect',
+    desc: 'Book a consultation. We assess your foundational health, past history, and unique bio-individuality.',
+    icon: Stethoscope,
+    to: '/book-consult',
+  },
+  {
+    step: '02',
+    title: 'Discover',
+    desc: 'Attend deep-dive sessions with expert coaches to uncover root causes and critical lifestyle gaps.',
+    icon: Compass,
+    to: '/about/approach',
+  },
+  {
+    step: '03',
+    title: 'Align',
+    desc: 'We guide you into a Signature Wellness Program tailored precisely to your condition and goals.',
+    icon: Sparkles,
+    to: '/programs/signature-wellness',
+  },
+  {
+    step: '04',
+    title: 'Rebuild',
+    desc: 'Implement personalized clinical protocols and rebuild your foundations with continuous support.',
+    icon: HeartPulse,
+    to: '/programs/signature-wellness',
+  },
 ];
 
 /* ---------- Section 4: Pathway split ---------- */
 const pathways = [
-  { icon: Stethoscope, title: 'Heal a Condition', copy: 'Begin with a 5-minute health assessment.', cta: 'Start Assessment', to: '/assessment' },
-  { icon: HeartPulse, title: 'Work with Luke', copy: 'Bespoke programs with Luke and team.', cta: 'View Programs', to: '/programs/signature-wellness' },
-  { icon: GraduationCap, title: 'Learn & Improve', copy: 'Self-paced courses by integrative experts.', cta: 'Explore Courses', to: '/learn/learninghub/home' },
-  { icon: Compass, title: 'Understand Method', copy: 'The philosophy behind the practice.', cta: 'About Luke', to: '/about/approach' },
+  { icon: Stethoscope, title: 'Book a Consult', copy: 'The starting point. Meet with our advisory team to assess your condition and map your pathway.', cta: 'Start Here', action: 'consult' },
+  { icon: HeartPulse, title: 'Guided Programs', copy: 'The deeper journey. Tailored clinical protocols guided by Luke and his senior team.', cta: 'Understand Programs', to: '/programs/signature-wellness' },
+  { icon: GraduationCap, title: 'Self-Paced Learning', copy: 'Education as empowerment. Learn the foundational method at your own pace.', cta: 'Explore Courses', to: '/learn/learninghub/home' },
+  { icon: Compass, title: 'The Philosophy', copy: 'Why we do what we do. Understand the science of foundational medicine.', cta: 'Read More', to: '/about/approach' },
 ];
 
 /* ---------- Section 5: Programs ---------- */
 const programOptions = [
   {
-    badge: 'Premium',
+    badge: 'Flagship Care',
     title: 'With Luke',
-    price: 'On request',
+    price: 'Upon Consultation',
     copy: 'Direct mentorship and a fully bespoke wellness journey, composed by Luke and a senior team.',
     image: tileTwo,
     to: '/programs/signature-wellness',
   },
   {
-    badge: 'Accessible',
+    badge: 'Guided Care',
     title: 'With Team',
-    price: 'From ₹15,000 / mo',
+    price: 'Post-Consult',
     copy: 'Guided protocols delivered by Luke\u2019s integrative team — same method, broader access.',
     image: tileOne,
     to: '/programs/signature-wellness',
@@ -158,11 +192,11 @@ const Home = () => {
         </div>
       </section>
 
-      {/* ============== SCREEN 3 — 5 PILLARS (EDITORIAL) ============== */}
+      {/* ============== SCREEN 3 — 6 PILLARS (EDITORIAL) ============== */}
       <section className="relative bg-[#FAF6EE] text-[#1A1410] overflow-hidden">
-        <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-20 lg:py-28">
+        <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-16 lg:py-20">
           {/* Masthead */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-x-10 mb-16 lg:mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-10 mb-10 lg:mb-14">
             <div className="lg:col-span-5">
               <div className="flex items-center gap-4">
                 <span className="block w-10 h-px bg-[#E8640A]" />
@@ -170,43 +204,40 @@ const Home = () => {
                   Foundational Medicine
                 </p>
               </div>
-              <h2 className="mt-8 font-['EB_Garamond',Georgia,serif] italic text-[clamp(44px,5.5vw,84px)] leading-[0.98] tracking-[0.005em]">
-                The Five Pillars
+              <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(44px,5.5vw,84px)] leading-[0.98] tracking-[0.005em]">
+                The Six Pillars
                 <br />
                 <span className="text-[rgba(26,20,16,0.4)]">of Healing.</span>
               </h2>
             </div>
-            <div className="lg:col-span-6 lg:col-start-7 lg:pt-10">
+            <div className="lg:col-span-6 lg:col-start-7 lg:pt-6">
               <p className="font-[Arial] text-[14px] md:text-[15px] leading-[1.9] text-[rgba(26,20,16,0.7)] max-w-[520px]">
-                Every protocol — from gut care to cancer recovery — is quietly composed around five enduring foundations. Not a method. A philosophy of return.
+                Every protocol — from gut care to cancer recovery — is quietly composed around six enduring foundations. Not a method. A philosophy of return.
               </p>
-              <p className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[18px] text-[rgba(26,20,16,0.55)]">
+              <p className="mt-4 font-['EB_Garamond',Georgia,serif] italic text-[18px] text-[rgba(26,20,16,0.55)]">
                 — Begin with what the body already knows.
               </p>
             </div>
           </div>
 
           {/* Pillars row */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6">
             {pillars.map(({ icon: Icon, title, copy }, i) => (
               <article
                 key={title}
-                className="lc-pillar group relative pt-8 pb-10 lg:pt-10 lg:pb-14 lg:px-6 cursor-default"
+                className="lc-pillar group relative pt-6 pb-6 lg:pt-8 lg:pb-8 lg:px-4 cursor-default"
               >
-                {/* Hairline top rule (animated) */}
                 <span aria-hidden="true" className="absolute top-0 left-0 right-0 h-px bg-[rgba(26,20,16,0.18)]" />
                 <span
                   aria-hidden="true"
                   className="absolute top-0 left-0 h-px bg-[#E8640A] w-0 group-hover:w-full transition-[width] duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 />
 
-                {/* Vertical divider on lg screens (except last) */}
-                {i < 4 && (
+                {i < 5 && (
                   <span aria-hidden="true" className="hidden lg:block absolute top-10 bottom-10 right-0 w-px bg-[rgba(26,20,16,0.08)]" />
                 )}
 
-                {/* Index */}
-                <div className="flex items-baseline justify-between mb-10">
+                <div className="flex items-baseline justify-between mb-6">
                   <span className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[rgba(26,20,16,0.45)] group-hover:text-[#E8640A] transition-colors duration-500">
                     0{i + 1}
                   </span>
@@ -217,21 +248,13 @@ const Home = () => {
                   />
                 </div>
 
-                {/* Title */}
-                <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(26px,2.4vw,34px)] leading-[1.05] mb-4 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
+                <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(26px,2.4vw,34px)] leading-[1.05] mb-3 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1">
                   {title}.
                 </h3>
 
-                {/* Copy */}
-                <p className="font-[Arial] text-[13px] leading-[1.8] text-[rgba(26,20,16,0.6)] max-w-[260px]">
+                <p className="font-[Arial] text-[13px] leading-[1.75] text-[rgba(26,20,16,0.6)] max-w-[220px]">
                   {copy}
                 </p>
-
-                {/* Read more cue */}
-                <span className="mt-8 inline-flex items-center gap-2 font-[Arial] text-[10px] uppercase tracking-[0.35em] text-[rgba(26,20,16,0.4)] group-hover:text-[#1A1410] transition-colors duration-500">
-                  <span className="block w-6 h-px bg-current transition-all duration-500 group-hover:w-10" />
-                  Discover
-                </span>
               </article>
             ))}
           </div>
@@ -251,24 +274,114 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {pathways.map(({ icon: Icon, title, copy, cta, to }) => (
-              <Link
-                key={title}
-                to={to}
-                className="group block border border-[rgba(26,20,16,0.12)] p-8 hover:border-[#1A1410] hover:bg-[#1A1410] hover:text-white transition-all duration-500"
-              >
-                <Icon size={28} className="text-[#E8640A] mb-6" />
-                <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[26px] mb-3 leading-[1.1]">
-                  {title}
-                </h3>
-                <p className="font-[Arial] text-[13px] leading-[1.7] text-[rgba(26,20,16,0.65)] group-hover:text-white/70 transition-colors mb-8 min-h-[68px]">
-                  {copy}
+            {pathways.map(({ icon: Icon, title, copy, cta, to, action }) => {
+              const cardClass =
+                'group block w-full text-left border border-[rgba(26,20,16,0.12)] p-8 hover:border-[#1A1410] hover:bg-[#1A1410] hover:text-white transition-all duration-500';
+              const inner = (
+                <>
+                  <Icon size={28} className="text-[#E8640A] mb-6" />
+                  <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[26px] mb-3 leading-[1.1]">
+                    {title}
+                  </h3>
+                  <p className="font-[Arial] text-[13px] leading-[1.7] text-[rgba(26,20,16,0.65)] group-hover:text-white/70 transition-colors mb-8 min-h-[68px]">
+                    {copy}
+                  </p>
+                  <span className="inline-flex items-center gap-2 font-[Arial] text-[10px] uppercase tracking-[0.3em] border-b border-current pb-2">
+                    {cta} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </>
+              );
+              if (action === 'consult') {
+                return (
+                  <Link key={title} to="/book-consult" className={cardClass}>
+                    {inner}
+                  </Link>
+                );
+              }
+              return (
+                <Link key={title} to={to} className={cardClass}>
+                  {inner}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ============== SCREEN 4.5 — ARCHITECTURE / JOURNEY ============== */}
+      <section className="lc-architecture relative bg-[#FAF6EE] text-[#1A1410] overflow-hidden border-t border-[rgba(26,20,16,0.06)]">
+        <div className="lc-architecture-glow" aria-hidden="true" />
+        <div className="relative mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-20 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-8 lg:gap-x-12 mb-14 lg:mb-16">
+            <div className="lg:col-span-5">
+              <div className="flex items-center gap-4">
+                <span className="block w-10 h-px bg-[#E8640A]" />
+                <p className="font-[Arial] text-[10px] uppercase tracking-[0.4em] text-[#E8640A]">
+                  Your Evolution
                 </p>
-                <span className="inline-flex items-center gap-2 font-[Arial] text-[10px] uppercase tracking-[0.3em] border-b border-current pb-2">
-                  {cta} <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
+              </div>
+              <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(40px,5vw,76px)] leading-[0.98] tracking-[0.005em]">
+                The architecture of
+                <br />
+                <span className="text-[rgba(26,20,16,0.38)]">lasting change.</span>
+              </h2>
+            </div>
+            <div className="lg:col-span-6 lg:col-start-7 lg:pt-8 flex flex-col justify-end">
+              <p className="font-[Arial] text-[14px] md:text-[15px] leading-[1.9] text-[rgba(26,20,16,0.68)] max-w-[480px]">
+                We don&apos;t just hand you a program; we walk alongside you. A guided, phased approach where clinical insight meets deep human empathy.
+              </p>
+              <p className="mt-5 font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[rgba(26,20,16,0.42)]">
+                Four phases · One continuous pathway
+              </p>
+            </div>
+          </div>
+
+          <ol className="lc-architecture-track">
+            {journeySteps.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <React.Fragment key={s.step}>
+                  {i > 0 && (
+                    <li className="lc-architecture-connector" aria-hidden="true">
+                      <span className="lc-architecture-connector-line" />
+                      <ArrowRight size={14} className="lc-architecture-connector-arrow" strokeWidth={1.5} />
+                    </li>
+                  )}
+                  <li className="lc-architecture-step">
+                    <Link to={s.to} className="lc-architecture-card group">
+                      <span className="lc-architecture-card-num" aria-hidden="true">
+                        {s.step}
+                      </span>
+                      <div className="lc-architecture-card-head">
+                        <span className="lc-architecture-badge">Phase {s.step}</span>
+                        <span className="lc-architecture-icon" aria-hidden="true">
+                          <Icon size={22} strokeWidth={1.25} />
+                        </span>
+                      </div>
+                      <h3 className="lc-architecture-title">{s.title}</h3>
+                      <p className="lc-architecture-desc">{s.desc}</p>
+                      <span className="lc-architecture-cta">
+                        Learn more
+                        <ArrowRight size={12} />
+                      </span>
+                    </Link>
+                  </li>
+                </React.Fragment>
+              );
+            })}
+          </ol>
+
+          <div className="mt-14 lg:mt-16 pt-10 border-t border-[rgba(26,20,16,0.08)] flex flex-col sm:flex-row items-center justify-between gap-6">
+            <p className="font-['EB_Garamond',Georgia,serif] italic text-[20px] text-[rgba(26,20,16,0.55)] text-center sm:text-left">
+              Ready to begin at phase one?
+            </p>
+            <Link
+              to="/book-consult"
+              className="group inline-flex items-center gap-4 bg-[#E8640A] hover:bg-white hover:text-[#1A1410] text-white px-10 py-4 font-[Arial] text-[10px] uppercase tracking-[0.4em] transition-all duration-500 shrink-0 border border-[#E8640A] hover:border-[#1A1410]/20"
+            >
+              Consult with Team Luke
+              <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />
+            </Link>
           </div>
         </div>
       </section>
@@ -286,14 +399,14 @@ const Home = () => {
                 </p>
               </div>
               <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(36px,4.2vw,60px)] leading-[1] tracking-[0.005em]">
-                Two ways
+                The next phase of
                 <br />
-                <span className="text-white/55">to begin.</span>
+                <span className="text-white/55">your care.</span>
               </h2>
             </div>
             <div className="lg:col-span-5 lg:col-start-8 lg:pt-8">
               <p className="font-[Arial] text-[13px] md:text-[14px] leading-[1.85] text-white/65 max-w-[440px]">
-                Two pathways. One philosophy. Choose the intimacy of working directly with Luke, or the same integrative method delivered by his senior team.
+                Following your consultation, we guide you into the right program. Choose the intimacy of working directly with Luke, or the same integrative method delivered by his senior team.
               </p>
             </div>
           </div>
@@ -392,7 +505,7 @@ const Home = () => {
                 to="/book-consult"
                 className="group inline-flex items-center gap-4 bg-[#E8640A] hover:bg-white hover:text-[#1A1410] text-white px-10 py-4 font-[Arial] text-[10px] uppercase tracking-[0.4em] transition-all duration-500"
               >
-                Book Consultation
+                Start with a Consultation
                 <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />
               </Link>
             </div>
@@ -401,7 +514,7 @@ const Home = () => {
       </section>
 
       {/* ============== SCREEN 6 — COURSES ============== */}
-      <section className="bg-[#FDFAF5] text-[#1A1410]">
+      <section id="learn-the-method" className="bg-[#FDFAF5] text-[#1A1410]">
         <div className="mx-auto max-w-[1440px] px-6 md:px-10 lg:px-16 py-24 lg:py-28">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
             <div>
@@ -652,17 +765,17 @@ const Home = () => {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  to="/assessment"
+                  to="/book-consult"
                   className="group inline-flex items-center justify-between gap-6 bg-[#E8640A] hover:bg-[#FDFAF5] hover:text-[#1A1410] text-white px-7 py-4 font-[Arial] text-[11px] uppercase tracking-[0.32em] transition-all duration-500 flex-1"
                 >
-                  <span>Take Assessment</span>
+                  <span>Book Consultation</span>
                   <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />
                 </Link>
                 <Link
-                  to="/book-consult"
+                  to="/assessment"
                   className="group inline-flex items-center justify-between gap-6 border border-white/25 hover:border-white text-white px-7 py-4 font-[Arial] text-[11px] uppercase tracking-[0.32em] transition-all duration-500 flex-1"
                 >
-                  <span>Book Consultation</span>
+                  <span>Take Assessment</span>
                   <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />
                 </Link>
               </div>

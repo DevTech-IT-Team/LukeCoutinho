@@ -6,10 +6,10 @@ import logo from '../assets/LClogoo.png';
 
 const navConfig = [
 	{ title: 'Programs', href: '/programs/signature-wellness' },
-	{ title: 'Workshops', href: '/Workshop/IndividualFamilyMasterclass/Home' },
+	{ title: 'Masterclass', href: '/masterclass' },
 	{ title: 'Podcast', href: '/Podcast/Podcast' },
-	{ title: 'Resources', href: '/learn/learninghub/home' },
-	{ title: 'Blogs', href: '/Learn/Blogs/Home' },
+	{ title: 'Courses', href: '/learn/learninghub/home' },
+	{ title: 'Blogs', href: '/learn/blogs' },
 	{ title: 'Bharat', href: '/bharat/dish' },
 ];
 
@@ -55,6 +55,9 @@ const Navbar = () => {
 			? 'bg-transparent border-b border-transparent'
 			: 'bg-[#FDFAF5] border-b border-[rgba(26,20,16,0.06)]';
 
+	const inkText = overDark && !scrolled ? 'text-white/90' : 'text-[#1A1410]';
+	const hoverInk = 'hover:text-[#E8640A]';
+
 	return (
 		<nav
 			className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 ${barBg} ${scrolled ? 'h-[72px]' : 'h-[88px]'
@@ -77,14 +80,25 @@ const Navbar = () => {
 					<ul className="hidden xl:flex items-center gap-1">
 						{navConfig.map((item) => (
 							<li key={item.title} className="relative">
-								<Link
-									to={item.href}
-									className="group relative inline-flex items-center px-4 py-7 font-[Arial] text-[10px] uppercase tracking-[0.32em] text-black hover:text-[#E8640A] transition-colors duration-500"
-								>
-									{item.title}
-
+								       {item.href.startsWith('/#') || item.href === '#' ? (
+									       <a
+										       href={item.href}
+										       onClick={(e) => { if (item.href === '#') e.preventDefault(); }}
+										       className={`group relative inline-flex items-center px-4 py-7 font-[Arial] text-[10px] uppercase tracking-[0.32em] ${inkText} ${hoverInk} transition-colors duration-500`}
+									       >
+										       {item.title}
+										       <span className="pointer-events-none absolute left-4 right-4 bottom-5 h-px bg-[#E8640A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
+									       </a>
+								       ) : (
+									<Link
+										to={item.href}
+										className="group relative inline-flex items-center px-4 py-7 font-[Arial] text-[10px] uppercase tracking-[0.32em] text-black hover:text-[#E8640A] transition-colors duration-500"
+									>
+										{item.title}
+	
 									<span className="pointer-events-none absolute left-4 right-4 bottom-5 h-px bg-[#E8640A] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-								</Link>
+									</Link>
+								       )}
 							</li>
 						))}
 					</ul>
@@ -195,15 +209,26 @@ const Navbar = () => {
 
 									{navConfig.map((item) => (
 										<li key={item.title}>
-											<Link
-												to={item.href}
-												onClick={() => setIsOpen(false)}
-												className="flex items-center justify-between py-5 font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none text-black hover:text-[#E8640A] transition-colors"
-											>
-												{item.title}
-
+											       {item.href.startsWith('/#') || item.href === '#' ? (
+												       <a
+													       href={item.href}
+													       onClick={(e) => { if (item.href === '#') e.preventDefault(); setIsOpen(false); }}
+													       className="flex items-center justify-between py-5 font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none text-[#1A1410] hover:text-[#E8640A] transition-colors"
+												       >
+													       {item.title}
+													       <ArrowUpRight size={16} strokeWidth={1.25} />
+												       </a>
+											       ) : (
+												<Link
+													to={item.href}
+													onClick={() => setIsOpen(false)}
+													className="flex items-center justify-between py-5 font-['EB_Garamond',Georgia,serif] italic text-[28px] leading-none text-black hover:text-[#E8640A] transition-colors"
+												>
+													{item.title}
+	
 												<ArrowUpRight size={16} strokeWidth={1.25} />
-											</Link>
+												</Link>
+											       )}
 										</li>
 									))}
 								</ul>
@@ -215,7 +240,7 @@ const Navbar = () => {
 								<Link
 									to="/book-consult"
 									onClick={() => setIsOpen(false)}
-									className="group w-full inline-flex items-center justify-between bg-[#1A1410] text-white px-6 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] hover:bg-[#E8640A] transition-colors duration-500"
+									className="group w-full inline-flex items-center justify-between bg-[#E8640A] text-white px-6 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] hover:bg-[#1A1410] transition-colors duration-500"
 								>
 									Book a Consult
 
