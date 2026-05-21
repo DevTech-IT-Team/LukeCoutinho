@@ -59,6 +59,18 @@
   color: rgba(255, 255, 255, 0.92);
   cursor: pointer;
   transition: color 250ms ease, opacity 250ms ease;
+  text-decoration: none;
+}
+
+.nav-utilities {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.nav-utilities {
+  display: flex;
+  align-items: center;
+  gap: 28px;
 }
 
 .hero-nav.is-scrolled .menu-trigger,
@@ -139,14 +151,14 @@
   align-items: center;
   gap: 10px;
 }
-
+/* 
 .nav-utility-dot {
   display: inline-block;
   width: 6px;
   height: 6px;
   background: var(--saffron);
   border-radius: 50%;
-}
+} */
 
 .nav-utility::after {
   content: '';
@@ -161,47 +173,10 @@
   transition: transform 250ms ease;
 }
 
-.nav-utility:hover::after,
+/* .nav-utility:hover::after,
 .nav-utility:focus-visible::after {
   transform: scaleX(1);
-}
-
-.nav-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 24px;
-  background: var(--saffron);
-  border: 1px solid var(--saffron);
-  border-radius: 999px;
-  font-family: Arial, sans-serif;
-  font-size: 9px;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  transition: all 250ms ease;
-  text-decoration: none;
-}
-
-.nav-btn:hover,
-.nav-btn:focus-visible {
-  background: #FFFFFF;
-  color: #1A1410;
-  border-color: #FFFFFF;
-}
-
-.hero-nav.is-scrolled .nav-btn {
-  background: var(--saffron);
-  border-color: var(--saffron);
-  color: #FFFFFF;
-}
-
-.hero-nav.is-scrolled .nav-btn:hover,
-.hero-nav.is-scrolled .nav-btn:focus-visible {
-  background: #1A1410;
-  color: #FFFFFF;
-  border-color: #1A1410;
-}
+} */
 
 /* ---------- Hero (scroll-driven sticky stack) ---------- */
 .hero {
@@ -728,6 +703,10 @@
   .menu-label,
   .nav-utility span:last-child {
     display: none;
+  }
+
+  .nav-utilities {
+    gap: 16px;
   }
 
   .nav-logo img { height: 36px; }
@@ -1397,4 +1376,36 @@
     grid-template-columns: 1fr;
     gap: 4px;
   }
+}
+
+.sw {
+  background: var(--saffron, #E8640A);
+  color: #FFFFFF;
+  padding: 8px 10px;
+  border-radius: 50px;
+  font-size: smaller;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.sw:hover {
+  background: #393939;
+}
+
+.by {
+  background: var(--warm-white, #ffffff);
+  color: #292929;
+  padding: 8px 10px;
+  border-radius: 50px;
+  font-size: smaller;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.by:hover {
+  background: #b2917b;
+    color: #ffffff;
+
 }

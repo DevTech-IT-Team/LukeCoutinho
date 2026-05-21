@@ -30,7 +30,7 @@ const AssetsShowcase = () => {
   return (
     <section className="py-24 bg-[#FCF9F5] overflow-hidden">
       <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
-        
+
         <div className="grid lg:grid-cols-2 gap-10 items-end mb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="flex items-center gap-4 mb-4 text-orange-500 font-black uppercase tracking-[0.3em] text-[10px]">
@@ -58,11 +58,11 @@ const AssetsShowcase = () => {
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-8 ${asset.theme}`}>
                 {asset.icon}
               </div>
-              
+
               <div className="flex-1">
                 <h3 className="text-2xl font-bold uppercase tracking-tight text-slate-950 mb-3">{asset.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed mb-6">{asset.desc}</p>
-                
+
                 <div className="flex flex-wrap gap-3 mb-8">
                   {asset.features.map((f, i) => (
                     <span key={i} className="text-[9px] font-bold uppercase tracking-widest px-3 py-1 bg-slate-50 text-slate-400 rounded-full">

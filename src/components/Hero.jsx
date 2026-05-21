@@ -12,10 +12,12 @@ const navigationLinks = [
   { label: 'Heal from Within', to: '#' },
   { label: 'Wellness Programs', to: '#' },
   { label: 'Masterclass', to: '/masterclass' },
-  { label: 'Courses', to: '/#learn-the-method' },
-  { label: 'Recipes', to: '#' },
-  { label: 'eBooks', to: '#' },
-  { label: 'Podcast', to: '#' },
+  { label: 'Courses', to: '/learn/learninghub/home' },
+  { label: 'Blogs', to: '/Learn/Blogs/Home' },
+
+  { label: 'Recipes', to: '/bharat/dish' },
+  { label: 'eBooks', to: '/resources' },
+  { label: 'Podcast', to: '/Podcast/Podcast' },
   { label: 'Consult', to: '/book-consult' },
 ];
 
@@ -60,6 +62,7 @@ const slides = [
     to: '/Podcast/Podcast',
     video: clip4,
   },
+
 ];
 
 const Hero = () => {
@@ -129,7 +132,7 @@ const Hero = () => {
   useEffect(() => {
     videoRefs.current.forEach((video, i) => {
       if (!video) return;
-      if (i === activeIndex) video.play().catch(() => {});
+      if (i === activeIndex) video.play().catch(() => { });
       else video.pause();
     });
   }, [activeIndex]);
@@ -173,9 +176,8 @@ const Hero = () => {
   return (
     <>
       <header
-        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${
-          isMenuOpen ? ' is-menu-open' : ''
-        }`}
+        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${isMenuOpen ? ' is-menu-open' : ''
+          }`}
       >
         <button
           className="menu-trigger"
@@ -197,19 +199,25 @@ const Hero = () => {
           <img src={lcLogo} alt="Luke Coutinho" />
         </Link>
 
-        <div className="nav-actions">
-          <a
-            href="https://lmsathena.com/login"
-            className="nav-btn"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div className="nav-utilities">
+          <Link
+            to="/programs/signature-wellness"
+            className="nav-utility sw"
           >
-            <span>Member Login</span>
-          </a>
-          <Link to="/book-consult" className="nav-utility">
+            <span className="nav-utility-dot" aria-hidden="true" />
+            <span>Signature Wellness Programs</span>
+          </Link>
+          <button
+            type="button"
+            className="nav-utility by"
+            onClick={() => setIsConsultOpen(true)}
+            aria-haspopup="dialog"
+            aria-controls="consult-drawer"
+            aria-expanded={isConsultOpen}
+          >
             <span className="nav-utility-dot" aria-hidden="true" />
             <span>Book Your Consultation</span>
-          </Link>
+          </button>
         </div>
       </header>
 
@@ -236,9 +244,8 @@ const Hero = () => {
                 preload={i === 0 ? 'auto' : 'metadata'}
                 style={{
                   opacity: i === activeIndex ? 1 : 0,
-                  transform: `scale(${
-                    i === activeIndex ? 1.0 + progress * 0.04 : 1.06
-                  })`,
+                  transform: `scale(${i === activeIndex ? 1.0 + progress * 0.04 : 1.06
+                    })`,
                 }}
               />
             ))}
@@ -266,9 +273,8 @@ const Hero = () => {
                       <span
                         className="hero-dot-progress"
                         style={{
-                          background: `conic-gradient(#FFFFFF ${
-                            progress * 360
-                          }deg, rgba(255,255,255,0) 0deg)`,
+                          background: `conic-gradient(#FFFFFF ${progress * 360
+                            }deg, rgba(255,255,255,0) 0deg)`,
                         }}
                       />
                     )}
@@ -396,3 +402,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

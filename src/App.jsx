@@ -14,6 +14,8 @@ import Learninghub from './pages/Learn/Learninghub/Home'
 import ChatbotOverlay from './components/chatbot/ChatbotOverlay'
 import SignatureWellness from './pages/Programs/SignatureWellness'
 import SpecialCancerCare from './pages/Programs/SpecialCancerCare'
+import StandardProgram from './pages/Programs/SignatureWellness/StandardProgram'
+import ExclusiveProgram from './pages/Programs/SignatureWellness/ExclusiveProgram'
 import GutCare from './pages/Programs/GutCare'
 import PregnancyCare from './pages/Programs/PregnancyCare'
 
@@ -67,6 +69,8 @@ function AppShell() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/programs/signature-wellness" element={<SignatureWellness />} />
+            <Route path="/programs/signature-wellness/standard" element={<StandardProgram />} />
+            <Route path="/programs/signature-wellness/exclusive" element={<ExclusiveProgram />} />
             <Route path="/programs/cancer-care" element={<SpecialCancerCare />} />
             <Route path="/programs/gut" element={<GutCare />} />
             <Route path="/programs/pregnancy" element={<PregnancyCare />} />
