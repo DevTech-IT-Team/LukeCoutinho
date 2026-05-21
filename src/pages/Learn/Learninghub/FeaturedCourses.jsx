@@ -17,119 +17,11 @@ import {
    COURSES DATA
 ========================= */
 
-const allCourses = [
-  {
-    id: "nutrition-mastery",
-    title: "Nutrition Mastery",
-    subtitle: "Cellular healing through nutrition",
-    category: "Nutrition",
-    lessons: 12,
-    duration: "8 Weeks",
-    level: "Beginner",
-    price: "$99",
-    rating: "4.9",
-    image:
-      "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop",
-  },
+import courses from "../../../data/courses";
+const allCourses = courses;
 
-  {
-    id: "advanced-nutrition",
-    title: "Advanced Nutrition",
-    subtitle: "Clinical nutrition protocols",
-    category: "Nutrition",
-    lessons: 18,
-    duration: "12 Weeks",
-    level: "Advanced",
-    price: "$199",
-    rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop",
-  },
 
-  {
-    id: "mindset-blueprint",
-    title: "Mindset Blueprint",
-    subtitle: "Mental resilience and emotional mastery",
-    category: "Mindset",
-    lessons: 10,
-    duration: "6 Weeks",
-    level: "Intermediate",
-    price: "$120",
-    rating: "4.8",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop",
-  },
 
-  {
-    id: "focus-clarity",
-    title: "Focus & Clarity",
-    subtitle: "Peak performance and productivity",
-    category: "Mindset",
-    lessons: 14,
-    duration: "7 Weeks",
-    level: "Advanced",
-    price: "$149",
-    rating: "4.9",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-  },
-
-  {
-    id: "functional-fitness",
-    title: "Functional Fitness",
-    subtitle: "Movement and strength optimization",
-    category: "Fitness",
-    lessons: 15,
-    duration: "10 Weeks",
-    level: "Advanced",
-    price: "$149",
-    rating: "5.0",
-    image:
-      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop",
-  },
-
-  {
-    id: "body-reset",
-    title: "Body Reset Program",
-    subtitle: "Complete metabolic transformation",
-    category: "Fitness",
-    lessons: 16,
-    duration: "9 Weeks",
-    level: "Intermediate",
-    price: "$179",
-    rating: "4.8",
-    image:
-      "https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=1200&auto=format&fit=crop",
-  },
-
-  {
-    id: "deep-healing",
-    title: "Deep Healing",
-    subtitle: "Recovery and holistic transformation",
-    category: "Healing",
-    lessons: 9,
-    duration: "5 Weeks",
-    level: "Beginner",
-    price: "$89",
-    rating: "4.7",
-    image:
-      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop",
-  },
-
-  {
-    id: "gut-healing",
-    title: "Gut Healing Protocol",
-    subtitle: "Restore digestion and immunity",
-    category: "Healing",
-    lessons: 11,
-    duration: "6 Weeks",
-    level: "Intermediate",
-    price: "$110",
-    rating: "4.9",
-    image:
-      "https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop",
-  },
-];
 
 /* =========================
    CATEGORIES
@@ -348,7 +240,7 @@ const FeaturedCoursesOnly = () => {
 
                 {/* BUTTON */}
                 <Link
-                  to={`/course/${course.id}`}
+                  to={`/buy/${course.id}`}
                   className="group/btn mt-auto w-full py-4 bg-slate-950 text-white rounded-2xl font-black text-[10px] uppercase tracking-[0.25em] flex items-center justify-center gap-3 hover:bg-orange-500 transition-all duration-500 shadow-xl shadow-slate-900/10"
                 >
                   Enroll Now
