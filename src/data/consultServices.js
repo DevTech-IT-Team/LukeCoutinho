@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { enIN } from 'date-fns/locale';
+import { enIN } from 'date-fns/locale/en-IN';
 
 /** Consult catalogue — mirrors lukecoutinho.com/book-a-consult terminology & pricing */
 
