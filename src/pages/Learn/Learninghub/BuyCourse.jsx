@@ -1,11 +1,11 @@
 // src/pages/Learn/Learninghub/BuyCourse.jsx
 import React from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
-import courses from "../../../data/courses";
+import { getCourseById } from '../../../data/courses';
 
 const BuyCourse = () => {
   const { id } = useParams();
-  const course = courses.find((c) => c.id === id);
+  const course = getCourseById(id);
   const location = useLocation();
 
   if (!course) {
@@ -32,7 +32,7 @@ const BuyCourse = () => {
       <p className="mt-6 text-gray-600">{course.summary || ''}</p>
       <Link
         to="/payment"
-        state={{ courseId: course.id }}
+        state={{ course }}
         className="mt-8 inline-block rounded-xl bg-orange-500 px-8 py-4 text-white font-black hover:bg-orange-600 transition"
       >
         Proceed to Checkout

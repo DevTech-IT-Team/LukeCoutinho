@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Navbar from './components/Navbar'
+import SiteHeader from './components/SiteHeader'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import Home from './components/Home'
@@ -56,10 +56,6 @@ import PageAnalytics from './components/analytics/PageAnalytics'
 
 function AppShell() {
   const location = useLocation()
-  const chromelessPaths = ['/', '/masterclass', '/Workshop/IndividualFamilyMasterclass/Home', '/book-consult', '/payment', '/assessment', '/assessment/results']
-  const isChromeless = chromelessPaths.some((p) =>
-    p === '/' ? location.pathname === '/' : location.pathname.startsWith(p)
-  )
   const isLandingPage = location.pathname === '/'
 
   return (
@@ -67,8 +63,8 @@ function AppShell() {
       <PageAnalytics />
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
-        {!isChromeless && <Navbar />}
-        <main className="flex-grow">
+        <SiteHeader />
+        <main className="flex-grow rr-main">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/programs/signature-wellness" element={<SignatureWellness />} />

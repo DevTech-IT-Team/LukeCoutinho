@@ -1,0 +1,545 @@
+.course-page {
+  background: #fdfaf5;
+  color: #1a1410;
+}
+
+.course-hero {
+  padding-top: calc(var(--nav-height, 84px) + 2rem);
+  padding-bottom: 3.5rem;
+  border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+  background: linear-gradient(180deg, #fff 0%, #fdfaf5 100%);
+}
+
+.course-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .course-hero-inner {
+    padding: 0 4rem;
+  }
+}
+
+.course-hero-grid {
+  display: grid;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+@media (min-width: 1024px) {
+  .course-hero-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 360px);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .course-hero-visual {
+    max-height: 360px;
+  }
+}
+
+.course-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.55);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.course-back:hover {
+  color: #e8640a;
+}
+
+.course-category {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #e8640a;
+}
+
+.course-category::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: #e8640a;
+}
+
+.course-title {
+  margin: 0;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  line-height: 1.05;
+  color: #1a1410;
+}
+
+.course-subtitle {
+  margin: 1rem 0 0;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  color: rgba(26, 20, 16, 0.55);
+}
+
+.course-summary {
+  margin: 1.25rem 0 0;
+  max-width: 36rem;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.85;
+  color: rgba(26, 20, 16, 0.68);
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  margin-top: 1.75rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.55);
+}
+
+.course-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.course-meta svg {
+  color: #e8640a;
+}
+
+.course-hero-visual {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  background: #faf6ee;
+}
+
+.course-hero-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.course-hero-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1a1410;
+}
+
+.course-enroll-card {
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 20px 50px -24px rgba(26, 20, 16, 0.12);
+}
+
+@media (min-width: 1024px) {
+  .course-enroll-card {
+    position: sticky;
+    top: calc(var(--nav-height, 84px) + 1.5rem);
+  }
+}
+
+.course-price {
+  margin: 0;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: #1a1410;
+}
+
+.course-price-note {
+  margin: 0.5rem 0 1.5rem;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.45);
+}
+
+.course-btn-primary {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border: 0;
+  background: #e8640a;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.25s ease;
+}
+
+.course-btn-primary:hover {
+  background: #1a1410;
+}
+
+.course-btn-secondary {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(26, 20, 16, 0.15);
+  background: transparent;
+  color: #1a1410;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.course-btn-secondary:hover {
+  border-color: #1a1410;
+  color: #e8640a;
+}
+
+.course-enroll-includes {
+  margin: 1.5rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+  list-style: none;
+  padding-left: 0;
+}
+
+.course-enroll-includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-bottom: 0.65rem;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(26, 20, 16, 0.72);
+}
+
+.course-enroll-includes li:last-child {
+  margin-bottom: 0;
+}
+
+.course-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .course-section {
+    padding: 5rem 4rem;
+  }
+}
+
+.course-section--alt {
+  background: #faf6ee;
+  border-top: 1px solid rgba(26, 20, 16, 0.06);
+  border-bottom: 1px solid rgba(26, 20, 16, 0.06);
+}
+
+.course-section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 1rem;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #e8640a;
+}
+
+.course-section-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: #e8640a;
+}
+
+.course-section-title {
+  margin: 0 0 2rem;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1.1;
+  color: #1a1410;
+}
+
+.course-two-col {
+  display: grid;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .course-two-col {
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+
+.course-learn-grid {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .course-learn-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 2rem;
+  }
+}
+
+.course-learn-grid li {
+  display: flex;
+  gap: 0.75rem;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(26, 20, 16, 0.82);
+}
+
+.course-curriculum {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(26, 20, 16, 0.1);
+}
+
+.course-curriculum li {
+  display: grid;
+  grid-template-columns: 3rem 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 0.5rem;
+  border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+  transition: background 0.2s ease;
+}
+
+.course-curriculum li:hover {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.course-curriculum-num {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  color: rgba(26, 20, 16, 0.4);
+}
+
+.course-curriculum-title {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #1a1410;
+}
+
+.course-curriculum-length {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.5);
+}
+
+.course-features {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .course-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.course-feature-card {
+  padding: 1.5rem;
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1rem;
+}
+
+.course-feature-card h3 {
+  margin: 0.75rem 0 0.5rem;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #1a1410;
+}
+
+.course-feature-card p {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.75;
+  color: rgba(26, 20, 16, 0.62);
+}
+
+.course-includes-grid {
+  display: grid;
+  gap: 0.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .course-includes-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.course-includes-grid li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  padding: 1rem 1.15rem;
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 0.75rem;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: rgba(26, 20, 16, 0.75);
+}
+
+.course-cta-band {
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background: #fff;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+}
+
+.course-cta-band h2 {
+  margin: 0 0 1rem;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  color: #1a1410;
+}
+
+.course-cta-band p {
+  margin: 0 auto 2rem;
+  max-width: 28rem;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: rgba(26, 20, 16, 0.65);
+}
+
+.course-related-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .course-related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .course-related-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.course-related-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.course-related-card:hover {
+  border-color: rgba(232, 100, 10, 0.35);
+  box-shadow: 0 16px 40px -20px rgba(26, 20, 16, 0.12);
+}
+
+.course-related-card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+
+.course-related-card-body {
+  padding: 1.25rem;
+}
+
+.course-related-card-body h3 {
+  margin: 0.35rem 0 0.5rem;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: #1a1410;
+}
+
+.course-related-card-body .price {
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #e8640a;
+}
+
+@media (max-width: 640px) {
+  .course-curriculum li {
+    grid-template-columns: 2.5rem 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .course-curriculum-length {
+    grid-column: 2;
+  }
+
+  .course-curriculum li svg {
+    display: none;
+  }
+}

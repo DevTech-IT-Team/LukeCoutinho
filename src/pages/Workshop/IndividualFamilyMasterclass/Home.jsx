@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -16,8 +16,6 @@ import pastMasterclassImage from '../../../assets/1st.webp';
 import heroPoster from '../../../assets/wellness.jpg';
 import heroVideo from '../../../assets/heroclips/lukehero.mp4';
 import audienceVideo from '../../../assets/heroclips/Lukehero3.mp4';
-import lcLogo from '../../../assets/LClogoo.png';
-import '../../../components/Hero.css';
 import PastMasterclassesSection from './sections/PastMasterclassesSection';
 import AboutLukeSection from './sections/AboutLukeSection';
 import DisclaimerSection from './sections/DisclaimerSection';
@@ -81,17 +79,6 @@ const audienceCards = [
   },
 ];
 
-const navigationLinks = [
-  { label: 'Heal from Within', to: '#' },
-  { label: 'Wellness Programs', to: '#' },
-  { label: 'Masterclass', to: '/masterclass' },
-  { label: 'Courses', to: '/#learn-the-method' },
-  { label: 'Recipes', to: '#' },
-  { label: 'eBooks', to: '#' },
-  { label: 'Podcast', to: '#' },
-  { label: 'Consult', to: '#' },
-];
-
 function CtaLink({ children, variant = 'light', className = '' }) {
   const baseClassName =
     'group inline-flex items-center gap-3 font-[Arial] text-[10px] uppercase tracking-[0.34em] transition-all duration-500';
@@ -110,83 +97,8 @@ function CtaLink({ children, variant = 'light', className = '' }) {
 }
 
 function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > window.innerHeight - 120);
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleScroll);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = '';
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isMenuOpen]);
-
   return (
     <>
-      <header
-        className={`hero-nav${isScrolled ? ' is-scrolled' : ''}${
-          isMenuOpen ? ' is-menu-open' : ''
-        }`}
-      >
-        <button
-          className="menu-trigger"
-          type="button"
-          aria-label="Open menu"
-          aria-expanded={isMenuOpen}
-          aria-controls="primary-menu"
-          onClick={() => setIsMenuOpen(true)}
-        >
-          <span className="menu-icon" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-          <span className="menu-label">Menu</span>
-        </button>
-
-        <Link to="/" className="nav-logo" aria-label="Luke Coutinho home">
-          <img src={lcLogo} alt="Luke Coutinho" />
-        </Link>
-
-        <div className="nav-actions">
-          <a
-            href="https://lmsathena.com/login"
-            className="nav-btn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span>Member Login</span>
-          </a>
-          <Link to="/book-consult" className="nav-utility">
-            <span className="nav-utility-dot" aria-hidden="true" />
-            <span>Book Your Consultation</span>
-          </Link>
-        </div>
-      </header>
-
       <div className="bg-[#FDFAF5] text-[#1A1410]">
       <section className="relative min-h-screen overflow-hidden bg-[#1A1410] text-[#FDFAF5]">
         <video
@@ -417,81 +329,6 @@ function Home() {
         </div>
       </section>
       </div>
-
-      <div
-        id="primary-menu"
-        className={`primary-menu${isMenuOpen ? ' is-open' : ''}`}
-        role="dialog"
-        aria-modal="true"
-        aria-hidden={isMenuOpen ? 'false' : 'true'}
-      >
-        <button
-          type="button"
-          className="primary-menu-scrim"
-          aria-label="Close menu"
-          tabIndex={isMenuOpen ? 0 : -1}
-          onClick={() => setIsMenuOpen(false)}
-        />
-
-        <aside className="primary-menu-panel" aria-label="Site menu">
-          <div className="primary-menu-backdrop" aria-hidden="true">
-            <img src={heroPoster} alt="" />
-            <div className="primary-menu-tint" />
-          </div>
-
-          <div className="primary-menu-head">
-            <Link
-              to="/"
-              className="primary-menu-logo"
-              aria-label="Luke Coutinho home"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <img src={lcLogo} alt="Luke Coutinho" />
-            </Link>
-
-            <button
-              className="primary-menu-close"
-              type="button"
-              aria-label="Close menu"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-
-          <nav className="primary-menu-nav" aria-label="Primary navigation">
-            <ul>
-              {navigationLinks.map((link, index) => (
-                <li
-                  key={link.label}
-                  style={{ '--menu-delay': `${120 + index * 70}ms` }}
-                >
-                  {link.to.startsWith('/#') || link.to === '#' ? (
-                    <a
-                      href={link.to}
-                      onClick={(e) => {
-                        if (link.to === '#') e.preventDefault();
-                        setIsMenuOpen(false);
-                      }}
-                    >
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link to={link.to} onClick={() => setIsMenuOpen(false)}>
-                      {link.label}
-                    </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <div className="primary-menu-foot">
-            <p>Integrative Lifestyle &amp; Wellness · Mumbai · Worldwide</p>
-          </div>
-        </aside>
-      </div>
-
     </>
   );
 }

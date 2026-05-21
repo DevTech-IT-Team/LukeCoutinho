@@ -2,6 +2,7 @@
 @import "tailwindcss";
 @import "./styles/lc-layout.css";
 @import "./styles/mobile-first.css";
+@import "./styles/rr-luxury.css";
 
 :root {
   --obsidian: #090909;
@@ -19,16 +20,14 @@ body,
   min-height: 100%;
   font-family: 'Manrope', 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--obsidian);
-  color: var(--ivory);
+  background-color: #fdfaf5;
+  color: #1a1410;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-  background:
-    radial-gradient(circle at top, rgba(214, 183, 111, 0.18), transparent 28%),
-    linear-gradient(180deg, #0b0b0b 0%, #090909 100%);
+  background: #fdfaf5;
 }
 
 #root {
