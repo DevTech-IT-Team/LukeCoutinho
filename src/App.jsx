@@ -43,7 +43,8 @@ import ContactUs from './pages/ContactUs/ContactUs'
 import Resources from './pages/Resources'
 import BharatDish from './pages/BharatDish'
 import ScormPlayer from './pages/Learn/Learninghub/ScormPlayer'
-import CourseDetail from './pages/Learn/Learninghub/CourseDetail'
+import CourseDetail from './pages/Learn/Learninghub/CourseDetail';
+import Buy from './pages/Learn/Learninghub/Buy';
 import BookConsult from './pages/BookConsult'
 import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
@@ -98,6 +99,7 @@ function AppShell() {
             <Route path="/Learn/Blogs/Home" element={<Blogs />} />
             <Route path="/learn/learninghub/home" element={<Learninghub />} />
             <Route path="/course/:id" element={<CourseDetail />} />
+            <Route path="/buy/:id" element={<Buy />} />
             <Route path="/Podcast/Podcast" element={<Podcast />} />
             <Route path="/Podcast/Podcast/PodcastVideos" element={<PodcastVideos />} />
             <Route path="/Careers/Careers" element={<Careers />} />
