@@ -345,7 +345,7 @@ const SiteHeader = () => {
                     </button>
                   ))}
                 </div>
-                <p className="search-hint-label search-hint-label--sub">Or type a topic above</p>
+                {/* <p className="search-hint-label search-hint-label--sub">Or type a topic above</p> */}
               </div>
             )}
           </div>
