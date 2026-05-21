@@ -60,9 +60,9 @@
 
 .lc-masthead-title {
   margin: 0;
-  font-family: 'EB Garamond', Georgia, serif;
-  font-style: italic;
-  font-weight: 500;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: normal;
+  font-weight: 400;
   font-size: clamp(2.25rem, 5vw, 4.5rem);
   line-height: 0.98;
   letter-spacing: 0.005em;
@@ -107,8 +107,8 @@
 
 .lc-masthead-kicker {
   margin: 0;
-  font-family: 'EB Garamond', Georgia, serif;
-  font-style: italic;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: normal;
   font-size: 18px;
   line-height: 1.4;
   color: rgba(26, 20, 16, 0.5);

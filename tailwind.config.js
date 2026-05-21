@@ -3,18 +3,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: [
-          'Roboto',
-          'Open Sans',
-          'Lato',
-          'Montserrat',
-          'ui-sans-serif',
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          'sans-serif',
-        ],
+        sans: ['Arial', 'Helvetica', 'Segoe UI', 'sans-serif'],
+        serif: ['Georgia', 'Times New Roman', 'Times', 'serif'],
+        display: ['EB Garamond', 'Georgia', 'serif'],
       },
       fontWeight: {
         thin: '100',

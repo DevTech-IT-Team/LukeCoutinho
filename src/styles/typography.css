@@ -1,0 +1,111 @@
+/**
+ * Site typography
+ * - H1: EB Garamond (display — keep existing hero / page titles)
+ * - H2–H6 & subheads: Georgia, not italic
+ * - Body & UI: Arial / system sans-serif
+ * EB Garamond loaded in index.html
+ */
+
+:root {
+  --font-display: 'EB Garamond', Georgia, serif;
+  --font-serif: Georgia, 'Times New Roman', Times, serif;
+  --font-sans: Arial, Helvetica, 'Segoe UI', sans-serif;
+}
+
+html,
+body,
+#root,
+button,
+input,
+select,
+textarea {
+  font-family: var(--font-sans);
+}
+
+/* Primary page titles — unchanged display face */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+h1.course-title,
+h1.blogs-hero__title,
+h1.font-display {
+  font-style: italic;
+}
+
+/* Hero homepage H1 keeps its own uppercase style from Hero.css */
+h1.hero-headline {
+  font-style: normal;
+}
+
+/* All subheadings: Georgia, never italic */
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+  font-weight: 400;
+}
+
+p,
+li,
+label,
+span,
+a,
+td,
+th {
+  font-family: inherit;
+}
+
+.font-sans {
+  font-family: var(--font-sans) !important;
+  font-style: normal !important;
+}
+
+.font-serif {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+}
+
+.font-display {
+  font-family: var(--font-display) !important;
+}
+
+/* Shared editorial components */
+.lc-masthead-title,
+.lc-section-title,
+.lc-architecture-title,
+.course-section-title,
+.course-subtitle,
+.course-curriculum-title,
+.course-feature-card h3,
+.course-related-card-body h3,
+.course-cta-band h2,
+.course-price,
+.blogs-picks__title,
+.blogs-card__heading,
+.blogs-promo h4,
+.blogs-hero__lede {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+}
+
+/* Tailwind italic utilities on subheadings */
+h2.italic,
+h3.italic,
+h4.italic,
+h5.italic,
+h6.italic {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+}
+
+/* H1-class hooks only */
+.course-title,
+.blogs-hero__title {
+  font-family: var(--font-display) !important;
+  font-style: italic !important;
+}

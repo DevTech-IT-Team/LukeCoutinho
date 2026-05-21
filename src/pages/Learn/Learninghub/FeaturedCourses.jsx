@@ -28,7 +28,7 @@ const FeaturedCoursesOnly = () => {
                 Expert-led modules
               </span>
             </div>
-            <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] text-[#1A1410]">
+            <h2 className="font-serif text-[clamp(2.25rem,4.5vw,3.5rem)] leading-[1] text-[#1A1410] not-italic">
               Featured <span className="text-[#E8640A]">courses</span>
             </h2>
             <p className="mt-4 font-[Arial] text-[14px] leading-[1.85] text-[rgba(26,20,16,0.65)] max-w-2xl">
@@ -37,11 +37,11 @@ const FeaturedCoursesOnly = () => {
           </div>
           <div className="flex gap-4 shrink-0">
             <div className="px-6 py-4 bg-white border border-[rgba(26,20,16,0.08)] rounded-2xl">
-              <p className="font-['EB_Garamond',Georgia,serif] italic text-3xl text-[#1A1410]">{courses.length}+</p>
+              <p className="font-serif text-3xl text-[#1A1410] not-italic">{courses.length}+</p>
               <span className="font-[Arial] text-[10px] uppercase tracking-[0.28em] text-[rgba(26,20,16,0.5)]">Courses</span>
             </div>
             <div className="px-6 py-4 bg-white border border-[rgba(26,20,16,0.08)] rounded-2xl">
-              <p className="font-['EB_Garamond',Georgia,serif] italic text-3xl text-[#1A1410]">4.9</p>
+              <p className="font-serif text-3xl text-[#1A1410] not-italic">4.9</p>
               <span className="font-[Arial] text-[10px] uppercase tracking-[0.28em] text-[rgba(26,20,16,0.5)]">Avg rating</span>
             </div>
           </div>
@@ -99,7 +99,7 @@ const FeaturedCoursesOnly = () => {
                   <span className="font-[Arial] text-[10px] uppercase tracking-[0.32em] text-[#E8640A] mb-2">
                     {course.category}
                   </span>
-                  <h3 className="font-['EB_Garamond',Georgia,serif] italic text-[1.5rem] leading-[1.15] text-[#1A1410] mb-2 group-hover:text-[#E8640A] transition-colors">
+                  <h3 className="font-serif text-[1.5rem] leading-[1.15] text-[#1A1410] mb-2 not-italic group-hover:text-[#E8640A] transition-colors">
                     {course.title}
                   </h3>
                   <p className="font-[Arial] text-[13px] leading-[1.7] text-[rgba(26,20,16,0.6)] flex-1 mb-4">
