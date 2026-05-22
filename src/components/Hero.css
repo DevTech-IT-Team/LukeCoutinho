@@ -33,10 +33,11 @@
 
 .hero-nav.is-scrolled,
 .hero-nav.hero-nav--solid {
-  background: #fdfaf5;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-bottom: 1px solid rgba(26, 20, 16, 0.06);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  border-bottom: 1px solid rgba(26, 60, 52, 0.1);
+  box-shadow: 0 6px 28px rgba(26, 60, 52, 0.08);
 }
 
 .hero-nav.is-search-active {
@@ -75,10 +76,25 @@
 }
 
 .hero-nav.is-scrolled .menu-trigger,
-.hero-nav.is-scrolled .nav-utility,
-.hero-nav.hero-nav--solid .menu-trigger,
-.hero-nav.hero-nav--solid .nav-utility {
-  color: var(--warm-black);
+.hero-nav.hero-nav--solid .menu-trigger {
+  color: #1a3c34;
+}
+
+.hero-nav.is-scrolled .sw,
+.hero-nav.hero-nav--solid .sw {
+  background: #ff8f00;
+  color: #ffffff;
+}
+
+.hero-nav.is-scrolled .sw span,
+.hero-nav.hero-nav--solid .sw span {
+  color: #ffffff;
+}
+
+.hero-nav.is-scrolled .by,
+.hero-nav.hero-nav--solid .by {
+  background: #ffffff;
+  color: #292929;
 }
 
 .menu-icon {
@@ -854,8 +870,8 @@
 
 .hero-nav.is-scrolled .nav-search,
 .hero-nav.hero-nav--solid .nav-search {
-  border-color: rgba(26, 20, 16, 0.3);
-  color: var(--warm-black);
+  border-color: rgba(26, 60, 52, 0.28);
+  color: #1a3c34;
 }
 
 .nav-search:hover,
@@ -866,7 +882,8 @@
 
 .hero-nav.is-scrolled .nav-search:hover,
 .hero-nav.hero-nav--solid .nav-search:hover {
-  background: rgba(26, 20, 16, 0.06);
+  background: rgba(26, 60, 52, 0.06);
+  border-color: #1a3c34;
 }
 
 /* ---------- Search overlay ---------- */
@@ -1150,36 +1167,33 @@
   background: rgba(232, 100, 10, 0.06);
 }
 
-/* ---------- Pill nav buttons ---------- */
-.sw {
-  background: var(--saffron, #E8640A);
-  color: #FFFFFF;
+/* ---------- Pill nav buttons (no hover — matches homepage #ff8f00 accent) ---------- */
+.nav-utility.sw,
+.nav-utility.by {
   padding: 8px 10px;
   border-radius: 50px;
   font-size: smaller;
   font-weight: bold;
-  transition: all 0.3s ease;
   cursor: pointer;
 }
 
-.sw:hover {
-  background: #393939;
+.nav-utility.sw::after,
+.nav-utility.by::after {
+  display: none;
+}
+
+.sw {
+  background: #ff8f00;
+  color: #ffffff;
+}
+
+.sw span {
+  color: #ffffff;
 }
 
 .by {
   background: var(--warm-white, #ffffff);
   color: #292929;
-  padding: 8px 10px;
-  border-radius: 50px;
-  font-size: smaller;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-.by:hover {
-  background: #b2917b;
-  color: #ffffff;
 }
 
 /* ---------- Animations ---------- */

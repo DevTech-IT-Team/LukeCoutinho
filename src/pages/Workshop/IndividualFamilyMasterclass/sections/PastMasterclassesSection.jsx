@@ -25,7 +25,7 @@ function PastMasterclassesSection() {
 
       <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 lg:px-16 lg:py-28">
         <div className="mx-auto flex max-w-[980px] flex-col items-center text-center">
-          <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(40px,5vw,72px)] leading-[0.96]">
+          <h2 className="text-[clamp(40px,5vw,72px)] leading-[0.96]">
             Revisit our
             <br />
             past masterclasses.
@@ -33,7 +33,7 @@ function PastMasterclassesSection() {
 
           <Link
             to="/Workshop/IndividualFamilyMasterclass/PastMasterclass"
-            className="group mt-8 inline-flex items-center gap-3 border-b border-[#1A1410]/50 pb-2 font-[Arial] text-[10px] uppercase tracking-[0.34em] text-[#1A1410] transition-colors hover:border-[#E8640A] hover:text-[#E8640A]"
+            className="lc-mc-eyebrow group mt-8 inline-flex items-center gap-3 border-b border-[#1a3c34]/50 pb-2 text-[10px] uppercase tracking-[0.34em] text-[#1a3c34] transition-colors hover:border-[#ff8f00] hover:text-[#ff8f00]"
           >
             <span>Browse Past Masterclasses</span>
             <ArrowRight size={14} className="transition-transform duration-500 group-hover:translate-x-1" />

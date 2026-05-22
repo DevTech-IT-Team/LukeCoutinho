@@ -1,0 +1,59 @@
+/**
+ * Masterclass pages — same typography as homepage (.lc-landing)
+ * H1: EB Garamond · H2–H6: Georgia (no italic) · UI/body: Arial
+ */
+
+.lc-masterclass {
+  font-family: var(--font-sans);
+  color: #1a3c34;
+}
+
+.lc-masterclass h1 {
+  font-family: var(--font-display) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.lc-masterclass h2,
+.lc-masterclass h3,
+.lc-masterclass h4,
+.lc-masterclass h5,
+.lc-masterclass h6 {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.lc-masterclass blockquote {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+}
+
+.lc-masterclass h1.italic,
+.lc-masterclass h2.italic,
+.lc-masterclass h3.italic,
+.lc-masterclass h4.italic {
+  font-style: normal !important;
+}
+
+.lc-masterclass .lc-mc-eyebrow {
+  font-family: var(--font-sans) !important;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.lc-masterclass .lc-mc-card-title {
+  font-family: var(--font-serif) !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0;
+  text-transform: none;
+  line-height: 1.2;
+}
+
+.lc-masterclass .lc-mc-body {
+  font-family: var(--font-sans) !important;
+}

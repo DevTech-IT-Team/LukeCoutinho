@@ -50,10 +50,7 @@ import BookConsultService from './pages/BookConsultService'
 import BookConsultSchedule from './pages/BookConsultSchedule'
 import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
-import Assessment from './pages/Assessment/Assessment'
-import AssessmentResults from './pages/Assessment/AssessmentResults'
 import PageAnalytics from './components/analytics/PageAnalytics'
-
 function AppShell() {
   const location = useLocation()
   const isLandingPage = location.pathname === '/'
@@ -114,8 +111,6 @@ function AppShell() {
             <Route path="/book-consult/schedule" element={<BookConsultSchedule />} />
             <Route path="/payment" element={<Payment />} />
             <Route path="/payment-success" element={<PaymentSuccess />} />
-            <Route path="/assessment" element={<Assessment />} />
-            <Route path="/assessment/results" element={<AssessmentResults />} />
           </Routes>
         </main>
         {isLandingPage && <ChatbotOverlay />}

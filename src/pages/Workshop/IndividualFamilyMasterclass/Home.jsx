@@ -81,12 +81,12 @@ const audienceCards = [
 
 function CtaLink({ children, variant = 'light', className = '' }) {
   const baseClassName =
-    'group inline-flex items-center gap-3 font-[Arial] text-[10px] uppercase tracking-[0.34em] transition-all duration-500';
+    'lc-mc-eyebrow group inline-flex items-center gap-3 text-[10px] uppercase tracking-[0.34em] transition-all duration-500';
 
   const variantClassName =
     variant === 'dark'
-      ? 'bg-[#E8640A] hover:bg-[#FDFAF5] hover:text-[#1A1410] text-white px-7 py-4'
-      : 'border-b border-current pb-2 text-[#1A1410] hover:text-[#E8640A] hover:border-[#E8640A]';
+      ? 'bg-[#ff8f00] hover:bg-[#f7f3ed] hover:text-[#1a3c34] text-white px-7 py-4'
+      : 'border-b border-current pb-2 text-[#1a3c34] hover:text-[#ff8f00] hover:border-[#ff8f00]';
 
   return (
     <Link to={paymentLink} className={`${baseClassName} ${variantClassName} ${className}`.trim()}>
@@ -99,7 +99,7 @@ function CtaLink({ children, variant = 'light', className = '' }) {
 function Home() {
   return (
     <>
-      <div className="bg-[#FDFAF5] text-[#1A1410]">
+      <div className="lc-masterclass lc-landing bg-[#f7f3ed] text-[#1a3c34]">
       <section className="relative min-h-screen overflow-hidden bg-[#1A1410] text-[#FDFAF5]">
         <video
           className="absolute inset-0 h-full w-full object-cover"
@@ -116,17 +116,17 @@ function Home() {
 
         <div className="relative mx-auto flex min-h-screen max-w-[1440px] items-center justify-center px-6 pb-20 pt-32 text-center md:px-10 lg:px-16">
           <div className="max-w-[900px]">
-            <p className="font-[Arial] text-[11px] uppercase tracking-[0.42em] text-white/75">
+            <p className="lc-mc-eyebrow text-[11px] tracking-[0.42em] text-white/75">
               Live Masterclasses
             </p>
 
-            <h1 className="mt-8 font-['EB_Garamond',Georgia,serif] italic text-[clamp(56px,9vw,122px)] leading-[0.88] tracking-[0.01em] text-white">
+            <h1 className="mt-8 text-[clamp(56px,9vw,122px)] leading-[0.88] tracking-[0.01em] text-white">
               Foundations You
               <br />
               Can Build On
             </h1>
 
-            <p className="mx-auto mt-8 max-w-[720px] font-[Arial] text-[14px] md:text-[15px] leading-[1.9] tracking-[0.04em] uppercase text-white/78">
+            <p className="lc-mc-body mx-auto mt-8 max-w-[720px] text-[14px] md:text-[15px] leading-[1.9] tracking-[0.04em] uppercase text-white/78">
               One masterclass at a time. Live, educational, and practical sessions with Luke and Team Luke to help
               you learn clearly and apply calmly.
             </p>
@@ -137,14 +137,14 @@ function Home() {
               </CtaLink>
               <Link
                 to="/Workshop/IndividualFamilyMasterclass/PastMasterclass"
-                className="inline-flex items-center gap-3 border border-white/30 px-7 py-4 font-[Arial] text-[10px] uppercase tracking-[0.34em] text-white transition-all duration-500 hover:border-white hover:bg-white/10"
+                className="lc-mc-eyebrow inline-flex items-center gap-3 border border-white/30 px-7 py-4 text-[10px] uppercase tracking-[0.34em] text-white transition-all duration-500 hover:border-white hover:bg-white/10"
               >
                 <span>Past Masterclasses</span>
                 <ArrowRight size={14} />
               </Link>
             </div>
 
-            <div className="mt-14 grid gap-4 border-t border-white/15 pt-6 font-[Arial] text-[10px] uppercase tracking-[0.34em] text-white/62 sm:grid-cols-3">
+            <div className="lc-mc-eyebrow mt-14 grid gap-4 border-t border-white/15 pt-6 text-[10px] uppercase tracking-[0.34em] text-white/62 sm:grid-cols-3">
               <p>150+ years of collective expertise</p>
               <p>Live Q&amp;A and guided clarity</p>
               <p>Foundations-first wellness learning</p>
@@ -188,7 +188,7 @@ function Home() {
             </p>
             <a
               href="#reserve-spot"
-              className="inline-flex items-center gap-3 bg-[#1A1410] px-7 py-4 font-[Arial] text-[10px] uppercase tracking-[0.34em] text-white transition-colors hover:bg-[#E8640A]"
+              className="lc-mc-eyebrow inline-flex items-center gap-3 bg-[#1A1410] px-7 py-4 text-[10px] uppercase tracking-[0.34em] text-white transition-colors hover:bg-[#ff8f00]"
             >
               Save your spot
               <ArrowRight size={14} />
@@ -209,20 +209,20 @@ function Home() {
                   />
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,12,10,0.05),rgba(14,12,10,0.2)_55%,rgba(14,12,10,0.72))]" />
                   <div className="absolute inset-x-0 bottom-0 p-5">
-                    <p className="font-[Arial] text-[10px] uppercase tracking-[0.34em] text-white/70">
+                    <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.34em] text-white/70">
                       {item.tone}
                     </p>
                   </div>
                 </div>
 
                 <div className="pt-5">
-                  <p className="font-[Arial] text-[10px] uppercase tracking-[0.34em] text-[rgba(26,20,16,0.42)]">
+                  <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.34em] text-[rgba(26,20,16,0.42)]">
                     0{index + 1}
                   </p>
-                  <h3 className="mt-3 font-[Arial] text-[18px] uppercase tracking-[0.12em] text-[#1A1410]">
+                  <h3 className="lc-mc-card-title mt-3 text-[clamp(1.05rem,1.4vw,1.125rem)] text-[#1a3c34]">
                     {item.title}
                   </h3>
-                  <p className="mt-4 max-w-[27ch] font-[Arial] text-[13px] leading-[1.8] text-[rgba(26,20,16,0.62)]">
+                  <p className="lc-mc-body mt-4 max-w-[27ch] text-[13px] leading-[1.8] text-[rgba(26,20,16,0.62)]">
                     {item.copy}
                   </p>
                 </div>
@@ -250,15 +250,15 @@ function Home() {
         <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 lg:px-16 lg:py-28">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <p className="font-[Arial] text-[10px] uppercase tracking-[0.35em] text-[#E8640A]">
+              <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.35em] text-[#ff8f00]">
                 Who Will Benefit
               </p>
-              <h2 className="mt-5 font-['EB_Garamond',Georgia,serif] italic text-[clamp(40px,5vw,68px)] leading-[0.96] text-white">
+              <h2 className="mt-5 text-[clamp(40px,5vw,68px)] leading-[0.96] text-white">
                 Built for different
                 <br />
                 kinds of learners.
               </h2>
-              <p className="mt-6 max-w-[420px] font-[Arial] text-[14px] leading-[1.9] text-white/68">
+              <p className="lc-mc-body mt-6 max-w-[420px] text-[14px] leading-[1.9] text-white/68">
                 A calmer learning format for people who want clarity, rhythm, and practical direction.
               </p>
 
@@ -279,13 +279,13 @@ function Home() {
                 >
                   <div className="flex items-start justify-between gap-6">
                     <div>
-                      <p className="font-[Arial] text-[10px] uppercase tracking-[0.34em] text-[#E8640A]">
+                      <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.34em] text-[#ff8f00]">
                         0{index + 1}
                       </p>
-                      <h3 className="mt-5 font-['EB_Garamond',Georgia,serif] italic text-[32px] leading-[1] text-white">
+                      <h3 className="lc-mc-card-title mt-5 text-[clamp(1.35rem,2vw,2rem)] leading-[1.1] text-white">
                         {title}
                       </h3>
-                      <p className="mt-3 font-[Arial] text-[13px] uppercase tracking-[0.18em] text-white/62">
+                      <p className="lc-mc-eyebrow mt-3 text-[13px] uppercase tracking-[0.18em] text-white/62">
                         {copy}
                       </p>
                     </div>
@@ -306,13 +306,13 @@ function Home() {
 
       <section className="bg-[#1A1410] text-[#FDFAF5]">
         <div className="mx-auto max-w-[1280px] px-6 py-20 text-center md:px-10 lg:px-16 lg:py-24">
-          <p className="font-[Arial] text-[10px] uppercase tracking-[0.38em] text-[#E8640A]">Begin with clarity</p>
-          <h2 className="mt-6 font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,5vw,70px)] leading-[0.98]">
+          <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.38em] text-[#ff8f00]">Begin with clarity</p>
+          <h2 className="mt-6 text-[clamp(38px,5vw,70px)] leading-[0.98]">
             Ready for your next
             <br />
             masterclass?
           </h2>
-          <p className="mx-auto mt-6 max-w-[620px] font-[Arial] text-[14px] leading-[1.9] text-white/65">
+          <p className="lc-mc-body mx-auto mt-6 max-w-[620px] text-[14px] leading-[1.9] text-white/65">
             Choose your payment plan, secure your place, and join a live session built to strengthen your foundations.
           </p>
 
@@ -320,7 +320,7 @@ function Home() {
             <CtaLink variant="dark">View Payment Plans</CtaLink>
             <Link
               to="/Workshop/IndividualFamilyMasterclass/PastMasterclass"
-              className="inline-flex items-center justify-center gap-3 border border-white/20 px-7 py-4 font-[Arial] text-[10px] uppercase tracking-[0.34em] text-white transition-all duration-500 hover:border-white hover:bg-white/5"
+              className="lc-mc-eyebrow inline-flex items-center justify-center gap-3 border border-white/20 px-7 py-4 text-[10px] uppercase tracking-[0.34em] text-white transition-all duration-500 hover:border-white hover:bg-white/5"
             >
               <span>Past Masterclasses</span>
               <ArrowRight size={14} />

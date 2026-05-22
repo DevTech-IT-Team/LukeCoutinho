@@ -12,39 +12,39 @@ const slides = [
     eyebrow: 'The First Step',
     title: 'Begin Your Journey',
     sub: 'Foundational Medicine Consultations',
-    cta: 'Book a Consult',
-    to: '/book-consult',
+    cta: 'Explore masterclass',
+    to: '/masterclass',
     video: clip5,
   },
   {
-    eyebrow: 'Guided Care',
-    title: 'Integrative Protocols',
-    sub: 'Expert coaching tailored to your biology',
-    cta: 'Discover Our Approach',
-    to: '/about/approach',
+    eyebrow: 'The Destination',
+    title: 'Signature Wellness',
+    sub: 'Composed around you post-consult',
+    cta: 'Explore program',
+    to: '/programs/signature-wellness',
     video: clip1,
+  },
+  {
+    eyebrow: 'For Teams',
+    title: 'Corporate Wellness',
+    sub: 'Leadership sessions · QoL · burnout care',
+    cta: 'Explore program',
+    to: '/Workshop/CorporateTalks/Home',
+    video: clip3,
   },
   {
     eyebrow: 'A Collection',
     title: 'The Bharat Dish',
-    sub: 'Ancient Wisdom on the Plate',
-    cta: 'Discover Recipes',
+    sub: 'Ancient wisdom on the plate',
+    cta: 'Discover recipes',
     to: '/bharat/dish',
     video: clip2,
   },
   {
-    eyebrow: 'The Destination',
-    title: 'Signature Programs',
-    sub: 'Composed Around You Post-Consult',
-    cta: 'Understand Programs',
-    to: '/programs/signature-wellness',
-    video: clip3,
-  },
-  {
     eyebrow: 'Conversations',
     title: 'The Podcast',
-    sub: 'Modern Science · Lived Wisdom',
-    cta: 'Listen Now',
+    sub: 'Modern science · lived wisdom',
+    cta: 'Listen now',
     to: '/Podcast/Podcast',
     video: clip4,
   },
@@ -198,8 +198,8 @@ const Hero = () => {
                   <p className="hero-eyebrow">{s.eyebrow}</p>
                   <h1 className="hero-headline">{s.title}</h1>
                   <p className="hero-subline">{s.sub}</p>
-                  <Link to="/masterclass" tabIndex={isActive ? 0 : -1} className="hero-cta">
-                    Become a Member
+                  <Link to={s.to} tabIndex={isActive ? 0 : -1} className="hero-cta">
+                    {s.cta}
                   </Link>
                 </div>
               );

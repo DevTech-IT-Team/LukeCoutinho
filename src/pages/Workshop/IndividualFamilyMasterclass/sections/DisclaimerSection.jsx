@@ -45,7 +45,7 @@ function DisclaimerSection({ CtaLink }) {
               </p>
             </div>
 
-            <h2 className="mt-8 font-['EB_Garamond',Georgia,serif] italic text-[clamp(38px,5vw,68px)] leading-[0.96]">
+            <h2 className="mt-8 text-[clamp(38px,5vw,68px)] leading-[0.96]">
               Clear terms.
               <br />
               <span className="text-[rgba(26,20,16,0.45)]">No surprises.</span>
@@ -84,7 +84,7 @@ function DisclaimerSection({ CtaLink }) {
                 <p className="font-[Arial] text-[10px] uppercase tracking-[0.34em] text-[#E8640A]">
                   0{index + 1}
                 </p>
-                <h3 className="mt-5 font-['EB_Garamond',Georgia,serif] italic text-[30px] leading-[1]">
+                <h3 className="lc-mc-card-title mt-5 text-[clamp(1.35rem,2vw,1.875rem)] leading-[1.1]">
                   {item.title}
                 </h3>
                 <p className="mt-3 font-[Arial] text-[13px] leading-[1.8] text-[rgba(26,20,16,0.68)]">

@@ -74,6 +74,36 @@ th {
   font-family: var(--font-display) !important;
 }
 
+/* Homepage & masterclass — no italic on headings */
+.lc-landing h1,
+.lc-landing h2,
+.lc-landing h3,
+.lc-landing h4,
+.lc-landing strong,
+.lc-landing blockquote,
+.lc-masterclass h1,
+.lc-masterclass h2,
+.lc-masterclass h3,
+.lc-masterclass h4,
+.lc-masterclass strong,
+.lc-masterclass blockquote {
+  font-style: normal !important;
+}
+
+.lc-landing h1,
+.lc-masterclass h1 {
+  font-family: var(--font-display);
+}
+
+.lc-landing h2,
+.lc-landing h3,
+.lc-landing h4,
+.lc-masterclass h2,
+.lc-masterclass h3,
+.lc-masterclass h4 {
+  font-family: var(--font-serif) !important;
+}
+
 /* Shared editorial components */
 .lc-masthead-title,
 .lc-section-title,

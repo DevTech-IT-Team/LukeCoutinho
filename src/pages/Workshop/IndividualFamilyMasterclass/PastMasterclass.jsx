@@ -193,7 +193,7 @@ export default function MasterclassSection() {
     ];
 
     return (
-        <section className="py-32 bg-[#FAFAFA] min-h-screen">
+        <section className="lc-masterclass lc-landing py-32 bg-[#f7f3ed] min-h-screen">
             <div className="max-w-7xl mx-auto px-6">
 
                 {/* Modern Header Section */}
@@ -201,17 +201,17 @@ export default function MasterclassSection() {
                     <div className="max-w-2xl">
                         <div className="flex items-center gap-3 mb-6">
                             <span className="w-12 h-[2px] bg-orange-500"></span>
-                            <span className="text-orange-500 font-black uppercase tracking-[0.4em] text-[10px]">
+                            <span className="lc-mc-eyebrow text-[#ff8f00] uppercase tracking-[0.4em] text-[10px]">
                                 Excellence In Wellness
                             </span>
                         </div>
-                        <h2 className="text-6xl md:text-8xl font-black text-gray-900 tracking-tighter leading-[0.85]">
-                            Master <span className="text-orange-500 font-normal">Classes.</span>
+                        <h2 className="text-6xl md:text-8xl font-normal text-[#1a3c34] tracking-tighter leading-[0.85]">
+                            Master <span className="text-[#ff8f00]">Classes.</span>
                         </h2>
                     </div>
-                    <p className="text-gray-500 text-lg font-medium max-w-sm border-l-2 border-gray-200 pl-8">
+                    <p className="lc-mc-body text-[rgba(26,40,36,0.62)] text-lg max-w-sm border-l-2 border-[rgba(26,60,52,0.12)] pl-8">
                         Luke's previous masterclasses now accessible as
-                        <span className="text-gray-900"> self-paced learning </span>
+                        <span className="text-[#1a3c34]"> self-paced learning </span>
                         modules for your evolution.
                     </p>
                 </div>

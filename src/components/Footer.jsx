@@ -16,7 +16,6 @@ const Footer = () => {
     {
       title: 'Heal',
       links: [
-        { label: 'Health Assessment', to: '/assessment' },
         { label: 'Book Consultation', to: '/book-consult' },
         { label: 'Programs', to: '/programs/signature-wellness' },
         { label: 'Corporate Wellness', to: '/Workshop/CorporateTalks/Home' },

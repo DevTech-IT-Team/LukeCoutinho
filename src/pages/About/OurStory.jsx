@@ -1,337 +1,273 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
-    ArrowRight,
-    Sparkles,
-    Heart,
-    ShieldCheck,
-    Zap,
-    Moon,
-    Smile,
-    Compass,
-    Wind,
-    Globe,
-    Star,
-    Users,
-    Play,
-    BookOpen,
-    Award,
-    CheckCircle2
+  ArrowLeft,
+  ArrowRight,
+  BookOpen,
+  ShieldCheck,
+  Heart,
 } from 'lucide-react';
-
-import heroimg from '../../assets/neimg.jpg';
-import corporateimg from '../../assets/Corporate.jpg';
-import gut from '../../assets/Gut.jpg';
-import insights from '../../assets/insight.jpg';
-import win from '../../assets/win.jpg';
-import cancer from '../../assets/Cancer.jpg';
-import book from '../../assets/book.jpg';
-import signature from '../../assets/signature.jpg';
-import nutrition from '../../assets/nutrition.jpg';
-import education from '../../assets/education.jpg';
-import care from '../../assets/care.jpg';
-import recipe from '../../assets/recipe.jpg';
+import {
+  SIX_PILLARS,
+  FIVE_DEFENSE_SYSTEMS,
+  LUKE_TRUST,
+  BRAND_DISCLAIMER,
+} from '../../data/brandContent';
+import lukePortrait from '../../assets/Lukequotenew.jpg';
 import team from '../../assets/team.avif';
+import gut from '../../assets/Gut.jpg';
+import signature from '../../assets/signature.jpg';
+import cancer from '../../assets/Cancer.jpg';
+import education from '../../assets/education.jpg';
+import recipe from '../../assets/recipe.jpg';
+import book from '../../assets/book.jpg';
+import corporate from '../../assets/Corporate.jpg';
+import './our-story.css';
 
-const OurStory = () => {
-    const cards = [
-        {
-            title: "Insights and Inspiration",
-            image: insights,
-            category: "Community",
-            color: "bg-green-500"
-        },
-        {
-            title: "Gut Care",
-            image: gut,
-            category: "Health",
-            color: "bg-orange-500"
-        },
-        {
-            title: "Corporate Wellness",
-            image: corporateimg,
-            category: "Focus",
-            color: "bg-purple-500"
-        },
-        {
-            title: "Small Win Packages",
-            image: win,
-            category: "Nutrition",
-            color: "bg-yellow-500"
-        },
-        {
-            title: "Recipes of the seasons",
-            image: recipe,
-            category: "Nutrition",
-            color: "bg-orange-400"
-        },
-        {
-            title: "Team of Nutrition Experts",
-            image: nutrition,
-            category: "Experts",
-            color: "bg-blue-500"
-        },
-        {
-            title: "You Care Community",
-            image: care,
-            category: "Social",
-            color: "bg-pink-500"
-        },
-        {
-            title: "Educational Courses",
-            image: education,
-            category: "Learn",
-            color: "bg-indigo-500"
-        },
-        {
-            title: "Luke's Bestsellers",
-            image: book,
-            category: "Books",
-            color: "bg-red-500"
-        },
-        {
-            title: "Signature Wellness",
-            image: signature,
-            category: "Premium",
-            color: "bg-amber-600"
-        },
-        {
-            title: "Special Cancer Care",
-            image: cancer,
-            category: "Specialized",
-            color: "bg-teal-600"
-        }
-    ];
+const PROGRAMS = [
+  { title: 'Signature Wellness', tag: 'Programs', image: signature, href: '/programs/signature-wellness' },
+  { title: 'Gut Care', tag: 'Specialised', image: gut, href: '/programs/gut' },
+  { title: 'Special Cancer Care', tag: 'Specialised', image: cancer, href: '/programs/cancer-care' },
+  { title: 'Learning Hub', tag: 'Courses', image: education, href: '/learn/learninghub/home' },
+  { title: 'Bharat Dish Recipes', tag: 'Nutrition', image: recipe, href: '/bharat/dish' },
+  { title: 'Corporate Wellness', tag: 'Teams', image: corporate, href: '/Workshop/CorporateTalks/Home' },
+  { title: 'Books & Resources', tag: 'Read', image: book, href: '/resources' },
+];
 
-    const pillars = [
-        { icon: <Zap className="text-orange-500" />, title: "Cellular Nutrition", desc: "Fueling your body at the most fundamental level." },
-        { icon: <Wind className="text-blue-500" />, title: "Adequate Movement", desc: "Movement as a form of medicine and joy." },
-        { icon: <Moon className="text-indigo-500" />, title: "Quality Sleep", desc: "The foundation of repair and rejuvenation." },
-        { icon: <Smile className="text-yellow-500" />, title: "Emotional Wellness", desc: "Nurturing the mind-body connection." },
-        { icon: <Compass className="text-purple-500" />, title: "Spirit Reconnection", desc: "Finding purpose and inner peace." },
-        { icon: <Wind className="text-cyan-500" />, title: "Breath Work", desc: "The bridge between life and energy." }
-    ];
+const OurStory = () => (
+  <div className="story-page">
+    <header className="story-hero">
+      <div className="story-wrap">
+        <Link to="/" className="story-back">
+          <ArrowLeft size={14} />
+          Home
+        </Link>
 
-    return (
-        <div className="bg-white pt-32 pb-24 font-sans overflow-x-hidden">
-            <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+        <p className="story-eyebrow">Our story</p>
+        <h1 className="story-h1">Luke Coutinho</h1>
+        <p className="story-lede">
+          Integrative lifestyle medicine — thirteen years of putting care back into health care.
+        </p>
 
-                {/* 1. Header Section */}
-                <div className="max-w-4xl mb-24 space-y-8 animate-in fade-in slide-in-from-bottom-10 duration-1000">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-orange-50 border border-orange-100/50 text-[10px] font-black uppercase tracking-widest text-orange-600">
-                        <Sparkles size={12} className="animate-pulse" />
-                        Our Story
-                    </div>
-                    <h1 className="text-6xl md:text-8xl font-black text-slate-950 tracking-tighter leading-[0.9] lg:max-w-3xl">
-                        Elevating Wellness Through <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-orange-600 drop-shadow-sm">
-                            Personalized Care
-                        </span>
-                    </h1>
-                    <p className="text-xl md:text-2xl text-slate-600 leading-snug font-medium max-w-3xl tracking-tight">
-                        We’re on a mission led by our founder, <span className="text-slate-950 font-bold">Luke Coutinho</span>, to redefine your health journey with love, genuine care, and over 13+ years of expertise.
-                    </p>
-                </div>
+        <div className="story-hero-grid">
+          <div className="story-hero-copy">
+            <p>
+              We&apos;re on a mission led by <strong>Luke Coutinho</strong> to redefine your health
+              journey with love, genuine care, and evidence-informed lifestyle protocols — not
+              trends, but foundations you can keep.
+            </p>
+            <p>
+              From prevention to complex conditions, the same six-pillar method you see across this
+              site guides every consultation, program, and course.
+            </p>
+            <blockquote className="story-quote">{LUKE_TRUST.quote}</blockquote>
+          </div>
 
-                {/* 2. Team Luke Intro Section */}
-                <div className="grid lg:grid-cols-2 gap-20 items-center mb-32">
-                    <div className="space-y-8">
-                        <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">We are Team Luke</h2>
-                        <div className="space-y-6 text-xl text-slate-600 leading-relaxed font-medium">
-                            <p>
-                                We’re all about putting the <span className="text-orange-500 italic">‘care’</span> back into health care. Our approach delves into your body’s intelligent defense systems, like Angiogenesis, the Gut Microbiome, DNA Repair, and Stem Cell Regeneration.
-                            </p>
-                            <p className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 relative overflow-hidden group">
-                                <span className="absolute -top-10 -right-10 text-9xl font-black text-slate-200/20 transition-transform group-hover:scale-110">?</span>
-                                <span className="text-slate-900 font-bold block mb-2">What's our secret?</span>
-                                <span className="text-lg">Integrative and Lifestyle Medicine is our <span className="text-orange-600 font-bold">secret sauce</span>. We don't replace medicine; we enhance it through personalized lifestyle blends created just for you.</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div className="relative perspective-1000">
-                        <div className="relative group">
-                            <div className="absolute inset-0 bg-orange-500/10 rounded-[4rem] blur-[80px] -z-10 group-hover:bg-orange-500/20 transition-colors" />
-                            <div className="aspect-[4/3] rounded-[4rem] overflow-hidden shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border-8 border-white group-hover:scale-[1.02] transition-transform duration-700">
-                                <img src={team} alt="Luke Coutinho" className="w-full h-full object-cover object-top" />
-                            </div>
-                            <div className="absolute -bottom-10 -left-10 p-8 bg-white rounded-3xl shadow-2xl border border-slate-50 animate-float max-w-xs transition-transform hover:scale-105">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-10 h-10 rounded-full bg-slate-950 text-white flex items-center justify-center">
-                                        <Heart fill="currentColor" size={20} />
-                                    </div>
-                                    <p className="text-3xl font-black text-slate-950 tracking-tighter">27k+</p>
-                                </div>
-                                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest leading-tight">Lives Transformed and Counting...</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 3. Slider Section */}
-                <div className="mb-32">
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-                        <div className="space-y-4">
-                            <h2 className="text-4xl md:text-5xl font-black text-slate-950 tracking-tiht">Nurturing Journeys</h2>
-                            <p className="text-lg text-slate-500 font-medium max-w-xl">Explore the core principles and specialized programs behind our holistic approach.</p>
-                        </div>
-                        <div className="hidden md:flex gap-4">
-                            <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-400 cursor-not-allowed"><ArrowRight size={20} className="rotate-180 opacity-30" /></div>
-                            <div className="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center text-slate-900 hover:bg-orange-500 hover:text-white hover:border-orange-500 transition-all cursor-pointer"><ArrowRight size={20} /></div>
-                        </div>
-                    </div>
-
-                    <div className="relative group">
-                        <div className="flex overflow-x-auto gap-8 pb-12 px-2 -mx-2 snap-x scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-                            {cards.map((card, index) => (
-                                <div
-                                    key={index}
-                                    className="group/card relative min-w-[280px] md:min-w-[320px] h-[400px] rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-100/50 transition-all duration-500 hover:scale-[1.02] snap-center hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)]"
-                                >
-                                    <img src={card.image} alt={card.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover/card:scale-110" />
-                                    <div className={`absolute bottom-0 left-0 w-full h-1.5 ${card.color}`} />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-70 group-hover/card:opacity-90 transition-opacity" />
-                                    <div className="absolute inset-x-0 bottom-0 p-8 space-y-3 transform translate-y-2 group-hover/card:translate-y-0 transition-transform">
-                                        <span className="inline-block px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-[10px] font-black uppercase tracking-[0.3em] text-white/80 border border-white/20">
-                                            {card.category}
-                                        </span>
-                                        <h3 className="text-xl font-black text-white leading-tight">
-                                            {card.title}
-                                        </h3>
-                                        <div className="pt-2 opacity-0 group-hover/card:opacity-100 transition-all duration-300 translate-y-4 group-hover/card:translate-y-0">
-                                            <button className="flex items-center gap-3 text-white text-[10px] font-black uppercase tracking-[0.1em] group/btn">
-                                                Discover More
-                                                <span className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center transition-all group-hover/btn:bg-orange-500 group-hover/btn:translate-x-2">
-                                                    <ArrowRight size={12} />
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-
-                {/* 4. The 6 Pillars Section */}
-                <div className="mb-32 p-12 md:p-20 bg-slate-950 rounded-[4rem] text-white relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-1/2 h-full bg-orange-500/10 blur-[120px] -z-10" />
-                    <div className="max-w-3xl mb-16 space-y-6">
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter">Pillars of Transformation</h2>
-                        <p className="text-xl text-slate-400 font-medium leading-relaxed">We reshape lifestyles through six core pillars that address the heart of your well-being.</p>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        {pillars.map((pillar, idx) => (
-                            <div key={idx} className="group p-8 rounded-3xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all hover:-translate-y-2">
-                                <div className="w-14 h-14 rounded-2xl bg-white/10 flex items-center justify-center mb-6 text-2xl group-hover:scale-110 transition-transform">
-                                    {pillar.icon}
-                                </div>
-                                <h3 className="text-xl font-bold mb-3">{pillar.title}</h3>
-                                <p className="text-slate-400 text-sm leading-relaxed">{pillar.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-                {/* 5. Who is Luke Profile */}
-                <div className="mb-32 grid lg:grid-cols-2 gap-24 items-center">
-                    <div className="order-2 lg:order-1 relative">
-                        <div className="aspect-[4/5] rounded-[4rem] overflow-hidden shadow-2xl relative group">
-                            <img src={heroimg} alt="Luke Coutinho Profile" className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
-                            <div className="absolute bottom-10 inset-x-10">
-                                <p className="text-orange-500 font-black uppercase tracking-[0.2em] text-xs mb-2">Wellness Champion</p>
-                                <h3 className="text-3xl font-black text-white tracking-tight leading-none">Luke Coutinho</h3>
-                            </div>
-                        </div>
-                        <div className="absolute -top-10 -left-10 w-32 h-32 bg-orange-100 rounded-full -z-10 blur-2xl opacity-60" />
-                    </div>
-                    <div className="order-1 lg:order-2 space-y-8">
-                        <h2 className="text-4xl md:text-6xl font-black text-slate-950 tracking-tighter leading-none">Who is <br /><span className="text-orange-500">Luke Coutinho?</span></h2>
-                        <div className="space-y-6 text-lg text-slate-600 leading-relaxed font-medium">
-                            <p>
-                                Luke Coutinho, the <span className="text-slate-900 font-bold">Wellness Champion</span> at the forefront of Prime Minister Narendra Modi’s Fit India Movement, practices integrative and lifestyle medicine.
-                            </p>
-                            <p>
-                                A thought leader in India’s wellness movement, his transformative You Care Wellness Program over the last 13 years has had remarkable success in treating conditions ranging from cancer and diabetes to autoimmune disorders.
-                            </p>
-                            <p>
-                                Luke has authored five national bestsellers, including the latest gem – <span className="text-orange-600 font-bold italic underline decoration-orange-200 decoration-2 underline-offset-4 pointer-events-none">Small Wins Every Day</span>.
-                            </p>
-                        </div>
-                        <div className="flex flex-wrap gap-4 pt-4">
-                            <button className="flex items-center gap-4 group">
-                                <div className="w-14 h-14 rounded-full bg-slate-950 text-white flex items-center justify-center group-hover:bg-orange-500 transition-colors">
-                                    <Play size={20} fill="currentColor" className="ml-1" />
-                                </div>
-                                <div className="text-left">
-                                    <p className="text-[10px] uppercase font-black tracking-widest text-slate-400">Watch Video</p>
-                                    <p className="text-xs uppercase font-black tracking-widest text-slate-900 group-hover:text-orange-500 transition-colors">Learn More About Luke</p>
-                                </div>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 6. Ecosystem Section (LSI & YCL) */}
-                <div className="mb-32 space-y-20">
-                    <div className="text-center space-y-6 max-w-2xl mx-auto">
-                        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-950">Our Ecosystem</h2>
-                        <p className="text-lg text-slate-500 font-medium">From empowering future leaders to building a sustainable wellness platform.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-10">
-                        {/* LSI */}
-                        <div className="group p-10 lg:p-14 rounded-[4rem] bg-indigo-50 border border-indigo-100 hover:bg-slate-950 hover:text-white transition-all duration-500 hover:-translate-y-4">
-                            <div className="w-20 h-20 rounded-3xl bg-white shadow-xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform grayscale group-hover:grayscale-0">
-                                <BookOpen size={40} className="text-indigo-600" />
-                            </div>
-                            <h3 className="text-3xl font-black mb-6 tracking-tight">Lifeness Science Institute (LSI)</h3>
-                            <p className="text-lg opacity-70 leading-relaxed font-medium mb-10">
-                                Specialized education in Integrative Nutrition and Dietetics. Shaping passionate minds with hands-on experience in collaboration with prestigious Mumbai colleges.
-                            </p>
-                            <button className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-indigo-600 group-hover:text-white">
-                                Explore Institute <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
-                            </button>
-                        </div>
-
-                        {/* YCL */}
-                        <div className="group p-10 lg:p-14 rounded-[4rem] bg-orange-50 border border-orange-100 hover:bg-orange-500 hover:text-white transition-all duration-500 hover:-translate-y-4">
-                            <div className="w-20 h-20 rounded-3xl bg-white shadow-xl flex items-center justify-center mb-10 group-hover:scale-110 transition-transform grayscale group-hover:grayscale-0">
-                                <ShieldCheck size={40} className="text-orange-600" />
-                            </div>
-                            <h3 className="text-3xl font-black mb-6 tracking-tight">You Care Lifestyle (YCL)</h3>
-                            <p className="text-lg opacity-70 leading-relaxed font-medium mb-10">
-                                Delivering certified, clean, and safe products. Our verified claims ensure a confident shopping experience for organic, chemical-free wellness aspirations.
-                            </p>
-                            <button className="flex items-center gap-3 text-xs font-black uppercase tracking-widest text-orange-600 group-hover:text-white">
-                                Shop Ethical Wellness <ArrowRight size={14} className="group-hover:translate-x-2 transition-transform" />
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 7. Community CTA */}
-                <div className="relative p-12 md:p-24 rounded-[4rem] bg-gradient-to-br from-orange-500 to-orange-600 text-white overflow-hidden text-center space-y-8">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10" />
-                    <Sparkles className="mx-auto w-12 h-12 text-white/40 animate-pulse" />
-                    <h2 className="text-4xl md:text-7xl font-black tracking-tighter leading-none max-w-4xl mx-auto">
-                        Welcome to Team Luke — Where health care meets heart.
-                    </h2>
-                    <p className="text-xl md:text-2xl text-white/80 font-medium max-w-2xl mx-auto tracking-tight">
-                        Because a healthier you? That’s a life-changing story in the making!
-                    </p>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-6">
-                        <button className="px-12 py-6 bg-white text-orange-600 font-black rounded-[2rem] shadow-2xl hover:bg-slate-900 hover:text-white transition-all duration-300 uppercase tracking-widest text-xs">
-                            Join Our Community
-                        </button>
-                        <button className="flex items-center gap-3 text-white text-sm font-black uppercase tracking-widest hover:translate-x-2 transition-all">
-                            Explore Mission <ArrowRight size={18} />
-                        </button>
-                    </div>
-                </div>
-
+          <div className="story-portrait-wrap">
+            <img src={lukePortrait} alt="Luke Coutinho" />
+            <div className="story-stat">
+              <strong>27k+</strong>
+              <span>Lives guided · Team Luke worldwide</span>
             </div>
+          </div>
         </div>
-    );
-};
+      </div>
+    </header>
+
+    <section className="story-section">
+      <div className="story-wrap story-two-col">
+        <div>
+          <p className="story-eyebrow">Team Luke</p>
+          <h2 className="story-h2">
+            We put the <span className="story-h2-accent">&lsquo;care&rsquo;</span> back in health care.
+          </h2>
+          <p className="story-section-intro" style={{ marginBottom: '1.25rem' }}>
+            Our approach works with your body&apos;s intelligent defense systems — not against them.
+            Integrative and lifestyle medicine is our foundation: we don&apos;t replace medicine; we
+            enhance it through personalised blends created for you.
+          </p>
+          <div className="story-callout">
+            <strong>What we believe</strong>
+            Healing is not a pill or a protocol alone — it is how you eat, move, sleep, breathe, and
+            hold your emotional world together.
+          </div>
+        </div>
+        <div className="story-team-img">
+          <img src={team} alt="Team Luke" />
+        </div>
+      </div>
+    </section>
+
+    <section className="story-section story-section--alt">
+      <div className="story-wrap">
+        <p className="story-eyebrow">Science we honour</p>
+        <h2 className="story-h2">Your body&apos;s five defense systems</h2>
+        <p className="story-section-intro">
+          We educate and coach around the systems that protect, repair, and renew you — so every
+          lifestyle shift has a clear purpose.
+        </p>
+        <ul className="story-defense-grid">
+          {FIVE_DEFENSE_SYSTEMS.map((item) => (
+            <li key={item.id} className="story-defense-card">
+              <h3>{item.title}</h3>
+              <p>{item.copy}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section className="story-section">
+      <div className="story-wrap">
+        <p className="story-eyebrow">The method</p>
+        <h2 className="story-h2">Six pillars of transformation</h2>
+        <p className="story-section-intro">
+          The same pillars on our homepage — nutrition, movement, sleep, emotional wellness, spirit,
+          and breath — shape every program and consultation.
+        </p>
+        <ol className="story-pillars">
+          {SIX_PILLARS.map((pillar, i) => (
+            <li key={pillar.id} className="story-pillar">
+              <span className="story-pillar-num">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{pillar.title}</h3>
+              <p>{pillar.copy}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <section className="story-section story-section--alt">
+      <div className="story-wrap story-two-col">
+        <div className="story-portrait-wrap" style={{ maxHeight: '480px' }}>
+          <img src={lukePortrait} alt="" />
+        </div>
+        <div>
+          <p className="story-eyebrow">Wellness champion</p>
+          <h2 className="story-h2">Who is Luke Coutinho?</h2>
+          <p className="story-section-intro">
+            Thought leader in India&apos;s wellness movement and champion of the Fit India Movement.
+          </p>
+          <p style={{ fontFamily: 'Arial,sans-serif', fontSize: '15px', lineHeight: 1.85, color: 'rgba(26,20,16,0.68)', margin: '0 0 1rem' }}>
+            Luke practices integrative and lifestyle medicine. The You Care Wellness Program has
+            supported people facing cancer, diabetes, autoimmune conditions, and everyday
+            prevention — with lifestyle as the through-line.
+          </p>
+          <p style={{ fontFamily: 'Arial,sans-serif', fontSize: '15px', lineHeight: 1.85, color: 'rgba(26,20,16,0.68)', margin: '0 0 1.5rem' }}>
+            He has authored five national bestsellers, including{' '}
+            <em style={{ color: '#1a1410' }}>Small Wins Every Day</em> — practical rituals, not
+            perfection.
+          </p>
+          <div className="story-milestones">
+            <div className="story-milestone">
+              <strong>13+</strong>
+              <span>Years in practice</span>
+            </div>
+            <div className="story-milestone">
+              <strong>5</strong>
+              <span>Bestselling books</span>
+            </div>
+            <div className="story-milestone">
+              <strong>Fit India</strong>
+              <span>Movement champion</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="story-section">
+      <div className="story-wrap">
+        <p className="story-eyebrow">Explore</p>
+        <h2 className="story-h2">Where your journey can go next</h2>
+        <p className="story-section-intro">
+          Programs, courses, recipes, and resources — each path applies the same integrative lens.
+        </p>
+        <div className="story-programs">
+          {PROGRAMS.map((program) => (
+            <Link key={program.href} to={program.href} className="story-program-card">
+              <img src={program.image} alt="" />
+              <div className="story-program-card-body">
+                <span className="story-program-tag">{program.tag}</span>
+                <h3>{program.title}</h3>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section className="story-section story-section--alt">
+      <div className="story-wrap">
+        <p className="story-eyebrow">Ecosystem</p>
+        <h2 className="story-h2">Beyond consultations</h2>
+        <p className="story-section-intro">
+          Education and ethical products that extend the same standards of care.
+        </p>
+        <div className="story-eco-grid">
+          <div className="story-eco-card">
+            <BookOpen size={28} className="text-[#E8640A]" strokeWidth={1.25} />
+            <h3>Lifeness Science Institute (LSI)</h3>
+            <p>
+              Specialized education in integrative nutrition and dietetics — shaping passionate minds
+              with hands-on experience alongside leading institutions in Mumbai.
+            </p>
+            <span className="story-link">
+              Learn more <ArrowRight size={14} />
+            </span>
+          </div>
+          <div className="story-eco-card">
+            <ShieldCheck size={28} className="text-[#E8640A]" strokeWidth={1.25} />
+            <h3>You Care Lifestyle (YCL)</h3>
+            <p>
+              Certified, clean, and safe wellness products — verified claims and organic,
+              chemical-free choices for everyday living.
+            </p>
+            <Link to="/resources" className="story-link">
+              View resources <ArrowRight size={14} />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="story-cta">
+      <div className="story-wrap">
+        <Heart size={24} className="text-[#E8640A] mx-auto mb-4" strokeWidth={1.25} />
+        <h2>Welcome to Team Luke</h2>
+        <p>
+          Where health care meets heart. Start with a conversation, a course, or a program — at your
+          pace.
+        </p>
+        <div className="story-cta-actions">
+          <Link to="/book-consult" className="story-btn-primary">
+            Book a consultation
+            <ArrowRight size={14} />
+          </Link>
+          <Link to="/learn/learninghub/home" className="story-btn-secondary">
+            Browse courses
+          </Link>
+          <Link to="/about/approach" className="story-btn-secondary">
+            Our approach
+          </Link>
+        </div>
+        <p
+          style={{
+            marginTop: '2.5rem',
+            maxWidth: '40rem',
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            fontFamily: 'Arial,sans-serif',
+            fontSize: '11px',
+            lineHeight: 1.7,
+            color: 'rgba(26,20,16,0.45)',
+          }}
+        >
+          {BRAND_DISCLAIMER.educational}
+        </p>
+      </div>
+    </section>
+  </div>
+);
 
 export default OurStory;
