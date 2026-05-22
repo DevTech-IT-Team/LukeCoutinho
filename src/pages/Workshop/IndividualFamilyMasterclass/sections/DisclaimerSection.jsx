@@ -33,6 +33,7 @@ function DisclaimerSection({ CtaLink }) {
       <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 lg:px-16 lg:py-28">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
           <motion.div
+            className="lc-mc-disclaimer-copy"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.35 }}
@@ -79,7 +80,7 @@ function DisclaimerSection({ CtaLink }) {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ duration: 0.7, delay: index * 0.06, ease: [0.22, 1, 0.36, 1] }}
-                className="group bg-[#FDFAF5] p-6 transition-colors duration-500 hover:bg-[#F4EEE4]"
+                className="lc-mc-disclaimer-item group bg-[#FDFAF5] p-6 text-center transition-colors duration-500 hover:bg-[#F4EEE4]"
               >
                 <p className="font-[Arial] text-[10px] uppercase tracking-[0.34em] text-[#E8640A]">
                   0{index + 1}

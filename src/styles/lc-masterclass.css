@@ -57,3 +57,101 @@
 .lc-masterclass .lc-mc-body {
   font-family: var(--font-sans) !important;
 }
+
+/* Centred editorial prose */
+.lc-masterclass .lc-masthead {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .lc-masterclass .lc-masthead {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-masterclass .lc-masthead-body {
+    grid-column: 1;
+  }
+}
+
+.lc-masterclass .lc-masthead-title-col {
+  width: 100%;
+}
+
+.lc-masterclass .lc-masthead-body {
+  max-width: min(640px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+}
+
+.lc-masterclass .lc-masthead-body p {
+  text-align: center;
+}
+
+.lc-masterclass .lc-eyebrow {
+  justify-content: center;
+}
+
+.lc-masterclass .lc-mc-card-grid article {
+  text-align: center;
+}
+
+.lc-masterclass .lc-mc-card-grid article .lc-mc-body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36ch;
+}
+
+.lc-masterclass .lc-mc-card-grid .lc-mc-eyebrow {
+  justify-content: center;
+}
+
+.lc-masterclass #reserve-spot > div {
+  text-align: center;
+}
+
+.lc-masterclass #reserve-spot .lc-mc-eyebrow {
+  display: flex;
+  justify-content: center;
+}
+
+.lc-masterclass #reserve-spot .lc-mc-body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 52ch;
+}
+
+.lc-masterclass .lc-mc-about-copy {
+  text-align: center;
+}
+
+.lc-masterclass .lc-mc-about-copy .lc-mc-body {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 620px;
+}
+
+.lc-masterclass .lc-mc-about-copy .lc-mc-eyebrow {
+  justify-content: center;
+}
+
+.lc-masterclass .lc-mc-disclaimer-copy > .flex {
+  justify-content: center;
+}
+
+.lc-masterclass .lc-mc-disclaimer-copy p,
+.lc-masterclass .lc-mc-disclaimer-item p {
+  text-align: center;
+}
+
+.lc-masterclass .lc-mc-disclaimer-item h3 {
+  text-align: center;
+}
+
+.lc-masterclass .lc-mc-audience-intro .lc-mc-eyebrow {
+  justify-content: center;
+}
+
+.lc-masterclass .lc-mc-audience-intro .lc-mc-body {
+  text-align: center;
+}

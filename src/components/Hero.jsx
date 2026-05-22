@@ -29,23 +29,23 @@ const slides = [
     title: 'Corporate Wellness',
     sub: 'Leadership sessions · QoL · burnout care',
     cta: 'Explore program',
-    to: '/Workshop/CorporateTalks/Home',
+    to: '/resources',
     video: clip3,
   },
   {
-    eyebrow: 'A Collection',
-    title: 'The Bharat Dish',
-    sub: 'Ancient wisdom on the plate',
-    cta: 'Discover recipes',
-    to: '/bharat/dish',
+    eyebrow: 'Learn & Grow',
+    title: 'Courses',
+    sub: 'Self-paced learning at your own rhythm',
+    cta: 'Explore courses',
+    to: '/learn/learninghub/home',
     video: clip2,
   },
   {
-    eyebrow: 'Conversations',
-    title: 'The Podcast',
-    sub: 'Modern science · lived wisdom',
-    cta: 'Listen now',
-    to: '/Podcast/Podcast',
+    eyebrow: 'The First Step',
+    title: 'Book a Consult',
+    sub: 'Speak with Luke or Team Luke',
+    cta: 'Book a consult',
+    to: '/book-consult',
     video: clip4,
   },
 ];
@@ -192,13 +192,17 @@ const Hero = () => {
                   style={{
                     opacity: isActive ? 1 : 0,
                     transform: `translateY(${offset}px)`,
-                    pointerEvents: isActive ? 'auto' : 'none',
                   }}
                 >
                   <p className="hero-eyebrow">{s.eyebrow}</p>
                   <h1 className="hero-headline">{s.title}</h1>
                   <p className="hero-subline">{s.sub}</p>
-                  <Link to={s.to} tabIndex={isActive ? 0 : -1} className="hero-cta">
+                  <Link
+                    to={s.to}
+                    tabIndex={isActive ? 0 : -1}
+                    className="hero-cta"
+                    aria-hidden={!isActive}
+                  >
                     {s.cta}
                   </Link>
                 </div>

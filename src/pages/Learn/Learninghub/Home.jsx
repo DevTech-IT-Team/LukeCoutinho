@@ -1,36 +1,14 @@
-import React from "react";
-import Hero from "./Hero";
-import LearningIntro from "./LearningIntro";
-import FeaturedCourses from "./FeaturedCourses";
-import LearningExperience from "./LearningExperience";
-import FAQ from "./FAQ";
-import HowItWorks from "./HowItWorks";
-import GiftBanner from "./GiftBanner";
-import WhoWillBenefit from "./WhoWillBenefit";
-import TeamsWorkplaces from "./TeamsWorkplaces";
-import CorporateCourses from "./CorporateCourses";
-import { AboutLukeSection } from "./AboutLukeSection";
-import { SignatureWellnessPortal } from "./SignatureWellnessPortal";
-import AssetsShowcase from "./AssetsShowcase";
+import React from 'react';
+import Hero from './Hero';
+import FeaturedCourses from './FeaturedCourses';
+import './learninghub.css';
 
 function Home() {
   return (
-    <>
+    <div className="lc-courses-page lc-landing">
       <Hero />
       <FeaturedCourses />
-
-      {/* <LearningIntro /> */}
-      {/* <AssetsShowcase /> */}
-      {/* <LearningExperience /> */}
-      {/* <FAQ /> */}
-      {/* <HowItWorks /> */}
-      {/* <GiftBanner /> */}
-      {/* <WhoWillBenefit /> */}
-      {/* <TeamsWorkplaces /> */}
-      <CorporateCourses />
-      {/* <AboutLukeSection /> */}
-      <SignatureWellnessPortal />
-    </>
+    </div>
   );
 }
 

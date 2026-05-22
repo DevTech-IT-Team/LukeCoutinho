@@ -66,7 +66,7 @@ function AboutLukeSection({ CtaLink }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.85, delay: 0.08, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col justify-center lg:pt-6"
+            className="lc-mc-about-copy flex flex-col justify-center lg:pt-6"
           >
             <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.35em] text-[#ff8f00]">About Luke Coutinho</p>
             <h2 className="mt-5 text-[clamp(38px,4.6vw,64px)] leading-[0.98] text-white">

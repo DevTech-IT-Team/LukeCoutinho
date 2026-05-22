@@ -195,7 +195,7 @@ function Home() {
             </a>
           </EditorialMasthead>
 
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
+          <div className="lc-mc-card-grid mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
             {upcomingHighlights.map((item, index) => (
               <article
                 key={item.title}
@@ -249,8 +249,8 @@ function Home() {
 
         <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 lg:px-16 lg:py-28">
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <div className="lg:sticky lg:top-28">
-              <p className="lc-mc-eyebrow text-[10px] uppercase tracking-[0.35em] text-[#ff8f00]">
+            <div className="lc-mc-audience-intro text-center lg:sticky lg:top-28">
+              <p className="lc-mc-eyebrow justify-center text-[10px] uppercase tracking-[0.35em] text-[#ff8f00]">
                 Who Will Benefit
               </p>
               <h2 className="mt-5 text-[clamp(40px,5vw,68px)] leading-[0.96] text-white">
@@ -258,11 +258,11 @@ function Home() {
                 <br />
                 kinds of learners.
               </h2>
-              <p className="lc-mc-body mt-6 max-w-[420px] text-[14px] leading-[1.9] text-white/68">
+              <p className="lc-mc-body mx-auto mt-6 max-w-[420px] text-[14px] leading-[1.9] text-white/68">
                 A calmer learning format for people who want clarity, rhythm, and practical direction.
               </p>
 
-              <div className="mt-8">
+              <div className="mt-8 flex justify-center">
                 <CtaLink variant="dark">See Payment Options</CtaLink>
               </div>
             </div>

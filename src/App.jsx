@@ -100,6 +100,7 @@ function AppShell() {
             <Route path="/learn/learninghub/home" element={<Learninghub />} />
             <Route path="/course/:id" element={<CourseDetail />} />
             <Route path="/buy/:id" element={<Buy />} />
+            <Route path="/podcast" element={<Podcast />} />
             <Route path="/Podcast/Podcast" element={<Podcast />} />
             <Route path="/Podcast/Podcast/PodcastVideos" element={<PodcastVideos />} />
             <Route path="/Careers/Careers" element={<Careers />} />

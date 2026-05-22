@@ -28,13 +28,13 @@ const Home = () => {
     <div className="lc-landing">
       <Hero />
 
-      <RevealSection>
+      <RevealSection className="lc-reveal--pillars">
         <SixPillarsLC />
       </RevealSection>
 
       <div className="lc-hub-wrap lc-hub-wrap--first">
         <PathwayHub activeId={activePath} onSelect={selectPath} />
-      </div>
+          </div>
 
       <RevealSection>
         <RealResults />
@@ -45,7 +45,7 @@ const Home = () => {
       </RevealSection>
 
       <HomeQolCta />
-    </div>
+        </div>
   );
 };
 
