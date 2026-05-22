@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
-import logo from '../assets/LClogoo.png';
+import { LC_LOGO_SRC, LC_LOGO_ALT } from '../assets/brandLogo';
 
 const navConfig = [
   { title: 'Programs', href: '/programs/signature-wellness' },
@@ -67,8 +67,8 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-full gap-10">
           <Link to="/" className="shrink-0 flex items-center gap-3 group">
             <img
-              src={logo}
-              alt="Luke Coutinho"
+              src={LC_LOGO_SRC}
+              alt={LC_LOGO_ALT}
               className={`w-auto transition-all duration-500 ${scrolled ? 'h-10' : 'h-12'}`}
             />
           </Link>
@@ -145,7 +145,7 @@ const Navbar = () => {
             >
               <div className="flex items-center justify-between px-7 h-[88px] border-b border-[rgba(26,20,16,0.08)]">
                 <Link to="/" onClick={() => setIsOpen(false)}>
-                  <img src={logo} alt="Luke Coutinho" className="h-9 w-auto" />
+                  <img src={LC_LOGO_SRC} alt={LC_LOGO_ALT} className="h-9 w-auto" />
                 </Link>
                 <button
                   type="button"

@@ -1,0 +1,337 @@
+/**
+ * Landing page + hero — mobile / small tablet
+ */
+
+.lc-landing {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* ── Pathway hub ── */
+@media (max-width: 640px) {
+  .lc-hub-wrap {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .lc-hub-wrap--first {
+    padding-top: 2rem;
+  }
+
+  .lc-hub {
+    margin: 0;
+  }
+
+  .lc-hub__head {
+    margin-bottom: 1.25rem;
+    padding-top: 0;
+  }
+
+  .lc-hub__title {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  .lc-hub__tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .lc-hub__tab {
+    min-height: 56px;
+    padding: 0.65rem 0.35rem;
+    border-right: 1px solid rgba(26, 60, 52, 0.08);
+    border-bottom: 1px solid rgba(26, 60, 52, 0.08);
+  }
+
+  .lc-hub__tab:nth-child(2n) {
+    border-right: none;
+  }
+
+  .lc-hub__tab:nth-last-child(-n + 2) {
+    border-bottom: none;
+  }
+
+  .lc-hub__tab-label {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .lc-hub__panel {
+    padding: 1rem;
+  }
+
+  .lc-hub-tile {
+    min-height: 220px;
+  }
+
+  .lc-hub-tile-grid--consult {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    min-height: 0;
+  }
+
+  .lc-hub-tile-grid--consult .lc-hub-tile {
+    min-height: 240px;
+  }
+
+  .lc-hub-tile-grid--dense {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-hub-tile-grid--dense .lc-hub-tile--wide {
+    grid-column: 1;
+    min-height: 200px;
+  }
+
+  .lc-hub-tile h3 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lc-intro__path-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .lc-category {
+    scroll-margin-top: 72px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* ── Six pillars — mobile card layout ── */
+@media (max-width: 767px) {
+  .lc-six-pillars__viewport {
+    --pillar-slide-w: min(280px, 86vw);
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .lc-six-pillars__swiper .swiper-slide {
+    width: min(280px, 86vw);
+  }
+
+  .lc-six-pillars__card {
+    display: grid;
+    grid-template-rows: auto auto;
+    aspect-ratio: auto;
+    min-height: 368px;
+  }
+
+  .lc-six-pillars__card-hero {
+    flex: none;
+    min-height: 152px;
+    max-height: 152px;
+    padding: 1.5rem 1rem 0.65rem;
+  }
+
+  .lc-six-pillars__orb {
+    width: 72px;
+    height: 72px;
+    box-shadow:
+      0 0 0 6px color-mix(in srgb, var(--pillar-glow) 42%, transparent),
+      0 8px 22px rgba(0, 0, 0, 0.16);
+  }
+
+  .lc-six-pillars__card-copy {
+    margin-top: 0;
+    padding: 1rem 1rem 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lc-six-pillars__head {
+    padding-inline: 1rem;
+  }
+
+  .lc-six-pillars__title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+}
+
+/* ── Real results / testimonials ── */
+@media (max-width: 767px) {
+  .lc-results {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lc-results__bg {
+    opacity: 0.18;
+    object-fit: cover;
+    object-position: 75% 30%;
+  }
+
+  .lc-results__shell {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .lc-results__list {
+    flex-direction: column;
+    overflow: visible;
+    scroll-snap-type: none;
+    padding: 0.5rem;
+    gap: 0.35rem;
+  }
+
+  .lc-results__list-item {
+    flex: none;
+    width: 100%;
+  }
+
+  .lc-results__pick {
+    grid-template-columns: 28px 56px minmax(0, 1fr);
+    column-gap: 0.7rem;
+    align-items: center;
+    min-height: 76px;
+    padding: 0.65rem 0.75rem;
+  }
+
+  .lc-results__pick-thumb {
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .lc-results__pick-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+  }
+
+  .lc-results__pick-meta {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .lc-results__stage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Portrait frame — fills width, proper height for faces */
+  .lc-results__visual {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+    max-height: min(78vw, 420px);
+    min-height: min(72vw, 360px);
+    background: #2a2826;
+    overflow: hidden;
+  }
+
+  .lc-results__visual-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center 12%;
+  }
+
+  .lc-results__copy {
+    flex-shrink: 0;
+    padding: 1rem 1rem 0.25rem;
+  }
+
+  .lc-results__quote {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+
+  .lc-results__progress {
+    flex-shrink: 0;
+    padding: 0.65rem 1rem 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .lc-results__visual {
+    aspect-ratio: 3 / 4;
+    min-height: 300px;
+    max-height: 380px;
+  }
+
+  .lc-results__pick {
+    grid-template-columns: 24px 52px minmax(0, 1fr);
+    min-height: 72px;
+  }
+
+  .lc-results__pick-thumb {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ── FAQ ── */
+@media (max-width: 640px) {
+  .lc-faq {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lc-faq__head h2 {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  .lc-faq__trigger {
+    padding: 1rem 0;
+    gap: 0.75rem;
+  }
+
+  .lc-faq__question {
+    font-size: 0.95rem;
+    line-height: 1.35;
+  }
+}
+
+/* ── QoL CTA ── */
+@media (max-width: 640px) {
+  .lc-qol-cta {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .lc-qol-cta__title {
+    font-size: clamp(1.35rem, 6vw, 1.75rem);
+  }
+
+  .lc-qol-cta__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .lc-qol-cta__btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Home course carousel strip */
+@media (max-width: 640px) {
+  .lc-home-courses {
+    padding-top: 2.5rem !important;
+    padding-bottom: 2.5rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .lc-home-courses .course-carousel {
+    padding-bottom: 2.5rem;
+  }
+}

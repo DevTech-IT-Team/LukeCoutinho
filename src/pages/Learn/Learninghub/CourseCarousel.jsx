@@ -20,7 +20,7 @@ const carouselCourses = courses.filter((course) => featuredIds.includes(course.i
 
 export default function CourseCarousel() {
   return (
-    <section className="bg-[#F8F3EC] py-16 lg:py-24 px-6 lg:px-16">
+    <section className="lc-home-courses bg-[#F8F3EC] py-16 lg:py-24 px-6 lg:px-16">
       <div className="max-w-[1440px] mx-auto">
         <div className="mb-10 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
           <div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Youtube, Linkedin, Facebook, MessageCircle } from 'lucide-react';
+import { LC_LOGO_SRC, LC_LOGO_ALT } from '../assets/brandLogo';
 
 // Inline X (Twitter) glyph
 const XIcon = ({ size = 13 }) => (
@@ -56,10 +57,12 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-12 gap-y-10 md:gap-x-8 pb-10 border-b border-white/10">
           {/* Brand */}
           <div className="col-span-2 md:col-span-4">
-            <Link to="/" className="inline-block">
-              <span className="font-['EB_Garamond',Georgia,serif] italic text-[26px] leading-none">
-                Luke <span className="text-[#E8640A]">Coutinho</span>
-              </span>
+            <Link to="/" className="inline-block" aria-label={LC_LOGO_ALT}>
+              <img
+                src={LC_LOGO_SRC}
+                alt={LC_LOGO_ALT}
+                className="h-11 w-auto brightness-0 invert opacity-95"
+              />
             </Link>
             <p className="mt-3 font-[Arial] text-[10px] uppercase tracking-[0.32em] text-white/45">
               Mumbai · Dubai · Worldwide

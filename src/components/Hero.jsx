@@ -191,7 +191,7 @@ const Hero = () => {
                   aria-hidden={!isActive}
                   style={{
                     opacity: isActive ? 1 : 0,
-                    transform: `translateY(${offset}px)`,
+                    transform: `translate3d(0, ${offset}px, 0)`,
                   }}
                 >
                   <p className="hero-eyebrow">{s.eyebrow}</p>

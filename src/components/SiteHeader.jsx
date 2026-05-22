@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import lcLogo from '../assets/LClogoo.png';
+import { LC_LOGO_SRC, LC_LOGO_ALT } from '../assets/brandLogo';
 import {
   searchCourses,
   getCoursesByCategory,
@@ -131,7 +131,7 @@ const SiteHeader = () => {
         </button>
 
         <Link to="/" className="nav-logo" aria-label="Luke Coutinho home">
-          <img src={lcLogo} alt="Luke Coutinho" />
+          <img src={LC_LOGO_SRC} alt={LC_LOGO_ALT} />
         </Link>
 
         <div className="nav-utilities">
@@ -191,7 +191,7 @@ const SiteHeader = () => {
               aria-label="Luke Coutinho home"
               onClick={() => setIsMenuOpen(false)}
             >
-              <img src={lcLogo} alt="Luke Coutinho" />
+              <img src={LC_LOGO_SRC} alt={LC_LOGO_ALT} />
             </Link>
             <button
               className="primary-menu-close"

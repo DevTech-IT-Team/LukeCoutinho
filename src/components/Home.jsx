@@ -8,6 +8,7 @@ import HomeFaq from './home/HomeFaq';
 import HomeQolCta from './home/HomeQolCta';
 import { useReveal } from './home/useReveal';
 import './home/home-sections.css';
+import '../styles/landing-mobile.css';
 
 function RevealSection({ children, className = '' }) {
   const [ref, visible] = useReveal();
