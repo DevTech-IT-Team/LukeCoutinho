@@ -103,40 +103,80 @@
 /* ── Six pillars — mobile card layout ── */
 @media (max-width: 767px) {
   .lc-six-pillars__viewport {
-    --pillar-slide-w: min(280px, 86vw);
+    --pillar-slide-w: min(252px, 78vw);
+    --pillar-slide-gap: 12px;
     width: 100%;
     max-width: 100%;
   }
 
   .lc-six-pillars__swiper .swiper-slide {
-    width: min(280px, 86vw);
+    width: calc(var(--pillar-slide-w) + var(--pillar-slide-gap) * 2);
+    padding-inline: var(--pillar-slide-gap);
+  }
+
+  .lc-six-pillars__swiper .swiper-slide-active {
+    padding-inline: calc(var(--pillar-slide-gap) + 8px);
   }
 
   .lc-six-pillars__card {
-    display: grid;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-direction: column;
     aspect-ratio: auto;
-    min-height: 368px;
+    min-height: 360px;
   }
 
-  .lc-six-pillars__card-hero {
-    flex: none;
-    min-height: 152px;
-    max-height: 152px;
-    padding: 1.5rem 1rem 0.65rem;
+  .lc-six-pillars__card-media {
+    flex: 1 1 auto;
+    min-height: 220px;
   }
 
-  .lc-six-pillars__orb {
-    width: 72px;
-    height: 72px;
-    box-shadow:
-      0 0 0 6px color-mix(in srgb, var(--pillar-glow) 42%, transparent),
-      0 8px 22px rgba(0, 0, 0, 0.16);
+  .lc-six-pillars__card-img {
+    min-height: 220px;
+    object-fit: contain;
+  }
+
+  .lc-six-pillars__play {
+    width: 56px;
+    height: 56px;
+  }
+
+  .lc-six-pillars__play svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .swiper-slide-active .lc-six-pillars__play {
+    width: 62px;
+    height: 62px;
   }
 
   .lc-six-pillars__card-copy {
-    margin-top: 0;
-    padding: 1rem 1rem 1.15rem;
+    padding: 0.9rem 1rem 1rem;
+  }
+
+  .lc-six-pillars__card-copy h3 {
+    font-size: 0.9rem;
+  }
+
+  .lc-six-pillars__modal {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .lc-six-pillars__modal-panel {
+    width: 100%;
+    max-height: 94vh;
+  }
+
+  .lc-six-pillars__modal-inner {
+    max-height: 94vh;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+  }
+
+  .lc-six-pillars__modal-player {
+    aspect-ratio: 16 / 9;
+    min-height: 0;
   }
 }
 

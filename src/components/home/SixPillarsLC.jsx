@@ -1,23 +1,90 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Autoplay } from 'swiper/modules';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { HOME_LC_PILLARS } from '../../data/homeVisuals';
-import PillarIcon from './PillarIcon';
+import { ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import {
+  HOME_LC_PILLARS,
+  youtubeEmbedUrl,
+  youtubeThumbnail,
+} from '../../data/homeVisuals';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 
 const PILLAR_COUNT = HOME_LC_PILLARS.length;
 
-/** Three copies give Swiper enough runway for seamless loop (5 visible + centered) */
 const PILLAR_SLIDES = [
   ...HOME_LC_PILLARS,
   ...HOME_LC_PILLARS,
   ...HOME_LC_PILLARS,
 ];
 
+function PillarVideoModal({ pillar, onClose }) {
+  const closeRef = useRef(null);
+
+  useEffect(() => {
+    closeRef.current?.focus();
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  return createPortal(
+    <div
+      className="lc-six-pillars__modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pillar-video-title"
+    >
+      <button
+        type="button"
+        className="lc-six-pillars__modal-scrim"
+        aria-label="Close video"
+        onClick={onClose}
+      />
+      <div
+        className="lc-six-pillars__modal-panel"
+        onClick={(e) => e.stopPropagation()}
+        onKeyDown={(e) => e.stopPropagation()}
+      >
+        <div className="lc-six-pillars__modal-inner">
+          <button
+            ref={closeRef}
+            type="button"
+            className="lc-six-pillars__modal-close"
+            aria-label="Close video"
+            onClick={onClose}
+          >
+            <X size={22} strokeWidth={2} aria-hidden="true" />
+          </button>
+          <div className="lc-six-pillars__modal-player">
+            <iframe
+              key={pillar.youtubeId}
+              className="lc-six-pillars__modal-iframe"
+              src={youtubeEmbedUrl(pillar.youtubeId)}
+              title={`${pillar.title} — Luke Coutinho`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+            />
+          </div>
+          <div className="lc-six-pillars__modal-meta">
+            <p className="lc-six-pillars__modal-eyebrow">Foundational Medicine</p>
+            <h3 id="pillar-video-title">{pillar.title}</h3>
+            <p>{pillar.tagline}</p>
+          </div>
+        </div>
+      </div>
+    </div>,
+    document.body,
+  );
+}
+
 export default function SixPillarsLC() {
   const swiperRef = useRef(null);
+  const [activeVideo, setActiveVideo] = useState(null);
 
   useEffect(() => {
     const onResize = () => swiperRef.current?.update();
@@ -25,10 +92,34 @@ export default function SixPillarsLC() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    if (!swiper?.autoplay) return;
+    if (activeVideo) swiper.autoplay.stop();
+    else if (!swiper.autoplay.running) swiper.autoplay.start();
+  }, [activeVideo]);
+
+  useEffect(() => {
+    if (!activeVideo) return undefined;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [activeVideo]);
+
   const startAutoplay = (swiper) => {
-    if (swiper?.autoplay && !swiper.autoplay.running) {
+    if (swiper?.autoplay && !swiper.autoplay.running && !activeVideo) {
       swiper.autoplay.start();
     }
+  };
+
+  const openVideo = (pillar) => {
+    if (!pillar.youtubeId) return;
+    setActiveVideo(pillar);
+  };
+
+  const closeVideo = () => {
+    setActiveVideo(null);
   };
 
   return (
@@ -56,6 +147,7 @@ export default function SixPillarsLC() {
             loopPreventsSliding={false}
             watchSlidesProgress
             slidesPerView="auto"
+            spaceBetween={20}
             slidesPerGroup={1}
             initialSlide={PILLAR_COUNT}
             speed={640}
@@ -73,29 +165,36 @@ export default function SixPillarsLC() {
               stopOnLastSlide: false,
             }}
             coverflowEffect={{
-              rotate: 34,
-              stretch: 4,
-              depth: 96,
-              modifier: 1,
+              rotate: 26,
+              stretch: 36,
+              depth: 110,
+              modifier: 1.05,
               slideShadows: false,
             }}
           >
             {PILLAR_SLIDES.map((pillar, index) => (
               <SwiperSlide key={`${pillar.id}-${index}`}>
-                <article
-                  className="lc-six-pillars__card"
-                  style={{
-                    '--pillar-color': pillar.color,
-                    '--pillar-glow': pillar.glow,
-                  }}
-                >
-                  <div className="lc-six-pillars__card-bg" aria-hidden="true" />
-                  <div className="lc-six-pillars__card-shine" aria-hidden="true" />
-
-                  <div className="lc-six-pillars__card-hero">
-                    <div className="lc-six-pillars__orb">
-                      <PillarIcon type={pillar.icon} />
-                    </div>
+                <article className="lc-six-pillars__card">
+                  <div className="lc-six-pillars__card-media">
+                    <img
+                      src={youtubeThumbnail(pillar.youtubeId)}
+                      alt=""
+                      className="lc-six-pillars__card-img"
+                      loading="lazy"
+                    />
+                    <div className="lc-six-pillars__card-tint" aria-hidden="true" />
+                    <button
+                      type="button"
+                      className="lc-six-pillars__play"
+                      aria-label={`Play video: ${pillar.title}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openVideo(pillar);
+                      }}
+                    >
+                      <span className="lc-six-pillars__play-ring" aria-hidden="true" />
+                      <Play size={26} fill="currentColor" strokeWidth={0} aria-hidden="true" />
+                    </button>
                   </div>
 
                   <div className="lc-six-pillars__card-copy">
@@ -127,6 +226,10 @@ export default function SixPillarsLC() {
           </button>
         </div>
       </div>
+
+      {activeVideo ? (
+        <PillarVideoModal pillar={activeVideo} onClose={closeVideo} />
+      ) : null}
     </section>
   );
 }

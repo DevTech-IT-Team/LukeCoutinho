@@ -32,6 +32,10 @@ import imgSleep from '../assets/wellness.jpg';
 import imgEmotional from '../assets/EmpowerPeople.jpg';
 import imgSpirit from '../assets/signature.jpg';
 import imgBreath from '../assets/education.jpg';
+/** YouTube poster + embed helpers for Six Pillars cards */
+export const youtubeThumbnail = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
+export const youtubeEmbedUrl = (id) =>
+  `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
 
 import podcast1 from '../assets/HealingThroughFood.jpg';
 import podcast2 from '../assets/UnlockingTheSecretsofSkin.jpg';
@@ -359,7 +363,11 @@ export const HOME_DISCOVER = [
   },
 ];
 
-/** Six Pillars of LC — official diagram names, colors, icons */
+/** Brand orange used across Six Pillars cards */
+const PILLAR_BRAND_ORANGE = '#ff8f00';
+const PILLAR_BRAND_GLOW = 'rgba(255, 143, 0, 0.38)';
+
+/** Six Pillars of LC — official diagram names, icons */
 export const HOME_LC_PILLARS = [
   {
     id: 'movement',
@@ -367,8 +375,9 @@ export const HOME_LC_PILLARS = [
     title: 'Adequate Holistic Movement',
     tagline: 'Move with intention — not excess.',
     icon: 'movement',
-    color: '#3aaf9e',
-    glow: 'rgba(58, 175, 158, 0.32)',
+    color: PILLAR_BRAND_ORANGE,
+    glow: PILLAR_BRAND_GLOW,
+    youtubeId: '4_WNYVdI3BM',
   },
   {
     id: 'spirit',
@@ -376,8 +385,9 @@ export const HOME_LC_PILLARS = [
     title: 'Spirit & Breathwork',
     tagline: 'Stillness and breath that switch on repair.',
     icon: 'spirit',
-    color: '#d64545',
-    glow: 'rgba(214, 69, 69, 0.32)',
+    color: PILLAR_BRAND_ORANGE,
+    glow: PILLAR_BRAND_GLOW,
+    youtubeId: '8I8pSZi38Dc',
   },
   {
     id: 'nutrition',
@@ -385,8 +395,9 @@ export const HOME_LC_PILLARS = [
     title: 'Food Science & Nutrient Synergy',
     tagline: 'Nourishment tuned to your biology.',
     icon: 'nutrition',
-    color: '#e8923a',
-    glow: 'rgba(232, 146, 58, 0.32)',
+    color: PILLAR_BRAND_ORANGE,
+    glow: PILLAR_BRAND_GLOW,
+    youtubeId: '8I8pSZi38Dc',
   },
   {
     id: 'sleep',
@@ -394,8 +405,9 @@ export const HOME_LC_PILLARS = [
     title: 'Deep Sleep',
     tagline: 'Sleep as medicine — rhythm and recovery.',
     icon: 'sleep',
-    color: '#6eb5d9',
-    glow: 'rgba(110, 181, 217, 0.32)',
+    color: PILLAR_BRAND_ORANGE,
+    glow: PILLAR_BRAND_GLOW,
+    youtubeId: '4_WNYVdI3BM',
   },
   {
     id: 'emotional',
@@ -403,8 +415,9 @@ export const HOME_LC_PILLARS = [
     title: 'Emotional Wellness',
     tagline: 'Calm within — where healing begins.',
     icon: 'emotional',
-    color: '#e85a8a',
-    glow: 'rgba(232, 90, 138, 0.32)',
+    color: PILLAR_BRAND_ORANGE,
+    glow: PILLAR_BRAND_GLOW,
+    youtubeId: '8I8pSZi38Dc',
   },
   {
     id: 'nature',
@@ -412,8 +425,9 @@ export const HOME_LC_PILLARS = [
     title: 'Nature: Internal & External Environment',
     tagline: 'Your inner world and the world around you.',
     icon: 'nature',
-    color: '#8bc53e',
-    glow: 'rgba(139, 197, 62, 0.32)',
+    color: PILLAR_BRAND_ORANGE,
+    glow: PILLAR_BRAND_GLOW,
+    youtubeId: '8I8pSZi38Dc',
   },
 ];
 
