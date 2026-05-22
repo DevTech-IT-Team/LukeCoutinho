@@ -1,11 +1,14 @@
 export const SITE_NAVIGATION_LINKS = [
-  { label: 'Heal from Within', to: '#' },
-  // { label: 'Wellness Programs', to: '#' },
+  // { label: 'Heal from Within', to: '#' },
+  { label: 'Consult Now', to: '/book-consult' },
+  { label: 'Wellness Programs', to: '/programs/signature-wellness' },
+  { label: 'Corporate Wellness', to: '/resources' },
+
   { label: 'Masterclass', to: '/masterclass' },
+
   { label: 'Courses', to: '/learn/learninghub/home' },
   { label: 'Blogs', to: '/Learn/Blogs/Home' },
-  { label: 'Recipes', to: '/bharat/dish' },
-  { label: 'eBooks', to: '/resources' },
+  // { label: 'Recipes', to: '/bharat/dish' },
   { label: 'Podcast', to: '/Podcast/Podcast' },
   // { label: 'Consult', to: '/book-consult' },
 ];
