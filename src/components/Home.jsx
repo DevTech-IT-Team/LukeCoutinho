@@ -3,7 +3,7 @@ import Hero from './Hero';
 import PathwayHub from './home/PathwayHub';
 import SixPillarsLC from './home/SixPillarsLC';
 import RealResults from './home/RealResults';
-import CourseCarousel from '../pages/Learn/Learninghub/CourseCarousel';
+import VideoCarousel from './home/VideoCarousel';
 import HomeFaq from './home/HomeFaq';
 import HomeQolCta from './home/HomeQolCta';
 import { useReveal } from './home/useReveal';
@@ -43,7 +43,7 @@ const Home = () => {
       </RevealSection>
 
       <RevealSection>
-        <CourseCarousel />
+        <VideoCarousel />
       </RevealSection>
 
       <RevealSection>
