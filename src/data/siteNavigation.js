@@ -10,6 +10,7 @@ export const SITE_NAVIGATION_LINKS = [
   { label: 'Blogs', to: '/Learn/Blogs/Home' },
   // { label: 'Recipes', to: '/bharat/dish' },
   { label: 'Podcast', to: '/Podcast/Podcast' },
+  { label: 'Gift Card', to: '/gift-card' },
   // { label: 'Consult', to: '/book-consult' },
 ];
 
