@@ -7,6 +7,8 @@ export const SITE_NAVIGATION_LINKS = [
   { label: 'Masterclass', to: '/masterclass' },
 
   { label: 'Courses', to: '/learn/learninghub/home' },
+  { label: 'Gift Card', to: '/gift-card' },
+
   { label: 'Blogs', to: '/Learn/Blogs/Home' },
   // { label: 'Recipes', to: '/bharat/dish' },
   { label: 'Podcast', to: '/Podcast/Podcast' },

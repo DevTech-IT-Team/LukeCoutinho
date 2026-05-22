@@ -37,6 +37,7 @@ import Course14 from './pages/Workshop/IndividualFamilyMasterclass/Course14'
 import Course15 from './pages/Workshop/IndividualFamilyMasterclass/Course15'
 import Course16 from './pages/Workshop/IndividualFamilyMasterclass/Course16'
 import Podcast from './pages/Podcast/Podcast'
+import GiftCard from './pages/GiftCard'
 import PodcastVideos from './pages/Podcast/PodcastVideos'
 import Careers from './pages/Careers/Careers'
 import ContactUs from './pages/ContactUs/ContactUs'
@@ -106,6 +107,7 @@ function AppShell() {
             <Route path="/Careers/Careers" element={<Careers />} />
             <Route path="/ContactUs/ContactUs" element={<ContactUs />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/gift-card" element={<GiftCard />} />
             <Route path="/bharat/dish" element={<BharatDish />} />
             <Route path="/book-consult" element={<BookConsult />} />
             <Route path="/book-consult/service" element={<BookConsultService />} />
