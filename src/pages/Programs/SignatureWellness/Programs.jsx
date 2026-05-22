@@ -25,7 +25,7 @@ const enrollProgram = (navigate, program) => {
   });
 };
 
-export default function ProgramSelector() {
+export default function iProgramSelector() {
   const navigate = useNavigate();
 
   const teamProgram = {
@@ -53,8 +53,8 @@ export default function ProgramSelector() {
 
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
-        {/* Section Header Text Area */}
-        <div className="text-center max-w-3xl mx-auto mb-20 lg:mb-28 space-y-4">
+        {/* Section Header Text Area (condensed + interactive CTA) */}
+        <div className="text-center max-w-3xl mx-auto mb-12 lg:mb-16 space-y-4">
           <div className="flex items-center justify-center gap-2">
             <span className="w-8 h-[2px] bg-orange-500 rounded-full"></span>
             <span className="text-orange-500 font-bold tracking-[0.2em] text-xs uppercase">
@@ -62,13 +62,31 @@ export default function ProgramSelector() {
             </span>
             <span className="w-8 h-[2px] bg-orange-500 rounded-full"></span>
           </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black text-gray-900 tracking-tighter leading-[1.05]">
-            Ready to unlock the potential of personalized care <br />
-            and expert guidance from Luke <span className="text-orange-500 italic">and our team?</span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-snug">
+            Unlock personalized, long-term health with Luke and our team
           </h2>
-          <p className="text-gray-500 font-medium text-base sm:text-lg max-w-2xl mx-auto pt-2 tracking-tight">
-            Explore our Signature Wellness Programs and find the right fit for your long-term health trajectory.
+          <p className="text-gray-500 font-medium text-sm sm:text-base max-w-2xl mx-auto pt-1 tracking-tight">
+            Explore the Signature Wellness paths tailored to your goals — concise, actionable, and rooted in outcomes.
           </p>
+
+          {/* Prominent, interactive dual-path CTA placed near the top after 1 section */}
+          <div className="mt-6 flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="lc-dual-path__pulse-dot" aria-hidden="true" />
+              <span className="text-sm font-bold text-orange-500">Featured — Start here</span>
+            </div>
+
+            <div className="flex justify-center">
+              <DualPathCTA
+                stream={REVENUE_STREAMS.programs}
+                primaryHref="/programs/signature-wellness/standard"
+                primaryLabel="Explore programs"
+                secondaryHref="/book-consult"
+                secondaryLabel="Book a consultation"
+                className="lc-dual-path--prominent mx-auto w-full sm:w-auto"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Offerings Two-Column Card Grid Stack */}
@@ -78,7 +96,7 @@ export default function ProgramSelector() {
           <div className="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-900/[0.04] transition-all duration-500 flex flex-col justify-between transform hover:-translate-y-1.5">
             <div>
               {/* Card Image Area with Zoom Effect */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-gray-50 border-b border-gray-100">
+              <div className="relative aspect-[16/9] overflow-hidden bg-gray-50 border-b border-gray-100">
                 <img
                   src={wellness}
                   alt="Unified wellness balancing tracking"
@@ -90,7 +108,7 @@ export default function ProgramSelector() {
               </div>
 
               {/* Card Narrative Content Area */}
-              <div className="p-8 sm:p-10 space-y-4">
+              <div className="p-6 sm:p-8 space-y-4">
                 <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight group-hover:text-orange-500 transition-colors duration-300">
                   Explore Program
                 </h3>
@@ -101,11 +119,12 @@ export default function ProgramSelector() {
             </div>
 
             {/* Action Container Floor */}
-            <div className="px-8 pb-8 sm:px-10 sm:pb-10 pt-2 flex flex-col gap-3">
+              <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-2 flex flex-col gap-3">
               <DualPathCTA
                 stream={REVENUE_STREAMS.programs}
                 primaryLabel="Enroll now"
                 onPrimaryClick={() => enrollProgram(navigate, teamProgram)}
+                className="lc-dual-path--card"
                 secondaryLabel="Talk to our team"
                 secondaryHref="/book-consult?path=expert"
                 secondaryHint="Human-assisted · 24–48h callback"
@@ -124,7 +143,7 @@ export default function ProgramSelector() {
           <div className="group bg-white rounded-[2.5rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-gray-900/[0.04] transition-all duration-500 flex flex-col justify-between transform hover:-translate-y-1.5">
             <div>
               {/* Card Image Area with Zoom Effect */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-gray-50 border-b border-gray-100">
+              <div className="relative aspect-[16/9] overflow-hidden bg-gray-50 border-b border-gray-100">
                 <img
                   src={ExclusiveWellness}
                   alt="Premium one on one movement lifestyle guidance"
@@ -137,7 +156,7 @@ export default function ProgramSelector() {
               </div>
 
               {/* Card Narrative Content Area */}
-              <div className="p-8 sm:p-10 space-y-4">
+              <div className="p-6 sm:p-8 space-y-4">
                 <h3 className="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight group-hover:text-orange-500 transition-colors duration-300">
                   Exclusive Program with Luke
                 </h3>
@@ -148,11 +167,12 @@ export default function ProgramSelector() {
             </div>
 
             {/* Action Container Floor */}
-            <div className="px-8 pb-8 sm:px-10 sm:pb-10 pt-2 flex flex-col gap-3">
+            <div className="px-6 pb-6 sm:px-8 sm:pb-8 pt-2 flex flex-col gap-3">
               <DualPathCTA
                 stream={REVENUE_STREAMS.programs}
                 primaryLabel="Enroll now"
                 onPrimaryClick={() => enrollProgram(navigate, lukeProgram)}
+                className="lc-dual-path--card"
                 secondaryLabel="Join Luke's waitlist"
                 secondaryHref="/book-consult?path=waitlist"
                 secondaryHint="Personal consultation with Luke"
