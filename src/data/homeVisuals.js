@@ -367,7 +367,10 @@ export const HOME_DISCOVER = [
 const PILLAR_BRAND_ORANGE = '#ff8f00';
 const PILLAR_BRAND_GLOW = 'rgba(255, 143, 0, 0.38)';
 
-/** Six Pillars of LC — official diagram names, icons */
+/**
+ * Six Pillars — each card uses a different Luke Coutinho YouTube video.
+ * @see https://www.youtube.com/@LukeCoutinho
+ */
 export const HOME_LC_PILLARS = [
   {
     id: 'movement',
@@ -387,7 +390,7 @@ export const HOME_LC_PILLARS = [
     icon: 'spirit',
     color: PILLAR_BRAND_ORANGE,
     glow: PILLAR_BRAND_GLOW,
-    youtubeId: '8I8pSZi38Dc',
+    youtubeId: '40VTUMsZ5Uc',
   },
   {
     id: 'nutrition',
@@ -397,7 +400,7 @@ export const HOME_LC_PILLARS = [
     icon: 'nutrition',
     color: PILLAR_BRAND_ORANGE,
     glow: PILLAR_BRAND_GLOW,
-    youtubeId: '8I8pSZi38Dc',
+    youtubeId: 'GTRu6gmt7d4',
   },
   {
     id: 'sleep',
@@ -407,7 +410,7 @@ export const HOME_LC_PILLARS = [
     icon: 'sleep',
     color: PILLAR_BRAND_ORANGE,
     glow: PILLAR_BRAND_GLOW,
-    youtubeId: '4_WNYVdI3BM',
+    youtubeId: '8I8pSZi38Dc',
   },
   {
     id: 'emotional',
@@ -417,7 +420,7 @@ export const HOME_LC_PILLARS = [
     icon: 'emotional',
     color: PILLAR_BRAND_ORANGE,
     glow: PILLAR_BRAND_GLOW,
-    youtubeId: '8I8pSZi38Dc',
+    youtubeId: '4DU39FPJ3L4',
   },
   {
     id: 'nature',
@@ -427,7 +430,7 @@ export const HOME_LC_PILLARS = [
     icon: 'nature',
     color: PILLAR_BRAND_ORANGE,
     glow: PILLAR_BRAND_GLOW,
-    youtubeId: '8I8pSZi38Dc',
+    youtubeId: 'OQ2H0WCuRdc',
   },
 ];
 

@@ -100,12 +100,12 @@
   }
 }
 
-/* ── Six pillars — mobile card layout ── */
+/* ── Six pillars — phone only: single centred card ── */
 @media (max-width: 767px) {
   .lc-six-pillars__viewport {
-    --pillar-slide-w: min(252px, 78vw);
-    --pillar-slide-gap: 12px;
-    width: 100%;
+    --pillar-slide-w: min(260px, 82vw);
+    --pillar-slide-gap: 10px;
+    width: min(100%, calc(var(--pillar-slot) * 1.15));
     max-width: 100%;
   }
 
@@ -115,7 +115,7 @@
   }
 
   .lc-six-pillars__swiper .swiper-slide-active {
-    padding-inline: calc(var(--pillar-slide-gap) + 8px);
+    padding-inline: calc(var(--pillar-slide-gap) + 6px);
   }
 
   .lc-six-pillars__card {

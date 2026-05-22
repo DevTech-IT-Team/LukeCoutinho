@@ -86,6 +86,12 @@ export default function SixPillarsLC() {
   const swiperRef = useRef(null);
   const [activeVideo, setActiveVideo] = useState(null);
 
+  const startAutoplay = (swiper) => {
+    if (swiper?.autoplay && !swiper.autoplay.running && !activeVideo) {
+      swiper.autoplay.start();
+    }
+  };
+
   useEffect(() => {
     const onResize = () => swiperRef.current?.update();
     window.addEventListener('resize', onResize);
@@ -107,15 +113,10 @@ export default function SixPillarsLC() {
     };
   }, [activeVideo]);
 
-  const startAutoplay = (swiper) => {
-    if (swiper?.autoplay && !swiper.autoplay.running && !activeVideo) {
-      swiper.autoplay.start();
-    }
-  };
-
   const openVideo = (pillar) => {
-    if (!pillar.youtubeId) return;
-    setActiveVideo(pillar);
+    const source = HOME_LC_PILLARS.find((p) => p.id === pillar.id) ?? pillar;
+    if (!source.youtubeId) return;
+    setActiveVideo(source);
   };
 
   const closeVideo = () => {
@@ -147,7 +148,7 @@ export default function SixPillarsLC() {
             loopPreventsSliding={false}
             watchSlidesProgress
             slidesPerView="auto"
-            spaceBetween={20}
+            spaceBetween={0}
             slidesPerGroup={1}
             initialSlide={PILLAR_COUNT}
             speed={640}
@@ -155,6 +156,7 @@ export default function SixPillarsLC() {
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
               startAutoplay(swiper);
+              requestAnimationFrame(() => swiper.update());
             }}
             onAutoplayStop={(swiper) => startAutoplay(swiper)}
             autoplay={{
@@ -165,10 +167,10 @@ export default function SixPillarsLC() {
               stopOnLastSlide: false,
             }}
             coverflowEffect={{
-              rotate: 26,
-              stretch: 36,
-              depth: 110,
-              modifier: 1.05,
+              rotate: 22,
+              stretch: -32,
+              depth: 64,
+              modifier: 1,
               slideShadows: false,
             }}
           >
