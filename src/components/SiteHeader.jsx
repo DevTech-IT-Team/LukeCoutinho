@@ -270,7 +270,7 @@ const SiteHeader = () => {
                 ref={searchInputRef}
                 type="search"
                 className="search-bar-input"
-                placeholder="Search courses, topics…"
+                placeholder="Search courses, blogs, podcasts and more"
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
