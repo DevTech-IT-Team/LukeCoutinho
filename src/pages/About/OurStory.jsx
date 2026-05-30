@@ -31,7 +31,7 @@ const PROGRAMS = [
   { title: 'Learning Hub', tag: 'Courses', image: education, href: '/learn/learninghub/home' },
   { title: 'Bharat Dish Recipes', tag: 'Nutrition', image: recipe, href: '/bharat/dish' },
   { title: 'Corporate Wellness', tag: 'Teams', image: corporate, href: '/Workshop/CorporateTalks/Home' },
-  { title: 'Books & Resources', tag: 'Read', image: book, href: '/resources' },
+  { title: 'Books & Resources', tag: 'Read', image: book, href: '/books' },
 ];
 
 const OurStory = () => (
@@ -223,7 +223,7 @@ const OurStory = () => (
               Certified, clean, and safe wellness products — verified claims and organic,
               chemical-free choices for everyday living.
             </p>
-            <Link to="/resources" className="story-link">
+            <Link to="/books" className="story-link">
               View resources <ArrowRight size={14} />
             </Link>
           </div>

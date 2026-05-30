@@ -141,7 +141,7 @@ const SiteHeader = () => {
           </Link>
           <Link to="/book-consult" className="nav-utility by">
             <span className="nav-utility-dot" aria-hidden="true" />
-            <span>Book Your Consultation</span>
+            <span>Book Consult</span>
           </Link>
           <button
             type="button"

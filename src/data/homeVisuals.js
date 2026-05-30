@@ -1,4 +1,5 @@
 import { SIX_PILLARS } from './brandContent';
+import { WHATSAPP_CHANNEL_URL, BOOKS_PATH } from '../config/siteLinks';
 
 import partnerDrReddy from '../assets/Dr.Reddy_logo.jpg';
 import partnerIbm from '../assets/ibm.png';
@@ -124,8 +125,8 @@ export const HOME_CORPORATE = {
     'Quality of Life assessments',
     'Productivity & burnout prevention',
   ],
-  cta: 'Explore corporate programs',
-  ctaTo: '/Workshop/CorporateTalks/Home',
+  cta: 'Corporate enquiry',
+  ctaTo: '/resources#enquire',
 };
 
 export const HOME_TRUST_STATS = [
@@ -294,7 +295,7 @@ export const HOME_HUB_EXPLORE = [
     title: 'Free resources',
     line: 'Guides & educational tools',
     cta: 'Explore',
-    to: '/resources',
+    to: BOOKS_PATH,
     image: imgCourses,
   },
   {
@@ -318,7 +319,7 @@ export const HOME_HUB_EXPLORE = [
     title: 'Join community',
     line: 'Wellness channel on WhatsApp',
     cta: 'Join',
-    to: 'https://www.whatsapp.com/channel/0029VaEPuJ9EawdthbP8cz0K',
+    to: WHATSAPP_CHANNEL_URL,
     external: true,
     image: imgEmotional,
   },
@@ -353,12 +354,12 @@ export const HOME_LEARN = [
 
 export const HOME_DISCOVER = [
   { label: 'Corporate Wellness', to: '/Workshop/CorporateTalks/Home' },
-  { label: 'Free Resources', to: '/resources' },
+  { label: 'Free Resources', to: BOOKS_PATH },
   { label: 'Health Recipes', to: '/bharat/dish' },
   { label: 'Educational Blogs', to: '/learn/blogs' },
   {
     label: 'Join Community',
-    to: 'https://www.whatsapp.com/channel/0029VaEPuJ9EawdthbP8cz0K',
+    to: WHATSAPP_CHANNEL_URL,
     external: true,
   },
 ];

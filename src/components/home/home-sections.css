@@ -2430,3 +2430,521 @@
     transform: none;
   }
 }
+
+.lc-hub-tile--action {
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: inherit;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+}
+
+.lc-consult-waitlist {
+  background: #fdfaf5;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+  border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+}
+
+.lc-consult-waitlist__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.lc-consult-waitlist__eyebrow {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.75rem;
+}
+
+.lc-consult-waitlist__title {
+  font: italic clamp(1.75rem, 4vw, 2.5rem)/1.05 'EB Garamond', Georgia, serif;
+  color: #1a1410;
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- BD: promo banner ---------- */
+.lc-promo-banner {
+  position: relative;
+  z-index: 15;
+  background: #1a1410;
+  color: #fdfaf5;
+  border-bottom: 1px solid rgba(232, 100, 10, 0.35);
+}
+
+.lc-promo-banner__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.85rem 3rem 0.85rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1rem;
+}
+
+.lc-promo-banner__label {
+  font: 700 9px/1 Arial, sans-serif;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #e8640a;
+  flex-shrink: 0;
+}
+
+.lc-promo-banner__headline {
+  font: 600 13px/1.4 Arial, sans-serif;
+  margin: 0;
+}
+
+.lc-promo-banner__sub {
+  font: 500 12px/1.4 Arial, sans-serif;
+  color: rgba(253, 250, 245, 0.6);
+  margin: 0;
+  flex: 1 1 180px;
+}
+
+.lc-promo-banner__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: 700 9px/1 Arial, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e8640a;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lc-promo-banner__next {
+  border: 0;
+  background: transparent;
+  color: rgba(253, 250, 245, 0.5);
+  font: 600 10px/1 Arial, sans-serif;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.lc-promo-banner__close {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: rgba(253, 250, 245, 0.6);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+/* ---------- BD: compact lead strip (homepage) ---------- */
+.lc-bd-lead {
+  background: #f7f3ed;
+  border-top: 1px solid rgba(26, 20, 16, 0.06);
+  border-bottom: 1px solid rgba(26, 20, 16, 0.06);
+}
+
+.lc-bd-lead__promo {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.75rem clamp(1.25rem, 4vw, 2rem);
+  border-bottom: 1px solid rgba(26, 20, 16, 0.06);
+}
+
+.lc-bd-lead__promo-tag {
+  font: 700 9px/1 Arial, sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e8640a;
+  flex-shrink: 0;
+}
+
+.lc-bd-lead__promo-text {
+  flex: 1 1 12rem;
+  margin: 0;
+  font: 500 13px/1.45 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.72);
+}
+
+.lc-bd-lead__promo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1a1410;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.lc-bd-lead__promo-link:hover {
+  color: #e8640a;
+}
+
+.lc-bd-lead__promo-next {
+  border: 0;
+  background: transparent;
+  color: rgba(26, 20, 16, 0.35);
+  cursor: pointer;
+  padding: 0 0.25rem;
+}
+
+.lc-bd-lead__promo-close {
+  position: absolute;
+  top: 50%;
+  right: clamp(0.75rem, 3vw, 1.25rem);
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: rgba(26, 20, 16, 0.4);
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.lc-bd-lead__inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(2.25rem, 4.5vw, 3.25rem) clamp(1.25rem, 4vw, 2rem);
+  text-align: center;
+}
+
+.lc-bd-lead__eyebrow {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.65rem;
+}
+
+.lc-bd-lead h2 {
+  font: italic clamp(1.65rem, 3.2vw, 2.35rem)/1.08 'EB Garamond', Georgia, serif;
+  color: #1a1410;
+  margin-bottom: 0.65rem;
+}
+
+.lc-bd-lead__sub {
+  font: 500 14px/1.65 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.58);
+  margin: 0 auto 1.35rem;
+  max-width: 46ch;
+}
+
+.lc-bd-lead__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem 0.85rem;
+}
+
+.lc-bd-lead__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+.lc-bd-lead__btn--primary {
+  background: #1a1410;
+  color: #fff;
+}
+
+.lc-bd-lead__btn--primary:hover {
+  background: #e8640a;
+}
+
+.lc-bd-lead__btn--ghost {
+  background: transparent;
+  color: #1a1410;
+  border: 1px solid rgba(26, 20, 16, 0.18);
+}
+
+.lc-bd-lead__btn--ghost:hover {
+  border-color: #1a1410;
+}
+
+.lc-bd-lead__link {
+  font: 600 10px/1 Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.45);
+  text-decoration: none;
+}
+
+.lc-bd-lead__link:hover {
+  color: #e8640a;
+}
+
+/* ---------- BD: speaker spotlight (legacy — corporate page may reuse patterns) ---------- */
+.lc-speaker-spotlight {
+  background: #fdfaf5;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+  border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 2rem);
+}
+
+.lc-speaker-spotlight__grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .lc-speaker-spotlight__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lc-speaker-spotlight__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.75rem;
+}
+
+.lc-speaker-spotlight h2 {
+  font: italic clamp(1.75rem, 3.5vw, 2.75rem)/1.05 'EB Garamond', Georgia, serif;
+  color: #1a1410;
+  margin-bottom: 0.75rem;
+}
+
+.lc-speaker-spotlight__sub {
+  font: 500 15px/1.65 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.62);
+  margin-bottom: 1.25rem;
+  max-width: 42ch;
+}
+
+.lc-speaker-spotlight__formats {
+  list-style: none;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.lc-speaker-spotlight__formats li {
+  font: 500 13px/1.4 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.72);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.lc-speaker-spotlight__formats li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e8640a;
+}
+
+.lc-speaker-spotlight__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: 600 11px/1 Arial, sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1410;
+  text-decoration: none;
+}
+
+.lc-speaker-spotlight__link:hover {
+  color: #e8640a;
+}
+
+.lc-speaker-spotlight__form {
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+}
+
+.lc-speaker-spotlight__form-label {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.45);
+  margin-bottom: 1rem;
+}
+
+/* ---------- BD: case studies ---------- */
+.lc-bd-cases {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 4vw, 2rem);
+  background: #fff;
+}
+
+.lc-bd-cases__head {
+  max-width: 640px;
+  margin: 0 auto 1.75rem;
+  text-align: center;
+}
+
+.lc-bd-cases__eyebrow {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.5rem;
+}
+
+.lc-bd-cases__head h2 {
+  font: italic clamp(1.5rem, 3vw, 2.25rem)/1.08 'EB Garamond', Georgia, serif;
+  margin-bottom: 0.5rem;
+}
+
+.lc-bd-cases__lede {
+  font: 500 14px/1.6 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.58);
+}
+
+.lc-bd-cases__shell {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.lc-bd-cases__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.lc-bd-cases__tab {
+  padding: 0.5rem 0.85rem;
+  border: 1px solid rgba(26, 20, 16, 0.12);
+  border-radius: 999px;
+  background: #fdfaf5;
+  font: 600 11px/1 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.65);
+  cursor: pointer;
+}
+
+.lc-bd-cases__tab.is-active {
+  background: #1a1410;
+  border-color: #1a1410;
+  color: #fff;
+}
+
+.lc-bd-cases__panel {
+  background: #fdfaf5;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+}
+
+.lc-bd-cases__sector {
+  font: 700 9px/1 Arial, sans-serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.35rem;
+}
+
+.lc-bd-cases__panel h3 {
+  font: 700 1.25rem/1.25 Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.lc-bd-cases__summary {
+  font: 500 14px/1.65 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.62);
+  margin-bottom: 1rem;
+}
+
+.lc-bd-cases__quote {
+  margin: 0 0 1rem;
+  padding-left: 1rem;
+  border-left: 3px solid #e8640a;
+}
+
+.lc-bd-cases__quote p {
+  font: italic 15px/1.6 'EB Garamond', Georgia, serif;
+  color: rgba(26, 20, 16, 0.78);
+  margin-bottom: 0.35rem;
+}
+
+.lc-bd-cases__quote cite {
+  font: 600 11px/1.4 Arial, sans-serif;
+  font-style: normal;
+  color: rgba(26, 20, 16, 0.5);
+}
+
+.lc-bd-cases__outcomes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lc-bd-cases__outcomes li {
+  font: 600 10px/1 Arial, sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.65rem;
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  border-radius: 999px;
+}
+
+.lc-bd-cases__foot {
+  max-width: 900px;
+  margin: 1.5rem auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.lc-bd-cases__more,
+.lc-bd-cases__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.lc-bd-cases__more {
+  color: rgba(26, 20, 16, 0.55);
+}
+
+.lc-bd-cases__cta {
+  color: #fff;
+  background: #1a1410;
+  padding: 0.75rem 1.25rem;
+  border-radius: 999px;
+}
+
+.lc-bd-cases__cta:hover {
+  background: #e8640a;
+}

@@ -1,19 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Download, 
-  Leaf, 
-  Sun, 
-  Moon, 
-  Heart, 
-  Quote, 
+import {
+  Download,
+  Leaf,
+  Sun,
+  Moon,
+  Heart,
+  Quote,
   Sparkles,
   ExternalLink,
-  ChevronDown
+  ChevronDown,
+  Printer,
+  Bookmark,
 } from 'lucide-react';
 
+const FAVOURITES_KEY = 'lc-bharat-favourites';
+
 const BharatDish = () => {
-    
+  const [favourites, setFavourites] = useState([]);
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(FAVOURITES_KEY) || '[]');
+      setFavourites(Array.isArray(saved) ? saved : []);
+    } catch {
+      setFavourites([]);
+    }
+  }, []);
+
+  const toggleFavourite = (item) => {
+    setFavourites((prev) => {
+      const next = prev.includes(item)
+        ? prev.filter((x) => x !== item)
+        : [...prev, item];
+      localStorage.setItem(FAVOURITES_KEY, JSON.stringify(next));
+      return next;
+    });
+  };
     // Download links with actual cover images
     const downloads = [
         { 
@@ -62,7 +85,7 @@ const BharatDish = () => {
     ];
 
     return (
-        <div className="bg-white pt-20 font-sans selection:bg-orange-500/10 selection:text-orange-600">
+        <div className="bg-white pt-20 font-sans selection:bg-orange-500/10 selection:text-orange-600 bharat-dish-page">
             
             {/* 1. HERO SECTION: THE PM'S RESPONSIBILITY */}
             <section className="relative min-h-[90vh] flex items-center bg-slate-50 overflow-hidden">
@@ -119,6 +142,13 @@ const BharatDish = () => {
                             >
                                 Get the Free Guide <ChevronDown size={18} />
                             </a>
+                            <button
+                                type="button"
+                                onClick={() => window.print()}
+                                className="px-8 py-7 border-2 border-slate-950 text-slate-950 font-black rounded-3xl hover:bg-slate-950 hover:text-white transition-all uppercase tracking-widest text-[11px] flex items-center gap-3"
+                            >
+                                <Printer size={16} /> Print guide
+                            </button>
                         </motion.div>
                     </div>
                 </div>
@@ -268,7 +298,19 @@ const BharatDish = () => {
                                     <div className="w-6 h-6 rounded-full border-2 border-orange-500 flex items-center justify-center group-hover:bg-orange-500 transition-colors">
                                         <div className="w-2 h-2 rounded-full bg-orange-500 group-hover:bg-white" />
                                     </div>
-                                    <span className="text-lg font-bold text-slate-900 uppercase tracking-tighter">{item}</span>
+                                    <span className="text-lg font-bold text-slate-900 uppercase tracking-tighter flex-1">{item}</span>
+                                    <button
+                                        type="button"
+                                        aria-label={favourites.includes(item) ? 'Remove from favourites' : 'Save to favourites'}
+                                        onClick={() => toggleFavourite(item)}
+                                        className={`p-2 rounded-full border transition-colors ${
+                                          favourites.includes(item)
+                                            ? 'border-orange-500 bg-orange-50 text-orange-600'
+                                            : 'border-slate-200 text-slate-400 hover:border-orange-300'
+                                        }`}
+                                    >
+                                        <Bookmark size={16} fill={favourites.includes(item) ? 'currentColor' : 'none'} />
+                                    </button>
                                 </div>
                             ))}
                         </div>

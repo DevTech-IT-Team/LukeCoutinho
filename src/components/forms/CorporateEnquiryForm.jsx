@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Check } from 'lucide-react';
 
 export default function CorporateEnquiryForm() {
-  const navigate = useNavigate();
   const [status, setStatus] = useState('idle');
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({
     org: '',
     name: '',
@@ -18,11 +18,20 @@ export default function CorporateEnquiryForm() {
     e.preventDefault();
     setStatus('sending');
     setTimeout(() => {
-      navigate('/payment-success', {
-        state: { submissionType: 'enquiry', enquiry: { type: 'corporate', ...form } },
-      });
+      setSubmitted(true);
+      setStatus('idle');
     }, 800);
   };
+
+  if (submitted) {
+    return (
+      <div className="bcf-inline-success" role="status" aria-live="polite">
+        <Check size={28} className="bcf-inline-success__icon" aria-hidden />
+        <h3>Thank you — we received your enquiry.</h3>
+        <p>A member of our corporate wellness team will respond within 24–48 hours.</p>
+      </div>
+    );
+  }
 
   return (
     <form id="corporate-enquiry" className="bcf-inline-form" onSubmit={handleSubmit}>

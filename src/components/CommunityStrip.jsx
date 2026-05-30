@@ -1,7 +1,6 @@
 import React from 'react';
 import { MessageCircle, ArrowRight } from 'lucide-react';
-
-const WHATSAPP_URL = 'https://www.whatsapp.com/channel/0029VaEPuJ9EawdthbP8cz0K';
+import { WHATSAPP_CHANNEL_URL } from '../config/siteLinks';
 
 export default function CommunityStrip() {
   return (
@@ -19,16 +18,16 @@ export default function CommunityStrip() {
               <h2 className="font-['EB_Garamond',Georgia,serif] italic text-[clamp(24px,3vw,32px)] leading-[1.1] text-[#1A1410] mb-2">
                 Stay connected on WhatsApp
               </h2>
-              <p className="font-[Arial] text-[14px] leading-[1.8] text-[rgba(26,20,16,0.62)] m-0">
-                Insights, reminders, and encouragement — one tap to join our channel.
+              <p className="font-[Arial] text-[14px] leading-[1.7] text-[rgba(26,20,16,0.65)]">
+                Join our wellness channel for daily tips, live updates, and community support — curated by Team Luke.
               </p>
             </div>
           </div>
           <a
-            href={WHATSAPP_URL}
+            href={WHATSAPP_CHANNEL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-3 bg-[#1A1410] hover:bg-[#E8640A] text-white px-8 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] transition-all shrink-0"
+            className="inline-flex items-center gap-3 self-start md:self-center bg-[#1A1410] text-white px-8 py-4 font-[Arial] text-[10px] uppercase tracking-[0.32em] hover:bg-[#E8640A] transition-colors"
           >
             Join community
             <ArrowRight size={14} />

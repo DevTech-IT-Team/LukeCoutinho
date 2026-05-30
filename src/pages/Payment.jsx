@@ -63,6 +63,7 @@ const Payment = () => {
 
   const [selectedPlan, setSelectedPlan] = useState('individual');
   const [paymentMethod, setPaymentMethod] = useState('card');
+  const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -112,6 +113,7 @@ const Payment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (course && !disclaimerAccepted) return;
     setTimeout(() => {
       navigate('/payment-success', {
         state: course ? { course } : consult ? { consult } : undefined,
@@ -494,6 +496,25 @@ const Payment = () => {
                   )}
                 </div>
 
+                {course && (
+                  <div className="border border-[rgba(26,20,16,0.1)] bg-white p-6">
+                    <label className="flex items-start gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        required
+                        checked={disclaimerAccepted}
+                        onChange={(e) => setDisclaimerAccepted(e.target.checked)}
+                        className="mt-1 shrink-0"
+                      />
+                      <span className="font-[Arial] text-[12.5px] leading-[1.6] text-[rgba(26,20,16,0.75)]">
+                        I acknowledge that this self-paced course is for educational purposes and does not
+                        replace personalised medical advice. I agree to the enrolment terms before completing
+                        payment.
+                      </span>
+                    </label>
+                  </div>
+                )}
+
                 {/* Total + submit */}
                 <div className="bg-[#1A1410] text-white p-8 lg:p-10">
                   <div className="flex items-end justify-between mb-8 gap-6">
@@ -512,7 +533,8 @@ const Payment = () => {
 
                   <button
                     type="submit"
-                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#E8640A] hover:bg-white hover:text-[#1A1410] text-white py-5 font-[Arial] text-[10px] uppercase tracking-[0.4em] transition-all duration-500"
+                    className="group w-full inline-flex items-center justify-center gap-3 bg-[#E8640A] hover:bg-white hover:text-[#1A1410] text-white py-5 font-[Arial] text-[10px] uppercase tracking-[0.4em] transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={course && !disclaimerAccepted}
                   >
                     Process Payment
                     <ArrowRight

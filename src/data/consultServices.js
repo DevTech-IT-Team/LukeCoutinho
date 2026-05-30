@@ -188,6 +188,36 @@ export function formatTimeSlotLabel(timeSlot) {
  * @param {Date} date
  * @param {string} timeSlot — "HH:mm"
  */
+const EXPERT_SLUG_ALIASES = {
+  'dr-anitha': { categoryId: 'meal-planning', expertId: 'anushka' },
+  'dr-natwar': { categoryId: 'doctors', expertId: 'natwar' },
+  'dr-sunita': { categoryId: 'doctors', expertId: 'sunita' },
+};
+
+/** Resolve ?expert= slug from URL to category + expert ids (WF02 pre-fill) */
+export function resolveExpertFromParam(param) {
+  if (!param) return null;
+  const slug = String(param).toLowerCase().trim();
+  if (EXPERT_SLUG_ALIASES[slug]) {
+    const { categoryId, expertId } = EXPERT_SLUG_ALIASES[slug];
+    const category = expertCategories.find((c) => c.id === categoryId);
+    const expert = category?.experts.find((e) => e.id === expertId);
+    if (expert) return { categoryId, expertId, expert, category };
+  }
+  for (const category of expertCategories) {
+    for (const expert of category.experts) {
+      const nameSlug = expert.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-|-$/g, '');
+      if (expert.id === slug || nameSlug === slug || nameSlug.includes(slug)) {
+        return { categoryId: category.id, expertId: expert.id, expert, category };
+      }
+    }
+  }
+  return null;
+}
+
 export function attachScheduling(selection, date, timeSlot) {
   if (!selection || !date || !timeSlot) return selection;
   const iso = format(date, 'yyyy-MM-dd');

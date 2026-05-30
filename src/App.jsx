@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import SiteHeader from './components/SiteHeader'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -51,7 +51,10 @@ import BookConsultService from './pages/BookConsultService'
 import BookConsultSchedule from './pages/BookConsultSchedule'
 import Payment from './pages/Payment'
 import PaymentSuccess from './pages/PaymentSuccess'
+import Books from './pages/Books'
+import PreferredPartners from './pages/PreferredPartners'
 import PageAnalytics from './components/analytics/PageAnalytics'
+import { LEGACY_REDIRECTS } from './config/siteLinks'
 function AppShell() {
   const location = useLocation()
   const isLandingPage = location.pathname === '/'
@@ -107,6 +110,11 @@ function AppShell() {
             <Route path="/Careers/Careers" element={<Careers />} />
             <Route path="/ContactUs/ContactUs" element={<ContactUs />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/partners" element={<PreferredPartners />} />
+            <Route path="/books" element={<Books />} />
+            {LEGACY_REDIRECTS.map(({ from, to }) => (
+              <Route key={from} path={from} element={<Navigate to={to} replace />} />
+            ))}
             <Route path="/gift-card" element={<GiftCard />} />
             <Route path="/bharat/dish" element={<BharatDish />} />
             <Route path="/book-consult" element={<BookConsult />} />

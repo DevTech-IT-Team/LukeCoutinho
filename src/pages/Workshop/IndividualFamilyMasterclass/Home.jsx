@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -21,6 +21,7 @@ import AboutLukeSection from './sections/AboutLukeSection';
 import DisclaimerSection from './sections/DisclaimerSection';
 import EditorialMasthead from '../../../components/layout/EditorialMasthead';
 import MasterclassReservePanel from '../../../components/MasterclassReservePanel';
+import MasterclassReserveModal from '../../../components/MasterclassReserveModal';
 
 const paymentLink = '/payment';
 
@@ -97,6 +98,8 @@ function CtaLink({ children, variant = 'light', className = '' }) {
 }
 
 function Home() {
+  const [reserveOpen, setReserveOpen] = useState(false);
+
   return (
     <>
       <div className="lc-masterclass lc-landing bg-[#f7f3ed] text-[#1a3c34]">
@@ -186,13 +189,14 @@ function Home() {
               A more curated learning format designed with the quiet confidence of an editorial collection, not a
               crowded feature grid.
             </p>
-            <a
-              href="#reserve-spot"
+            <button
+              type="button"
+              onClick={() => setReserveOpen(true)}
               className="lc-mc-eyebrow inline-flex items-center gap-3 bg-[#1A1410] px-7 py-4 text-[10px] uppercase tracking-[0.34em] text-white transition-colors hover:bg-[#ff8f00]"
             >
               Save your spot
               <ArrowRight size={14} />
-            </a>
+            </button>
           </EditorialMasthead>
 
           <div className="lc-mc-card-grid mt-16 grid gap-8 sm:grid-cols-2 xl:grid-cols-4">
@@ -329,6 +333,7 @@ function Home() {
         </div>
       </section>
       </div>
+      <MasterclassReserveModal isOpen={reserveOpen} onClose={() => setReserveOpen(false)} />
     </>
   );
 }

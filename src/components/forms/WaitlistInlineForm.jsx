@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Check } from 'lucide-react';
 import { buildConsultSelection } from '../../data/consultServices';
 
-export default function WaitlistInlineForm({ onCancel }) {
+export default function WaitlistInlineForm({ onCancel, inlineSuccess = false }) {
   const navigate = useNavigate();
   const [status, setStatus] = useState('idle');
+  const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
 
   const update = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
@@ -22,6 +24,11 @@ export default function WaitlistInlineForm({ onCancel }) {
       mode: 'Online',
     });
     setTimeout(() => {
+      if (inlineSuccess) {
+        setSubmitted(true);
+        setStatus('idle');
+        return;
+      }
       navigate('/payment-success', {
         state: {
           submissionType: 'waitlist',
@@ -31,6 +38,19 @@ export default function WaitlistInlineForm({ onCancel }) {
       });
     }, 800);
   };
+
+  if (inlineSuccess && submitted) {
+    return (
+      <div className="bcf-inline-success" role="status" aria-live="polite">
+        <Check size={28} className="bcf-inline-success__icon" aria-hidden />
+        <h3>You&apos;re on the list.</h3>
+        <p>
+          Our team will contact you at the earliest available slot for a personalised consultation with
+          Luke. A confirmation email is on its way.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <form className="bcf-inline-form" onSubmit={handleSubmit}>

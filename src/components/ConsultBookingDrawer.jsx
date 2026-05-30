@@ -9,15 +9,19 @@ import {
   attachScheduling,
 } from '../data/consultServices';
 import ConsultBookingCalendar from './ConsultBookingCalendar';
+import WaitlistInlineForm from './forms/WaitlistInlineForm';
 import './Hero.css';
+import './consult-booking-drawer.css';
+import './consult-calendar.css';
 
-/**
- * Streamlined consult booking — target ≤3 clicks:
- * 1. Open drawer (header CTA)
- * 2. Select service / mode (prices visible upfront)
- * 3. Continue to secure checkout
- */
-const ConsultBookingDrawer = ({ isOpen = false, onClose = () => {}, variant = 'drawer' }) => {
+const ConsultBookingDrawer = ({
+  isOpen = false,
+  onClose = () => {},
+  variant = 'drawer',
+  mode = 'booking',
+  initialExpertId = null,
+  initialCategoryId = null,
+}) => {
   const navigate = useNavigate();
   const [selectedOptionId, setSelectedOptionId] = React.useState(null);
   const [activeCategoryId, setActiveCategoryId] = React.useState(null);
@@ -25,6 +29,15 @@ const ConsultBookingDrawer = ({ isOpen = false, onClose = () => {}, variant = 'd
   const [selectedSpecialtyId, setSelectedSpecialtyId] = React.useState(null);
   const [preferredDate, setPreferredDate] = React.useState(undefined);
   const [preferredTime, setPreferredTime] = React.useState(null);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    if (initialCategoryId) setActiveCategoryId(initialCategoryId);
+    if (initialExpertId) {
+      setSelectedExpertId(initialExpertId);
+      if (initialCategoryId) setActiveCategoryId(initialCategoryId);
+    }
+  }, [isOpen, initialExpertId, initialCategoryId]);
 
   const activeCategory = expertCategories.find((c) => c.id === activeCategoryId);
   const selectedExpert = activeCategory?.experts.find((e) => e.id === selectedExpertId);
@@ -153,7 +166,28 @@ const ConsultBookingDrawer = ({ isOpen = false, onClose = () => {}, variant = 'd
     navigate('/payment', { state: { consult: finalConsult } });
   };
 
-  const panel = (
+  const waitlistPanel = (
+    <>
+      <header className="consult-head">
+        <div>
+          <p className="consult-eyebrow">Consult with Luke</p>
+          <h2 className="consult-title">Join the waitlist</h2>
+        </div>
+        {variant === 'drawer' && (
+          <button type="button" className="consult-close" aria-label="Close" onClick={onClose}>
+            <span aria-hidden="true">×</span>
+          </button>
+        )}
+      </header>
+      <div className="consult-booking-body">
+        <WaitlistInlineForm inlineSuccess onCancel={onClose} />
+      </div>
+    </>
+  );
+
+  const panel = mode === 'waitlist' ? (
+    waitlistPanel
+  ) : (
     <>
       <header className="consult-head">
         <div>

@@ -3,46 +3,18 @@ import { ArrowUpRight, Sparkles } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import DualPathCTA from '../../../components/conversion/DualPathCTA';
 import { REVENUE_STREAMS } from '../../../config/revenueStreams';
+import {
+  enrollProgram,
+  SIGNATURE_LUKE_PROGRAM,
+  SIGNATURE_TEAM_PROGRAM,
+} from '../../../lib/enrollProgram';
 import wellness from '../../../assets/wellness.jpg'
 import lukeImg from '../../../assets/Lukequotenew.jpg'
 import ExclusiveWellness from '../../../assets/ExclusiveWellness.jpg'
 
 
-const enrollProgram = (navigate, program) => {
-  navigate('/payment', {
-    state: {
-      consult: {
-        serviceId: program.id,
-        serviceTitle: program.title,
-        optionTitle: program.subtitle,
-        label: program.title,
-        price: program.price,
-        priceValue: program.priceValue,
-        mode: 'Program',
-        duration: 'Ongoing',
-      },
-    },
-  });
-};
-
 export default function iProgramSelector() {
   const navigate = useNavigate();
-
-  const teamProgram = {
-    id: 'signature-team',
-    title: 'Signature Wellness — With Team',
-    subtitle: 'Guided by Luke\'s integrative team',
-    price: 'Upon consultation',
-    priceValue: null,
-  };
-
-  const lukeProgram = {
-    id: 'signature-luke',
-    title: 'Signature Wellness — With Luke',
-    subtitle: 'Exclusive program with Luke',
-    price: 'Upon consultation',
-    priceValue: null,
-  };
 
   return (
     <section className="relative bg-[#fafafa] py-24 lg:py-32 overflow-hidden antialiased text-gray-800">
@@ -123,7 +95,7 @@ export default function iProgramSelector() {
               <DualPathCTA
                 stream={REVENUE_STREAMS.programs}
                 primaryLabel="Enroll now"
-                onPrimaryClick={() => enrollProgram(navigate, teamProgram)}
+                onPrimaryClick={() => enrollProgram(navigate, SIGNATURE_TEAM_PROGRAM)}
                 className="lc-dual-path--card"
                 secondaryLabel="Talk to our team"
                 secondaryHref="/book-consult?path=expert"
@@ -171,7 +143,7 @@ export default function iProgramSelector() {
               <DualPathCTA
                 stream={REVENUE_STREAMS.programs}
                 primaryLabel="Enroll now"
-                onPrimaryClick={() => enrollProgram(navigate, lukeProgram)}
+                onPrimaryClick={() => enrollProgram(navigate, SIGNATURE_LUKE_PROGRAM)}
                 className="lc-dual-path--card"
                 secondaryLabel="Join Luke's waitlist"
                 secondaryHref="/book-consult?path=waitlist"

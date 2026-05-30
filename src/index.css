@@ -371,3 +371,26 @@ p {
   color: var(--arch-accent);
   gap: 12px;
 }
+
+@media print {
+  header,
+  footer,
+  .hero-nav,
+  .primary-menu,
+  .search-overlay {
+    display: none !important;
+  }
+
+  .rr-main {
+    padding-top: 0 !important;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  a[href]::after {
+    content: none !important;
+  }
+}

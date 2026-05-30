@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Youtube, Linkedin, Facebook, MessageCircle } from 'lucide-react';
 import { LC_LOGO_SRC, LC_LOGO_ALT } from '../assets/brandLogo';
+import { WHATSAPP_CHANNEL_URL, BOOKS_PATH } from '../config/siteLinks';
 
 // Inline X (Twitter) glyph
 const XIcon = ({ size = 13 }) => (
@@ -15,11 +16,19 @@ const Footer = () => {
 
   const cols = [
     {
+      title: 'Business',
+      links: [
+        { label: 'Book Luke as Speaker', to: '/resources?intent=speaker#enquire' },
+        { label: 'Corporate Wellness', to: '/resources#enquire' },
+        { label: 'Preferred Partners', to: '/partners' },
+      ],
+    },
+    {
       title: 'Heal',
       links: [
         { label: 'Book Consultation', to: '/book-consult' },
         { label: 'Programs', to: '/programs/signature-wellness' },
-        { label: 'Corporate Wellness', to: '/Workshop/CorporateTalks/Home' },
+        { label: 'Corporate Wellness', to: '/resources' },
       ],
     },
     {
@@ -27,7 +36,7 @@ const Footer = () => {
       links: [
         { label: 'Courses', to: '/learn/learninghub/home' },
         { label: 'Blogs', to: '/learn/blogs' },
-        { label: 'Books & Resources', to: '/resources' },
+        { label: 'Books & Resources', to: BOOKS_PATH },
         { label: 'Recipes', to: '/bharat/dish' },
       ],
     },
@@ -47,7 +56,7 @@ const Footer = () => {
     { icon: Youtube, href: 'https://www.youtube.com/@LukeCoutinho', label: 'YouTube' },
     { icon: Linkedin, href: 'https://www.linkedin.com/in/lukecoutinho/', label: 'LinkedIn' },
     { icon: XIcon, href: 'https://x.com/LukeCoutinho17', label: 'X' },
-    { icon: MessageCircle, href: 'https://www.whatsapp.com/channel/0029VaEPuJ9EawdthbP8cz0K', label: 'WhatsApp' },
+    { icon: MessageCircle, href: WHATSAPP_CHANNEL_URL, label: 'WhatsApp' },
   ];
 
   return (

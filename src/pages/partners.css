@@ -1,0 +1,138 @@
+.partners-page {
+  background: #fdfaf5;
+  min-height: 70vh;
+}
+
+.partners-page__hero {
+  padding: 7.5rem 1.5rem 3rem;
+  background: #1a1410;
+  color: #fdfaf5;
+}
+
+.partners-page__hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.partners-page__eyebrow {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.75rem;
+}
+
+.partners-page__hero h1 {
+  font: italic clamp(2rem, 4.5vw, 3rem)/1.05 'EB Garamond', Georgia, serif;
+  margin-bottom: 0.75rem;
+}
+
+.partners-page__lede {
+  font: 500 16px/1.65 Arial, sans-serif;
+  color: rgba(253, 250, 245, 0.78);
+  margin-bottom: 1rem;
+}
+
+.partners-page__intro {
+  font: 500 14px/1.7 Arial, sans-serif;
+  color: rgba(253, 250, 245, 0.58);
+}
+
+.partners-page__logos {
+  padding: 2.5rem 1.5rem;
+  border-bottom: 1px solid rgba(26, 20, 16, 0.08);
+}
+
+.partners-page__logos ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  align-items: center;
+}
+
+.partners-page__logos img {
+  height: 32px;
+  width: auto;
+  max-width: 110px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.8;
+}
+
+.partners-page__stories {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.partners-page__stories h2 {
+  font: italic 2rem/1.1 'EB Garamond', Georgia, serif;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.partners-page__grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+}
+
+.partners-page__card {
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.partners-page__region {
+  font: 700 9px/1 Arial, sans-serif;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.5rem;
+}
+
+.partners-page__card h3 {
+  font: 700 1.1rem/1.25 Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.partners-page__card p {
+  font: 500 14px/1.65 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.62);
+}
+
+.partners-page__cta {
+  text-align: center;
+  padding: 2.5rem 1.5rem 4rem;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+}
+
+.partners-page__cta p {
+  font: 500 15px/1.5 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.65);
+  margin-bottom: 1rem;
+}
+
+.partners-page__cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.5rem;
+  background: #1a1410;
+  color: #fff;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 999px;
+}
+
+.partners-page__cta-btn:hover {
+  background: #e8640a;
+}

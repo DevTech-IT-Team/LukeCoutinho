@@ -5,14 +5,15 @@ import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { LC_LOGO_SRC, LC_LOGO_ALT } from '../assets/brandLogo';
 
 const navConfig = [
+  { title: 'Book Luke as Speaker', href: '/resources?intent=speaker#enquire' },
   { title: 'Programs', href: '/programs/signature-wellness' },
   { title: 'Masterclass', href: '/masterclass' },
   { title: 'Podcast', href: '/Podcast/Podcast' },
   { title: 'Courses', href: '/learn/learninghub/home' },
   { title: 'Blogs', href: '/learn/blogs' },
   { title: 'Bharat', href: '/bharat/dish' },
-  { title: 'Corporate', href: '/Workshop/CorporateTalks/Home' },
-  { title: 'Books', href: '/resources' },
+  { title: 'Corporate', href: '/resources' },
+  { title: 'Books', href: '/books' },
 ];
 
 const Navbar = () => {

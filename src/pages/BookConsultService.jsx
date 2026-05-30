@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link, useSearchParams } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import ConsultFlowShell from '../components/consult/ConsultFlowShell';
 import {
@@ -7,11 +7,13 @@ import {
   headNutritionistService,
   expertCategories,
   buildConsultSelection,
+  resolveExpertFromParam,
 } from '../data/consultServices';
 
 const BookConsultService = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const pathId = location.state?.pathId;
   const path = consultEntryPaths.find((p) => p.id === pathId);
 
@@ -22,6 +24,16 @@ const BookConsultService = () => {
   useEffect(() => {
     if (!pathId) navigate('/book-consult', { replace: true });
   }, [pathId, navigate]);
+
+  useEffect(() => {
+    const expertParam = searchParams.get('expert');
+    if (!expertParam || path?.flow !== 'expert') return;
+    const resolved = resolveExpertFromParam(expertParam);
+    if (resolved) {
+      setActiveCategoryId(resolved.categoryId);
+      setSelectedExpertId(resolved.expertId);
+    }
+  }, [searchParams, path?.flow]);
 
   if (!path) return null;
 

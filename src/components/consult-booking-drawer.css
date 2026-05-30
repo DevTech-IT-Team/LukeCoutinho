@@ -1,0 +1,294 @@
+/* Consult booking drawer — inner panel layout (shell lives in Hero.css) */
+
+.consult-panel--booking {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.consult-panel--booking .consult-head {
+  flex-shrink: 0;
+  padding: 28px 32px 20px;
+  margin: 0;
+}
+
+.consult-panel--booking .consult-booking-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 32px 24px;
+}
+
+.consult-panel--booking .consult-booking-footer {
+  flex-shrink: 0;
+  padding: 16px 32px 28px;
+  border-top: 1px solid rgba(26, 20, 16, 0.1);
+  background: var(--off-white, #fdfaf5);
+}
+
+.consult-steps-hint {
+  margin: 10px 0 0;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.55;
+  color: rgba(26, 20, 16, 0.58);
+  max-width: 36ch;
+}
+
+.consult-booking-section {
+  margin-bottom: 28px;
+}
+
+.consult-booking-section--calendar {
+  margin-top: 8px;
+}
+
+.consult-section-label {
+  margin: 0 0 8px;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.55);
+}
+
+.consult-section-desc {
+  margin: 0 0 14px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(26, 20, 16, 0.68);
+}
+
+.consult-option-list,
+.consult-expert-list,
+.consult-specialty-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.consult-option-card,
+.consult-expert-card,
+.consult-specialty-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid rgba(26, 20, 16, 0.1);
+  border-radius: 12px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.consult-option-card:hover,
+.consult-expert-card:hover,
+.consult-specialty-row:hover {
+  border-color: rgba(232, 100, 10, 0.35);
+}
+
+.consult-option-card.is-selected,
+.consult-expert-card.is-selected,
+.consult-specialty-row.is-selected {
+  border-color: #e8640a;
+  background: rgba(232, 100, 10, 0.06);
+  box-shadow: 0 0 0 1px rgba(232, 100, 10, 0.15);
+}
+
+.consult-option-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.consult-option-title {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1410;
+}
+
+.consult-option-meta {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: rgba(26, 20, 16, 0.55);
+}
+
+.consult-option-price,
+.consult-specialty-price {
+  flex-shrink: 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1410;
+  white-space: nowrap;
+}
+
+.consult-category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.consult-category-tab {
+  padding: 8px 14px;
+  border: 1px solid rgba(26, 20, 16, 0.14);
+  border-radius: 999px;
+  background: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(26, 20, 16, 0.72);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.consult-category-tab:hover {
+  border-color: rgba(232, 100, 10, 0.4);
+  color: #1a1410;
+}
+
+.consult-category-tab.is-active {
+  border-color: #e8640a;
+  background: #1a1410;
+  color: #fff;
+}
+
+.consult-expert-name {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a1410;
+}
+
+.consult-expert-role {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: rgba(26, 20, 16, 0.55);
+  margin-top: 2px;
+}
+
+.consult-expert-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #e8640a;
+}
+
+.consult-specialty-title {
+  flex: 1;
+  min-width: 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1410;
+}
+
+.consult-specialty-meta {
+  flex-shrink: 0;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: rgba(26, 20, 16, 0.5);
+  white-space: nowrap;
+}
+
+.consult-booking-note {
+  margin-top: 8px;
+}
+
+.consult-selection-summary {
+  margin-bottom: 14px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: rgba(26, 20, 16, 0.04);
+}
+
+.consult-summary-label {
+  margin: 0 0 4px;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.5);
+}
+
+.consult-summary-value {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1410;
+  line-height: 1.45;
+}
+
+.consult-summary-price {
+  font-weight: 700;
+}
+
+.consult-summary-pending {
+  margin: 6px 0 0;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: #e8640a;
+}
+
+.consult-hotline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 12px;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  color: rgba(26, 20, 16, 0.55);
+  text-decoration: none;
+}
+
+.consult-hotline:hover {
+  color: #e8640a;
+}
+
+.consult-booking-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 7rem 24px 4rem;
+}
+
+@media (max-width: 768px) {
+  .consult-panel--booking .consult-head,
+  .consult-panel--booking .consult-booking-body,
+  .consult-panel--booking .consult-booking-footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .consult-specialty-row {
+    flex-wrap: wrap;
+  }
+
+  .consult-specialty-price {
+    width: 100%;
+    text-align: left;
+    padding-left: 0;
+  }
+}

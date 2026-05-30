@@ -13,19 +13,27 @@ const BookConsult = () => {
   const [selectedPathId, setSelectedPathId] = useState(null);
 
   const pathParam = searchParams.get('path');
+  const expertParam = searchParams.get('expert');
 
   useEffect(() => {
     if (pathParam === 'waitlist') {
       setSelectedPathId('waitlist');
       return;
     }
+    if (expertParam) {
+      const path = consultEntryPaths.find((p) => p.id === 'expert');
+      navigate(`/book-consult/service?expert=${encodeURIComponent(expertParam)}`, {
+        state: { pathId: 'expert', path },
+        replace: true,
+      });
+      return;
+    }
     if (pathParam === 'expert' || pathParam === 'instant') {
       const path = consultEntryPaths.find((p) => p.id === pathParam);
       if (path) navigate('/book-consult/service', { state: { pathId: pathParam, path }, replace: true });
     }
-  }, [pathParam, navigate]);
+  }, [pathParam, expertParam, navigate]);
 
-  const selectedPath = consultEntryPaths.find((p) => p.id === selectedPathId);
   const isWaitlist = selectedPathId === 'waitlist';
 
   const goNext = () => {

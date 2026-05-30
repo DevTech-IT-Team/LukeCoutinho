@@ -103,7 +103,7 @@ const CROSS_SELL_MAP = {
   programs: [
     { label: 'Book a consultation', description: 'Speak with our team before you enroll', href: '/book-consult?path=expert', stream: 'consults' },
     { label: 'Explore courses', description: 'Learn at your pace in the Learning Hub', href: '/learn/learninghub/home', stream: 'lms' },
-    { label: 'Free resources', description: 'Guides and educational tools', href: '/resources', stream: 'general' },
+    { label: 'Free resources', description: 'Guides and educational tools', href: '/books', stream: 'general' },
   ],
   consults: [
     { label: 'Signature Wellness programs', description: 'Long-term guided care with Luke or the team', href: '/programs/signature-wellness', stream: 'programs' },
@@ -121,7 +121,7 @@ const CROSS_SELL_MAP = {
     { label: 'Browse courses', description: 'Structured learning paths', href: '/learn/learninghub/home', stream: 'lms' },
   ],
   corporate: [
-    { label: 'Corporate programs', description: 'Team wellness with Luke\'s method', href: '/Workshop/CorporateTalks/Home', stream: 'corporate' },
+    { label: 'Corporate programs', description: 'Team wellness with Luke\'s method', href: '/resources#enquire', stream: 'corporate' },
     { label: 'Book a consultation', description: 'Individual pathways for leaders', href: '/book-consult?path=expert', stream: 'consults' },
   ],
   general: [

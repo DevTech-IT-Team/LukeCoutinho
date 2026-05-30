@@ -1,0 +1,190 @@
+.books-page {
+  background: #faf6ee;
+  min-height: 70vh;
+}
+
+.books-page__hero {
+  background: #1a1410;
+  color: #fdfaf5;
+  padding: 7rem 1.5rem 3.5rem;
+}
+
+.books-page__hero-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.books-page__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 1rem;
+}
+
+.books-page__hero h1 {
+  font: italic  clamp(2rem, 5vw, 3.25rem)/1.05 'EB Garamond', Georgia, serif;
+  margin-bottom: 0.75rem;
+}
+
+.books-page__hero p {
+  font: 500 15px/1.7 Arial, sans-serif;
+  color: rgba(253, 250, 245, 0.72);
+  max-width: 42ch;
+}
+
+.books-page__grid-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.books-page__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.books-page__card {
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.books-page__cover {
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  object-fit: cover;
+}
+
+.books-page__body {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  flex: 1;
+}
+
+.books-page__body h3 {
+  font: 700 1.1rem/1.25 Arial, sans-serif;
+  color: #1a1410;
+}
+
+.books-page__body p {
+  font: 500 13px/1.5 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.55);
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.books-page__download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  align-self: flex-start;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: #1a1410;
+  color: #fff;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.books-page__download:hover {
+  background: #e8640a;
+}
+
+.lc-download-tooltip {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .lc-download-tooltip {
+    align-items: center;
+  }
+}
+
+.lc-download-tooltip__scrim {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(26, 20, 16, 0.45);
+  cursor: pointer;
+}
+
+.lc-download-tooltip__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 380px);
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 24px 64px rgba(26, 20, 16, 0.18);
+}
+
+.lc-download-tooltip__eyebrow {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 0.5rem;
+}
+
+.lc-download-tooltip__title {
+  font: 600 15px/1.45 Arial, sans-serif;
+  color: #1a1410;
+  margin-bottom: 1rem;
+}
+
+.lc-download-tooltip__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lc-download-tooltip__form input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid rgba(26, 20, 16, 0.18);
+  padding: 0.65rem 0;
+  font: 14px/1.4 Arial, sans-serif;
+}
+
+.lc-download-tooltip__primary {
+  padding: 0.75rem 1rem;
+  background: #1a1410;
+  color: #fff;
+  border: 0;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lc-download-tooltip__skip {
+  margin-top: 0.75rem;
+  background: none;
+  border: 0;
+  font: 500 12px/1 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.55);
+  text-decoration: underline;
+  cursor: pointer;
+}

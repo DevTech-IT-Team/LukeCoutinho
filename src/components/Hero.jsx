@@ -209,11 +209,6 @@ const Hero = () => {
               );
             })}
           </div>
-
-          <div className="hero-counter" aria-hidden="true">
-            {String(activeIndex + 1).padStart(2, '0')}{' '}
-            <span>/ {String(slides.length).padStart(2, '0')}</span>
-          </div>
         </div>
       </section>
     </>

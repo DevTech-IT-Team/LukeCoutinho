@@ -1,0 +1,163 @@
+.corp-page {
+  background: #faf6ee;
+  min-height: 70vh;
+}
+
+.corp-page__hero {
+  background: #1a1410;
+  color: #fdfaf5;
+  padding: 7.5rem 1.5rem 3.5rem;
+}
+
+.corp-page__hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.corp-page__eyebrow {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #e8640a;
+  margin-bottom: 1rem;
+}
+
+.corp-page__hero h1 {
+  font: italic clamp(2rem, 5vw, 3.25rem)/1.05 'EB Garamond', Georgia, serif;
+  margin-bottom: 1rem;
+}
+
+.corp-page__lede {
+  font: 500 16px/1.7 Arial, sans-serif;
+  color: rgba(253, 250, 245, 0.75);
+  max-width: 48ch;
+}
+
+.corp-page__split {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.corp-page__path {
+  background: #fff;
+  border: 1px solid rgba(26, 20, 16, 0.08);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+}
+
+.corp-page__path-icon {
+  color: #e8640a;
+  margin-bottom: 0.75rem;
+}
+
+.corp-page__path h2 {
+  font: 700 1.25rem/1.2 Arial, sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.corp-page__path p {
+  font: 500 14px/1.6 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.62);
+  margin-bottom: 1rem;
+}
+
+.corp-page__path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #1a1410;
+  text-decoration: none;
+}
+
+.corp-page__path-cta:hover {
+  color: #e8640a;
+}
+
+.corp-page__path-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.corp-page__path-links a {
+  font: 600 13px/1.4 Arial, sans-serif;
+  color: #e8640a;
+  text-decoration: none;
+}
+
+.corp-page__logos {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+  text-align: center;
+}
+
+.corp-page__logos-label {
+  font: 700 10px/1 Arial, sans-serif;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(26, 20, 16, 0.45);
+  margin-bottom: 1.25rem;
+}
+
+.corp-page__logos-grid {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem 2rem;
+  align-items: center;
+}
+
+.corp-page__logos-grid img {
+  height: 28px;
+  width: auto;
+  max-width: 100px;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.75;
+}
+
+.corp-page__partners-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: 600 12px/1 Arial, sans-serif;
+  color: #1a1410;
+  text-decoration: none;
+}
+
+.corp-page__partners-link:hover {
+  color: #e8640a;
+}
+
+.corp-page__form {
+  background: #fff;
+  border-top: 1px solid rgba(26, 20, 16, 0.08);
+  padding: 3.5rem 1.5rem 4.5rem;
+}
+
+.corp-page__form-inner {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.corp-page__form h2 {
+  font: italic 2rem/1.1 'EB Garamond', Georgia, serif;
+  margin-bottom: 0.5rem;
+}
+
+.corp-page__form > .corp-page__form-inner > p {
+  font: 500 14px/1.65 Arial, sans-serif;
+  color: rgba(26, 20, 16, 0.6);
+  margin-bottom: 1.5rem;
+}
